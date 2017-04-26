@@ -1,4 +1,4 @@
-package de.god.doenerbestellung;
+package de.god.doenerbestellung.controller;
 
 import java.util.Date;
 
@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import de.god.doenerbestellung.domain.Bestellung;
+import de.god.doenerbestellung.repository.BestellungRepository;
 
 @RestController
 public class BestellungController {
