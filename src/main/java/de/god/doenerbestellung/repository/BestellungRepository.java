@@ -11,7 +11,20 @@ import de.god.doenerbestellung.domain.Bestellung;
 
 @RepositoryRestResource(collectionResourceRel = "bestellung", path = "bestellung")
 public interface BestellungRepository extends PagingAndSortingRepository<Bestellung, Long> {
-
+	/**
+	 * Liefert die Bestellungen nach einen Datum zurück
+	 * 
+	 * @param bestelldatum
+	 * @return kann leer sein
+	 */
 	List<Bestellung> findByBestelldatum(@Param("bestelldatum") Date bestelldatum);
+
+	/**
+	 * Liefert die Bestellungen nach einem Namen zurück.
+	 * 
+	 * @param bestelldatum
+	 * @return kann leer sein
+	 */
+	List<Bestellung> findByName(@Param("name") String bestelldatum);
 
 }

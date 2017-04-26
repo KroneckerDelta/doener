@@ -1,6 +1,7 @@
 package de.god.doenerbestellung.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,9 +26,22 @@ public class BestellungController {
 
 	@RequestMapping("/findAll")
 	public String showAll() {
-		Iterable<Bestellung> findAll = repositoy.findAll();
 
-		return "Bestellungen: ";
+		String result = "";
+		Iterable<Bestellung> findAll = repositoy.findAll();
+		for (Bestellung bestellung : findAll) {
+			result += bestellung.getName();
+			result += " Datum: ";
+			result += bestellung.getBestelldatum();
+			result += "<br>";
+			System.out.println("Name: " + result);
+		}
+		return "Bestellungen: 2 " + result;
+	}
+
+	@RequestMapping("/findHeute")
+	public List<Bestellung> heutigeBestellungen() {
+		return repositoy.findByName("Thomas");
 	}
 
 	@Transactional
