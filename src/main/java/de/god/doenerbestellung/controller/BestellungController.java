@@ -30,13 +30,11 @@ public class BestellungController {
 		String result = "";
 		Iterable<Bestellung> findAll = repositoy.findAll();
 		for (Bestellung bestellung : findAll) {
-			result += bestellung.getName();
-			result += " Datum: ";
-			result += bestellung.getBestelldatum();
+			result += bestellung.toString();
 			result += "<br>";
 			System.out.println("Name: " + result);
 		}
-		return "Bestellungen: 2 " + result;
+		return "" + result;
 	}
 
 	@RequestMapping("/findHeute")
@@ -46,10 +44,32 @@ public class BestellungController {
 
 	@Transactional
 	@RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	Bestellung save(@RequestBody Bestellung bestellung) {
+	public Bestellung save(@RequestBody Bestellung bestellung) {
 
 		bestellung.setBestelldatum(new Date());
 		return repositoy.save(bestellung);
+
+	}
+
+	// @RequestMapping(value = "/test1", method = RequestMethod.GET)
+	// public Bestellung test1(@RequestBody String a, @RequestBody String b) {
+	//
+	// Bestellung bestellung = new Bestellung();
+	// bestellung.setBestelldatum(new Date());
+	// return bestellung;
+	//
+	// }
+
+	@RequestMapping(value = "/saveMe", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Bestellung saveBestellung(String bestellung, String name, String extras, String telefonnummer) {
+		System.out.println("Bestellung: " + bestellung + " Name: " + name);
+		Bestellung b = new Bestellung();
+		b.setName(name);
+		b.setExtras(extras);
+		b.setBestellung(bestellung);
+		b.setBestelldatum(new Date());
+		b.setTelefonnummer(telefonnummer);
+		return repositoy.save(b);
 
 	}
 
