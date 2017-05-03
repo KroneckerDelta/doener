@@ -1,6 +1,5 @@
 package de.god.doenerbestellung.repository;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -17,14 +16,6 @@ public interface BestellungRepository extends PagingAndSortingRepository<Bestell
 	 * @param bestelldatum
 	 * @return kann leer sein
 	 */
-	List<Bestellung> findByBestelldatum(@Param("bestelldatum") Date bestelldatum);
-
-	/**
-	 * Liefert die Bestellungen nach einem Namen zurück.
-	 * 
-	 * @param bestelldatum
-	 * @return kann leer sein
-	 */
-	List<Bestellung> findByName(@Param("name") String bestelldatum);
+	List<Bestellung> findByBestelldatum(@Param("bestelldatum") String bestelldatum);
 
 }

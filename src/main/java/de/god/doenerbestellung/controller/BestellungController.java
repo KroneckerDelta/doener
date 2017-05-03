@@ -1,6 +1,5 @@
 package de.god.doenerbestellung.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,16 +36,21 @@ public class BestellungController {
 		return "" + result;
 	}
 
-	@RequestMapping("/findHeute")
-	public List<Bestellung> heutigeBestellungen() {
-		return repositoy.findByName("Thomas");
+	@RequestMapping(value = "/findPerDate", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
+	public List<Bestellung> heutigeBestellungen(@RequestBody String containsDate) {
+		String dateAsString = containsDate.substring(containsDate.indexOf("=") + 1, containsDate.length());
+
+		return repositoy.findByBestelldatum(dateAsString);
+
 	}
 
 	@Transactional
 	@RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Bestellung save(@RequestBody Bestellung bestellung) {
 
-		bestellung.setBestelldatum(new Date());
+		String bestelldatum = Heute.get();
+
+		bestellung.setBestelldatum(bestelldatum);
 		return repositoy.save(bestellung);
 
 	}
@@ -67,7 +71,7 @@ public class BestellungController {
 		b.setName(name);
 		b.setExtras(extras);
 		b.setBestellung(bestellung);
-		b.setBestelldatum(new Date());
+		b.setBestelldatum(Heute.get());
 		b.setTelefonnummer(telefonnummer);
 		return repositoy.save(b);
 

@@ -7,4 +7,4 @@ spring:
     password: schoener
   jpa:
     hibernate.ddl-auto: update
-    show_sql: false
+    show_sql: true

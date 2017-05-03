@@ -1,7 +1,5 @@
 package de.god.doenerbestellung.domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +23,7 @@ public class Bestellung {
 	private String telefonnummer;
 	@Column(nullable = true)
 	private String extras;
-	private Date bestelldatum;
+	private String bestelldatum;
 
 	public long getId() {
 		return id;
@@ -39,11 +37,11 @@ public class Bestellung {
 		return bestellung;
 	}
 
-	public Date getBestelldatum() {
+	public String getBestelldatum() {
 		return bestelldatum;
 	}
 
-	public void setBestelldatum(Date bestelldatum) {
+	public void setBestelldatum(String bestelldatum) {
 		this.bestelldatum = bestelldatum;
 	}
 
