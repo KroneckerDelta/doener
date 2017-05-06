@@ -6,5 +6,5 @@ spring:
     username: schoener
     password: schoener
   jpa:
-    hibernate.ddl-auto: update
+    hibernate.ddl-auto: create
     show_sql: true

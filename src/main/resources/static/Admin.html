@@ -1,29 +1,101 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>jQuery UI Datepicker - Default functionality</title>
+<title>Döner Übersicht Bestellungen</title>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="calendar.css" type="text/css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-  $( function() {
-    $( "#datepicker" ).datepicker({
-    	  dateFormat: "dd.mm.yy"
-    });
-  } );
-  </script>
+	$(document)
+			.ready(
+					function() {
+
+						$('#search')
+								.click(
+										function() {
+											$
+													.ajax({
+														type : 'GET',
+														url : 'http://localhost:8080/findHeute',
+
+														dataType : "json", //to parse string into JSON object,
+														success : function(url) {
+
+															var len = url.length;
+															var txt = "";
+															if (len > 0) {
+																for (var i = 0; i < len; i++) {
+																	if (url[i].bestellung
+																			&& url[i].extras) {
+																		txt += "<tr><td>"
+																				+ url[i].name
+																				+ "</td><td>"
+																				+ url[i].bestellung
+																				+ "</td><td>"
+																				+ url[i].extras
+																				+ "</td><td>"
+																				+ url[i].telefonnummer
+																				+ "</td></tr>";
+																	}
+																}
+																if (txt != "") {
+																	$(
+																			"#BestellTabelle")
+																			.append(
+																					txt)
+																			.removeClass(
+																					"hidden");
+																}
+															}
+
+														},
+														error : function(jqXHR,
+																textStatus,
+																errorThrown) {
+															alert('error: '
+																	+ textStatus
+																	+ ': '
+																	+ errorThrown);
+														}
+													});
+											return false;//suppress natural form submission
+										});
+					});
+	$(function() {
+		$("#datepicker").datepicker({
+			dateFormat : "dd.mm.yy"
+		});
+	});
+</script>
 </head>
 <body>
 	<form action="/findPerDate" method="post">
 		<p>
-		<label>	Date: </label>
-		<input type="text" id="datepicker" name="datepicker">
+			<label> Date: </label> <input type="text" id="datepicker"
+				name="datepicker">
 		</p>
 		<button type="submit" class="btn btn-primary">Anzeigen</button>
+	</form>
+	<table id="BestellTabelle" class="hidden">
+		<tr>
+			<th>Name</th>
+			<th>Bestellung</th>
+			<th>Extras</th>
+			<th>Telefon</th>
+		</tr>
+	</table>
+	<form action="" id="search" name="search">
+		<button type="submit" class="btn btn-primary" id="search"
+			name="search">search</button>
+	</form>
+	<form action="emailSenden" id="email" name="email">
+		<button type="submit" class="btn btn-primary" id="email"
+			name="search">Döner Meldung verschicken</button>
 	</form>
 </body>
 </html>
