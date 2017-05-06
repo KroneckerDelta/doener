@@ -81,15 +81,18 @@ public class BestellungController {
 
 	}
 
-	// @RequestMapping(value = "/test1", method = RequestMethod.GET)
-	// public Bestellung test1(@RequestBody String a, @RequestBody String b) {
-	//
-	// Bestellung bestellung = new Bestellung();
-	// bestellung.setBestelldatum(new Date());
-	// return bestellung;
-	//
-	// }
+	@RequestMapping(value = "/test1", method = RequestMethod.POST)
+	public Bestellung requestKontrollMethode(@RequestBody String a, @RequestBody String b) {
+		System.out.println("Request: " + a);
+		System.out.println("Und: " + b);
 
+		Bestellung bestellung = new Bestellung();
+		bestellung.setBestelldatum("nur ein String");
+		return bestellung;
+
+	}
+
+	@Transactional
 	@RequestMapping(value = "/saveMe", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Bestellung saveBestellung(String bestellung, String name, String extras, String telefonnummer) {
 		System.out.println("Bestellung: " + bestellung + " Name: " + name);

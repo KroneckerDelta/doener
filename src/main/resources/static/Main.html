@@ -28,9 +28,10 @@
 
 	<div class="py-5" style="border-bottom: 3px solid #0f8699">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<form class="" action="/saveMe" method="post">
+			<form class="" action="/test1" method="post">
+				<div class="row">
+					<div class="col-md-4">
+
 						<div class="form-group">
 							<label>Name</label> <input type="text" class="form-control"
 								placeholder="Namen eingeben" name="name" id="name">
@@ -48,34 +49,53 @@
 								placeholder="Emailbenachrichtigung, man will ja nicht vergessen werden..."
 								name="email" id="email">
 						</div>
-						<button type="submit" class="btn btn-primary">verbindlich
-							Abschicken</button>
-					</form>
-					<form class="" action="/admin.html" method="get">
-						<button type="submit" class="btn btn-primary">Übersicht</button>
-					</form>
-				</div>
-				<div class="col-md-8">
-					<div class="row">
-						<div class="col-md-6 col-sm-7 col-6">
-							<div class="form-group">
-								<label>Telefonnummer (optional) zum Bescheid geben.</label> <input
-									type="text" class="form-control" placeholder="Durchwahl"
-									name="telefonnummer" id="telefonnummer">
+
+
+					</div>
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-6 col-sm-7 col-6">
+								<div class="form-group">
+									<label>Telefonnummer (optional) zum Bescheid geben.</label> <input
+										type="text" class="form-control" placeholder="Durchwahl"
+										name="telefonnummer" id="telefonnummer">
+								</div>
 							</div>
-						</div>
-						<div class="col-md-6 col-sm-6 col-6">
-							<div class="form-group">
-								<label>Extras (scharf/nicht scharf/alles)</label> <input
-									type="text" class="form-control"
-									placeholder="Bestellnummer, Bestellnamen, scharf/nicht scharf und extra Wünsche"
-									name="extras" id="extras">
+
+							<div class="col-md-6 col-sm-6 col-6">
+								<div class="btn-group m-4">
+									<button class="btn btn-primary dropdown-toggle"
+										data-toggle="dropdown">Soße</button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="#">Alles</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Scharf</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Knoblauch</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Alles ohne Knoblauch</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Alles ohne Scharf</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-6">
+								<div class="form-group">
+									<label>Extras (scharf/nicht scharf/alles)</label> <input
+										type="text" class="form-control"
+										placeholder="Bestellnummer, Bestellnamen, scharf/nicht scharf und extra Wünsche"
+										name="extras" id="extras">
+								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
-				
-			</div>
+				<button type="submit" class="btn btn-primary">verbindlich Abschicken</button>
+			</form>
+			<form class="" action="/admin.html" method="get">
+				<button type="submit" class="btn btn-primary">Übersicht</button>
+			</form>
 		</div>
 	</div>
 	<div class="py-5 section text-center">

@@ -11,66 +11,60 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-	$(document)
-			.ready(
-					function() {
 
-						$('#search')
-								.click(
-										function() {
-											$
-													.ajax({
-														type : 'GET',
-														url : 'http://localhost:8080/findHeute',
 
-														dataType : "json", //to parse string into JSON object,
-														success : function(url) {
+$(document).ready(
+	function() {
+	    alert('Bin immer noch da');
+	    $('#search').click(
+		    function() {
+			alert('Klick');
+			$.ajax({
+			    type : 'GET',
+			    url : 'http://localhost:8080/findHeute',
 
-															var len = url.length;
-															var txt = "";
-															if (len > 0) {
-																for (var i = 0; i < len; i++) {
-																	if (url[i].bestellung
-																			&& url[i].extras) {
-																		txt += "<tr><td>"
-																				+ url[i].name
-																				+ "</td><td>"
-																				+ url[i].bestellung
-																				+ "</td><td>"
-																				+ url[i].extras
-																				+ "</td><td>"
-																				+ url[i].telefonnummer
-																				+ "</td></tr>";
-																	}
-																}
-																if (txt != "") {
-																	$(
-																			"#BestellTabelle")
-																			.append(
-																					txt)
-																			.removeClass(
-																					"hidden");
-																}
-															}
+			    dataType : "json", // to
+			    // parse
+			    // string
+			    // into
+			    // JSON
+			    // object,
+			    success : function(url) {
 
-														},
-														error : function(jqXHR,
-																textStatus,
-																errorThrown) {
-															alert('error: '
-																	+ textStatus
-																	+ ': '
-																	+ errorThrown);
-														}
-													});
-											return false;//suppress natural form submission
-										});
-					});
-	$(function() {
-		$("#datepicker").datepicker({
-			dateFormat : "dd.mm.yy"
-		});
+				var len = url.length;
+				var txt = "";
+				if(len > 0){
+				    for(var i = 0; i < len; i++){
+					if(url[i].bestellung && url[i].extras){
+					    txt += "<tr><td>" + url[i].name
+						    + "</td><td>"
+						    + url[i].bestellung
+						    + "</td><td>"
+						    + url[i].extras
+						    + "</td><td>"
+						    + url[i].telefonnummer
+						    + "</td></tr>";
+					}
+				    }
+				    if(txt != ""){
+					$("#BestellTabelle").append(txt)
+						.removeClass("hidden");
+				    }
+				}
+
+			    },
+			    error : function(jqXHR, textStatus, errorThrown) {
+				alert('error: ' + textStatus + ': '
+					+ errorThrown);
+			    } });
+			return false;// suppress natural form
+			// submission
+		    });
 	});
+$(function() {
+    $("#datepicker").datepicker({
+	dateFormat : "dd.mm.yy" });
+});
 </script>
 </head>
 <body>
@@ -94,8 +88,8 @@
 			name="search">search</button>
 	</form>
 	<form action="emailSenden" id="email" name="email">
-		<button type="submit" class="btn btn-primary" id="email"
-			name="search">Döner Meldung verschicken</button>
+		<button type="submit" class="btn btn-primary" id="email" name="search">Döner
+			Meldung verschicken</button>
 	</form>
 </body>
 </html>
