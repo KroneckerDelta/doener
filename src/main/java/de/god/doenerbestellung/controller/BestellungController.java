@@ -1,5 +1,6 @@
 package de.god.doenerbestellung.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,31 @@ public class BestellungController {
 			System.out.println("Name: " + result);
 		}
 		return "" + result;
+	}
+
+	@RequestMapping(value = "/findHeute", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
+	public List<Bestellung> heutigeBestellungen() {
+
+		String dateAsString = Heute.get();
+
+		return repositoy.findByBestelldatum(dateAsString);
+
+	}
+
+	@RequestMapping(value = "/emailSenden", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
+	public String emailVersenden() {
+		List<String> alleMails = new ArrayList<>();
+		List<Bestellung> heutigeBestellungen = repositoy.findByBestelldatum(Heute.get());
+		for (Bestellung bestellung : heutigeBestellungen) {
+			String email = bestellung.getEmail();
+			alleMails.add(email);
+		}
+
+		return sendeEMails(alleMails);
+	}
+
+	private String sendeEMails(List<String> alleMails) {
+		return "Emails versandt: " + alleMails.size();
 	}
 
 	@RequestMapping(value = "/findPerDate", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)

@@ -24,6 +24,8 @@ public class Bestellung {
 	@Column(nullable = true)
 	private String extras;
 	private String bestelldatum;
+	@Column(nullable = true)
+	private String email;
 
 	public long getId() {
 		return id;
@@ -72,5 +74,13 @@ public class Bestellung {
 	@Override
 	public String toString() {
 		return bestelldatum + " " + bestellung + " mit " + extras + " von " + name + " Tel: " + telefonnummer;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
