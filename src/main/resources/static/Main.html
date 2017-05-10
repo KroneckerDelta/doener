@@ -44,7 +44,7 @@
 						</div>
 
 						<div class="form-group">
-							<label>Email zur Benachrichtigung (optional)</label> <input
+							<label>Email zur Benachrichtigung. (optional)</label> <input
 								type="text" class="form-control"
 								placeholder="Emailbenachrichtigung, man will ja nicht vergessen werden..."
 								name="email" id="email">
@@ -54,9 +54,9 @@
 					</div>
 					<div class="col-md-8">
 						<div class="row">
-							<div class="col-md-6 col-sm-7 col-6">
+							<div class="col-md-6 col-sm-6 col-6">
 								<div class="form-group">
-									<label>Telefonnummer (optional) zum Bescheid geben.</label> <input
+									<label>Telefonnummer zur Benachrichtigung. (optional)</label> <input
 										type="text" class="form-control" placeholder="Durchwahl"
 										name="telefonnummer" id="telefonnummer">
 								</div>
@@ -64,34 +64,45 @@
 
 							<div class="col-md-6 col-sm-6 col-6">
 								<div class="btn-group m-4">
-									<button class="btn btn-primary dropdown-toggle"
-										data-toggle="dropdown">Soße</button>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" href="#">Alles</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Scharf</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Knoblauch</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Alles ohne Knoblauch</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Alles ohne Scharf</a>
-									</div>
+									<select id="fleisch" name="fleisch"
+										class="btn btn-primary dropdown-toggle">
+										<option value="" disabled="disabled" selected="selected"
+											class="btn btn-primary dropdown-toggle" id="fleischId"
+											label="Fleisch"></option>
+
+										<option class="dropdown-item">Kalb</option>
+										<option class="dropdown-item">Hähnchen</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-sm-6 col-6">
+								<div class="form-group">
+									<label>Extras</label> <input type="text" class="form-control"
+										placeholder="extra Wünsche" name="extras" id="extras">
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-6">
-								<div class="form-group">
-									<label>Extras (scharf/nicht scharf/alles)</label> <input
-										type="text" class="form-control"
-										placeholder="Bestellnummer, Bestellnamen, scharf/nicht scharf und extra Wünsche"
-										name="extras" id="extras">
+								<div class="btn-group m-4">
+									<select id="mySelect" name="sauce"
+										class="btn btn-primary dropdown-toggle">
+										<option value="" disabled="disabled" selected="selected"
+											class="btn btn-primary dropdown-toggle" id="optId"
+											label="Soße"></option>
+
+										<option class="dropdown-item">Alles</option>
+										<option class="dropdown-item">Scharf</option>
+										<option class="dropdown-item">Knoblauch</option>
+										<option class="dropdown-item">Alles ohne Knoblauch</option>
+									</select>
 								</div>
 							</div>
 						</div>
 					</div>
 
 				</div>
-				<button type="submit" class="btn btn-primary">verbindlich Abschicken</button>
+				<button type="submit" class="btn btn-primary">verbindlich
+					Abschicken</button>
 			</form>
 			<form class="" action="/admin.html" method="get">
 				<button type="submit" class="btn btn-primary">Übersicht</button>
