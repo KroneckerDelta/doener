@@ -28,7 +28,7 @@
 
 	<div class="py-5" style="border-bottom: 3px solid #0f8699">
 		<div class="container">
-			<form class="" action="/test1" method="post">
+			<form action="/saveMe" method="post" enctype='application/json'>
 				<div class="row">
 					<div class="col-md-4">
 
@@ -93,7 +93,9 @@
 										<option class="dropdown-item">Alles</option>
 										<option class="dropdown-item">Scharf</option>
 										<option class="dropdown-item">Knoblauch</option>
+										<option class="dropdown-item">Kräuter</option>
 										<option class="dropdown-item">Alles ohne Knoblauch</option>
+										<option class="dropdown-item">Alles ohne scharf</option>
 									</select>
 								</div>
 							</div>
@@ -101,7 +103,7 @@
 					</div>
 
 				</div>
-				<button type="submit" class="btn btn-primary">verbindlich
+				<button type="submit" class="btn btn-primary" formenctype='application/json' >verbindlich
 					Abschicken</button>
 			</form>
 			<form class="" action="/admin.html" method="get">

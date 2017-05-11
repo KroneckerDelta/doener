@@ -16,6 +16,7 @@ public class Bestellung {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonIgnoreProperties
 	private long id;
 	private String name;
 	private String bestellung;
@@ -23,9 +24,13 @@ public class Bestellung {
 	private String telefonnummer;
 	@Column(nullable = true)
 	private String extras;
+	@JsonIgnoreProperties
 	private String bestelldatum;
 	@Column(nullable = true)
 	private String email;
+
+	private String fleisch;
+	private String sauce;
 
 	public long getId() {
 		return id;
@@ -82,5 +87,21 @@ public class Bestellung {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getFleisch() {
+		return fleisch;
+	}
+
+	public void setFleisch(String fleisch) {
+		this.fleisch = fleisch;
+	}
+
+	public String getSauce() {
+		return sauce;
+	}
+
+	public void setSauce(String sauce) {
+		this.sauce = sauce;
 	}
 }

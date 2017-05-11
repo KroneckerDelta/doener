@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.god.doenerbestellung.domain.Bestellung;
+import de.god.doenerbestellung.domain.Bestellung2;
 import de.god.doenerbestellung.repository.BestellungRepository;
 
 @RestController
@@ -59,7 +60,7 @@ public class BestellungController {
 	}
 
 	private String sendeEMails(List<String> alleMails) {
-		return "Emails versandt: " + alleMails.size();
+		return "noch nicht implementiert! Wenn Du Entwickler bist, kannst Du das gerne machen. ";
 	}
 
 	@RequestMapping(value = "/findPerDate", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
@@ -81,6 +82,13 @@ public class BestellungController {
 
 	}
 
+	@RequestMapping(value = "/saveFake", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Bestellung2 saveFake(@RequestBody Bestellung2 bestellung) {
+
+		return bestellung;
+
+	}
+
 	@RequestMapping(value = "/test1", method = RequestMethod.POST)
 	public Bestellung requestKontrollMethode(@RequestBody String a, @RequestBody String b) {
 		System.out.println("Request: " + a);
@@ -88,13 +96,21 @@ public class BestellungController {
 
 		Bestellung bestellung = new Bestellung();
 		bestellung.setBestelldatum("nur ein String");
+		bestellung.setBestellung("bestel1");
+		bestellung.setEmail("email1");
+		bestellung.setExtras("extra1");
+		bestellung.setFleisch("fleisch1");
+		bestellung.setName("name1");
+		bestellung.setSauce("sauce1");
+		bestellung.setTelefonnummer("tel1");
 		return bestellung;
 
 	}
 
 	@Transactional
 	@RequestMapping(value = "/saveMe", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Bestellung saveBestellung(String bestellung, String name, String extras, String telefonnummer) {
+	public Bestellung saveBestellung(String bestellung, String name, String extras, String telefonnummer,
+			String fleisch, String sauce, String email) {
 		System.out.println("Bestellung: " + bestellung + " Name: " + name);
 		Bestellung b = new Bestellung();
 		b.setName(name);
@@ -102,6 +118,9 @@ public class BestellungController {
 		b.setBestellung(bestellung);
 		b.setBestelldatum(Heute.get());
 		b.setTelefonnummer(telefonnummer);
+		b.setFleisch(fleisch);
+		b.setEmail(email);
+		b.setSauce(sauce);
 		return repositoy.save(b);
 
 	}

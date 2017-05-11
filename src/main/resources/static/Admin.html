@@ -15,7 +15,7 @@
 
 $(document).ready(
 	function() {
-	    alert('Bin immer noch da');
+	   
 	    $('#search').click(
 		    function() {
 			alert('Klick');
@@ -42,7 +42,13 @@ $(document).ready(
 						    + "</td><td>"
 						    + url[i].extras
 						    + "</td><td>"
+						    + url[i].fleisch
+						    + "</td><td>"
+						    + url[i].sauce
+						    + "</td><td>"
 						    + url[i].telefonnummer
+						    + "</td><td>"
+						    + url[i].email
 						    + "</td></tr>";
 					}
 				    }
@@ -68,19 +74,16 @@ $(function() {
 </script>
 </head>
 <body>
-	<form action="/findPerDate" method="post">
-		<p>
-			<label> Date: </label> <input type="text" id="datepicker"
-				name="datepicker">
-		</p>
-		<button type="submit" class="btn btn-primary">Anzeigen</button>
-	</form>
+	
 	<table id="BestellTabelle" class="hidden">
 		<tr>
 			<th>Name</th>
 			<th>Bestellung</th>
 			<th>Extras</th>
+			<th>Fleisch</th>
+			<th>Sauce</th>
 			<th>Telefon</th>
+			<th>Email</th>
 		</tr>
 	</table>
 	<form action="" id="search" name="search">
