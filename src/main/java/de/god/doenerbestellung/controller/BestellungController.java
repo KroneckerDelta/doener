@@ -59,7 +59,7 @@ public class BestellungController {
 	}
 
 	private String sendeEMails(List<String> alleMails) {
-		return "noch nicht implementiert! Wenn Du Entwickler bist, kannst Du das gerne machen. ";
+		return "noch nicht implementiert! Wenn Du Entwickler bist, kannst Du das gerne machen. :-) ";
 	}
 
 	@RequestMapping(value = "/findPerDate", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
