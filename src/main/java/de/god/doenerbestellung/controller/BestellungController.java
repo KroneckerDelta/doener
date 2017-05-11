@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.god.doenerbestellung.domain.Bestellung;
-import de.god.doenerbestellung.domain.Bestellung2;
 import de.god.doenerbestellung.repository.BestellungRepository;
 
 @RestController
@@ -82,13 +81,6 @@ public class BestellungController {
 
 	}
 
-	@RequestMapping(value = "/saveFake", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Bestellung2 saveFake(@RequestBody Bestellung2 bestellung) {
-
-		return bestellung;
-
-	}
-
 	@RequestMapping(value = "/test1", method = RequestMethod.POST)
 	public Bestellung requestKontrollMethode(@RequestBody String a, @RequestBody String b) {
 		System.out.println("Request: " + a);
@@ -118,7 +110,7 @@ public class BestellungController {
 		b.setBestellung(bestellung);
 		b.setBestelldatum(Heute.get());
 		b.setTelefonnummer(telefonnummer);
-		b.setFleisch(fleisch == null ? "fleisch" : fleisch);
+		b.setFleisch(fleisch == null ? "ohne" : fleisch);
 		b.setEmail(email);
 		b.setSauce(sauce == null ? "ohne" : sauce);
 		System.out.println("Bestellung: " + b + " Name: " + name);
