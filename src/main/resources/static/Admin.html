@@ -18,10 +18,10 @@ $(document).ready(
 	   
 	    $('#search').click(
 		    function() {
-			alert('Klick');
+			
 			$.ajax({
 			    type : 'GET',
-			    url : 'http://localhost:8080/findHeute',
+			    url : '/findHeute',
 
 			    dataType : "json", // to
 			    // parse
@@ -35,7 +35,7 @@ $(document).ready(
 				var txt = "";
 				if(len > 0){
 				    for(var i = 0; i < len; i++){
-					if(url[i].bestellung && url[i].extras){
+					if(url[i].bestellung ){
 					    txt += "<tr><td>" + url[i].name
 						    + "</td><td>"
 						    + url[i].bestellung

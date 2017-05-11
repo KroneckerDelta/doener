@@ -118,9 +118,10 @@ public class BestellungController {
 		b.setBestellung(bestellung);
 		b.setBestelldatum(Heute.get());
 		b.setTelefonnummer(telefonnummer);
-		b.setFleisch(fleisch);
+		b.setFleisch(fleisch == null ? "fleisch" : fleisch);
 		b.setEmail(email);
-		b.setSauce(sauce);
+		b.setSauce(sauce == null ? "ohne" : sauce);
+		System.out.println("Bestellung: " + b + " Name: " + name);
 		return repositoy.save(b);
 
 	}
