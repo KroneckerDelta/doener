@@ -32,13 +32,22 @@ public class BestellungController {
 		for (Bestellung bestellung : findAll) {
 			result += bestellung.toString();
 			result += "<br>";
-			System.out.println("Name: " + result);
 		}
+		System.out.println("Name: " + result);
 		return "" + result;
 	}
 
 	@RequestMapping(value = "/findHeute", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
 	public List<Bestellung> heutigeBestellungen() {
+
+		String dateAsString = Heute.get();
+
+		return repositoy.findByBestelldatum(dateAsString);
+
+	}
+
+	@RequestMapping(value = "/findHeutePdf", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_PDF_VALUE)
+	public List<Bestellung> heutigeBestellungenAlsPdf() {
 
 		String dateAsString = Heute.get();
 
@@ -59,6 +68,7 @@ public class BestellungController {
 	}
 
 	private String sendeEMails(List<String> alleMails) {
+
 		return "noch nicht implementiert! Wenn Du Entwickler bist, kannst Du das gerne machen. :-) ";
 	}
 
