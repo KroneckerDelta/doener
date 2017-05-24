@@ -3,9 +3,13 @@ package de.god.doenerbestellung.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,13 +41,25 @@ public class BestellungController {
 		return "" + result;
 	}
 
-	@RequestMapping(value = "/findHeute", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
-	public List<Bestellung> heutigeBestellungen() {
+	@RequestMapping(value = "/api/findHeute", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
+	public List<Bestellung> heutigeBestellungen(HttpServletResponse response) {
+
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
 		String dateAsString = Heute.get();
 
 		return repositoy.findByBestelldatum(dateAsString);
 
+	}
+
+	@Transactional
+	@CrossOrigin(origins = {"http://localhost:3000","http://10.0.8.236:3000" }, allowCredentials = "true", allowedHeaders = "*")
+	@RequestMapping(value = "/api/bestellung/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id) {
+		System.out.println("Lösche Bestellung: " + id);
+		repositoy.delete(id);
 	}
 
 	@RequestMapping(value = "/findHeutePdf", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_PDF_VALUE)

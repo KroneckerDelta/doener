@@ -21,7 +21,7 @@ $(document).ready(
 			
 			$.ajax({
 			    type : 'GET',
-			    url : '/findHeute',
+			    url : 'api/findHeute',
 
 			    dataType : "json", // to
 			    // parse
@@ -91,6 +91,10 @@ $(function() {
 	<form action="" id="search" name="search">
 		<button type="submit" class="btn btn-primary" id="search"
 			name="search">heutige Bestellungen</button>
+	</form>
+	<form action="http://localhost:3000/uebersicht.html" id="neueUebersicht" name="search2">
+		<button type="submit" class="btn btn-primary" id="neueSeite" name="neueSeite">
+			Fency Übersicht!</button>
 	</form>
 	<!--  <form action="emailSenden" id="email" name="email">
 		<button type="submit" class="btn btn-primary" id="email" name="search">Döner
