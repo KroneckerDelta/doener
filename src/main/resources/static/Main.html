@@ -17,7 +17,7 @@
 					<h1 class="text-primary text-center py-5">GOD DÖNER BESTELLUNG</h1>
 					<p class="lead text-center">Hier könnt Ihr euren Döner
 						bestellen. Einfach Name, Nummer und Extras</p>
-						<a href="http://adar-imbiss.webnode.com/speisekarte/"  >Speisekarte</a>
+						<a href="Speisekarte.html"  >Speisekarte</a>
 				</div>
 				<div class="col-md-4">
 					<img class="center-block img-fluid d-block float-right"
@@ -57,18 +57,19 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-6 col-6">
 								<div class="form-group">
-									<label>Telefonnummer zur Benachrichtigung. (optional)</label> <input
+									<label for="telefonnummer" >Telefon (optional)</label> <input
 										type="text" class="form-control" placeholder="Durchwahl"
 										name="telefonnummer" id="telefonnummer">
 								</div>
 							</div>
 
 							<div class="col-md-6 col-sm-6 col-6">
-								<div class="btn-group m-4">
+								<div class="form-group">
+								<label for="fleisch">Fleischauswahl:</label>
 									<select id="fleisch" name="fleisch"
-										class="btn btn-primary dropdown-toggle">
+										class="btn btn-primary dropdown-toggle form-control">
 										<option value="" disabled="disabled" selected="selected"
-											class="btn btn-primary dropdown-toggle" id="fleischId"
+											class="btn btn-primary dropdown-toggle " id="fleischId"
 											label="Fleisch"></option>
 
 										<option class="dropdown-item">Kalb</option>
@@ -84,9 +85,10 @@
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-6">
-								<div class="btn-group m-4">
+								<div class="form-group">
+								<label for="mySelect">Soßenauswahl:</label>
 									<select id="mySelect" name="sauce"
-										class="btn btn-primary dropdown-toggle">
+										class="btn btn-primary dropdown-toggle form-control">
 										<option value="" disabled="disabled" selected="selected"
 											class="btn btn-primary dropdown-toggle" id="optId"
 											label="Soßeauswahl"></option>

@@ -28,6 +28,9 @@ public class Bestellung {
 	private String bestelldatum;
 	@Column(nullable = true)
 	private String email;
+	@Column(nullable = true)
+	@JsonIgnoreProperties
+	private Boolean bezahlt;
 
 	private String fleisch;
 	private String sauce;
@@ -103,6 +106,14 @@ public class Bestellung {
 
 	public void setSauce(String sauce) {
 		this.sauce = sauce;
+	}
+
+	public Boolean getBezahlt() {
+		return bezahlt;
+	}
+
+	public void setBezahlt(Boolean bezahlt) {
+		this.bezahlt = bezahlt;
 	}
 
 }

@@ -55,11 +55,22 @@ public class BestellungController {
 	}
 
 	@Transactional
-	@CrossOrigin(origins = {"http://localhost:3000","http://10.0.8.236:3000" }, allowCredentials = "true", allowedHeaders = "*")
+	@CrossOrigin(origins = { "http://localhost:3000",
+			"http://10.0.10.2:3000" }, allowCredentials = "true", allowedHeaders = "*")
 	@RequestMapping(value = "/api/bestellung/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") Long id) {
 		System.out.println("Lösche Bestellung: " + id);
 		repositoy.delete(id);
+	}
+
+	@Transactional
+	@CrossOrigin(origins = { "http://localhost:3000",
+			"http://10.0.10.2:3000" }, allowCredentials = "true", allowedHeaders = "*")
+	@RequestMapping(value = "/api/bestellung/{id}", method = RequestMethod.PUT)
+	public void update(@PathVariable("id") Bestellung id) {
+		System.out.println("Speichere Bestellung: " + id);
+
+		repositoy.save(id);
 	}
 
 	@RequestMapping(value = "/findHeutePdf", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_PDF_VALUE)
@@ -139,6 +150,7 @@ public class BestellungController {
 		b.setFleisch(fleisch == null ? "ohne" : fleisch);
 		b.setEmail(email);
 		b.setSauce(sauce == null ? "ohne" : sauce);
+		b.setBezahlt(false);
 		System.out.println("Bestellung: " + b + " Name: " + name);
 		return repositoy.save(b);
 
