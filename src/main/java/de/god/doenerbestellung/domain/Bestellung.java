@@ -11,12 +11,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Bestellung")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Bestellung {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JsonIgnoreProperties
+
 	private long id;
 	private String name;
 	private String bestellung;
@@ -29,7 +28,7 @@ public class Bestellung {
 	@Column(nullable = true)
 	private String email;
 	@Column(nullable = true)
-	@JsonIgnoreProperties
+
 	private Boolean bezahlt;
 
 	private String fleisch;

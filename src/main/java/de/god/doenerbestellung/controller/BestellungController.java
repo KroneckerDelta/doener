@@ -66,11 +66,11 @@ public class BestellungController {
 	@Transactional
 	@CrossOrigin(origins = { "http://localhost:3000",
 			"http://10.0.10.2:3000" }, allowCredentials = "true", allowedHeaders = "*")
-	@RequestMapping(value = "/api/bestellung/{id}", method = RequestMethod.PUT)
-	public void update(@PathVariable("id") Bestellung id) {
-		System.out.println("Speichere Bestellung: " + id);
+	@RequestMapping(value = "/api/bestellung", method = RequestMethod.PUT, consumes = MediaType.ALL_VALUE)
+	public void update(@RequestBody Bestellung bestellung) {
+		System.out.println("Speichere Bestellung: " + bestellung);
 
-		repositoy.save(id);
+		repositoy.save(bestellung);
 	}
 
 	@RequestMapping(value = "/findHeutePdf", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_PDF_VALUE)
