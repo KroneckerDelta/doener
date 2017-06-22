@@ -34,12 +34,12 @@
 					<div class="col-md-4">
 
 						<div class="form-group">
-							<label>Name</label> <input type="text" class="form-control"
+							<label>Name</label> <input type="text" class="form-control" min="3" max="20" required="required"
 								placeholder="Namen eingeben" name="name" id="name">
 						</div>
 
 						<div class="form-group">
-							<label>Bestellung</label> <input type="text" class="form-control"
+							<label>Bestellung</label> <input type="text" class="form-control" min="2" max="40" required="required"
 								placeholder="Bestellnummer oder Bezeichnung"
 								name="bestellung" id="bestellung">
 						</div>
@@ -74,6 +74,7 @@
 
 										<option class="dropdown-item">Kalb</option>
 										<option class="dropdown-item">Hähnchen</option>
+										<option class="dropdown-item">kein Fleisch</option>
 									</select>
 								</div>
 							</div>
