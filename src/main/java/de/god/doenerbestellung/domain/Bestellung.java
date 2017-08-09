@@ -7,15 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name = "Bestellung")
 public class Bestellung {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-
 	private long id;
 	private String name;
 	private String bestellung;
@@ -23,12 +20,11 @@ public class Bestellung {
 	private String telefonnummer;
 	@Column(nullable = true)
 	private String extras;
-	@JsonIgnoreProperties
 	private String bestelldatum;
 	@Column(nullable = true)
 	private String email;
-	@Column(nullable = true)
 
+	@Column(nullable = true)
 	private Boolean bezahlt;
 
 	private String fleisch;

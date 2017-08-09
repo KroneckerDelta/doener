@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import de.god.doenerbestellung.domain.Bestellung;
 import de.god.doenerbestellung.repository.BestellungRepository;
 
-@RestController
+@RestController()
 public class BestellungController {
 
 	private BestellungRepository repositoy;
@@ -55,8 +55,7 @@ public class BestellungController {
 	}
 
 	@Transactional
-	@CrossOrigin(origins = { "http://localhost:3000",
-			"http://10.0.10.2:3000" }, allowCredentials = "true", allowedHeaders = "*")
+	@CrossOrigin(origins = { "http://localhost:3000", "http://10.0.10.2:3000" }, allowCredentials = "true", allowedHeaders = "*")
 	@RequestMapping(value = "/api/bestellung/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") Long id) {
 		System.out.println("Lösche Bestellung: " + id);
@@ -64,8 +63,7 @@ public class BestellungController {
 	}
 
 	@Transactional
-	@CrossOrigin(origins = { "http://localhost:3000",
-			"http://10.0.10.2:3000" }, allowCredentials = "true", allowedHeaders = "*")
+	@CrossOrigin(origins = { "http://localhost:3000", "http://10.0.10.2:3000" }, allowCredentials = "true", allowedHeaders = "*")
 	@RequestMapping(value = "/api/bestellung", method = RequestMethod.PUT, consumes = MediaType.ALL_VALUE)
 	public void update(@RequestBody Bestellung bestellung) {
 		System.out.println("Speichere Bestellung: " + bestellung);
@@ -73,7 +71,7 @@ public class BestellungController {
 		repositoy.save(bestellung);
 	}
 
-	@RequestMapping(value = "/findHeutePdf", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_PDF_VALUE)
+	@RequestMapping(value = "/api/findHeutePdf", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_PDF_VALUE)
 	public List<Bestellung> heutigeBestellungenAlsPdf() {
 
 		String dateAsString = Heute.get();
@@ -99,7 +97,7 @@ public class BestellungController {
 		return "noch nicht implementiert! Wenn Du Entwickler bist, kannst Du das gerne machen. :-) ";
 	}
 
-	@RequestMapping(value = "/findPerDate", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
+	@RequestMapping(value = "/api/findPerDate", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
 	public List<Bestellung> heutigeBestellungen(@RequestBody String containsDate) {
 		String dateAsString = containsDate.substring(containsDate.indexOf("=") + 1, containsDate.length());
 
@@ -108,17 +106,19 @@ public class BestellungController {
 	}
 
 	@Transactional
-	@RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Bestellung save(@RequestBody Bestellung bestellung) {
-
+	@RequestMapping(value = "/api/save", method = RequestMethod.POST)
+	public Bestellung save2(@RequestBody Bestellung bestellung) {
 		String bestelldatum = Heute.get();
 
 		bestellung.setBestelldatum(bestelldatum);
-		return repositoy.save(bestellung);
+		System.out.println("Versuche zu speichern: " + bestelldatum);
+		Bestellung save = repositoy.save(bestellung);
+		System.out.println("Gespeichert: " + save);
+		return save;
 
 	}
 
-	@RequestMapping(value = "/test1", method = RequestMethod.POST)
+	@RequestMapping(value = "/test1", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Bestellung requestKontrollMethode(@RequestBody String a, @RequestBody String b) {
 		System.out.println("Request: " + a);
 		System.out.println("Und: " + b);
@@ -138,8 +138,7 @@ public class BestellungController {
 
 	@Transactional
 	@RequestMapping(value = "/saveMe", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Bestellung saveBestellung(String bestellung, String name, String extras, String telefonnummer,
-			String fleisch, String sauce, String email) {
+	public Bestellung saveBestellung(String bestellung, String name, String extras, String telefonnummer, String fleisch, String sauce, String email) {
 		System.out.println("Bestellung: " + bestellung + " Name: " + name);
 		Bestellung b = new Bestellung();
 		b.setName(name);
@@ -156,4 +155,15 @@ public class BestellungController {
 
 	}
 
+	@RequestMapping(value = "/get")
+	public Bestellung get() {
+		Bestellung b = new Bestellung();
+		b.setName("myName");
+		b.setExtras("myExtra");
+		b.setBestellung("MyDoener");
+		b.setTelefonnummer("0531 84027");
+		b.setFleisch("ohne");
+		b.setSauce("ohne");
+		return b;
+	}
 }
