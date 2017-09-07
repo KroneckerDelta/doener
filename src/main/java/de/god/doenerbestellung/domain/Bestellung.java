@@ -30,6 +30,8 @@ public class Bestellung {
 	private String fleisch;
 	private String sauce;
 
+	private String price;
+
 	public long getId() {
 		return id;
 	}
@@ -109,6 +111,14 @@ public class Bestellung {
 
 	public void setBezahlt(Boolean bezahlt) {
 		this.bezahlt = bezahlt;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 }

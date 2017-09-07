@@ -1,7 +1,37 @@
 var ac_main =
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonpac__name_"];
+/******/ 	window["webpackJsonpac__name_"] = function webpackJsonpCallback(chunkIds, moreModules, executeModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [], result;
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules, executeModules);
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// objects to store loaded and loading chunks
+/******/ 	var installedChunks = {
+/******/ 		2: 0
+/******/ 	};
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -27,6 +57,55 @@ var ac_main =
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData === 0) {
+/******/ 			return new Promise(function(resolve) { resolve(); });
+/******/ 		}
+/******/
+/******/ 		// a Promise means "currently loading".
+/******/ 		if(installedChunkData) {
+/******/ 			return installedChunkData[2];
+/******/ 		}
+/******/
+/******/ 		// setup Promise in chunk cache
+/******/ 		var promise = new Promise(function(resolve, reject) {
+/******/ 			installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 		});
+/******/ 		installedChunkData[2] = promise;
+/******/
+/******/ 		// start chunk loading
+/******/ 		var head = document.getElementsByTagName('head')[0];
+/******/ 		var script = document.createElement('script');
+/******/ 		script.type = 'text/javascript';
+/******/ 		script.charset = 'utf-8';
+/******/ 		script.async = true;
+/******/ 		script.timeout = 120000;
+/******/
+/******/ 		if (__webpack_require__.nc) {
+/******/ 			script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 		}
+/******/ 		script.src = __webpack_require__.p + "" + chunkId + ".chunk.js";
+/******/ 		var timeout = setTimeout(onScriptComplete, 120000);
+/******/ 		script.onerror = script.onload = onScriptComplete;
+/******/ 		function onScriptComplete() {
+/******/ 			// avoid mem leaks in IE.
+/******/ 			script.onerror = script.onload = null;
+/******/ 			clearTimeout(timeout);
+/******/ 			var chunk = installedChunks[chunkId];
+/******/ 			if(chunk !== 0) {
+/******/ 				if(chunk) {
+/******/ 					chunk[1](new Error('Loading chunk ' + chunkId + ' failed.'));
+/******/ 				}
+/******/ 				installedChunks[chunkId] = undefined;
+/******/ 			}
+/******/ 		};
+/******/ 		head.appendChild(script);
+/******/
+/******/ 		return promise;
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -63,8 +142,11 @@ var ac_main =
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 181);
+/******/ 	return __webpack_require__(__webpack_require__.s = 195);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -75,145 +157,7 @@ var ac_main =
 /* 4 */,
 /* 5 */,
 /* 6 */,
-/* 7 */,
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var root_1 = __webpack_require__(32);
-var toSubscriber_1 = __webpack_require__(360);
-var observable_1 = __webpack_require__(95);
-/**
- * A representation of any set of values over any amount of time. This the most basic building block
- * of RxJS.
- *
- * @class Observable<T>
- */
-var Observable = (function () {
-    /**
-     * @constructor
-     * @param {Function} subscribe the function that is  called when the Observable is
-     * initially subscribed to. This function is given a Subscriber, to which new values
-     * can be `next`ed, or an `error` method can be called to raise an error, or
-     * `complete` can be called to notify of a successful completion.
-     */
-    function Observable(subscribe) {
-        this._isScalar = false;
-        if (subscribe) {
-            this._subscribe = subscribe;
-        }
-    }
-    /**
-     * Creates a new Observable, with this Observable as the source, and the passed
-     * operator defined as the new observable's operator.
-     * @method lift
-     * @param {Operator} operator the operator defining the operation to take on the observable
-     * @return {Observable} a new observable with the Operator applied
-     */
-    Observable.prototype.lift = function (operator) {
-        var observable = new Observable();
-        observable.source = this;
-        observable.operator = operator;
-        return observable;
-    };
-    Observable.prototype.subscribe = function (observerOrNext, error, complete) {
-        var operator = this.operator;
-        var sink = toSubscriber_1.toSubscriber(observerOrNext, error, complete);
-        if (operator) {
-            operator.call(sink, this.source);
-        }
-        else {
-            sink.add(this._subscribe(sink));
-        }
-        if (sink.syncErrorThrowable) {
-            sink.syncErrorThrowable = false;
-            if (sink.syncErrorThrown) {
-                throw sink.syncErrorValue;
-            }
-        }
-        return sink;
-    };
-    /**
-     * @method forEach
-     * @param {Function} next a handler for each value emitted by the observable
-     * @param {PromiseConstructor} [PromiseCtor] a constructor function used to instantiate the Promise
-     * @return {Promise} a promise that either resolves on observable completion or
-     *  rejects with the handled error
-     */
-    Observable.prototype.forEach = function (next, PromiseCtor) {
-        var _this = this;
-        if (!PromiseCtor) {
-            if (root_1.root.Rx && root_1.root.Rx.config && root_1.root.Rx.config.Promise) {
-                PromiseCtor = root_1.root.Rx.config.Promise;
-            }
-            else if (root_1.root.Promise) {
-                PromiseCtor = root_1.root.Promise;
-            }
-        }
-        if (!PromiseCtor) {
-            throw new Error('no Promise impl found');
-        }
-        return new PromiseCtor(function (resolve, reject) {
-            var subscription = _this.subscribe(function (value) {
-                if (subscription) {
-                    // if there is a subscription, then we can surmise
-                    // the next handling is asynchronous. Any errors thrown
-                    // need to be rejected explicitly and unsubscribe must be
-                    // called manually
-                    try {
-                        next(value);
-                    }
-                    catch (err) {
-                        reject(err);
-                        subscription.unsubscribe();
-                    }
-                }
-                else {
-                    // if there is NO subscription, then we're getting a nexted
-                    // value synchronously during subscription. We can just call it.
-                    // If it errors, Observable's `subscribe` will ensure the
-                    // unsubscription logic is called, then synchronously rethrow the error.
-                    // After that, Promise will trap the error and send it
-                    // down the rejection path.
-                    next(value);
-                }
-            }, reject, resolve);
-        });
-    };
-    Observable.prototype._subscribe = function (subscriber) {
-        return this.source.subscribe(subscriber);
-    };
-    /**
-     * An interop point defined by the es7-observable spec https://github.com/zenparsing/es-observable
-     * @method Symbol.observable
-     * @return {Observable} this instance of the observable
-     */
-    Observable.prototype[observable_1.$$observable] = function () {
-        return this;
-    };
-    // HACK: Since TypeScript inherits static properties too, we have to
-    // fight against TypeScript here so Subject can have a different static create signature
-    /**
-     * Creates a new cold Observable by calling the Observable constructor
-     * @static true
-     * @owner Observable
-     * @method create
-     * @param {Function} subscribe? the subscriber function to be passed to the Observable constructor
-     * @return {Observable} a new cold observable
-     */
-    Observable.create = function (subscribe) {
-        return new Observable(subscribe);
-    };
-    return Observable;
-}());
-exports.Observable = Observable;
-//# sourceMappingURL=Observable.js.map
-
-/***/ }),
-/* 9 */,
-/* 10 */,
-/* 11 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -263,7 +207,7 @@ exports.Observable = Observable;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_48", function() { return Query; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_59", function() { return ViewChild; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_60", function() { return ViewChildren; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_13", function() { return Component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_10", function() { return Component; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I", function() { return Directive; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_1", function() { return HostBinding; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_0", function() { return HostListener; });
@@ -276,7 +220,7 @@ exports.Observable = Observable;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return ViewEncapsulation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return Version; });
 /* unused harmony export VERSION */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_10", function() { return forwardRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_11", function() { return forwardRef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_47", function() { return resolveForwardRef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return Injector; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_3", function() { return ReflectiveInjector; });
@@ -287,7 +231,7 @@ exports.Observable = Observable;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Inject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return Optional; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Injectable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_12", function() { return Self; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_13", function() { return Self; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return SkipSelf; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "S", function() { return Host; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return NgZone; });
@@ -344,7 +288,7 @@ exports.Observable = Observable;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_49", function() { return ReflectorReader; });
 /* unused harmony export ɵRenderDebugInfo */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _global; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_11", function() { return looseIdentical; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_12", function() { return looseIdentical; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "H", function() { return stringify; });
 /* unused harmony export ɵmakeDecorator */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W", function() { return isObservable; });
@@ -414,13 +358,13 @@ exports.Observable = Observable;
 /* unused harmony export ɵb */
 /* unused harmony export ɵw */
 /* unused harmony export ɵx */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_merge__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_merge__ = __webpack_require__(365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_merge__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_share__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_share__ = __webpack_require__(377);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_share___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operator_share__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -6320,7 +6264,7 @@ var SystemJsNgModuleLoader = (function () {
         if (exportName === undefined) {
             exportName = 'default';
         }
-        return __webpack_require__(151)(module)
+        return __webpack_require__(157)(module)
             .then(function (module) { return module[exportName]; })
             .then(function (type) { return checkNotEmpty(type, module, exportName); })
             .then(function (type) { return _this._compiler.compileModuleAsync(type); });
@@ -6336,7 +6280,7 @@ var SystemJsNgModuleLoader = (function () {
             exportName = 'default';
             factoryClassSuffix = '';
         }
-        return __webpack_require__(151)(this._config.factoryPathPrefix + module + this._config.factoryPathSuffix)
+        return __webpack_require__(157)(this._config.factoryPathPrefix + module + this._config.factoryPathSuffix)
             .then(function (module) { return module[exportName + factoryClassSuffix]; })
             .then(function (factory) { return checkNotEmpty(factory, module, exportName); });
     };
@@ -14592,9 +14536,147 @@ function transition$$1(stateChangeExpr, steps) {
 
 //# sourceMappingURL=core.es5.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(66)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(67)))
 
 /***/ }),
+/* 8 */,
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var root_1 = __webpack_require__(33);
+var toSubscriber_1 = __webpack_require__(380);
+var observable_1 = __webpack_require__(99);
+/**
+ * A representation of any set of values over any amount of time. This the most basic building block
+ * of RxJS.
+ *
+ * @class Observable<T>
+ */
+var Observable = (function () {
+    /**
+     * @constructor
+     * @param {Function} subscribe the function that is  called when the Observable is
+     * initially subscribed to. This function is given a Subscriber, to which new values
+     * can be `next`ed, or an `error` method can be called to raise an error, or
+     * `complete` can be called to notify of a successful completion.
+     */
+    function Observable(subscribe) {
+        this._isScalar = false;
+        if (subscribe) {
+            this._subscribe = subscribe;
+        }
+    }
+    /**
+     * Creates a new Observable, with this Observable as the source, and the passed
+     * operator defined as the new observable's operator.
+     * @method lift
+     * @param {Operator} operator the operator defining the operation to take on the observable
+     * @return {Observable} a new observable with the Operator applied
+     */
+    Observable.prototype.lift = function (operator) {
+        var observable = new Observable();
+        observable.source = this;
+        observable.operator = operator;
+        return observable;
+    };
+    Observable.prototype.subscribe = function (observerOrNext, error, complete) {
+        var operator = this.operator;
+        var sink = toSubscriber_1.toSubscriber(observerOrNext, error, complete);
+        if (operator) {
+            operator.call(sink, this.source);
+        }
+        else {
+            sink.add(this._subscribe(sink));
+        }
+        if (sink.syncErrorThrowable) {
+            sink.syncErrorThrowable = false;
+            if (sink.syncErrorThrown) {
+                throw sink.syncErrorValue;
+            }
+        }
+        return sink;
+    };
+    /**
+     * @method forEach
+     * @param {Function} next a handler for each value emitted by the observable
+     * @param {PromiseConstructor} [PromiseCtor] a constructor function used to instantiate the Promise
+     * @return {Promise} a promise that either resolves on observable completion or
+     *  rejects with the handled error
+     */
+    Observable.prototype.forEach = function (next, PromiseCtor) {
+        var _this = this;
+        if (!PromiseCtor) {
+            if (root_1.root.Rx && root_1.root.Rx.config && root_1.root.Rx.config.Promise) {
+                PromiseCtor = root_1.root.Rx.config.Promise;
+            }
+            else if (root_1.root.Promise) {
+                PromiseCtor = root_1.root.Promise;
+            }
+        }
+        if (!PromiseCtor) {
+            throw new Error('no Promise impl found');
+        }
+        return new PromiseCtor(function (resolve, reject) {
+            var subscription = _this.subscribe(function (value) {
+                if (subscription) {
+                    // if there is a subscription, then we can surmise
+                    // the next handling is asynchronous. Any errors thrown
+                    // need to be rejected explicitly and unsubscribe must be
+                    // called manually
+                    try {
+                        next(value);
+                    }
+                    catch (err) {
+                        reject(err);
+                        subscription.unsubscribe();
+                    }
+                }
+                else {
+                    // if there is NO subscription, then we're getting a nexted
+                    // value synchronously during subscription. We can just call it.
+                    // If it errors, Observable's `subscribe` will ensure the
+                    // unsubscription logic is called, then synchronously rethrow the error.
+                    // After that, Promise will trap the error and send it
+                    // down the rejection path.
+                    next(value);
+                }
+            }, reject, resolve);
+        });
+    };
+    Observable.prototype._subscribe = function (subscriber) {
+        return this.source.subscribe(subscriber);
+    };
+    /**
+     * An interop point defined by the es7-observable spec https://github.com/zenparsing/es-observable
+     * @method Symbol.observable
+     * @return {Observable} this instance of the observable
+     */
+    Observable.prototype[observable_1.$$observable] = function () {
+        return this;
+    };
+    // HACK: Since TypeScript inherits static properties too, we have to
+    // fight against TypeScript here so Subject can have a different static create signature
+    /**
+     * Creates a new cold Observable by calling the Observable constructor
+     * @static true
+     * @owner Observable
+     * @method create
+     * @param {Function} subscribe? the subscriber function to be passed to the Observable constructor
+     * @return {Observable} a new cold observable
+     */
+    Observable.create = function (subscribe) {
+        return new Observable(subscribe);
+    };
+    return Observable;
+}());
+exports.Observable = Observable;
+//# sourceMappingURL=Observable.js.map
+
+/***/ }),
+/* 10 */,
+/* 11 */,
 /* 12 */,
 /* 13 */,
 /* 14 */,
@@ -14610,10 +14692,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isFunction_1 = __webpack_require__(146);
-var Subscription_1 = __webpack_require__(63);
-var Observer_1 = __webpack_require__(137);
-var rxSubscriber_1 = __webpack_require__(96);
+var isFunction_1 = __webpack_require__(152);
+var Subscription_1 = __webpack_require__(64);
+var Observer_1 = __webpack_require__(143);
+var rxSubscriber_1 = __webpack_require__(100);
 /**
  * Implements the {@link Observer} interface and extends the
  * {@link Subscription} class. While the {@link Observer} is the public API for
@@ -14855,7 +14937,189 @@ var SafeSubscriber = (function (_super) {
 //# sourceMappingURL=Subscriber.js.map
 
 /***/ }),
-/* 18 */,
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export __extends */
+/* unused harmony export __assign */
+/* unused harmony export __rest */
+/* harmony export (immutable) */ __webpack_exports__["a"] = __decorate;
+/* unused harmony export __param */
+/* harmony export (immutable) */ __webpack_exports__["b"] = __metadata;
+/* unused harmony export __awaiter */
+/* unused harmony export __generator */
+/* unused harmony export __exportStar */
+/* unused harmony export __values */
+/* unused harmony export __read */
+/* unused harmony export __spread */
+/* unused harmony export __await */
+/* unused harmony export __asyncGenerator */
+/* unused harmony export __asyncDelegator */
+/* unused harmony export __asyncValues */
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = Object.setPrototypeOf ||
+    ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+    function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = Object.assign || function __assign(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+function __exportStar(m, exports) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+
+function __values(o) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    if (m) return m.call(o);
+    return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { if (o[n]) i[n] = function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; }; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator];
+    return m ? m.call(o) : typeof __values === "function" ? __values(o) : o[Symbol.iterator]();
+}
+
+/***/ }),
 /* 19 */,
 /* 20 */,
 /* 21 */,
@@ -14869,7 +15133,8 @@ var SafeSubscriber = (function (_super) {
 /* 29 */,
 /* 30 */,
 /* 31 */,
-/* 32 */
+/* 32 */,
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14886,17 +15151,99 @@ if (!exports.root) {
     throw new Error('RxJS could not find any global context (window, self, global)');
 }
 //# sourceMappingURL=root.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(66)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(67)))
 
 /***/ }),
-/* 33 */,
 /* 34 */,
 /* 35 */,
 /* 36 */,
 /* 37 */,
 /* 38 */,
 /* 39 */,
-/* 40 */
+/* 40 */,
+/* 41 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14945,8 +15292,8 @@ if (!exports.root) {
 /* unused harmony export ɵc */
 /* unused harmony export ɵd */
 /* unused harmony export ɵe */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -19407,191 +19754,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["D" /* Version */]
 
 
 /***/ }),
-/* 41 */,
-/* 42 */,
-/* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export __extends */
-/* unused harmony export __assign */
-/* unused harmony export __rest */
-/* harmony export (immutable) */ __webpack_exports__["a"] = __decorate;
-/* unused harmony export __param */
-/* harmony export (immutable) */ __webpack_exports__["b"] = __metadata;
-/* unused harmony export __awaiter */
-/* unused harmony export __generator */
-/* unused harmony export __exportStar */
-/* unused harmony export __values */
-/* unused harmony export __read */
-/* unused harmony export __spread */
-/* unused harmony export __await */
-/* unused harmony export __asyncGenerator */
-/* unused harmony export __asyncDelegator */
-/* unused harmony export __asyncValues */
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = Object.setPrototypeOf ||
-    ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-    function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-
-function __extends(d, b) {
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
-var __assign = Object.assign || function __assign(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-    }
-    return t;
-}
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
-}
-
-function __decorate(decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-}
-
-function __param(paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-}
-
-function __metadata(metadataKey, metadataValue) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
-function __exportStar(m, exports) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-
-function __values(o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-    if (m) return m.call(o);
-    return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-}
-
-function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-}
-
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
-
-function __await(v) {
-    return this instanceof __await ? (this.v = v, this) : new __await(v);
-}
-
-function __asyncGenerator(thisArg, _arguments, generator) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
-    function fulfill(value) { resume("next", value); }
-    function reject(value) { resume("throw", value); }
-    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-}
-
-function __asyncDelegator(o) {
-    var i, p;
-    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { if (o[n]) i[n] = function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; }; }
-}
-
-function __asyncValues(o) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator];
-    return m ? m.call(o) : typeof __values === "function" ? __values(o) : o[Symbol.iterator]();
-}
-
-/***/ }),
+/* 43 */,
 /* 44 */,
 /* 45 */,
 /* 46 */,
@@ -19599,7 +19762,8 @@ function __asyncValues(o) {
 /* 48 */,
 /* 49 */,
 /* 50 */,
-/* 51 */
+/* 51 */,
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19609,12 +19773,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Observable_1 = __webpack_require__(8);
+var Observable_1 = __webpack_require__(9);
 var Subscriber_1 = __webpack_require__(17);
-var Subscription_1 = __webpack_require__(63);
-var ObjectUnsubscribedError_1 = __webpack_require__(144);
-var SubjectSubscription_1 = __webpack_require__(335);
-var rxSubscriber_1 = __webpack_require__(96);
+var Subscription_1 = __webpack_require__(64);
+var ObjectUnsubscribedError_1 = __webpack_require__(150);
+var SubjectSubscription_1 = __webpack_require__(355);
+var rxSubscriber_1 = __webpack_require__(100);
 /**
  * @class SubjectSubscriber<T>
  */
@@ -19765,7 +19929,6 @@ exports.AnonymousSubject = AnonymousSubject;
 //# sourceMappingURL=Subject.js.map
 
 /***/ }),
-/* 52 */,
 /* 53 */,
 /* 54 */,
 /* 55 */,
@@ -19775,7 +19938,8 @@ exports.AnonymousSubject = AnonymousSubject;
 /* 59 */,
 /* 60 */,
 /* 61 */,
-/* 62 */
+/* 62 */,
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19811,7 +19975,7 @@ exports.OuterSubscriber = OuterSubscriber;
 //# sourceMappingURL=OuterSubscriber.js.map
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19821,12 +19985,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isArray_1 = __webpack_require__(64);
-var isObject_1 = __webpack_require__(147);
-var isFunction_1 = __webpack_require__(146);
-var tryCatch_1 = __webpack_require__(361);
-var errorObject_1 = __webpack_require__(145);
-var UnsubscriptionError_1 = __webpack_require__(359);
+var isArray_1 = __webpack_require__(65);
+var isObject_1 = __webpack_require__(153);
+var isFunction_1 = __webpack_require__(152);
+var tryCatch_1 = __webpack_require__(381);
+var errorObject_1 = __webpack_require__(151);
+var UnsubscriptionError_1 = __webpack_require__(379);
 /**
  * Represents a disposable resource, such as the execution of an Observable. A
  * Subscription has one important method, `unsubscribe`, that takes no argument
@@ -19995,7 +20159,7 @@ function flattenUnsubscriptionErrors(errors) {
 //# sourceMappingURL=Subscription.js.map
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20004,19 +20168,19 @@ exports.isArray = Array.isArray || (function (x) { return x && typeof x.length =
 //# sourceMappingURL=isArray.js.map
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var root_1 = __webpack_require__(32);
-var isArray_1 = __webpack_require__(64);
-var isPromise_1 = __webpack_require__(148);
-var isObject_1 = __webpack_require__(147);
-var Observable_1 = __webpack_require__(8);
-var iterator_1 = __webpack_require__(94);
-var InnerSubscriber_1 = __webpack_require__(333);
-var observable_1 = __webpack_require__(95);
+var root_1 = __webpack_require__(33);
+var isArray_1 = __webpack_require__(65);
+var isPromise_1 = __webpack_require__(154);
+var isObject_1 = __webpack_require__(153);
+var Observable_1 = __webpack_require__(9);
+var iterator_1 = __webpack_require__(98);
+var InnerSubscriber_1 = __webpack_require__(353);
+var observable_1 = __webpack_require__(99);
 function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
     var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
     if (destination.closed) {
@@ -20088,7 +20252,7 @@ exports.subscribeToResult = subscribeToResult;
 //# sourceMappingURL=subscribeToResult.js.map
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports) {
 
 var g;
@@ -20115,7 +20279,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20166,7 +20330,7 @@ module.exports = g;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Location; });
 /* unused harmony export ɵa */
 /* unused harmony export ɵb */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -24137,687 +24301,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]
 
 
 /***/ }),
-/* 68 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestellungService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(337);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__);
-
-
-
-
-var BestellungService = (function () {
-    function BestellungService(http) {
-        this.http = http;
-        this.bestellungenUrl = 'http://localhost:8080/api/findHeute';
-        this.updateUrl = 'http://localhost:8080/api/bestellung';
-        this.deleteUrl = 'http://localhost:8080/api/bestellung/';
-        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
-    }
-    BestellungService.prototype.getBestellung = function (id) {
-        var url = this.bestellungenUrl + "/" + id;
-        return this.http.get(url)
-            .toPromise()
-            .then(function (response) { return response.json().data; })
-            .catch(this.handleError);
-    };
-    BestellungService.prototype.getBestellungen = function () {
-        console.log('Hole daten');
-        return this.http.get(this.bestellungenUrl)
-            .toPromise()
-            .then(function (response) {
-            var b = response.json();
-            return b;
-        }).catch(this.handleError);
-        //  .toPromise()
-        //  .then(response => response.json().data as Bestellung[])
-        //  .catch(this.handleError);
-    };
-    BestellungService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    };
-    BestellungService.prototype.update = function (bestellung) {
-        console.log('Meine Bestellung: ' + bestellung);
-        var url = "" + this.updateUrl;
-        return this.http
-            .put(url, JSON.stringify(bestellung), { headers: this.headers })
-            .toPromise()
-            .then(function () { return bestellung; })
-            .catch(this.handleError);
-    };
-    BestellungService.prototype.create = function (name) {
-        return this.http
-            .post(this.bestellungenUrl, JSON.stringify({ name: name }), { headers: this.headers })
-            .toPromise()
-            .then(function (res) { return res.json().data; })
-            .catch(this.handleError);
-    };
-    BestellungService.prototype.delete = function (id) {
-        var url = this.deleteUrl + "/" + id;
-        return this.http.delete(url, { headers: this.headers })
-            .toPromise()
-            .then(function () { return null; })
-            .catch(this.handleError);
-    };
-    return BestellungService;
-}());
-BestellungService = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["d" /* Injectable */])(),
-    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */]])
-], BestellungService);
-
-
-
-/***/ }),
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */,
-/* 89 */,
-/* 90 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Observable_1 = __webpack_require__(8);
-var ScalarObservable_1 = __webpack_require__(139);
-var EmptyObservable_1 = __webpack_require__(92);
-var isScheduler_1 = __webpack_require__(149);
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
- */
-var ArrayObservable = (function (_super) {
-    __extends(ArrayObservable, _super);
-    function ArrayObservable(array, scheduler) {
-        _super.call(this);
-        this.array = array;
-        this.scheduler = scheduler;
-        if (!scheduler && array.length === 1) {
-            this._isScalar = true;
-            this.value = array[0];
-        }
-    }
-    ArrayObservable.create = function (array, scheduler) {
-        return new ArrayObservable(array, scheduler);
-    };
-    /**
-     * Creates an Observable that emits some values you specify as arguments,
-     * immediately one after the other, and then emits a complete notification.
-     *
-     * <span class="informal">Emits the arguments you provide, then completes.
-     * </span>
-     *
-     * <img src="./img/of.png" width="100%">
-     *
-     * This static operator is useful for creating a simple Observable that only
-     * emits the arguments given, and the complete notification thereafter. It can
-     * be used for composing with other Observables, such as with {@link concat}.
-     * By default, it uses a `null` IScheduler, which means the `next`
-     * notifications are sent synchronously, although with a different IScheduler
-     * it is possible to determine when those notifications will be delivered.
-     *
-     * @example <caption>Emit 10, 20, 30, then 'a', 'b', 'c', then start ticking every second.</caption>
-     * var numbers = Rx.Observable.of(10, 20, 30);
-     * var letters = Rx.Observable.of('a', 'b', 'c');
-     * var interval = Rx.Observable.interval(1000);
-     * var result = numbers.concat(letters).concat(interval);
-     * result.subscribe(x => console.log(x));
-     *
-     * @see {@link create}
-     * @see {@link empty}
-     * @see {@link never}
-     * @see {@link throw}
-     *
-     * @param {...T} values Arguments that represent `next` values to be emitted.
-     * @param {Scheduler} [scheduler] A {@link IScheduler} to use for scheduling
-     * the emissions of the `next` notifications.
-     * @return {Observable<T>} An Observable that emits each given input value.
-     * @static true
-     * @name of
-     * @owner Observable
-     */
-    ArrayObservable.of = function () {
-        var array = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            array[_i - 0] = arguments[_i];
-        }
-        var scheduler = array[array.length - 1];
-        if (isScheduler_1.isScheduler(scheduler)) {
-            array.pop();
-        }
-        else {
-            scheduler = null;
-        }
-        var len = array.length;
-        if (len > 1) {
-            return new ArrayObservable(array, scheduler);
-        }
-        else if (len === 1) {
-            return new ScalarObservable_1.ScalarObservable(array[0], scheduler);
-        }
-        else {
-            return new EmptyObservable_1.EmptyObservable(scheduler);
-        }
-    };
-    ArrayObservable.dispatch = function (state) {
-        var array = state.array, index = state.index, count = state.count, subscriber = state.subscriber;
-        if (index >= count) {
-            subscriber.complete();
-            return;
-        }
-        subscriber.next(array[index]);
-        if (subscriber.closed) {
-            return;
-        }
-        state.index = index + 1;
-        this.schedule(state);
-    };
-    ArrayObservable.prototype._subscribe = function (subscriber) {
-        var index = 0;
-        var array = this.array;
-        var count = array.length;
-        var scheduler = this.scheduler;
-        if (scheduler) {
-            return scheduler.schedule(ArrayObservable.dispatch, 0, {
-                array: array, index: index, count: count, subscriber: subscriber
-            });
-        }
-        else {
-            for (var i = 0; i < count && !subscriber.closed; i++) {
-                subscriber.next(array[i]);
-            }
-            subscriber.complete();
-        }
-    };
-    return ArrayObservable;
-}(Observable_1.Observable));
-exports.ArrayObservable = ArrayObservable;
-//# sourceMappingURL=ArrayObservable.js.map
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Observable_1 = __webpack_require__(8);
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
- */
-var EmptyObservable = (function (_super) {
-    __extends(EmptyObservable, _super);
-    function EmptyObservable(scheduler) {
-        _super.call(this);
-        this.scheduler = scheduler;
-    }
-    /**
-     * Creates an Observable that emits no items to the Observer and immediately
-     * emits a complete notification.
-     *
-     * <span class="informal">Just emits 'complete', and nothing else.
-     * </span>
-     *
-     * <img src="./img/empty.png" width="100%">
-     *
-     * This static operator is useful for creating a simple Observable that only
-     * emits the complete notification. It can be used for composing with other
-     * Observables, such as in a {@link mergeMap}.
-     *
-     * @example <caption>Emit the number 7, then complete.</caption>
-     * var result = Rx.Observable.empty().startWith(7);
-     * result.subscribe(x => console.log(x));
-     *
-     * @example <caption>Map and flatten only odd numbers to the sequence 'a', 'b', 'c'</caption>
-     * var interval = Rx.Observable.interval(1000);
-     * var result = interval.mergeMap(x =>
-     *   x % 2 === 1 ? Rx.Observable.of('a', 'b', 'c') : Rx.Observable.empty()
-     * );
-     * result.subscribe(x => console.log(x));
-     *
-     * // Results in the following to the console:
-     * // x is equal to the count on the interval eg(0,1,2,3,...)
-     * // x will occur every 1000ms
-     * // if x % 2 is equal to 1 print abc
-     * // if x % 2 is not equal to 1 nothing will be output
-     *
-     * @see {@link create}
-     * @see {@link never}
-     * @see {@link of}
-     * @see {@link throw}
-     *
-     * @param {Scheduler} [scheduler] A {@link IScheduler} to use for scheduling
-     * the emission of the complete notification.
-     * @return {Observable} An "empty" Observable: emits only the complete
-     * notification.
-     * @static true
-     * @name empty
-     * @owner Observable
-     */
-    EmptyObservable.create = function (scheduler) {
-        return new EmptyObservable(scheduler);
-    };
-    EmptyObservable.dispatch = function (arg) {
-        var subscriber = arg.subscriber;
-        subscriber.complete();
-    };
-    EmptyObservable.prototype._subscribe = function (subscriber) {
-        var scheduler = this.scheduler;
-        if (scheduler) {
-            return scheduler.schedule(EmptyObservable.dispatch, 0, { subscriber: subscriber });
-        }
-        else {
-            subscriber.complete();
-        }
-    };
-    return EmptyObservable;
-}(Observable_1.Observable));
-exports.EmptyObservable = EmptyObservable;
-//# sourceMappingURL=EmptyObservable.js.map
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var OuterSubscriber_1 = __webpack_require__(62);
-var subscribeToResult_1 = __webpack_require__(65);
-/**
- * Converts a higher-order Observable into a first-order Observable which
- * concurrently delivers all values that are emitted on the inner Observables.
- *
- * <span class="informal">Flattens an Observable-of-Observables.</span>
- *
- * <img src="./img/mergeAll.png" width="100%">
- *
- * `mergeAll` subscribes to an Observable that emits Observables, also known as
- * a higher-order Observable. Each time it observes one of these emitted inner
- * Observables, it subscribes to that and delivers all the values from the
- * inner Observable on the output Observable. The output Observable only
- * completes once all inner Observables have completed. Any error delivered by
- * a inner Observable will be immediately emitted on the output Observable.
- *
- * @example <caption>Spawn a new interval Observable for each click event, and blend their outputs as one Observable</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000));
- * var firstOrder = higherOrder.mergeAll();
- * firstOrder.subscribe(x => console.log(x));
- *
- * @example <caption>Count from 0 to 9 every second for each click, but only allow 2 concurrent timers</caption>
- * var clicks = Rx.Observable.fromEvent(document, 'click');
- * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000).take(10));
- * var firstOrder = higherOrder.mergeAll(2);
- * firstOrder.subscribe(x => console.log(x));
- *
- * @see {@link combineAll}
- * @see {@link concatAll}
- * @see {@link exhaust}
- * @see {@link merge}
- * @see {@link mergeMap}
- * @see {@link mergeMapTo}
- * @see {@link mergeScan}
- * @see {@link switch}
- * @see {@link zipAll}
- *
- * @param {number} [concurrent=Number.POSITIVE_INFINITY] Maximum number of inner
- * Observables being subscribed to concurrently.
- * @return {Observable} An Observable that emits values coming from all the
- * inner Observables emitted by the source Observable.
- * @method mergeAll
- * @owner Observable
- */
-function mergeAll(concurrent) {
-    if (concurrent === void 0) { concurrent = Number.POSITIVE_INFINITY; }
-    return this.lift(new MergeAllOperator(concurrent));
-}
-exports.mergeAll = mergeAll;
-var MergeAllOperator = (function () {
-    function MergeAllOperator(concurrent) {
-        this.concurrent = concurrent;
-    }
-    MergeAllOperator.prototype.call = function (observer, source) {
-        return source.subscribe(new MergeAllSubscriber(observer, this.concurrent));
-    };
-    return MergeAllOperator;
-}());
-exports.MergeAllOperator = MergeAllOperator;
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
-var MergeAllSubscriber = (function (_super) {
-    __extends(MergeAllSubscriber, _super);
-    function MergeAllSubscriber(destination, concurrent) {
-        _super.call(this, destination);
-        this.concurrent = concurrent;
-        this.hasCompleted = false;
-        this.buffer = [];
-        this.active = 0;
-    }
-    MergeAllSubscriber.prototype._next = function (observable) {
-        if (this.active < this.concurrent) {
-            this.active++;
-            this.add(subscribeToResult_1.subscribeToResult(this, observable));
-        }
-        else {
-            this.buffer.push(observable);
-        }
-    };
-    MergeAllSubscriber.prototype._complete = function () {
-        this.hasCompleted = true;
-        if (this.active === 0 && this.buffer.length === 0) {
-            this.destination.complete();
-        }
-    };
-    MergeAllSubscriber.prototype.notifyComplete = function (innerSub) {
-        var buffer = this.buffer;
-        this.remove(innerSub);
-        this.active--;
-        if (buffer.length > 0) {
-            this._next(buffer.shift());
-        }
-        else if (this.active === 0 && this.hasCompleted) {
-            this.destination.complete();
-        }
-    };
-    return MergeAllSubscriber;
-}(OuterSubscriber_1.OuterSubscriber));
-exports.MergeAllSubscriber = MergeAllSubscriber;
-//# sourceMappingURL=mergeAll.js.map
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var root_1 = __webpack_require__(32);
-function symbolIteratorPonyfill(root) {
-    var Symbol = root.Symbol;
-    if (typeof Symbol === 'function') {
-        if (!Symbol.iterator) {
-            Symbol.iterator = Symbol('iterator polyfill');
-        }
-        return Symbol.iterator;
-    }
-    else {
-        // [for Mozilla Gecko 27-35:](https://mzl.la/2ewE1zC)
-        var Set_1 = root.Set;
-        if (Set_1 && typeof new Set_1()['@@iterator'] === 'function') {
-            return '@@iterator';
-        }
-        var Map_1 = root.Map;
-        // required for compatability with es6-shim
-        if (Map_1) {
-            var keys = Object.getOwnPropertyNames(Map_1.prototype);
-            for (var i = 0; i < keys.length; ++i) {
-                var key = keys[i];
-                // according to spec, Map.prototype[@@iterator] and Map.orototype.entries must be equal.
-                if (key !== 'entries' && key !== 'size' && Map_1.prototype[key] === Map_1.prototype['entries']) {
-                    return key;
-                }
-            }
-        }
-        return '@@iterator';
-    }
-}
-exports.symbolIteratorPonyfill = symbolIteratorPonyfill;
-exports.$$iterator = symbolIteratorPonyfill(root_1.root);
-//# sourceMappingURL=iterator.js.map
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var root_1 = __webpack_require__(32);
-function getSymbolObservable(context) {
-    var $$observable;
-    var Symbol = context.Symbol;
-    if (typeof Symbol === 'function') {
-        if (Symbol.observable) {
-            $$observable = Symbol.observable;
-        }
-        else {
-            $$observable = Symbol('observable');
-            Symbol.observable = $$observable;
-        }
-    }
-    else {
-        $$observable = '@@observable';
-    }
-    return $$observable;
-}
-exports.getSymbolObservable = getSymbolObservable;
-exports.$$observable = getSymbolObservable(root_1.root);
-//# sourceMappingURL=observable.js.map
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var root_1 = __webpack_require__(32);
-var Symbol = root_1.root.Symbol;
-exports.$$rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'function') ?
-    Symbol.for('rxSubscriber') : '@@rxSubscriber';
-//# sourceMappingURL=rxSubscriber.js.map
-
-/***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-/**
- * An error thrown when an Observable or a sequence was queried but has no
- * elements.
- *
- * @see {@link first}
- * @see {@link last}
- * @see {@link single}
- *
- * @class EmptyError
- */
-var EmptyError = (function (_super) {
-    __extends(EmptyError, _super);
-    function EmptyError() {
-        var err = _super.call(this, 'no elements in sequence');
-        this.name = err.name = 'EmptyError';
-        this.stack = err.stack;
-        this.message = err.message;
-    }
-    return EmptyError;
-}(Error));
-exports.EmptyError = EmptyError;
-//# sourceMappingURL=EmptyError.js.map
-
-/***/ }),
-/* 98 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return decorateModuleRef; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ENV_PROVIDERS; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
-/**
- * Angular 2
- */
-
-
-/**
- * Environment Providers
- */
-var PROVIDERS = [];
-/**
- * Angular debug tools in the dev console
- * https://github.com/angular/angular/blob/86405345b781a9dc2438c0fbe3e9409245647019/TOOLS_JS.md
- */
-var _decorateModuleRef = function (value) { return value; };
-if (false) {
-    enableProdMode();
-    /**
-     * Production
-     */
-    _decorateModuleRef = function (modRef) {
-        disableDebugTools();
-        return modRef;
-    };
-    PROVIDERS = PROVIDERS.slice();
-}
-else {
-    _decorateModuleRef = function (modRef) {
-        var appRef = modRef.injector.get(__WEBPACK_IMPORTED_MODULE_1__angular_core__["a" /* ApplicationRef */]);
-        var cmpRef = appRef.components[0];
-        var _ng = window.ng;
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* enableDebugTools */])(cmpRef);
-        window.ng.probe = _ng.probe;
-        window.ng.coreTokens = _ng.coreTokens;
-        return modRef;
-    };
-    /**
-     * Development
-     */
-    PROVIDERS = PROVIDERS.slice();
-}
-var decorateModuleRef = _decorateModuleRef;
-var ENV_PROVIDERS = PROVIDERS.slice();
-
-
-/***/ }),
-/* 99 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24854,10 +24338,10 @@ var ENV_PROVIDERS = PROVIDERS.slice();
 /* unused harmony export ɵb */
 /* unused harmony export ɵc */
 /* unused harmony export ɵd */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(42);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -27046,7 +26530,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]
 
 
 /***/ }),
-/* 100 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27073,7 +26557,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return PreloadAllModules; });
 /* unused harmony export PreloadingStrategy */
 /* unused harmony export RouterPreloader */
-/* unused harmony export ActivatedRoute */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ActivatedRoute; });
 /* unused harmony export ActivatedRouteSnapshot */
 /* unused harmony export RouterState */
 /* unused harmony export RouterStateSnapshot */
@@ -27100,44 +26584,44 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]
 /* unused harmony export ɵe */
 /* unused harmony export ɵk */
 /* unused harmony export ɵl */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__(352);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_from__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_from__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_from___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_from__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_observable_of__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_observable_of__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_concatMap__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_concatMap__ = __webpack_require__(368);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_concatMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_operator_concatMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_every__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_every__ = __webpack_require__(369);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_every___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_operator_every__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operator_first__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operator_first__ = __webpack_require__(371);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operator_first___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_operator_first__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operator_map__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operator_map__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operator_mergeMap__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operator_mergeMap__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operator_mergeMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_rxjs_operator_mergeMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operator_reduce__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operator_reduce__ = __webpack_require__(376);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operator_reduce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_rxjs_operator_reduce__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_Observable__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_Observable__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operator_catch__ = __webpack_require__(346);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operator_catch__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_rxjs_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operator_concatAll__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operator_concatAll__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operator_concatAll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_rxjs_operator_concatAll__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_rxjs_util_EmptyError__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_rxjs_util_EmptyError__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_rxjs_util_EmptyError___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_rxjs_util_EmptyError__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_rxjs_observable_fromPromise__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_rxjs_observable_fromPromise__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_rxjs_observable_fromPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_rxjs_operator_last__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_rxjs_operator_last__ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_rxjs_operator_last___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_rxjs_operator_last__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_rxjs_operator_mergeAll__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_rxjs_operator_mergeAll__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_rxjs_operator_mergeAll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_rxjs_operator_mergeAll__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_platform_browser__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_rxjs_operator_filter__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_platform_browser__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_rxjs_operator_filter__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_rxjs_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_rxjs_operator_filter__);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -33217,51 +32701,890 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["D" /* Version */]
 
 
 /***/ }),
-/* 101 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestellungComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bestellung_service__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(100);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppState; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+
+
+var AppState = (function () {
+    function AppState() {
+        this._state = {};
+    }
+    Object.defineProperty(AppState.prototype, "state", {
+        /**
+         * Already return a clone of the current state.
+         */
+        get: function () {
+            return this._state = this._clone(this._state);
+        },
+        /**
+         * Never allow mutation
+         */
+        set: function (value) {
+            throw new Error('do not mutate the `.state` directly');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AppState.prototype.get = function (prop) {
+        /**
+         * Use our state getter for the clone.
+         */
+        var state = this.state;
+        return state.hasOwnProperty(prop) ? state[prop] : state;
+    };
+    AppState.prototype.set = function (prop, value) {
+        /**
+         * Internally mutate our state.
+         */
+        return this._state[prop] = value;
+    };
+    AppState.prototype._clone = function (object) {
+        /**
+         * Simple object clone.
+         */
+        return JSON.parse(JSON.stringify(object));
+    };
+    return AppState;
+}());
+AppState = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["d" /* Injectable */])()
+], AppState);
+
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestellungService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__);
 
 
 
 
-var BestellungComponent = (function () {
-    function BestellungComponent(router, bestellungService) {
+var BestellungService = (function () {
+    function BestellungService(http) {
+        this.http = http;
+        this.bestellungenUrl = '/api/findHeute';
+        this.saveUrl = '/api/save';
+        this.updateUrl = '/api/bestellung';
+        this.deleteUrl = '/api/bestellung/';
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
+    }
+    BestellungService.prototype.getBestellung = function (id) {
+        console.log('hole Bestellungen');
+        var url = this.bestellungenUrl + "/" + id;
+        console.log('hole Bestellungen url: ', url);
+        return this.http.get(url)
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
+    };
+    BestellungService.prototype.getBestellungen = function () {
+        console.log('Hole daten vom server');
+        return this.http.get(this.bestellungenUrl)
+            .toPromise()
+            .then(function (response) {
+            var b = response.json();
+            return b;
+        }).catch(this.handleError);
+        //  .toPromise()
+        //  .then(response => response.json().data as Bestellung[])
+        //  .catch(this.handleError);   
+    };
+    BestellungService.prototype.update = function (bestellung) {
+        console.log('Meine Bestellung: ' + bestellung);
+        var url = "" + this.updateUrl;
+        return this.http
+            .put(url, JSON.stringify(bestellung), { headers: this.headers })
+            .toPromise()
+            .then(function () { return bestellung; })
+            .catch(this.handleError);
+    };
+    BestellungService.prototype.create = function (bestellung) {
+        console.log('Versuche Bestellung zu erstellen');
+        var bestellungAsJSON = JSON.stringify(bestellung);
+        console.log('JSON BEstellung', bestellungAsJSON);
+        return this.http
+            .post(this.saveUrl, bestellungAsJSON, { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json().data; })
+            .catch(this.handleError);
+    };
+    BestellungService.prototype.delete = function (id) {
+        var url = this.deleteUrl + "/" + id;
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .then(function () { return null; })
+            .catch(this.handleError);
+    };
+    BestellungService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    };
+    return BestellungService;
+}());
+BestellungService = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["d" /* Injectable */])(),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */]])
+], BestellungService);
+
+
+
+/***/ }),
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Observable_1 = __webpack_require__(9);
+var ScalarObservable_1 = __webpack_require__(145);
+var EmptyObservable_1 = __webpack_require__(96);
+var isScheduler_1 = __webpack_require__(155);
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @extends {Ignored}
+ * @hide true
+ */
+var ArrayObservable = (function (_super) {
+    __extends(ArrayObservable, _super);
+    function ArrayObservable(array, scheduler) {
+        _super.call(this);
+        this.array = array;
+        this.scheduler = scheduler;
+        if (!scheduler && array.length === 1) {
+            this._isScalar = true;
+            this.value = array[0];
+        }
+    }
+    ArrayObservable.create = function (array, scheduler) {
+        return new ArrayObservable(array, scheduler);
+    };
+    /**
+     * Creates an Observable that emits some values you specify as arguments,
+     * immediately one after the other, and then emits a complete notification.
+     *
+     * <span class="informal">Emits the arguments you provide, then completes.
+     * </span>
+     *
+     * <img src="./img/of.png" width="100%">
+     *
+     * This static operator is useful for creating a simple Observable that only
+     * emits the arguments given, and the complete notification thereafter. It can
+     * be used for composing with other Observables, such as with {@link concat}.
+     * By default, it uses a `null` IScheduler, which means the `next`
+     * notifications are sent synchronously, although with a different IScheduler
+     * it is possible to determine when those notifications will be delivered.
+     *
+     * @example <caption>Emit 10, 20, 30, then 'a', 'b', 'c', then start ticking every second.</caption>
+     * var numbers = Rx.Observable.of(10, 20, 30);
+     * var letters = Rx.Observable.of('a', 'b', 'c');
+     * var interval = Rx.Observable.interval(1000);
+     * var result = numbers.concat(letters).concat(interval);
+     * result.subscribe(x => console.log(x));
+     *
+     * @see {@link create}
+     * @see {@link empty}
+     * @see {@link never}
+     * @see {@link throw}
+     *
+     * @param {...T} values Arguments that represent `next` values to be emitted.
+     * @param {Scheduler} [scheduler] A {@link IScheduler} to use for scheduling
+     * the emissions of the `next` notifications.
+     * @return {Observable<T>} An Observable that emits each given input value.
+     * @static true
+     * @name of
+     * @owner Observable
+     */
+    ArrayObservable.of = function () {
+        var array = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            array[_i - 0] = arguments[_i];
+        }
+        var scheduler = array[array.length - 1];
+        if (isScheduler_1.isScheduler(scheduler)) {
+            array.pop();
+        }
+        else {
+            scheduler = null;
+        }
+        var len = array.length;
+        if (len > 1) {
+            return new ArrayObservable(array, scheduler);
+        }
+        else if (len === 1) {
+            return new ScalarObservable_1.ScalarObservable(array[0], scheduler);
+        }
+        else {
+            return new EmptyObservable_1.EmptyObservable(scheduler);
+        }
+    };
+    ArrayObservable.dispatch = function (state) {
+        var array = state.array, index = state.index, count = state.count, subscriber = state.subscriber;
+        if (index >= count) {
+            subscriber.complete();
+            return;
+        }
+        subscriber.next(array[index]);
+        if (subscriber.closed) {
+            return;
+        }
+        state.index = index + 1;
+        this.schedule(state);
+    };
+    ArrayObservable.prototype._subscribe = function (subscriber) {
+        var index = 0;
+        var array = this.array;
+        var count = array.length;
+        var scheduler = this.scheduler;
+        if (scheduler) {
+            return scheduler.schedule(ArrayObservable.dispatch, 0, {
+                array: array, index: index, count: count, subscriber: subscriber
+            });
+        }
+        else {
+            for (var i = 0; i < count && !subscriber.closed; i++) {
+                subscriber.next(array[i]);
+            }
+            subscriber.complete();
+        }
+    };
+    return ArrayObservable;
+}(Observable_1.Observable));
+exports.ArrayObservable = ArrayObservable;
+//# sourceMappingURL=ArrayObservable.js.map
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Observable_1 = __webpack_require__(9);
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @extends {Ignored}
+ * @hide true
+ */
+var EmptyObservable = (function (_super) {
+    __extends(EmptyObservable, _super);
+    function EmptyObservable(scheduler) {
+        _super.call(this);
+        this.scheduler = scheduler;
+    }
+    /**
+     * Creates an Observable that emits no items to the Observer and immediately
+     * emits a complete notification.
+     *
+     * <span class="informal">Just emits 'complete', and nothing else.
+     * </span>
+     *
+     * <img src="./img/empty.png" width="100%">
+     *
+     * This static operator is useful for creating a simple Observable that only
+     * emits the complete notification. It can be used for composing with other
+     * Observables, such as in a {@link mergeMap}.
+     *
+     * @example <caption>Emit the number 7, then complete.</caption>
+     * var result = Rx.Observable.empty().startWith(7);
+     * result.subscribe(x => console.log(x));
+     *
+     * @example <caption>Map and flatten only odd numbers to the sequence 'a', 'b', 'c'</caption>
+     * var interval = Rx.Observable.interval(1000);
+     * var result = interval.mergeMap(x =>
+     *   x % 2 === 1 ? Rx.Observable.of('a', 'b', 'c') : Rx.Observable.empty()
+     * );
+     * result.subscribe(x => console.log(x));
+     *
+     * // Results in the following to the console:
+     * // x is equal to the count on the interval eg(0,1,2,3,...)
+     * // x will occur every 1000ms
+     * // if x % 2 is equal to 1 print abc
+     * // if x % 2 is not equal to 1 nothing will be output
+     *
+     * @see {@link create}
+     * @see {@link never}
+     * @see {@link of}
+     * @see {@link throw}
+     *
+     * @param {Scheduler} [scheduler] A {@link IScheduler} to use for scheduling
+     * the emission of the complete notification.
+     * @return {Observable} An "empty" Observable: emits only the complete
+     * notification.
+     * @static true
+     * @name empty
+     * @owner Observable
+     */
+    EmptyObservable.create = function (scheduler) {
+        return new EmptyObservable(scheduler);
+    };
+    EmptyObservable.dispatch = function (arg) {
+        var subscriber = arg.subscriber;
+        subscriber.complete();
+    };
+    EmptyObservable.prototype._subscribe = function (subscriber) {
+        var scheduler = this.scheduler;
+        if (scheduler) {
+            return scheduler.schedule(EmptyObservable.dispatch, 0, { subscriber: subscriber });
+        }
+        else {
+            subscriber.complete();
+        }
+    };
+    return EmptyObservable;
+}(Observable_1.Observable));
+exports.EmptyObservable = EmptyObservable;
+//# sourceMappingURL=EmptyObservable.js.map
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var OuterSubscriber_1 = __webpack_require__(63);
+var subscribeToResult_1 = __webpack_require__(66);
+/**
+ * Converts a higher-order Observable into a first-order Observable which
+ * concurrently delivers all values that are emitted on the inner Observables.
+ *
+ * <span class="informal">Flattens an Observable-of-Observables.</span>
+ *
+ * <img src="./img/mergeAll.png" width="100%">
+ *
+ * `mergeAll` subscribes to an Observable that emits Observables, also known as
+ * a higher-order Observable. Each time it observes one of these emitted inner
+ * Observables, it subscribes to that and delivers all the values from the
+ * inner Observable on the output Observable. The output Observable only
+ * completes once all inner Observables have completed. Any error delivered by
+ * a inner Observable will be immediately emitted on the output Observable.
+ *
+ * @example <caption>Spawn a new interval Observable for each click event, and blend their outputs as one Observable</caption>
+ * var clicks = Rx.Observable.fromEvent(document, 'click');
+ * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000));
+ * var firstOrder = higherOrder.mergeAll();
+ * firstOrder.subscribe(x => console.log(x));
+ *
+ * @example <caption>Count from 0 to 9 every second for each click, but only allow 2 concurrent timers</caption>
+ * var clicks = Rx.Observable.fromEvent(document, 'click');
+ * var higherOrder = clicks.map((ev) => Rx.Observable.interval(1000).take(10));
+ * var firstOrder = higherOrder.mergeAll(2);
+ * firstOrder.subscribe(x => console.log(x));
+ *
+ * @see {@link combineAll}
+ * @see {@link concatAll}
+ * @see {@link exhaust}
+ * @see {@link merge}
+ * @see {@link mergeMap}
+ * @see {@link mergeMapTo}
+ * @see {@link mergeScan}
+ * @see {@link switch}
+ * @see {@link zipAll}
+ *
+ * @param {number} [concurrent=Number.POSITIVE_INFINITY] Maximum number of inner
+ * Observables being subscribed to concurrently.
+ * @return {Observable} An Observable that emits values coming from all the
+ * inner Observables emitted by the source Observable.
+ * @method mergeAll
+ * @owner Observable
+ */
+function mergeAll(concurrent) {
+    if (concurrent === void 0) { concurrent = Number.POSITIVE_INFINITY; }
+    return this.lift(new MergeAllOperator(concurrent));
+}
+exports.mergeAll = mergeAll;
+var MergeAllOperator = (function () {
+    function MergeAllOperator(concurrent) {
+        this.concurrent = concurrent;
+    }
+    MergeAllOperator.prototype.call = function (observer, source) {
+        return source.subscribe(new MergeAllSubscriber(observer, this.concurrent));
+    };
+    return MergeAllOperator;
+}());
+exports.MergeAllOperator = MergeAllOperator;
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @ignore
+ * @extends {Ignored}
+ */
+var MergeAllSubscriber = (function (_super) {
+    __extends(MergeAllSubscriber, _super);
+    function MergeAllSubscriber(destination, concurrent) {
+        _super.call(this, destination);
+        this.concurrent = concurrent;
+        this.hasCompleted = false;
+        this.buffer = [];
+        this.active = 0;
+    }
+    MergeAllSubscriber.prototype._next = function (observable) {
+        if (this.active < this.concurrent) {
+            this.active++;
+            this.add(subscribeToResult_1.subscribeToResult(this, observable));
+        }
+        else {
+            this.buffer.push(observable);
+        }
+    };
+    MergeAllSubscriber.prototype._complete = function () {
+        this.hasCompleted = true;
+        if (this.active === 0 && this.buffer.length === 0) {
+            this.destination.complete();
+        }
+    };
+    MergeAllSubscriber.prototype.notifyComplete = function (innerSub) {
+        var buffer = this.buffer;
+        this.remove(innerSub);
+        this.active--;
+        if (buffer.length > 0) {
+            this._next(buffer.shift());
+        }
+        else if (this.active === 0 && this.hasCompleted) {
+            this.destination.complete();
+        }
+    };
+    return MergeAllSubscriber;
+}(OuterSubscriber_1.OuterSubscriber));
+exports.MergeAllSubscriber = MergeAllSubscriber;
+//# sourceMappingURL=mergeAll.js.map
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var root_1 = __webpack_require__(33);
+function symbolIteratorPonyfill(root) {
+    var Symbol = root.Symbol;
+    if (typeof Symbol === 'function') {
+        if (!Symbol.iterator) {
+            Symbol.iterator = Symbol('iterator polyfill');
+        }
+        return Symbol.iterator;
+    }
+    else {
+        // [for Mozilla Gecko 27-35:](https://mzl.la/2ewE1zC)
+        var Set_1 = root.Set;
+        if (Set_1 && typeof new Set_1()['@@iterator'] === 'function') {
+            return '@@iterator';
+        }
+        var Map_1 = root.Map;
+        // required for compatability with es6-shim
+        if (Map_1) {
+            var keys = Object.getOwnPropertyNames(Map_1.prototype);
+            for (var i = 0; i < keys.length; ++i) {
+                var key = keys[i];
+                // according to spec, Map.prototype[@@iterator] and Map.orototype.entries must be equal.
+                if (key !== 'entries' && key !== 'size' && Map_1.prototype[key] === Map_1.prototype['entries']) {
+                    return key;
+                }
+            }
+        }
+        return '@@iterator';
+    }
+}
+exports.symbolIteratorPonyfill = symbolIteratorPonyfill;
+exports.$$iterator = symbolIteratorPonyfill(root_1.root);
+//# sourceMappingURL=iterator.js.map
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var root_1 = __webpack_require__(33);
+function getSymbolObservable(context) {
+    var $$observable;
+    var Symbol = context.Symbol;
+    if (typeof Symbol === 'function') {
+        if (Symbol.observable) {
+            $$observable = Symbol.observable;
+        }
+        else {
+            $$observable = Symbol('observable');
+            Symbol.observable = $$observable;
+        }
+    }
+    else {
+        $$observable = '@@observable';
+    }
+    return $$observable;
+}
+exports.getSymbolObservable = getSymbolObservable;
+exports.$$observable = getSymbolObservable(root_1.root);
+//# sourceMappingURL=observable.js.map
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var root_1 = __webpack_require__(33);
+var Symbol = root_1.root.Symbol;
+exports.$$rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'function') ?
+    Symbol.for('rxSubscriber') : '@@rxSubscriber';
+//# sourceMappingURL=rxSubscriber.js.map
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+/**
+ * An error thrown when an Observable or a sequence was queried but has no
+ * elements.
+ *
+ * @see {@link first}
+ * @see {@link last}
+ * @see {@link single}
+ *
+ * @class EmptyError
+ */
+var EmptyError = (function (_super) {
+    __extends(EmptyError, _super);
+    function EmptyError() {
+        var err = _super.call(this, 'no elements in sequence');
+        this.name = err.name = 'EmptyError';
+        this.stack = err.stack;
+        this.message = err.message;
+    }
+    return EmptyError;
+}(Error));
+exports.EmptyError = EmptyError;
+//# sourceMappingURL=EmptyError.js.map
+
+/***/ }),
+/* 102 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return decorateModuleRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ENV_PROVIDERS; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/**
+ * Angular 2
+ */
+
+
+/**
+ * Environment Providers
+ */
+var PROVIDERS = [];
+/**
+ * Angular debug tools in the dev console
+ * https://github.com/angular/angular/blob/86405345b781a9dc2438c0fbe3e9409245647019/TOOLS_JS.md
+ */
+var _decorateModuleRef = function (value) { return value; };
+if (false) {
+    enableProdMode();
+    /**
+     * Production
+     */
+    _decorateModuleRef = function (modRef) {
+        disableDebugTools();
+        return modRef;
+    };
+    PROVIDERS = PROVIDERS.slice();
+}
+else {
+    _decorateModuleRef = function (modRef) {
+        var appRef = modRef.injector.get(__WEBPACK_IMPORTED_MODULE_1__angular_core__["a" /* ApplicationRef */]);
+        var cmpRef = appRef.components[0];
+        var _ng = window.ng;
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* enableDebugTools */])(cmpRef);
+        window.ng.probe = _ng.probe;
+        window.ng.coreTokens = _ng.coreTokens;
+        return modRef;
+    };
+    /**
+     * Development
+     */
+    PROVIDERS = PROVIDERS.slice();
+}
+var decorateModuleRef = _decorateModuleRef;
+var ENV_PROVIDERS = PROVIDERS.slice();
+
+
+/***/ }),
+/* 103 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestellUebersichtComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bestellungService__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(7);
+
+
+
+
+var BestellUebersichtComponent = (function () {
+    function BestellUebersichtComponent(router, bestellungService) {
         this.router = router;
         this.bestellungService = bestellungService;
     }
-    BestellungComponent.prototype.getBestellungen = function () {
+    BestellUebersichtComponent.prototype.getBestellungen = function () {
         var _this = this;
         // this.bestellungen = this.bestellungService.getBestellungen();
         this.bestellungService.getBestellungen().then(function (fusshupe) { _this.bestellungen = fusshupe; });
     };
-    BestellungComponent.prototype.ngOnInit = function () {
+    BestellUebersichtComponent.prototype.ngOnInit = function () {
         this.getBestellungen();
     };
-    BestellungComponent.prototype.onSelect = function (bestellung) {
+    BestellUebersichtComponent.prototype.onSelect = function (bestellung) {
         this.selectedBestellung = bestellung;
     };
-    BestellungComponent.prototype.gotoDetail = function () {
+    BestellUebersichtComponent.prototype.gotoDetail = function () {
         this.router.navigate(['/detail', this.selectedBestellung.id]);
     };
-    BestellungComponent.prototype.add = function (name) {
-        var _this = this;
-        name = name.trim();
-        if (!name) {
-            return;
-        }
-        this.bestellungService.create(name)
-            .then(function (bestellung) {
-            _this.bestellungen.push(bestellung);
-            _this.selectedBestellung = null;
-        });
-    };
-    BestellungComponent.prototype.delete = function (bestellung) {
+    BestellUebersichtComponent.prototype.delete = function (bestellung) {
         var _this = this;
         this.bestellungService
             .delete(bestellung.id)
@@ -33272,31 +33595,104 @@ var BestellungComponent = (function () {
             }
         });
     };
-    BestellungComponent.prototype.update = function (bestellung) {
+    BestellUebersichtComponent.prototype.update = function (bestellung) {
         bestellung.bezahlt = !bestellung.bezahlt;
         this.bestellungService.update(bestellung);
     };
-    return BestellungComponent;
+    /**
+     * Liefer die Summe an die GUI
+     */
+    BestellUebersichtComponent.prototype.getTotal = function () {
+        var total = 0;
+        if (this.bestellungen) {
+            this.bestellungen.forEach(function (i) {
+                var price = i.price;
+                if (price) {
+                    var tmp = Number(price);
+                    if (tmp) {
+                        total += tmp;
+                    }
+                }
+            });
+        }
+        return total;
+    };
+    return BestellUebersichtComponent;
 }());
-BestellungComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* Component */])({
-        selector: 'my-bestellung',
-        template: __webpack_require__(331),
-        styles: [__webpack_require__(365)]
+BestellUebersichtComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__angular_core__["_10" /* Component */])({
+        selector: 'bestellungen',
+        // template: '<h1>BUUUH</h1>',
+        template: __webpack_require__(348),
+        styles: [__webpack_require__(386)]
     }),
-    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */],
-        __WEBPACK_IMPORTED_MODULE_2__bestellung_service__["a" /* BestellungService */]])
-], BestellungComponent);
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */],
+        __WEBPACK_IMPORTED_MODULE_1__bestellungService__["a" /* BestellungService */]])
+], BestellUebersichtComponent);
 
 
 
 /***/ }),
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
+/* 104 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bestellvorgang_component__ = __webpack_require__(188);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__bestellvorgang_component__["a"]; });
+
+
+
+/***/ }),
+/* 105 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_component__ = __webpack_require__(189);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__home_component__["a"]; });
+
+
+
+/***/ }),
+/* 106 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__no_content_component__ = __webpack_require__(194);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__no_content_component__["a"]; });
+
+
+
+/***/ }),
+/* 107 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SpeisekarteComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+
+
+var SpeisekarteComponent = (function () {
+    function SpeisekarteComponent() {
+        this.vorn = 'assets/img/vorn.jpg';
+        this.hinten = 'assets/img/hinten.jpg';
+    }
+    SpeisekarteComponent.prototype.ngOnInit = function () {
+    };
+    return SpeisekarteComponent;
+}());
+SpeisekarteComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_10" /* Component */])({
+        selector: 'speisekarte',
+        template: __webpack_require__(351),
+        styles: [__webpack_require__(389)]
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [])
+], SpeisekarteComponent);
+
+
+
+/***/ }),
 /* 108 */,
 /* 109 */,
 /* 110 */,
@@ -33326,7 +33722,13 @@ BestellungComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */](
 /* 134 */,
 /* 135 */,
 /* 136 */,
-/* 137 */
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33340,7 +33742,7 @@ exports.empty = {
 //# sourceMappingURL=Observer.js.map
 
 /***/ }),
-/* 138 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33350,8 +33752,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var root_1 = __webpack_require__(32);
-var Observable_1 = __webpack_require__(8);
+var root_1 = __webpack_require__(33);
+var Observable_1 = __webpack_require__(9);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -33467,7 +33869,7 @@ function dispatchError(arg) {
 //# sourceMappingURL=PromiseObservable.js.map
 
 /***/ }),
-/* 139 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33477,7 +33879,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Observable_1 = __webpack_require__(8);
+var Observable_1 = __webpack_require__(9);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -33531,27 +33933,27 @@ exports.ScalarObservable = ScalarObservable;
 //# sourceMappingURL=ScalarObservable.js.map
 
 /***/ }),
-/* 140 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var PromiseObservable_1 = __webpack_require__(138);
+var PromiseObservable_1 = __webpack_require__(144);
 exports.fromPromise = PromiseObservable_1.PromiseObservable.create;
 //# sourceMappingURL=fromPromise.js.map
 
 /***/ }),
-/* 141 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ArrayObservable_1 = __webpack_require__(91);
+var ArrayObservable_1 = __webpack_require__(95);
 exports.of = ArrayObservable_1.ArrayObservable.of;
 //# sourceMappingURL=of.js.map
 
 /***/ }),
-/* 142 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33644,7 +34046,7 @@ var MapSubscriber = (function (_super) {
 //# sourceMappingURL=map.js.map
 
 /***/ }),
-/* 143 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33654,8 +34056,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var subscribeToResult_1 = __webpack_require__(65);
-var OuterSubscriber_1 = __webpack_require__(62);
+var subscribeToResult_1 = __webpack_require__(66);
+var OuterSubscriber_1 = __webpack_require__(63);
 /* tslint:disable:max-line-length */
 /**
  * Projects each source value to an Observable which is merged in the output
@@ -33821,7 +34223,7 @@ exports.MergeMapSubscriber = MergeMapSubscriber;
 //# sourceMappingURL=mergeMap.js.map
 
 /***/ }),
-/* 144 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33854,7 +34256,7 @@ exports.ObjectUnsubscribedError = ObjectUnsubscribedError;
 //# sourceMappingURL=ObjectUnsubscribedError.js.map
 
 /***/ }),
-/* 145 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33864,7 +34266,7 @@ exports.errorObject = { e: {} };
 //# sourceMappingURL=errorObject.js.map
 
 /***/ }),
-/* 146 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33876,7 +34278,7 @@ exports.isFunction = isFunction;
 //# sourceMappingURL=isFunction.js.map
 
 /***/ }),
-/* 147 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33888,7 +34290,7 @@ exports.isObject = isObject;
 //# sourceMappingURL=isObject.js.map
 
 /***/ }),
-/* 148 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33900,7 +34302,7 @@ exports.isPromise = isPromise;
 //# sourceMappingURL=isPromise.js.map
 
 /***/ }),
-/* 149 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33912,7 +34314,7 @@ exports.isScheduler = isScheduler;
 //# sourceMappingURL=isScheduler.js.map
 
 /***/ }),
-/* 150 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -33958,7 +34360,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(364);
+var	fixUrls = __webpack_require__(384);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -34271,7 +34673,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 151 */
+/* 157 */
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -34280,10 +34682,10 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 151;
+webpackEmptyAsyncContext.id = 157;
 
 /***/ }),
-/* 152 */
+/* 158 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34292,10 +34694,10 @@ webpackEmptyAsyncContext.id = 151;
 /* unused harmony export VERSION */
 /* unused harmony export ɵINTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS */
 /* unused harmony export ɵResourceLoaderImpl */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_compiler__ = __webpack_require__(174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_compiler__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(42);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -34469,11 +34871,11 @@ var platformBrowserDynamic = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
 
 
 /***/ }),
-/* 153 */
+/* 159 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_module__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_module__ = __webpack_require__(183);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__app_module__["a"]; });
 /**
  * App
@@ -34482,12 +34884,6 @@ var platformBrowserDynamic = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
 
 
 /***/ }),
-/* 154 */,
-/* 155 */,
-/* 156 */,
-/* 157 */,
-/* 158 */,
-/* 159 */,
 /* 160 */,
 /* 161 */,
 /* 162 */,
@@ -34502,7 +34898,13 @@ var platformBrowserDynamic = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
 /* 171 */,
 /* 172 */,
 /* 173 */,
-/* 174 */
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34689,7 +35091,7 @@ var platformBrowserDynamic = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
 /* unused harmony export splitClasses */
 /* unused harmony export createElementCssSelector */
 /* unused harmony export removeSummaryDuplicates */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -48367,8 +48769,8 @@ var DirectiveResolver = (function () {
         var /** @type {?} */ mergedOutputs = this._dedupeBindings(directive.outputs ? directive.outputs.concat(outputs) : outputs);
         var /** @type {?} */ mergedHost = directive.host ? __assign({}, directive.host, host) : host;
         var /** @type {?} */ mergedQueries = directive.queries ? __assign({}, directive.queries, queries) : queries;
-        if (directive instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Component */]) {
-            return new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Component */]({
+        if (directive instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */]) {
+            return new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */]({
                 selector: directive.selector,
                 inputs: mergedInputs,
                 outputs: mergedOutputs,
@@ -48983,7 +49385,7 @@ var CompileMetadataResolver = (function () {
             return null;
         }
         var /** @type {?} */ nonNormalizedTemplateMetadata = ((undefined));
-        if (dirMeta instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Component */]) {
+        if (dirMeta instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */]) {
             // component
             assertArrayOfStrings('styles', dirMeta.styles);
             assertArrayOfStrings('styleUrls', dirMeta.styleUrls);
@@ -49006,7 +49408,7 @@ var CompileMetadataResolver = (function () {
         var /** @type {?} */ viewProviders = [];
         var /** @type {?} */ entryComponentMetadata = [];
         var /** @type {?} */ selector = dirMeta.selector;
-        if (dirMeta instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Component */]) {
+        if (dirMeta instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */]) {
             // Component
             changeDetectionStrategy = ((dirMeta.changeDetection));
             if (dirMeta.viewProviders) {
@@ -49522,7 +49924,7 @@ var CompileMetadataResolver = (function () {
                     if (paramEntry instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */]) {
                         isHost = true;
                     }
-                    else if (paramEntry instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */]) {
+                    else if (paramEntry instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */]) {
                         isSelf = true;
                     }
                     else if (paramEntry instanceof __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */]) {
@@ -57918,12 +58320,12 @@ var StaticReflector = (function () {
         this.initializeConversionMap();
         knownMetadataClasses.forEach(function (kc) { return _this._registerDecoratorOrConstructor(_this.getStaticSymbol(kc.filePath, kc.name), kc.ctor); });
         knownMetadataFunctions.forEach(function (kf) { return _this._registerFunction(_this.getStaticSymbol(kf.filePath, kf.name), kf.fn); });
-        this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.Directive, [__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Component */]]);
+        this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.Directive, [__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */]]);
         this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.Pipe, [__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */]]);
         this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.NgModule, [__WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */]]);
-        this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.Injectable, [__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Component */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */]]);
+        this.annotationForParentClassWithSummaryKind.set(CompileSummaryKind.Injectable, [__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */]]);
         this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], 'Directive');
-        this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Component */], 'Component');
+        this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */], 'Component');
         this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */], 'Pipe');
         this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */], 'NgModule');
         this.annotationNames.set(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */], 'Injectable');
@@ -58190,7 +58592,7 @@ var StaticReflector = (function () {
         this.opaqueToken = this.findDeclaration(ANGULAR_CORE, 'OpaqueToken');
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Host'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Injectable'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */]);
-        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Self'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */]);
+        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Self'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'SkipSelf'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Inject'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Optional'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */]);
@@ -58205,11 +58607,11 @@ var StaticReflector = (function () {
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'HostBinding'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* HostBinding */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'HostListener'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* HostListener */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Directive'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */]);
-        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Component'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Component */]);
+        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Component'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* Component */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'NgModule'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */]);
         // Note: Some metadata classes can be used directly with Provider.deps.
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Host'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */]);
-        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Self'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */]);
+        this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Self'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'SkipSelf'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */]);
         this._registerDecoratorOrConstructor(this.findDeclaration(ANGULAR_CORE, 'Optional'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */]);
         this._registerFunction(this.findDeclaration(ANGULAR_CORE, 'trigger'), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_61" /* trigger */]);
@@ -61118,7 +61520,7 @@ var ImportResolver = (function () {
 //# sourceMappingURL=compiler.es5.js.map
 
 /***/ }),
-/* 175 */
+/* 181 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61193,14 +61595,14 @@ var ImportResolver = (function () {
 /* unused harmony export ɵu */
 /* unused harmony export ɵw */
 /* unused harmony export ɵr */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(42);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -61667,7 +62069,7 @@ var NG_VALUE_ACCESSOR = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* I
  */
 var CHECKBOX_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return CheckboxControlValueAccessor; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return CheckboxControlValueAccessor; }),
     multi: true,
 };
 /**
@@ -61740,7 +62142,7 @@ CheckboxControlValueAccessor.ctorParameters = function () { return [
  */
 var DEFAULT_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return DefaultValueAccessor; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return DefaultValueAccessor; }),
     multi: true
 };
 /**
@@ -61896,7 +62298,7 @@ function normalizeAsyncValidator(validator) {
  */
 var NUMBER_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return NumberValueAccessor; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NumberValueAccessor; }),
     multi: true
 };
 /**
@@ -62042,7 +62444,7 @@ var NgControl = (function (_super) {
  */
 var RADIO_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return RadioControlValueAccessor; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return RadioControlValueAccessor; }),
     multi: true
 };
 /**
@@ -62245,7 +62647,7 @@ RadioControlValueAccessor.propDecorators = {
  */
 var RANGE_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return RangeValueAccessor; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return RangeValueAccessor; }),
     multi: true
 };
 /**
@@ -62323,7 +62725,7 @@ RangeValueAccessor.ctorParameters = function () { return [
  */
 var SELECT_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return SelectControlValueAccessor; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return SelectControlValueAccessor; }),
     multi: true
 };
 /**
@@ -62426,7 +62828,7 @@ var SelectControlValueAccessor = (function () {
         this._idCounter = 0;
         this.onChange = function (_) { };
         this.onTouched = function () { };
-        this._compareWith = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* ɵlooseIdentical */];
+        this._compareWith = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵlooseIdentical */];
     }
     Object.defineProperty(SelectControlValueAccessor.prototype, "compareWith", {
         /**
@@ -62617,7 +63019,7 @@ NgSelectOption.propDecorators = {
  */
 var SELECT_MULTIPLE_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return SelectMultipleControlValueAccessor; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return SelectMultipleControlValueAccessor; }),
     multi: true
 };
 /**
@@ -62689,7 +63091,7 @@ var SelectMultipleControlValueAccessor = (function () {
         this._idCounter = 0;
         this.onChange = function (_) { };
         this.onTouched = function () { };
-        this._compareWith = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* ɵlooseIdentical */];
+        this._compareWith = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵlooseIdentical */];
     }
     Object.defineProperty(SelectMultipleControlValueAccessor.prototype, "compareWith", {
         /**
@@ -63058,7 +63460,7 @@ function isPropertyUpdated(changes, viewModel) {
     var /** @type {?} */ change = changes['model'];
     if (change.isFirstChange())
         return true;
-    return !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* ɵlooseIdentical */])(viewModel, change.currentValue);
+    return !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵlooseIdentical */])(viewModel, change.currentValue);
 }
 var BUILTIN_ACCESSORS = [
     CheckboxControlValueAccessor,
@@ -63298,7 +63700,7 @@ NgControlStatus.decorators = [
  * @nocollapse
  */
 NgControlStatus.ctorParameters = function () { return [
-    { type: NgControl, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] },] },
+    { type: NgControl, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] },] },
 ]; };
 /**
  * Directive automatically applied to Angular form groups that sets CSS classes
@@ -63326,7 +63728,7 @@ NgControlStatusGroup.decorators = [
  * @nocollapse
  */
 NgControlStatusGroup.ctorParameters = function () { return [
-    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] },] },
+    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] },] },
 ]; };
 /**
  * @license
@@ -64961,7 +65363,7 @@ var FormArray = (function (_super) {
  */
 var formDirectiveProvider = {
     provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return NgForm; })
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NgForm; })
 };
 var resolvedPromise = Promise.resolve(null);
 /**
@@ -65175,8 +65577,8 @@ NgForm.decorators = [
  * @nocollapse
  */
 NgForm.ctorParameters = function () { return [
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
 ]; };
 /**
  * @license
@@ -65237,7 +65639,7 @@ var TemplateDrivenErrors = (function () {
  */
 var modelGroupProvider = {
     provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return NgModelGroup; })
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NgModelGroup; })
 };
 /**
  * \@whatItDoes Creates and binds a {\@link FormGroup} instance to a DOM element.
@@ -65297,8 +65699,8 @@ NgModelGroup.decorators = [
  */
 NgModelGroup.ctorParameters = function () { return [
     { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
 ]; };
 NgModelGroup.propDecorators = {
     'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModelGroup',] },],
@@ -65312,7 +65714,7 @@ NgModelGroup.propDecorators = {
  */
 var formControlBinding = {
     provide: NgControl,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return NgModel; })
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NgModel; })
 };
 /**
  * `ngModel` forces an additional change detection run when its inputs change:
@@ -65578,9 +65980,9 @@ NgModel.decorators = [
  */
 NgModel.ctorParameters = function () { return [
     { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
 ]; };
 NgModel.propDecorators = {
     'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
@@ -65646,7 +66048,7 @@ var ReactiveErrors = (function () {
  */
 var formControlBinding$1 = {
     provide: NgControl,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return FormControlDirective; })
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormControlDirective; })
 };
 /**
  * \@whatItDoes Syncs a standalone {\@link FormControl} instance to a form control element.
@@ -65789,9 +66191,9 @@ FormControlDirective.decorators = [
  * @nocollapse
  */
 FormControlDirective.ctorParameters = function () { return [
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
 ]; };
 FormControlDirective.propDecorators = {
     'form': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formControl',] },],
@@ -65808,7 +66210,7 @@ FormControlDirective.propDecorators = {
  */
 var formDirectiveProvider$1 = {
     provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return FormGroupDirective; })
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormGroupDirective; })
 };
 /**
  * \@whatItDoes Binds an existing {\@link FormGroup} to a DOM element.
@@ -66053,8 +66455,8 @@ FormGroupDirective.decorators = [
  * @nocollapse
  */
 FormGroupDirective.ctorParameters = function () { return [
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
 ]; };
 FormGroupDirective.propDecorators = {
     'form': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formGroup',] },],
@@ -66081,7 +66483,7 @@ function remove(list, el) {
  */
 var formGroupNameProvider = {
     provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return FormGroupName; })
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormGroupName; })
 };
 /**
  * \@whatItDoes Syncs a nested {\@link FormGroup} to a DOM element.
@@ -66160,15 +66562,15 @@ FormGroupName.decorators = [
  */
 FormGroupName.ctorParameters = function () { return [
     { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
 ]; };
 FormGroupName.propDecorators = {
     'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formGroupName',] },],
 };
 var formArrayNameProvider = {
     provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return FormArrayName; })
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormArrayName; })
 };
 /**
  * \@whatItDoes Syncs a nested {\@link FormArray} to a DOM element.
@@ -66308,8 +66710,8 @@ FormArrayName.decorators = [
  */
 FormArrayName.ctorParameters = function () { return [
     { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
 ]; };
 FormArrayName.propDecorators = {
     'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formArrayName',] },],
@@ -66331,7 +66733,7 @@ function _hasInvalidParent(parent) {
  */
 var controlNameBinding = {
     provide: NgControl,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return FormControlName; })
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormControlName; })
 };
 /**
  * \@whatItDoes Syncs a {\@link FormControl} in an existing {\@link FormGroup} to a form control
@@ -66515,9 +66917,9 @@ FormControlName.decorators = [
  */
 FormControlName.ctorParameters = function () { return [
     { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
 ]; };
 FormControlName.propDecorators = {
     'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formControlName',] },],
@@ -66534,12 +66936,12 @@ FormControlName.propDecorators = {
  */
 var REQUIRED_VALIDATOR = {
     provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return RequiredValidator; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return RequiredValidator; }),
     multi: true
 };
 var CHECKBOX_REQUIRED_VALIDATOR = {
     provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return CheckboxRequiredValidator; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return CheckboxRequiredValidator; }),
     multi: true
 };
 /**
@@ -66644,7 +67046,7 @@ CheckboxRequiredValidator.ctorParameters = function () { return []; };
  */
 var EMAIL_VALIDATOR = {
     provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return EmailValidator; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return EmailValidator; }),
     multi: true
 };
 /**
@@ -66713,7 +67115,7 @@ EmailValidator.propDecorators = {
  */
 var MIN_LENGTH_VALIDATOR = {
     provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return MinLengthValidator; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return MinLengthValidator; }),
     multi: true
 };
 /**
@@ -66779,7 +67181,7 @@ MinLengthValidator.propDecorators = {
  */
 var MAX_LENGTH_VALIDATOR = {
     provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return MaxLengthValidator; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return MaxLengthValidator; }),
     multi: true
 };
 /**
@@ -66839,7 +67241,7 @@ MaxLengthValidator.propDecorators = {
 };
 var PATTERN_VALIDATOR = {
     provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* forwardRef */])(function () { return PatternValidator; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return PatternValidator; }),
     multi: true
 };
 /**
@@ -67198,99 +67600,87 @@ ReactiveFormsModule.ctorParameters = function () { return []; };
 
 
 /***/ }),
-/* 176 */
+/* 182 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bestellung_bestellung_service__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__(71);
+
+/**
+ * Angular 2 decorators and services
+ */
 
 
-
-//import { Router } from '@angular/router';
+/**
+ * App Component
+ * Top Level Component
+ */
 var AppComponent = (function () {
-    function AppComponent(
-        //  private router: Router,
-        bestellungService) {
-        this.bestellungService = bestellungService;
+    // public url = 'https://twitter.com/AngularClass';
+    function AppComponent(appState) {
+        this.appState = appState;
+        this.angularclassLogo = 'assets/img/angularclass-avatar.png';
+        this.name = 'Schöner, mit GOD Döner';
     }
-    AppComponent.prototype.getBestellungen = function () {
-        var _this = this;
-        // this.bestellungen = this.bestellungService.getBestellungen();
-        this.bestellungService.getBestellungen().then(function (bestellungen) { return _this.bestellungen = bestellungen; });
-    };
     AppComponent.prototype.ngOnInit = function () {
-        this.getBestellungen();
-    };
-    AppComponent.prototype.onSelect = function (bestellung) {
-        this.selectedBestellung = bestellung;
-    };
-    AppComponent.prototype.gotoDetail = function () {
-        //this.router.navigate(['/detail', this.selectedBestellung.id]);
-    };
-    AppComponent.prototype.add = function (name) {
-        var _this = this;
-        name = name.trim();
-        if (!name) {
-            return;
-        }
-        this.bestellungService.create(name)
-            .then(function (bestellung) {
-            _this.bestellungen.push(bestellung);
-            _this.selectedBestellung = null;
-        });
-    };
-    AppComponent.prototype.delete = function (bestellung) {
-        var _this = this;
-        this.bestellungService
-            .delete(bestellung.id)
-            .then(function () {
-            _this.bestellungen = _this.bestellungen.filter(function (h) { return h !== bestellung; });
-            if (_this.selectedBestellung === bestellung) {
-                _this.selectedBestellung = null;
-            }
-        });
+        console.log('Initial App State', this.appState.state);
     };
     return AppComponent;
 }());
 AppComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_13" /* Component */])({
-        selector: 'doener-app',
-        template: "\n\n    <my-bestellung> </my-bestellung>\n\n  ",
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_10" /* Component */])({
+        selector: 'app',
+        encapsulation: __WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* ViewEncapsulation */].None,
+        styles: [
+            __webpack_require__(385)
+        ],
+        template: "\n    <nav>\n      <a [routerLink]=\" ['./'] \"\n        routerLinkActive=\"active\" [routerLinkActiveOptions]= \"{exact: true}\">\n        Index\n      </a>\n      \n      <a [routerLink]=\" ['./bestellvorgang'] \"\n        routerLinkActive=\"active\" [routerLinkActiveOptions]= \"{exact: true}\">\n        D\u00F6ner Bestellen\n      </a>\n       <a [routerLink]=\" ['./bestellungen'] \"\n        routerLinkActive=\"active\" [routerLinkActiveOptions]= \"{exact: true}\">\n        Bestellungen\n      </a>\n      <a [routerLink]=\" ['./speisekarte'] \"\n        routerLinkActive=\"active\" [routerLinkActiveOptions]= \"{exact: true}\">\n        Speisekarte\n      </a>\n    </nav>\n\n    <main>\n      <router-outlet></router-outlet>\n    </main>\n\n\n    <footer>\n      <span>GOD D\u00F6ner - Sch\u00F6ner mit D\u00F6ner!</span>\n      \n    </footer>\n  "
     }),
-    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__bestellung_bestellung_service__["a" /* BestellungService */]])
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppState */]])
 ], AppComponent);
 
+/**
+ * Please review the https://github.com/AngularClass/angular2-examples/ repo for
+ * more angular app examples that you may copy/paste
+ * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
+ * For help or questions please contact us at @AngularClass on twitter
+ * or our chat on Slack at https://AngularClass.com/slack-join
+ */
 
 
 /***/ }),
-/* 177 */
+/* 183 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angularclass_hmr__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angularclass_hmr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__angularclass_hmr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_router__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__bestellung_bestellung_component__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__bestellung_bestellung_service__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__environment__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routes__ = __webpack_require__(179);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_resolver__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_service__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styles_styles_scss__ = __webpack_require__(362);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__styles_styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__styles_styles_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__styles_headings_css__ = __webpack_require__(363);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__styles_headings_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__styles_headings_css__);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bestellungService__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angularclass_hmr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__environment__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_routes__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_resolver__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__home__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__bestellvorgang__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__no_content__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__home_x_large__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__styles_styles_scss__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__styles_styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__styles_styles_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__styles_headings_css__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__styles_headings_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18__styles_headings_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__bestell_uebersicht__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__speisekarte_speisekarte_component__ = __webpack_require__(107);
 
 
 
@@ -67310,9 +67700,15 @@ AppComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 
 
 
+
+
+
+
+
+
 // Application wide providers
-var APP_PROVIDERS = __WEBPACK_IMPORTED_MODULE_12__app_resolver__["a" /* APP_RESOLVER_PROVIDERS */].concat([
-    __WEBPACK_IMPORTED_MODULE_13__app_service__["a" /* AppState */]
+var APP_PROVIDERS = __WEBPACK_IMPORTED_MODULE_11__app_resolver__["a" /* APP_RESOLVER_PROVIDERS */].concat([
+    __WEBPACK_IMPORTED_MODULE_12__app_service__["a" /* AppState */]
 ]);
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -67352,15 +67748,15 @@ var AppModule = (function () {
         /**
          * Recreate root elements
          */
-        store.disposeOldHosts = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__angularclass_hmr__["createNewHosts"])(cmpLocation);
+        store.disposeOldHosts = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__["createNewHosts"])(cmpLocation);
         /**
          * Save input values
          */
-        store.restoreInputValues = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__angularclass_hmr__["createInputTransfer"])();
+        store.restoreInputValues = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__["createInputTransfer"])();
         /**
          * Remove styles
          */
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__angularclass_hmr__["removeNgStyles"])();
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__["removeNgStyles"])();
     };
     AppModule.prototype.hmrAfterDestroy = function (store) {
         /**
@@ -67372,48 +67768,53 @@ var AppModule = (function () {
     return AppModule;
 }());
 AppModule = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__angular_core__["y" /* NgModule */])({
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]],
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__angular_core__["y" /* NgModule */])({
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__bestellung_bestellung_component__["a" /* BestellungComponent */]
+            __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__bestellvorgang__["a" /* BestellvorgangComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__home__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__no_content__["a" /* NoContentComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__home_x_large__["a" /* XLargeDirective */],
+            __WEBPACK_IMPORTED_MODULE_19__bestell_uebersicht__["a" /* BestellUebersichtComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__speisekarte_speisekarte_component__["a" /* SpeisekarteComponent */]
         ],
         /**
          * Import Angular's modules.
          */
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["b" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_6__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_10__app_routes__["a" /* ROUTES */], { useHash: true, preloadingStrategy: __WEBPACK_IMPORTED_MODULE_6__angular_router__["b" /* PreloadAllModules */] })
+            __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_9__app_routes__["a" /* ROUTES */], { useHash: true, preloadingStrategy: __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* PreloadAllModules */] })
         ],
         /**
          * Expose our Services and Providers into Angular's dependency injection.
          */
         providers: [
-            __WEBPACK_IMPORTED_MODULE_9__environment__["b" /* ENV_PROVIDERS */],
-            APP_PROVIDERS,
-            __WEBPACK_IMPORTED_MODULE_8__bestellung_bestellung_service__["a" /* BestellungService */]
+            __WEBPACK_IMPORTED_MODULE_1__bestellungService__["a" /* BestellungService */],
+            __WEBPACK_IMPORTED_MODULE_8__environment__["b" /* ENV_PROVIDERS */],
+            APP_PROVIDERS
         ]
     }),
-    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_core__["a" /* ApplicationRef */],
-        __WEBPACK_IMPORTED_MODULE_13__app_service__["a" /* AppState */]])
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_core__["a" /* ApplicationRef */],
+        __WEBPACK_IMPORTED_MODULE_12__app_service__["a" /* AppState */]])
 ], AppModule);
 
 
 
 /***/ }),
-/* 178 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export DataResolver */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_RESOLVER_PROVIDERS; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
 
 
@@ -67440,87 +67841,343 @@ var APP_RESOLVER_PROVIDERS = [
 
 
 /***/ }),
-/* 179 */
+/* 185 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ROUTES; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bestellung_bestellung_component__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__speisekarte_speisekarte_component__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bestell_uebersicht_bestell_uebersicht_component__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__bestellvorgang__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__no_content__ = __webpack_require__(106);
+
+
+
+
 
 var ROUTES = [
-    {
-        path: '', component: __WEBPACK_IMPORTED_MODULE_0__bestellung_bestellung_component__["a" /* BestellungComponent */]
-    },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomeComponent */] },
+    // { path: 'home', component: HomeComponent },
+    { path: 'bestellvorgang', component: __WEBPACK_IMPORTED_MODULE_3__bestellvorgang__["a" /* BestellvorgangComponent */] },
+    // { path: 'detail', loadChildren: './+detail#DetailModule' },
+    // { path: 'barrel', loadChildren: './+barrel#BarrelModule' },
+    { path: 'bestellungen', component: __WEBPACK_IMPORTED_MODULE_1__bestell_uebersicht_bestell_uebersicht_component__["a" /* BestellUebersichtComponent */] },
+    { path: 'speisekarte', component: __WEBPACK_IMPORTED_MODULE_0__speisekarte_speisekarte_component__["a" /* SpeisekarteComponent */] },
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_4__no_content__["a" /* NoContentComponent */] },
 ];
 
 
 /***/ }),
-/* 180 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppState; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(11);
-
-
-var AppState = (function () {
-    function AppState() {
-        this._state = {};
-    }
-    Object.defineProperty(AppState.prototype, "state", {
-        /**
-         * Already return a clone of the current state.
-         */
-        get: function () {
-            return this._state = this._clone(this._state);
-        },
-        /**
-         * Never allow mutation
-         */
-        set: function (value) {
-            throw new Error('do not mutate the `.state` directly');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    AppState.prototype.get = function (prop) {
-        /**
-         * Use our state getter for the clone.
-         */
-        var state = this.state;
-        return state.hasOwnProperty(prop) ? state[prop] : state;
-    };
-    AppState.prototype.set = function (prop, value) {
-        /**
-         * Internally mutate our state.
-         */
-        return this._state[prop] = value;
-    };
-    AppState.prototype._clone = function (object) {
-        /**
-         * Simple object clone.
-         */
-        return JSON.parse(JSON.stringify(object));
-    };
-    return AppState;
-}());
-AppState = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["d" /* Injectable */])()
-], AppState);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bestell_uebersicht_component__ = __webpack_require__(103);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__bestell_uebersicht_component__["a"]; });
 
 
 
 /***/ }),
-/* 181 */
+/* 187 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Bestellung; });
+var Bestellung = (function () {
+    function Bestellung() {
+    }
+    return Bestellung;
+}());
+
+
+
+/***/ }),
+/* 188 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestellvorgangComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_process__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_process___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_process__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bestellungService__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__bestellung__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(70);
+
+
+
+
+
+
+var BestellvorgangComponent = (function () {
+    function BestellvorgangComponent(route, router, bestellungService) {
+        this.route = route;
+        this.router = router;
+        this.bestellungService = bestellungService;
+        this.doenerLogo = 'assets/img/doener.png';
+        this.bestellung = new __WEBPACK_IMPORTED_MODULE_3__bestellung__["a" /* Bestellung */]();
+    }
+    BestellvorgangComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        console.log('env: ', __WEBPACK_IMPORTED_MODULE_1_process__["env"]);
+        this.route
+            .data
+            .subscribe(function (data) {
+            /**
+             * Your resolved data from route.
+             */
+            _this.localState = data.yourData;
+        });
+        console.log('hello `About` component');
+        /**
+         * static data that is bundled
+         * var mockData = require('assets/mock-data/mock-data.json');
+         * console.log('mockData', mockData);
+         * if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
+         */
+        this.asyncDataWithWebpack();
+    };
+    BestellvorgangComponent.prototype.saveBestellung = function (bestellung) {
+        var _this = this;
+        console.log('Save Bestellung: ', bestellung);
+        if (bestellung) {
+            this.bestellungService.create(bestellung).then(function () {
+                _this.gotoUebersicht();
+            });
+        }
+    };
+    BestellvorgangComponent.prototype.asyncDataWithWebpack = function () {
+        var _this = this;
+        /**
+         * you can also async load mock data with 'es6-promise-loader'
+         * you would do this if you don't want the mock-data bundled
+         * remember that 'es6-promise-loader' is a promise
+         */
+        setTimeout(function () {
+            __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 390))
+                .then(function (json) {
+                console.log('async mockData', json);
+                _this.localState = json;
+            });
+        });
+    };
+    BestellvorgangComponent.prototype.gotoUebersicht = function () {
+        this.router.navigate(['/bestellungen']);
+    };
+    return BestellvorgangComponent;
+}());
+BestellvorgangComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_10" /* Component */])({
+        selector: 'bestellvorgang',
+        template: __webpack_require__(349),
+        styles: [__webpack_require__(387)]
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_router__["d" /* ActivatedRoute */],
+        __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* Router */],
+        __WEBPACK_IMPORTED_MODULE_2__bestellungService__["a" /* BestellungService */]])
+], BestellvorgangComponent);
+
+
+
+/***/ }),
+/* 189 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__title__ = __webpack_require__(190);
+
+
+
+
+var HomeComponent = (function () {
+    /**
+     * TypeScript public modifiers
+     */
+    function HomeComponent(appState, title) {
+        this.appState = appState;
+        this.title = title;
+        /**
+         * Set our default values
+         */
+        this.localState = { value: '' };
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+        console.log('hello `Home` component');
+        /**
+         * this.title.getData().subscribe(data => this.data = data);
+         */
+    };
+    HomeComponent.prototype.submitState = function (value) {
+        console.log('submitState', value);
+        this.appState.set('value', value);
+        this.localState.value = '';
+    };
+    return HomeComponent;
+}());
+HomeComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_10" /* Component */])({
+        /**
+         * The selector is what angular internally uses
+         * for `document.querySelectorAll(selector)` in our index.html
+         * where, in this case, selector is the string 'home'.
+         */
+        selector: 'home',
+        /**
+         * We need to tell Angular's Dependency Injection which providers are in our app.
+         */
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_3__title__["a" /* Title */]
+        ],
+        /**
+         * Our list of styles in our component. We may add more to compose many styles together.
+         */
+        styles: [__webpack_require__(388)],
+        /**
+         * Every Angular template is first compiled by the browser before Angular runs it's compiler.
+         */
+        template: __webpack_require__(350)
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppState */],
+        __WEBPACK_IMPORTED_MODULE_3__title__["a" /* Title */]])
+], HomeComponent);
+
+
+
+/***/ }),
+/* 190 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__title_service__ = __webpack_require__(191);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__title_service__["a"]; });
+
+
+
+/***/ }),
+/* 191 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Title; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(69);
+
+
+
+var Title = (function () {
+    function Title(http) {
+        this.http = http;
+        this.value = 'GOD Döner';
+    }
+    Title.prototype.getData = function () {
+        console.log('Title#getData(): Get Data');
+        /**
+         * return this.http.get('/assets/data.json')
+         * .map(res => res.json());
+         */
+        return {
+            value: 'AngularClass'
+        };
+    };
+    return Title;
+}());
+Title = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["d" /* Injectable */])(),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */]])
+], Title);
+
+
+
+/***/ }),
+/* 192 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__x_large_directive__ = __webpack_require__(193);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__x_large_directive__["a"]; });
+
+
+
+/***/ }),
+/* 193 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return XLargeDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+
+
+/**
+ * Directive
+ * XLarge is a simple directive to show how one is made
+ */
+var XLargeDirective = (function () {
+    function XLargeDirective(element, renderer) {
+        this.element = element;
+        this.renderer = renderer;
+        /**
+         * Simple DOM manipulation to set font size to x-large
+         * `nativeElement` is the direct reference to the DOM element
+         * element.nativeElement.style.fontSize = 'x-large';
+         *
+         * for server/webworker support use the renderer
+         */
+        renderer.setElementStyle(element.nativeElement, 'fontSize', 'x-large');
+    }
+    return XLargeDirective;
+}());
+XLargeDirective = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* Directive */])({
+        selector: '[x-large]' // using [ ] means selecting attributes
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* ElementRef */],
+        __WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* Renderer */]])
+], XLargeDirective);
+
+
+
+/***/ }),
+/* 194 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NoContentComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+
+
+var NoContentComponent = (function () {
+    function NoContentComponent() {
+    }
+    return NoContentComponent;
+}());
+NoContentComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_10" /* Component */])({
+        selector: 'no-content',
+        template: "\n    <div>\n      <h1>404: page missing</h1>\n    </div>\n  "
+    })
+], NoContentComponent);
+
+
+
+/***/ }),
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["main"] = main;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_environment__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_environment__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app__ = __webpack_require__(159);
 /**
  * Angular bootstrapping
  */
@@ -67589,8 +68246,8 @@ function _domReadyHandler() {
 
 
 /***/ }),
-/* 182 */,
-/* 183 */
+/* 196 */,
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67661,7 +68318,7 @@ exports.createInputTransfer = createInputTransfer;
 //# sourceMappingURL=helpers.js.map
 
 /***/ }),
-/* 184 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67670,24 +68327,10 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 // Hot Module Replacement
-__export(__webpack_require__(183));
+__export(__webpack_require__(197));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
 /* 199 */,
 /* 200 */,
 /* 201 */,
@@ -67816,10 +68459,24 @@ __export(__webpack_require__(183));
 /* 324 */,
 /* 325 */,
 /* 326 */,
-/* 327 */
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(90)(undefined);
+exports = module.exports = __webpack_require__(41)(undefined);
 // imports
 
 
@@ -67830,24 +68487,80 @@ exports.push([module.i, "/* this file will be extracted to main dist folder and 
 
 
 /***/ }),
-/* 328 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(90)(undefined);
+exports = module.exports = __webpack_require__(41)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, ".selected {\n      background-color: #CFD8DC !important;\n      color: white;\n    }\n    .bestellungen {\n      margin: 0 0 2em 0;\n      list-style-type: none;\n      padding: 0;\n      width: 70em;\n    }\n    .bestellungen li {\n      cursor: pointer;\n      position: relative;\n      left: 0;\n      background-color: #EEE;\n      margin: .5em;\n      padding: .3em 0;\n      height: 1.6em;\n      border-radius: 4px;\n    }\n    .bestellungen li.selected:hover {\n      background-color: #BBD8DC !important;\n      color: white;\n    }\n    .bestellungen li:hover {\n      color: #607D8B;\n      background-color: #DDD;\n      left: .1em;\n    }\n    .bestellungen .text {\n      position: relative;\n      top: -3px;\n    }\n    .bestellungen .badge {\n      display: inline-block;\n      font-size: small;\n      color: white;\n      padding: 0.8em 0.7em 0 0.7em;\n      background-color: #607D8B;\n      line-height: 1em;\n      position: relative;\n      left: -1px;\n      top: -4px;\n      height: 1.8em;\n      margin-right: .8em;\n      border-radius: 4px 0 0 4px;\n    }\n    button.delete {\n  float:right;\n  margin-top: 2px;\n  margin-right: .8em;\n  background-color: gray !important;\n  color:white;\n}", ""]);
+exports.push([module.i, "html, body{\n  height: 100%;\n  font-family: Arial, Helvetica, sans-serif\n}\n\na.active {\n  background-color: gray;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 329 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(90)(undefined);
+exports = module.exports = __webpack_require__(41)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".selected {\n  background-color: #CFD8DC !important;\n  color: white;\n}\n\n.bestellungen {\n  margin: 0 0 2em 0;\n  list-style-type: none;\n  padding: 0;\n  width: 90em;\n}\n\n.bestellungen li {\n  cursor: pointer;\n  position: relative;\n  left: 0;\n  background-color: #EEE;\n  margin: .5em;\n  padding: .3em 0;\n  height: 1.6em;\n  border-radius: 4px;\n}\n\n.bestellungen li.selected:hover {\n  background-color: #BBD8DC !important;\n  color: white;\n}\n\n.bestellungen li:hover {\n  color: #607D8B;\n  background-color: #DDD;\n  left: .1em;\n}\n\n.bestellungen .text {\n  position: relative;\n  top: -3px;\n}\n\n.bestellungen .badge {\n  display: inline-block;\n  font-size: small;\n  color: white;\n  padding: 0.4em 0.7em 0 0.7em;\n  background-color: #607D8B;\n  line-height: 1em;\n  position: relative;\n  left: -1px;\n  top: -4px;\n  height: 1.8em;\n  margin-right: .8em;\n  border-radius: 4px 0 0 4px;\n}\n\n.bestellungen .price {\n  display: inline-block;\n  font-size: small;\n  color: red;\n  padding: 0.4em 0.8em 0 0.8em;\n  background-color: #607D8B;\n  line-height: 1em;\n  position: relative;\n  height: 1.8em;\n  margin-right: .8em;\n  border-radius: 4px 0 0 4px;\n}\n\nbutton.delete {\n  float: right;\n  margin-top: 0px;\n  margin-right: 0;\n  background-color: gray !important;\n  color: white;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(41)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\t/*!\n\t * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)\n\t * Copyright 2011-2017 The Bootstrap Authors\n\t * Copyright 2011-2017 Twitter, Inc.\n\t * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n\t */\n\n\th1,\n\th2,\n\th3,\n\th4,\n\th5,\n\th6,\n\t.h1,\n\t.h2,\n\t.h3,\n\t.h4,\n\t.h5,\n\t.h6 {\n\t  margin-bottom: 0.5rem;\n\t  font-family: inherit;\n\t  font-weight: 500;\n\t  line-height: 1.1;\n\t  color: inherit;\n\t}\n\n\th1,\n\t.h1 {\n\t  font-size: 2.5rem;\n\t}\n\n\th2,\n\t.h2 {\n\t  font-size: 2rem;\n\t}\n\n\th3,\n\t.h3 {\n\t  font-size: 1.75rem;\n\t}\n\n\th4,\n\t.h4 {\n\t  font-size: 1.5rem;\n\t}\n\n\th5,\n\t.h5 {\n\t  font-size: 1.25rem;\n\t}\n\n\th6,\n\t.h6 {\n\t  font-size: 1rem;\n\t}\n\n\t.lead {\n\t  font-size: 1.25rem;\n\t  font-weight: 300;\n\t}\n\n\t.display-1 {\n\t  font-size: 6rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\t.display-2 {\n\t  font-size: 5.5rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\t.display-3 {\n\t  font-size: 4.5rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\t.display-4 {\n\t  font-size: 3.5rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\thr {\n\t  margin-top: 1rem;\n\t  margin-bottom: 1rem;\n\t  border: 0;\n\t  border-top: 1px solid rgba(0, 0, 0, 0.1);\n\t}\n\n\tsmall,\n\t.small {\n\t  font-size: 80%;\n\t  font-weight: normal;\n\t}\n\n\tmark,\n\t.mark {\n\t  padding: 0.2em;\n\t  background-color: #fcf8e3;\n\t}\n\n\t.list-unstyled {\n\t  padding-left: 0;\n\t  list-style: none;\n\t}\n\n\t.list-inline {\n\t  padding-left: 0;\n\t  list-style: none;\n\t}\n\n\t.list-inline-item {\n\t  display: inline-block;\n\t}\n\n\t.list-inline-item:not(:last-child) {\n\t  margin-right: 5px;\n\t}\n\n\t.initialism {\n\t  font-size: 90%;\n\t  text-transform: uppercase;\n\t}\n\n\t.blockquote {\n\t  padding: 0.5rem 1rem;\n\t  margin-bottom: 1rem;\n\t  font-size: 1.25rem;\n\t  border-left: 0.25rem solid #eceeef;\n\t}\n\n\t.blockquote-footer {\n\t  display: block;\n\t  font-size: 80%;\n\t  color: #636c72;\n\t}\n\n\t.blockquote-footer::before {\n\t  content: \"\\2014   \\A0\";\n\t}\n\n\t.blockquote-reverse {\n\t  padding-right: 1rem;\n\t  padding-left: 0;\n\t  text-align: right;\n\t  border-right: 0.25rem solid #eceeef;\n\t  border-left: 0;\n\t}\n\n\t.blockquote-reverse .blockquote-footer::before {\n\t  content: \"\";\n\t}\n\n\t.blockquote-reverse .blockquote-footer::after {\n\t  content: \"\\A0   \\2014\";\n\t}\n\n\t.img-fluid {\n\t  max-width: 100%;\n\t  height: auto;\n\t}\n\n\t.img-thumbnail {\n\t  padding: 0.25rem;\n\t  background-color: #fff;\n\t  border: 1px solid #ddd;\n\t  border-radius: 0.25rem;\n\t  transition: all 0.2s ease-in-out;\n\t  max-width: 100%;\n\t  height: auto;\n\t}\n\n\t.figure {\n\t  display: inline-block;\n\t}\n\n\t.figure-img {\n\t  margin-bottom: 0.5rem;\n\t  line-height: 1;\n\t}\n\n\t.figure-caption {\n\t  font-size: 90%;\n\t  color: #636c72;\n\t}\n\n\tcode,\n\tkbd,\n\tpre,\n\tsamp {\n\t  font-family: Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace;\n\t}\n\n\tcode {\n\t  padding: 0.2rem 0.4rem;\n\t  font-size: 90%;\n\t  color: #bd4147;\n\t  background-color: #f7f7f9;\n\t  border-radius: 0.25rem;\n\t}\n\n\ta>code {\n\t  padding: 0;\n\t  color: inherit;\n\t  background-color: inherit;\n\t}\n\n\tkbd {\n\t  padding: 0.2rem 0.4rem;\n\t  font-size: 90%;\n\t  color: #fff;\n\t  background-color: #292b2c;\n\t  border-radius: 0.2rem;\n\t}\n\n\tkbd kbd {\n\t  padding: 0;\n\t  font-size: 100%;\n\t  font-weight: bold;\n\t}\n\n\tpre {\n\t  display: block;\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t  font-size: 90%;\n\t  color: #292b2c;\n\t}\n\n\tpre code {\n\t  padding: 0;\n\t  font-size: inherit;\n\t  color: inherit;\n\t  background-color: transparent;\n\t  border-radius: 0;\n\t}\n\n\t.pre-scrollable {\n\t  max-height: 340px;\n\t  overflow-y: scroll;\n\t}\n\n\t.container {\n\t  position: relative;\n\t  margin-left: auto;\n\t  margin-right: auto;\n\t  padding-right: 15px;\n\t  padding-left: 15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .container {\n\t    width: 540px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .container {\n\t    width: 720px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .container {\n\t    width: 960px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .container {\n\t    width: 1140px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t.container-fluid {\n\t  position: relative;\n\t  margin-left: auto;\n\t  margin-right: auto;\n\t  padding-right: 15px;\n\t  padding-left: 15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t.row {\n\t  display: flex;\n\t  flex-wrap: wrap;\n\t  margin-right: -15px;\n\t  margin-left: -15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t.no-gutters {\n\t  margin-right: 0;\n\t  margin-left: 0;\n\t}\n\n\t.no-gutters>.col,\n\t.no-gutters>[class*=\"col-\"] {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.col-1,\n\t.col-2,\n\t.col-3,\n\t.col-4,\n\t.col-5,\n\t.col-6,\n\t.col-7,\n\t.col-8,\n\t.col-9,\n\t.col-10,\n\t.col-11,\n\t.col-12,\n\t.col,\n\t.col-sm-1,\n\t.col-sm-2,\n\t.col-sm-3,\n\t.col-sm-4,\n\t.col-sm-5,\n\t.col-sm-6,\n\t.col-sm-7,\n\t.col-sm-8,\n\t.col-sm-9,\n\t.col-sm-10,\n\t.col-sm-11,\n\t.col-sm-12,\n\t.col-sm,\n\t.col-md-1,\n\t.col-md-2,\n\t.col-md-3,\n\t.col-md-4,\n\t.col-md-5,\n\t.col-md-6,\n\t.col-md-7,\n\t.col-md-8,\n\t.col-md-9,\n\t.col-md-10,\n\t.col-md-11,\n\t.col-md-12,\n\t.col-md,\n\t.col-lg-1,\n\t.col-lg-2,\n\t.col-lg-3,\n\t.col-lg-4,\n\t.col-lg-5,\n\t.col-lg-6,\n\t.col-lg-7,\n\t.col-lg-8,\n\t.col-lg-9,\n\t.col-lg-10,\n\t.col-lg-11,\n\t.col-lg-12,\n\t.col-lg,\n\t.col-xl-1,\n\t.col-xl-2,\n\t.col-xl-3,\n\t.col-xl-4,\n\t.col-xl-5,\n\t.col-xl-6,\n\t.col-xl-7,\n\t.col-xl-8,\n\t.col-xl-9,\n\t.col-xl-10,\n\t.col-xl-11,\n\t.col-xl-12,\n\t.col-xl {\n\t  position: relative;\n\t  width: 100%;\n\t  min-height: 1px;\n\t  padding-right: 15px;\n\t  padding-left: 15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t.col {\n\t  flex-basis: 0;\n\t  flex-grow: 1;\n\t  max-width: 100%;\n\t}\n\n\t.col-auto {\n\t  flex: 0 0 auto;\n\t  width: auto;\n\t}\n\n\t.col-1 {\n\t  flex: 0 0 8.33333%;\n\t  max-width: 8.33333%;\n\t}\n\n\t.col-2 {\n\t  flex: 0 0 16.66667%;\n\t  max-width: 16.66667%;\n\t}\n\n\t.col-3 {\n\t  flex: 0 0 25%;\n\t  max-width: 25%;\n\t}\n\n\t.col-4 {\n\t  flex: 0 0 33.33333%;\n\t  max-width: 33.33333%;\n\t}\n\n\t.col-5 {\n\t  flex: 0 0 41.66667%;\n\t  max-width: 41.66667%;\n\t}\n\n\t.col-6 {\n\t  flex: 0 0 50%;\n\t  max-width: 50%;\n\t}\n\n\t.col-7 {\n\t  flex: 0 0 58.33333%;\n\t  max-width: 58.33333%;\n\t}\n\n\t.col-8 {\n\t  flex: 0 0 66.66667%;\n\t  max-width: 66.66667%;\n\t}\n\n\t.col-9 {\n\t  flex: 0 0 75%;\n\t  max-width: 75%;\n\t}\n\n\t.col-10 {\n\t  flex: 0 0 83.33333%;\n\t  max-width: 83.33333%;\n\t}\n\n\t.col-11 {\n\t  flex: 0 0 91.66667%;\n\t  max-width: 91.66667%;\n\t}\n\n\t.col-12 {\n\t  flex: 0 0 100%;\n\t  max-width: 100%;\n\t}\n\n\t.pull-0 {\n\t  right: auto;\n\t}\n\n\t.pull-1 {\n\t  right: 8.33333%;\n\t}\n\n\t.pull-2 {\n\t  right: 16.66667%;\n\t}\n\n\t.pull-3 {\n\t  right: 25%;\n\t}\n\n\t.pull-4 {\n\t  right: 33.33333%;\n\t}\n\n\t.pull-5 {\n\t  right: 41.66667%;\n\t}\n\n\t.pull-6 {\n\t  right: 50%;\n\t}\n\n\t.pull-7 {\n\t  right: 58.33333%;\n\t}\n\n\t.pull-8 {\n\t  right: 66.66667%;\n\t}\n\n\t.pull-9 {\n\t  right: 75%;\n\t}\n\n\t.pull-10 {\n\t  right: 83.33333%;\n\t}\n\n\t.pull-11 {\n\t  right: 91.66667%;\n\t}\n\n\t.pull-12 {\n\t  right: 100%;\n\t}\n\n\t.push-0 {\n\t  left: auto;\n\t}\n\n\t.push-1 {\n\t  left: 8.33333%;\n\t}\n\n\t.push-2 {\n\t  left: 16.66667%;\n\t}\n\n\t.push-3 {\n\t  left: 25%;\n\t}\n\n\t.push-4 {\n\t  left: 33.33333%;\n\t}\n\n\t.push-5 {\n\t  left: 41.66667%;\n\t}\n\n\t.push-6 {\n\t  left: 50%;\n\t}\n\n\t.push-7 {\n\t  left: 58.33333%;\n\t}\n\n\t.push-8 {\n\t  left: 66.66667%;\n\t}\n\n\t.push-9 {\n\t  left: 75%;\n\t}\n\n\t.push-10 {\n\t  left: 83.33333%;\n\t}\n\n\t.push-11 {\n\t  left: 91.66667%;\n\t}\n\n\t.push-12 {\n\t  left: 100%;\n\t}\n\n\t.offset-1 {\n\t  margin-left: 8.33333%;\n\t}\n\n\t.offset-2 {\n\t  margin-left: 16.66667%;\n\t}\n\n\t.offset-3 {\n\t  margin-left: 25%;\n\t}\n\n\t.offset-4 {\n\t  margin-left: 33.33333%;\n\t}\n\n\t.offset-5 {\n\t  margin-left: 41.66667%;\n\t}\n\n\t.offset-6 {\n\t  margin-left: 50%;\n\t}\n\n\t.offset-7 {\n\t  margin-left: 58.33333%;\n\t}\n\n\t.offset-8 {\n\t  margin-left: 66.66667%;\n\t}\n\n\t.offset-9 {\n\t  margin-left: 75%;\n\t}\n\n\t.offset-10 {\n\t  margin-left: 83.33333%;\n\t}\n\n\t.offset-11 {\n\t  margin-left: 91.66667%;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .col-sm {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-sm-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-sm-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-sm-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-sm-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-sm-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-sm-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-sm-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-sm-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-sm-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-sm-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-sm-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-sm-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-sm-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-sm-0 {\n\t    right: auto;\n\t  }\n\t  .pull-sm-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-sm-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-sm-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-sm-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-sm-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-sm-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-sm-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-sm-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-sm-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-sm-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-sm-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-sm-12 {\n\t    right: 100%;\n\t  }\n\t  .push-sm-0 {\n\t    left: auto;\n\t  }\n\t  .push-sm-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-sm-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-sm-3 {\n\t    left: 25%;\n\t  }\n\t  .push-sm-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-sm-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-sm-6 {\n\t    left: 50%;\n\t  }\n\t  .push-sm-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-sm-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-sm-9 {\n\t    left: 75%;\n\t  }\n\t  .push-sm-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-sm-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-sm-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-sm-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-sm-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-sm-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-sm-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-sm-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-sm-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-sm-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-sm-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-sm-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-sm-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-sm-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-sm-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .col-md {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-md-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-md-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-md-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-md-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-md-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-md-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-md-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-md-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-md-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-md-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-md-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-md-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-md-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-md-0 {\n\t    right: auto;\n\t  }\n\t  .pull-md-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-md-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-md-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-md-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-md-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-md-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-md-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-md-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-md-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-md-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-md-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-md-12 {\n\t    right: 100%;\n\t  }\n\t  .push-md-0 {\n\t    left: auto;\n\t  }\n\t  .push-md-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-md-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-md-3 {\n\t    left: 25%;\n\t  }\n\t  .push-md-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-md-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-md-6 {\n\t    left: 50%;\n\t  }\n\t  .push-md-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-md-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-md-9 {\n\t    left: 75%;\n\t  }\n\t  .push-md-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-md-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-md-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-md-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-md-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-md-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-md-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-md-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-md-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-md-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-md-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-md-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-md-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-md-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-md-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .col-lg {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-lg-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-lg-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-lg-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-lg-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-lg-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-lg-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-lg-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-lg-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-lg-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-lg-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-lg-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-lg-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-lg-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-lg-0 {\n\t    right: auto;\n\t  }\n\t  .pull-lg-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-lg-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-lg-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-lg-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-lg-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-lg-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-lg-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-lg-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-lg-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-lg-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-lg-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-lg-12 {\n\t    right: 100%;\n\t  }\n\t  .push-lg-0 {\n\t    left: auto;\n\t  }\n\t  .push-lg-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-lg-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-lg-3 {\n\t    left: 25%;\n\t  }\n\t  .push-lg-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-lg-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-lg-6 {\n\t    left: 50%;\n\t  }\n\t  .push-lg-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-lg-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-lg-9 {\n\t    left: 75%;\n\t  }\n\t  .push-lg-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-lg-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-lg-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-lg-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-lg-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-lg-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-lg-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-lg-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-lg-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-lg-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-lg-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-lg-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-lg-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-lg-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-lg-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .col-xl {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-xl-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-xl-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-xl-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-xl-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-xl-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-xl-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-xl-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-xl-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-xl-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-xl-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-xl-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-xl-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-xl-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-xl-0 {\n\t    right: auto;\n\t  }\n\t  .pull-xl-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-xl-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-xl-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-xl-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-xl-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-xl-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-xl-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-xl-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-xl-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-xl-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-xl-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-xl-12 {\n\t    right: 100%;\n\t  }\n\t  .push-xl-0 {\n\t    left: auto;\n\t  }\n\t  .push-xl-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-xl-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-xl-3 {\n\t    left: 25%;\n\t  }\n\t  .push-xl-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-xl-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-xl-6 {\n\t    left: 50%;\n\t  }\n\t  .push-xl-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-xl-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-xl-9 {\n\t    left: 75%;\n\t  }\n\t  .push-xl-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-xl-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-xl-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-xl-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-xl-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-xl-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-xl-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-xl-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-xl-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-xl-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-xl-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-xl-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-xl-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-xl-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-xl-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\t/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */\n\n\thtml {\n\t  font-family: sans-serif;\n\t  line-height: 1.15;\n\t  -ms-text-size-adjust: 100%;\n\t  -webkit-text-size-adjust: 100%;\n\t}\n\n\tbody {\n\t  margin: 0;\n\t}\n\n\tarticle,\n\taside,\n\tfooter,\n\theader,\n\tnav,\n\tsection {\n\t  display: block;\n\t}\n\n\th1 {\n\t  font-size: 2em;\n\t  margin: 0.67em 0;\n\t}\n\n\tfigcaption,\n\tfigure,\n\tmain {\n\t  display: block;\n\t}\n\n\tfigure {\n\t  margin: 1em 40px;\n\t}\n\n\thr {\n\t  box-sizing: content-box;\n\t  height: 0;\n\t  overflow: visible;\n\t}\n\n\tpre {\n\t  font-family: monospace, monospace;\n\t  font-size: 1em;\n\t}\n\n\ta {\n\t  background-color: transparent;\n\t  -webkit-text-decoration-skip: objects;\n\t}\n\n\ta:active,\n\ta:hover {\n\t  outline-width: 0;\n\t}\n\n\tabbr[title] {\n\t  border-bottom: none;\n\t  text-decoration: underline;\n\t  text-decoration: underline dotted;\n\t}\n\n\tb,\n\tstrong {\n\t  font-weight: inherit;\n\t}\n\n\tb,\n\tstrong {\n\t  font-weight: bolder;\n\t}\n\n\tcode,\n\tkbd,\n\tsamp {\n\t  font-family: monospace, monospace;\n\t  font-size: 1em;\n\t}\n\n\tdfn {\n\t  font-style: italic;\n\t}\n\n\tmark {\n\t  background-color: #ff0;\n\t  color: #000;\n\t}\n\n\tsmall {\n\t  font-size: 80%;\n\t}\n\n\tsub,\n\tsup {\n\t  font-size: 75%;\n\t  line-height: 0;\n\t  position: relative;\n\t  vertical-align: baseline;\n\t}\n\n\tsub {\n\t  bottom: -0.25em;\n\t}\n\n\tsup {\n\t  top: -0.5em;\n\t}\n\n\taudio,\n\tvideo {\n\t  display: inline-block;\n\t}\n\n\taudio:not([controls]) {\n\t  display: none;\n\t  height: 0;\n\t}\n\n\timg {\n\t  border-style: none;\n\t}\n\n\tsvg:not(:root) {\n\t  overflow: hidden;\n\t}\n\n\tbutton,\n\tinput,\n\toptgroup,\n\tselect,\n\ttextarea {\n\t  font-family: sans-serif;\n\t  font-size: 100%;\n\t  line-height: 1.15;\n\t  margin: 0;\n\t}\n\n\tbutton,\n\tinput {\n\t  overflow: visible;\n\t}\n\n\tbutton,\n\tselect {\n\t  text-transform: none;\n\t}\n\n\tbutton,\n\thtml [type=\"button\"],\n\t[type=\"reset\"],\n\t[type=\"submit\"] {\n\t  -webkit-appearance: button;\n\t}\n\n\tbutton::-moz-focus-inner,\n\t[type=\"button\"]::-moz-focus-inner,\n\t[type=\"reset\"]::-moz-focus-inner,\n\t[type=\"submit\"]::-moz-focus-inner {\n\t  border-style: none;\n\t  padding: 0;\n\t}\n\n\tbutton:-moz-focusring,\n\t[type=\"button\"]:-moz-focusring,\n\t[type=\"reset\"]:-moz-focusring,\n\t[type=\"submit\"]:-moz-focusring {\n\t  outline: 1px dotted ButtonText;\n\t}\n\n\tfieldset {\n\t  border: 1px solid #c0c0c0;\n\t  margin: 0 2px;\n\t  padding: 0.35em 0.625em 0.75em;\n\t}\n\n\tlegend {\n\t  box-sizing: border-box;\n\t  color: inherit;\n\t  display: table;\n\t  max-width: 100%;\n\t  padding: 0;\n\t  white-space: normal;\n\t}\n\n\tprogress {\n\t  display: inline-block;\n\t  vertical-align: baseline;\n\t}\n\n\ttextarea {\n\t  overflow: auto;\n\t}\n\n\t[type=\"checkbox\"],\n\t[type=\"radio\"] {\n\t  box-sizing: border-box;\n\t  padding: 0;\n\t}\n\n\t[type=\"number\"]::-webkit-inner-spin-button,\n\t[type=\"number\"]::-webkit-outer-spin-button {\n\t  height: auto;\n\t}\n\n\t[type=\"search\"] {\n\t  -webkit-appearance: textfield;\n\t  outline-offset: -2px;\n\t}\n\n\t[type=\"search\"]::-webkit-search-cancel-button,\n\t[type=\"search\"]::-webkit-search-decoration {\n\t  -webkit-appearance: none;\n\t}\n\n\t::-webkit-file-upload-button {\n\t  -webkit-appearance: button;\n\t  font: inherit;\n\t}\n\n\tdetails,\n\tmenu {\n\t  display: block;\n\t}\n\n\tsummary {\n\t  display: list-item;\n\t}\n\n\tcanvas {\n\t  display: inline-block;\n\t}\n\n\ttemplate {\n\t  display: none;\n\t}\n\n\t[hidden] {\n\t  display: none;\n\t}\n\n\t@media print {\n\t  *,\n\t  *::before,\n\t  *::after,\n\t  p::first-letter,\n\t  div::first-letter,\n\t  blockquote::first-letter,\n\t  li::first-letter,\n\t  p::first-line,\n\t  div::first-line,\n\t  blockquote::first-line,\n\t  li::first-line {\n\t    text-shadow: none !important;\n\t    box-shadow: none !important;\n\t  }\n\t  a,\n\t  a:visited {\n\t    text-decoration: underline;\n\t  }\n\t  abbr[title]::after {\n\t    content: \" (\" attr(title) \")\";\n\t  }\n\t  pre {\n\t    white-space: pre-wrap !important;\n\t  }\n\t  pre,\n\t  blockquote {\n\t    border: 1px solid #999;\n\t    page-break-inside: avoid;\n\t  }\n\t  thead {\n\t    display: table-header-group;\n\t  }\n\t  tr,\n\t  img {\n\t    page-break-inside: avoid;\n\t  }\n\t  p,\n\t  h2,\n\t  h3 {\n\t    orphans: 3;\n\t    widows: 3;\n\t  }\n\t  h2,\n\t  h3 {\n\t    page-break-after: avoid;\n\t  }\n\t  .navbar {\n\t    display: none;\n\t  }\n\t  .badge {\n\t    border: 1px solid #000;\n\t  }\n\t  .table {\n\t    border-collapse: collapse !important;\n\t  }\n\t  .table td,\n\t  .table th {\n\t    background-color: #fff !important;\n\t  }\n\t  .table-bordered th,\n\t  .table-bordered td {\n\t    border: 1px solid #ddd !important;\n\t  }\n\t}\n\n\thtml {\n\t  box-sizing: border-box;\n\t}\n\n\t*,\n\t*::before,\n\t*::after {\n\t  box-sizing: inherit;\n\t}\n\n\t@-ms-viewport {\n\t  width: device-width;\n\t}\n\n\thtml {\n\t  -ms-overflow-style: scrollbar;\n\t  -webkit-tap-highlight-color: transparent;\n\t}\n\n\tbody {\n\t  font-family: -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n\t  font-size: 1rem;\n\t  font-weight: normal;\n\t  line-height: 1.5;\n\t  color: #292b2c;\n\t  background-color: #fff;\n\t}\n\n\t[tabindex=\"-1\"]:focus {\n\t  outline: none !important;\n\t}\n\n\th1,\n\th2,\n\th3,\n\th4,\n\th5,\n\th6 {\n\t  margin-top: 0;\n\t  margin-bottom: .5rem;\n\t}\n\n\tp {\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t}\n\n\tabbr[title],\n\tabbr[data-original-title] {\n\t  cursor: help;\n\t}\n\n\taddress {\n\t  margin-bottom: 1rem;\n\t  font-style: normal;\n\t  line-height: inherit;\n\t}\n\n\tol,\n\tul,\n\tdl {\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t}\n\n\tol ol,\n\tul ul,\n\tol ul,\n\tul ol {\n\t  margin-bottom: 0;\n\t}\n\n\tdt {\n\t  font-weight: bold;\n\t}\n\n\tdd {\n\t  margin-bottom: .5rem;\n\t  margin-left: 0;\n\t}\n\n\tblockquote {\n\t  margin: 0 0 1rem;\n\t}\n\n\ta {\n\t  color: #0f8699;\n\t  text-decoration: none;\n\t}\n\n\ta:focus,\n\ta:hover {\n\t  color: #084953;\n\t  text-decoration: underline;\n\t}\n\n\ta:not([href]):not([tabindex]) {\n\t  color: inherit;\n\t  text-decoration: none;\n\t}\n\n\ta:not([href]):not([tabindex]):focus,\n\ta:not([href]):not([tabindex]):hover {\n\t  color: inherit;\n\t  text-decoration: none;\n\t}\n\n\ta:not([href]):not([tabindex]):focus {\n\t  outline: 0;\n\t}\n\n\tpre {\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t  overflow: auto;\n\t}\n\n\tfigure {\n\t  margin: 0 0 1rem;\n\t}\n\n\timg {\n\t  vertical-align: middle;\n\t}\n\n\t[role=\"button\"] {\n\t  cursor: pointer;\n\t}\n\n\ta,\n\tarea,\n\tbutton,\n\t[role=\"button\"],\n\tinput,\n\tlabel,\n\tselect,\n\tsummary,\n\ttextarea {\n\t  touch-action: manipulation;\n\t}\n\n\ttable {\n\t  border-collapse: collapse;\n\t  background-color: transparent;\n\t}\n\n\tcaption {\n\t  padding-top: 0.75rem;\n\t  padding-bottom: 0.75rem;\n\t  color: #636c72;\n\t  text-align: left;\n\t  caption-side: bottom;\n\t}\n\n\tth {\n\t  text-align: left;\n\t}\n\n\tlabel {\n\t  display: inline-block;\n\t  margin-bottom: .5rem;\n\t}\n\n\tbutton:focus {\n\t  outline: 1px dotted;\n\t  outline: 5px auto -webkit-focus-ring-color;\n\t}\n\n\tinput,\n\tbutton,\n\tselect,\n\ttextarea {\n\t  line-height: inherit;\n\t}\n\n\tinput[type=\"radio\"]:disabled,\n\tinput[type=\"checkbox\"]:disabled {\n\t  cursor: not-allowed;\n\t}\n\n\tinput[type=\"date\"],\n\tinput[type=\"time\"],\n\tinput[type=\"datetime-local\"],\n\tinput[type=\"month\"] {\n\t  -webkit-appearance: listbox;\n\t}\n\n\ttextarea {\n\t  resize: vertical;\n\t}\n\n\tfieldset {\n\t  min-width: 0;\n\t  padding: 0;\n\t  margin: 0;\n\t  border: 0;\n\t}\n\n\tlegend {\n\t  display: block;\n\t  width: 100%;\n\t  padding: 0;\n\t  margin-bottom: .5rem;\n\t  font-size: 1.5rem;\n\t  line-height: inherit;\n\t}\n\n\tinput[type=\"search\"] {\n\t  -webkit-appearance: none;\n\t}\n\n\toutput {\n\t  display: inline-block;\n\t}\n\n\t[hidden] {\n\t  display: none !important;\n\t}\n\n\t.table {\n\t  width: 100%;\n\t  max-width: 100%;\n\t  margin-bottom: 1rem;\n\t}\n\n\t.table th,\n\t.table td {\n\t  padding: 0.75rem;\n\t  vertical-align: top;\n\t  border-top: 1px solid #eceeef;\n\t}\n\n\t.table thead th {\n\t  vertical-align: bottom;\n\t  border-bottom: 2px solid #eceeef;\n\t}\n\n\t.table tbody+tbody {\n\t  border-top: 2px solid #eceeef;\n\t}\n\n\t.table .table {\n\t  background-color: #fff;\n\t}\n\n\t.table-sm th,\n\t.table-sm td {\n\t  padding: 0.3rem;\n\t}\n\n\t.table-bordered {\n\t  border: 1px solid #eceeef;\n\t}\n\n\t.table-bordered th,\n\t.table-bordered td {\n\t  border: 1px solid #eceeef;\n\t}\n\n\t.table-bordered thead th,\n\t.table-bordered thead td {\n\t  border-bottom-width: 2px;\n\t}\n\n\t.table-striped tbody tr:nth-of-type(odd) {\n\t  background-color: rgba(0, 0, 0, 0.05);\n\t}\n\n\t.table-hover tbody tr:hover {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-active,\n\t.table-active>th,\n\t.table-active>td {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-hover .table-active:hover {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-hover .table-active:hover>td,\n\t.table-hover .table-active:hover>th {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-success,\n\t.table-success>th,\n\t.table-success>td {\n\t  background-color: #dff0d8;\n\t}\n\n\t.table-hover .table-success:hover {\n\t  background-color: #d0e9c6;\n\t}\n\n\t.table-hover .table-success:hover>td,\n\t.table-hover .table-success:hover>th {\n\t  background-color: #d0e9c6;\n\t}\n\n\t.table-info,\n\t.table-info>th,\n\t.table-info>td {\n\t  background-color: #d9edf7;\n\t}\n\n\t.table-hover .table-info:hover {\n\t  background-color: #c4e3f3;\n\t}\n\n\t.table-hover .table-info:hover>td,\n\t.table-hover .table-info:hover>th {\n\t  background-color: #c4e3f3;\n\t}\n\n\t.table-warning,\n\t.table-warning>th,\n\t.table-warning>td {\n\t  background-color: #fcf8e3;\n\t}\n\n\t.table-hover .table-warning:hover {\n\t  background-color: #faf2cc;\n\t}\n\n\t.table-hover .table-warning:hover>td,\n\t.table-hover .table-warning:hover>th {\n\t  background-color: #faf2cc;\n\t}\n\n\t.table-danger,\n\t.table-danger>th,\n\t.table-danger>td {\n\t  background-color: #f2dede;\n\t}\n\n\t.table-hover .table-danger:hover {\n\t  background-color: #ebcccc;\n\t}\n\n\t.table-hover .table-danger:hover>td,\n\t.table-hover .table-danger:hover>th {\n\t  background-color: #ebcccc;\n\t}\n\n\t.thead-inverse th {\n\t  color: #fff;\n\t  background-color: #292b2c;\n\t}\n\n\t.thead-default th {\n\t  color: #464a4c;\n\t  background-color: #eceeef;\n\t}\n\n\t.table-inverse {\n\t  color: #fff;\n\t  background-color: #292b2c;\n\t}\n\n\t.table-inverse th,\n\t.table-inverse td,\n\t.table-inverse thead th {\n\t  border-color: #fff;\n\t}\n\n\t.table-inverse.table-bordered {\n\t  border: 0;\n\t}\n\n\t.table-responsive {\n\t  display: block;\n\t  width: 100%;\n\t  overflow-x: auto;\n\t  -ms-overflow-style: -ms-autohiding-scrollbar;\n\t}\n\n\t.table-responsive.table-bordered {\n\t  border: 0;\n\t}\n\n\t.form-control {\n\t  display: block;\n\t  width: 100%;\n\t  padding: 0.5rem 0.75rem;\n\t  font-size: 1rem;\n\t  line-height: 1.25;\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t  background-image: none;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n\t}\n\n\t.form-control::-ms-expand {\n\t  background-color: transparent;\n\t  border: 0;\n\t}\n\n\t.form-control:focus {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t  border-color: #3cd4ec;\n\t  outline: none;\n\t}\n\n\t.form-control::placeholder {\n\t  color: #636c72;\n\t  opacity: 1;\n\t}\n\n\t.form-control:disabled,\n\t.form-control[readonly] {\n\t  background-color: #eceeef;\n\t  opacity: 1;\n\t}\n\n\t.form-control:disabled {\n\t  cursor: not-allowed;\n\t}\n\n\tselect.form-control:not([size]):not([multiple]) {\n\t  height: calc(2.25rem + 2px);\n\t}\n\n\tselect.form-control:focus::-ms-value {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t}\n\n\t.form-control-file,\n\t.form-control-range {\n\t  display: block;\n\t}\n\n\t.col-form-label {\n\t  padding-top: calc(0.5rem - 1px * 2);\n\t  padding-bottom: calc(0.5rem - 1px * 2);\n\t  margin-bottom: 0;\n\t}\n\n\t.col-form-label-lg {\n\t  padding-top: calc(0.75rem - 1px * 2);\n\t  padding-bottom: calc(0.75rem - 1px * 2);\n\t  font-size: 1.25rem;\n\t}\n\n\t.col-form-label-sm {\n\t  padding-top: calc(0.25rem - 1px * 2);\n\t  padding-bottom: calc(0.25rem - 1px * 2);\n\t  font-size: 0.875rem;\n\t}\n\n\t.col-form-legend {\n\t  padding-top: 0.5rem;\n\t  padding-bottom: 0.5rem;\n\t  margin-bottom: 0;\n\t  font-size: 1rem;\n\t}\n\n\t.form-control-static {\n\t  padding-top: 0.5rem;\n\t  padding-bottom: 0.5rem;\n\t  margin-bottom: 0;\n\t  line-height: 1.25;\n\t  border: solid transparent;\n\t  border-width: 1px 0;\n\t}\n\n\t.form-control-static.form-control-sm,\n\t.input-group-sm>.form-control-static.form-control,\n\t.input-group-sm>.form-control-static.input-group-addon,\n\t.input-group-sm>.input-group-btn>.form-control-static.btn,\n\t.form-control-static.form-control-lg,\n\t.input-group-lg>.form-control-static.form-control,\n\t.input-group-lg>.form-control-static.input-group-addon,\n\t.input-group-lg>.input-group-btn>.form-control-static.btn {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.form-control-sm,\n\t.input-group-sm>.form-control,\n\t.input-group-sm>.input-group-addon,\n\t.input-group-sm>.input-group-btn>.btn {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t  border-radius: 0.2rem;\n\t}\n\n\tselect.form-control-sm:not([size]):not([multiple]),\n\t.input-group-sm>select.form-control:not([size]):not([multiple]),\n\t.input-group-sm>select.input-group-addon:not([size]):not([multiple]),\n\t.input-group-sm>.input-group-btn>select.btn:not([size]):not([multiple]) {\n\t  height: 1.8125rem;\n\t}\n\n\t.form-control-lg,\n\t.input-group-lg>.form-control,\n\t.input-group-lg>.input-group-addon,\n\t.input-group-lg>.input-group-btn>.btn {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t  border-radius: 0.3rem;\n\t}\n\n\tselect.form-control-lg:not([size]):not([multiple]),\n\t.input-group-lg>select.form-control:not([size]):not([multiple]),\n\t.input-group-lg>select.input-group-addon:not([size]):not([multiple]),\n\t.input-group-lg>.input-group-btn>select.btn:not([size]):not([multiple]) {\n\t  height: 3.16667rem;\n\t}\n\n\t.form-group {\n\t  margin-bottom: 1rem;\n\t}\n\n\t.form-text {\n\t  display: block;\n\t  margin-top: 0.25rem;\n\t}\n\n\t.form-check {\n\t  position: relative;\n\t  display: block;\n\t  margin-bottom: 0.5rem;\n\t}\n\n\t.form-check.disabled .form-check-label {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t}\n\n\t.form-check-label {\n\t  padding-left: 1.25rem;\n\t  margin-bottom: 0;\n\t  cursor: pointer;\n\t}\n\n\t.form-check-input {\n\t  position: absolute;\n\t  margin-top: 0.25rem;\n\t  margin-left: -1.25rem;\n\t}\n\n\t.form-check-input:only-child {\n\t  position: static;\n\t}\n\n\t.form-check-inline {\n\t  display: inline-block;\n\t}\n\n\t.form-check-inline .form-check-label {\n\t  vertical-align: middle;\n\t}\n\n\t.form-check-inline+.form-check-inline {\n\t  margin-left: 0.75rem;\n\t}\n\n\t.form-control-feedback {\n\t  margin-top: 0.25rem;\n\t}\n\n\t.form-control-success,\n\t.form-control-warning,\n\t.form-control-danger {\n\t  padding-right: 2.25rem;\n\t  background-repeat: no-repeat;\n\t  background-position: center right 0.5625rem;\n\t  background-size: 1.125rem 1.125rem;\n\t}\n\n\t.has-success .form-control-feedback,\n\t.has-success .form-control-label,\n\t.has-success .col-form-label,\n\t.has-success .form-check-label,\n\t.has-success .custom-control {\n\t  color: #5cb85c;\n\t}\n\n\t.has-success .form-control {\n\t  border-color: #5cb85c;\n\t}\n\n\t.has-success .input-group-addon {\n\t  color: #5cb85c;\n\t  border-color: #5cb85c;\n\t  background-color: #eaf6ea;\n\t}\n\n\t.has-success .form-control-success {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E\");\n\t}\n\n\t.has-warning .form-control-feedback,\n\t.has-warning .form-control-label,\n\t.has-warning .col-form-label,\n\t.has-warning .form-check-label,\n\t.has-warning .custom-control {\n\t  color: #f0ad4e;\n\t}\n\n\t.has-warning .form-control {\n\t  border-color: #f0ad4e;\n\t}\n\n\t.has-warning .input-group-addon {\n\t  color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t  background-color: white;\n\t}\n\n\t.has-warning .form-control-warning {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E\");\n\t}\n\n\t.has-danger .form-control-feedback,\n\t.has-danger .form-control-label,\n\t.has-danger .col-form-label,\n\t.has-danger .form-check-label,\n\t.has-danger .custom-control {\n\t  color: #d9534f;\n\t}\n\n\t.has-danger .form-control {\n\t  border-color: #d9534f;\n\t}\n\n\t.has-danger .input-group-addon {\n\t  color: #d9534f;\n\t  border-color: #d9534f;\n\t  background-color: #fdf7f7;\n\t}\n\n\t.has-danger .form-control-danger {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E\");\n\t}\n\n\t.form-inline {\n\t  display: flex;\n\t  flex-flow: row wrap;\n\t  align-items: center;\n\t}\n\n\t.form-inline .form-check {\n\t  width: 100%;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .form-inline label {\n\t    display: flex;\n\t    align-items: center;\n\t    justify-content: center;\n\t    margin-bottom: 0;\n\t  }\n\t  .form-inline .form-group {\n\t    display: flex;\n\t    flex: 0 0 auto;\n\t    flex-flow: row wrap;\n\t    align-items: center;\n\t    margin-bottom: 0;\n\t  }\n\t  .form-inline .form-control {\n\t    display: inline-block;\n\t    width: auto;\n\t    vertical-align: middle;\n\t  }\n\t  .form-inline .form-control-static {\n\t    display: inline-block;\n\t  }\n\t  .form-inline .input-group {\n\t    width: auto;\n\t  }\n\t  .form-inline .form-control-label {\n\t    margin-bottom: 0;\n\t    vertical-align: middle;\n\t  }\n\t  .form-inline .form-check {\n\t    display: flex;\n\t    align-items: center;\n\t    justify-content: center;\n\t    width: auto;\n\t    margin-top: 0;\n\t    margin-bottom: 0;\n\t  }\n\t  .form-inline .form-check-label {\n\t    padding-left: 0;\n\t  }\n\t  .form-inline .form-check-input {\n\t    position: relative;\n\t    margin-top: 0;\n\t    margin-right: 0.25rem;\n\t    margin-left: 0;\n\t  }\n\t  .form-inline .custom-control {\n\t    display: flex;\n\t    align-items: center;\n\t    justify-content: center;\n\t    padding-left: 0;\n\t  }\n\t  .form-inline .custom-control-indicator {\n\t    position: static;\n\t    display: inline-block;\n\t    margin-right: 0.25rem;\n\t    vertical-align: text-bottom;\n\t  }\n\t  .form-inline .has-feedback .form-control-feedback {\n\t    top: 0;\n\t  }\n\t}\n\n\t.btn {\n\t  display: inline-block;\n\t  font-weight: normal;\n\t  line-height: 1.25;\n\t  text-align: center;\n\t  white-space: nowrap;\n\t  vertical-align: middle;\n\t  user-select: none;\n\t  border: 1px solid transparent;\n\t  padding: 0.5rem 1rem;\n\t  font-size: 1rem;\n\t  border-radius: 0.25rem;\n\t  transition: all 0.2s ease-in-out;\n\t}\n\n\t.btn:focus,\n\t.btn:hover {\n\t  text-decoration: none;\n\t}\n\n\t.btn:focus,\n\t.btn.focus {\n\t  outline: 0;\n\t  box-shadow: 0 0 0 2px rgba(15, 134, 153, 0.25);\n\t}\n\n\t.btn.disabled,\n\t.btn:disabled {\n\t  cursor: not-allowed;\n\t  opacity: .65;\n\t}\n\n\t.btn:active,\n\t.btn.active {\n\t  background-image: none;\n\t}\n\n\ta.btn.disabled,\n\tfieldset[disabled] a.btn {\n\t  pointer-events: none;\n\t}\n\n\t.btn-primary {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-primary:hover {\n\t  color: #fff;\n\t  background-color: #0a5d6b;\n\t  border-color: #0a5561;\n\t}\n\n\t.btn-primary:focus,\n\t.btn-primary.focus {\n\t  box-shadow: 0 0 0 2px rgba(15, 134, 153, 0.5);\n\t}\n\n\t.btn-primary.disabled,\n\t.btn-primary:disabled {\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-primary:active,\n\t.btn-primary.active,\n\t.show>.btn-primary.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #0a5d6b;\n\t  background-image: none;\n\t  border-color: #0a5561;\n\t}\n\n\t.btn-secondary {\n\t  color: #292b2c;\n\t  background-color: #fff;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-secondary:hover {\n\t  color: #292b2c;\n\t  background-color: #e6e6e6;\n\t  border-color: #adadad;\n\t}\n\n\t.btn-secondary:focus,\n\t.btn-secondary.focus {\n\t  box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);\n\t}\n\n\t.btn-secondary.disabled,\n\t.btn-secondary:disabled {\n\t  background-color: #fff;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-secondary:active,\n\t.btn-secondary.active,\n\t.show>.btn-secondary.dropdown-toggle {\n\t  color: #292b2c;\n\t  background-color: #e6e6e6;\n\t  background-image: none;\n\t  border-color: #adadad;\n\t}\n\n\t.btn-info {\n\t  color: #fff;\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-info:hover {\n\t  color: #fff;\n\t  background-color: #31b0d5;\n\t  border-color: #2aabd2;\n\t}\n\n\t.btn-info:focus,\n\t.btn-info.focus {\n\t  box-shadow: 0 0 0 2px rgba(91, 192, 222, 0.5);\n\t}\n\n\t.btn-info.disabled,\n\t.btn-info:disabled {\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-info:active,\n\t.btn-info.active,\n\t.show>.btn-info.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #31b0d5;\n\t  background-image: none;\n\t  border-color: #2aabd2;\n\t}\n\n\t.btn-success {\n\t  color: #fff;\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-success:hover {\n\t  color: #fff;\n\t  background-color: #449d44;\n\t  border-color: #419641;\n\t}\n\n\t.btn-success:focus,\n\t.btn-success.focus {\n\t  box-shadow: 0 0 0 2px rgba(92, 184, 92, 0.5);\n\t}\n\n\t.btn-success.disabled,\n\t.btn-success:disabled {\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-success:active,\n\t.btn-success.active,\n\t.show>.btn-success.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #449d44;\n\t  background-image: none;\n\t  border-color: #419641;\n\t}\n\n\t.btn-warning {\n\t  color: #fff;\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-warning:hover {\n\t  color: #fff;\n\t  background-color: #ec971f;\n\t  border-color: #eb9316;\n\t}\n\n\t.btn-warning:focus,\n\t.btn-warning.focus {\n\t  box-shadow: 0 0 0 2px rgba(240, 173, 78, 0.5);\n\t}\n\n\t.btn-warning.disabled,\n\t.btn-warning:disabled {\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-warning:active,\n\t.btn-warning.active,\n\t.show>.btn-warning.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #ec971f;\n\t  background-image: none;\n\t  border-color: #eb9316;\n\t}\n\n\t.btn-danger {\n\t  color: #fff;\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-danger:hover {\n\t  color: #fff;\n\t  background-color: #c9302c;\n\t  border-color: #c12e2a;\n\t}\n\n\t.btn-danger:focus,\n\t.btn-danger.focus {\n\t  box-shadow: 0 0 0 2px rgba(217, 83, 79, 0.5);\n\t}\n\n\t.btn-danger.disabled,\n\t.btn-danger:disabled {\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-danger:active,\n\t.btn-danger.active,\n\t.show>.btn-danger.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #c9302c;\n\t  background-image: none;\n\t  border-color: #c12e2a;\n\t}\n\n\t.btn-outline-primary {\n\t  color: #0f8699;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-outline-primary:hover {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-outline-primary:focus,\n\t.btn-outline-primary.focus {\n\t  box-shadow: 0 0 0 2px rgba(15, 134, 153, 0.5);\n\t}\n\n\t.btn-outline-primary.disabled,\n\t.btn-outline-primary:disabled {\n\t  color: #0f8699;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-primary:active,\n\t.btn-outline-primary.active,\n\t.show>.btn-outline-primary.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-outline-secondary {\n\t  color: #ccc;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-outline-secondary:hover {\n\t  color: #fff;\n\t  background-color: #ccc;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-outline-secondary:focus,\n\t.btn-outline-secondary.focus {\n\t  box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);\n\t}\n\n\t.btn-outline-secondary.disabled,\n\t.btn-outline-secondary:disabled {\n\t  color: #ccc;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-secondary:active,\n\t.btn-outline-secondary.active,\n\t.show>.btn-outline-secondary.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #ccc;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-outline-info {\n\t  color: #5bc0de;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-outline-info:hover {\n\t  color: #fff;\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-outline-info:focus,\n\t.btn-outline-info.focus {\n\t  box-shadow: 0 0 0 2px rgba(91, 192, 222, 0.5);\n\t}\n\n\t.btn-outline-info.disabled,\n\t.btn-outline-info:disabled {\n\t  color: #5bc0de;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-info:active,\n\t.btn-outline-info.active,\n\t.show>.btn-outline-info.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-outline-success {\n\t  color: #5cb85c;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-outline-success:hover {\n\t  color: #fff;\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-outline-success:focus,\n\t.btn-outline-success.focus {\n\t  box-shadow: 0 0 0 2px rgba(92, 184, 92, 0.5);\n\t}\n\n\t.btn-outline-success.disabled,\n\t.btn-outline-success:disabled {\n\t  color: #5cb85c;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-success:active,\n\t.btn-outline-success.active,\n\t.show>.btn-outline-success.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-outline-warning {\n\t  color: #f0ad4e;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-outline-warning:hover {\n\t  color: #fff;\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-outline-warning:focus,\n\t.btn-outline-warning.focus {\n\t  box-shadow: 0 0 0 2px rgba(240, 173, 78, 0.5);\n\t}\n\n\t.btn-outline-warning.disabled,\n\t.btn-outline-warning:disabled {\n\t  color: #f0ad4e;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-warning:active,\n\t.btn-outline-warning.active,\n\t.show>.btn-outline-warning.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-outline-danger {\n\t  color: #d9534f;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-outline-danger:hover {\n\t  color: #fff;\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-outline-danger:focus,\n\t.btn-outline-danger.focus {\n\t  box-shadow: 0 0 0 2px rgba(217, 83, 79, 0.5);\n\t}\n\n\t.btn-outline-danger.disabled,\n\t.btn-outline-danger:disabled {\n\t  color: #d9534f;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-danger:active,\n\t.btn-outline-danger.active,\n\t.show>.btn-outline-danger.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-link {\n\t  font-weight: normal;\n\t  color: #0f8699;\n\t  border-radius: 0;\n\t}\n\n\t.btn-link,\n\t.btn-link:active,\n\t.btn-link.active,\n\t.btn-link:disabled {\n\t  background-color: transparent;\n\t}\n\n\t.btn-link,\n\t.btn-link:focus,\n\t.btn-link:active {\n\t  border-color: transparent;\n\t}\n\n\t.btn-link:hover {\n\t  border-color: transparent;\n\t}\n\n\t.btn-link:focus,\n\t.btn-link:hover {\n\t  color: #084953;\n\t  text-decoration: underline;\n\t  background-color: transparent;\n\t}\n\n\t.btn-link:disabled {\n\t  color: #636c72;\n\t}\n\n\t.btn-link:disabled:focus,\n\t.btn-link:disabled:hover {\n\t  text-decoration: none;\n\t}\n\n\t.btn-lg,\n\t.btn-group-lg>.btn {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t  border-radius: 0.3rem;\n\t}\n\n\t.btn-sm,\n\t.btn-group-sm>.btn {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t  border-radius: 0.2rem;\n\t}\n\n\t.btn-block {\n\t  display: block;\n\t  width: 100%;\n\t}\n\n\t.btn-block+.btn-block {\n\t  margin-top: 0.5rem;\n\t}\n\n\tinput[type=\"submit\"].btn-block,\n\tinput[type=\"reset\"].btn-block,\n\tinput[type=\"button\"].btn-block {\n\t  width: 100%;\n\t}\n\n\t.fade {\n\t  opacity: 0;\n\t  transition: opacity 0.15s linear;\n\t}\n\n\t.fade.show {\n\t  opacity: 1;\n\t}\n\n\t.collapse {\n\t  display: none;\n\t}\n\n\t.collapse.show {\n\t  display: block;\n\t}\n\n\ttr.collapse.show {\n\t  display: table-row;\n\t}\n\n\ttbody.collapse.show {\n\t  display: table-row-group;\n\t}\n\n\t.collapsing {\n\t  position: relative;\n\t  height: 0;\n\t  overflow: hidden;\n\t  transition: height 0.35s ease;\n\t}\n\n\t.dropup,\n\t.dropdown {\n\t  position: relative;\n\t}\n\n\t.dropdown-toggle::after {\n\t  display: inline-block;\n\t  width: 0;\n\t  height: 0;\n\t  margin-left: 0.3em;\n\t  vertical-align: middle;\n\t  content: \"\";\n\t  border-top: 0.3em solid;\n\t  border-right: 0.3em solid transparent;\n\t  border-left: 0.3em solid transparent;\n\t}\n\n\t.dropdown-toggle:focus {\n\t  outline: 0;\n\t}\n\n\t.dropup .dropdown-toggle::after {\n\t  border-top: 0;\n\t  border-bottom: 0.3em solid;\n\t}\n\n\t.dropdown-menu {\n\t  position: absolute;\n\t  top: 100%;\n\t  left: 0;\n\t  z-index: 1000;\n\t  display: none;\n\t  float: left;\n\t  min-width: 10rem;\n\t  padding: 0.5rem 0;\n\t  margin: 0.125rem 0 0;\n\t  font-size: 1rem;\n\t  color: #292b2c;\n\t  text-align: left;\n\t  list-style: none;\n\t  background-color: #fff;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.dropdown-divider {\n\t  height: 1px;\n\t  margin: 0.5rem 0;\n\t  overflow: hidden;\n\t  background-color: #eceeef;\n\t}\n\n\t.dropdown-item {\n\t  display: block;\n\t  width: 100%;\n\t  padding: 3px 1.5rem;\n\t  clear: both;\n\t  font-weight: normal;\n\t  color: #292b2c;\n\t  text-align: inherit;\n\t  white-space: nowrap;\n\t  background: none;\n\t  border: 0;\n\t}\n\n\t.dropdown-item:focus,\n\t.dropdown-item:hover {\n\t  color: #1d1e1f;\n\t  text-decoration: none;\n\t  background-color: #f7f7f9;\n\t}\n\n\t.dropdown-item.active,\n\t.dropdown-item:active {\n\t  color: #fff;\n\t  text-decoration: none;\n\t  background-color: #0f8699;\n\t}\n\n\t.dropdown-item.disabled,\n\t.dropdown-item:disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t  background-color: transparent;\n\t}\n\n\t.show>.dropdown-menu {\n\t  display: block;\n\t}\n\n\t.show>a {\n\t  outline: 0;\n\t}\n\n\t.dropdown-menu-right {\n\t  right: 0;\n\t  left: auto;\n\t}\n\n\t.dropdown-menu-left {\n\t  right: auto;\n\t  left: 0;\n\t}\n\n\t.dropdown-header {\n\t  display: block;\n\t  padding: 0.5rem 1.5rem;\n\t  margin-bottom: 0;\n\t  font-size: 0.875rem;\n\t  color: #636c72;\n\t  white-space: nowrap;\n\t}\n\n\t.dropdown-backdrop {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 990;\n\t}\n\n\t.dropup .dropdown-menu {\n\t  top: auto;\n\t  bottom: 100%;\n\t  margin-bottom: 0.125rem;\n\t}\n\n\t.btn-group,\n\t.btn-group-vertical {\n\t  position: relative;\n\t  display: inline-flex;\n\t  vertical-align: middle;\n\t}\n\n\t.btn-group>.btn,\n\t.btn-group-vertical>.btn {\n\t  position: relative;\n\t  flex: 0 1 auto;\n\t}\n\n\t.btn-group>.btn:hover,\n\t.btn-group-vertical>.btn:hover {\n\t  z-index: 2;\n\t}\n\n\t.btn-group>.btn:focus,\n\t.btn-group>.btn:active,\n\t.btn-group>.btn.active,\n\t.btn-group-vertical>.btn:focus,\n\t.btn-group-vertical>.btn:active,\n\t.btn-group-vertical>.btn.active {\n\t  z-index: 2;\n\t}\n\n\t.btn-group .btn+.btn,\n\t.btn-group .btn+.btn-group,\n\t.btn-group .btn-group+.btn,\n\t.btn-group .btn-group+.btn-group,\n\t.btn-group-vertical .btn+.btn,\n\t.btn-group-vertical .btn+.btn-group,\n\t.btn-group-vertical .btn-group+.btn,\n\t.btn-group-vertical .btn-group+.btn-group {\n\t  margin-left: -1px;\n\t}\n\n\t.btn-toolbar {\n\t  display: flex;\n\t  justify-content: flex-start;\n\t}\n\n\t.btn-toolbar .input-group {\n\t  width: auto;\n\t}\n\n\t.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group>.btn:first-child {\n\t  margin-left: 0;\n\t}\n\n\t.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {\n\t  border-bottom-right-radius: 0;\n\t  border-top-right-radius: 0;\n\t}\n\n\t.btn-group>.btn:last-child:not(:first-child),\n\t.btn-group>.dropdown-toggle:not(:first-child) {\n\t  border-bottom-left-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.btn-group>.btn-group {\n\t  float: left;\n\t}\n\n\t.btn-group>.btn-group:not(:first-child):not(:last-child)>.btn {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group>.btn-group:first-child:not(:last-child)>.btn:last-child,\n\t.btn-group>.btn-group:first-child:not(:last-child)>.dropdown-toggle {\n\t  border-bottom-right-radius: 0;\n\t  border-top-right-radius: 0;\n\t}\n\n\t.btn-group>.btn-group:last-child:not(:first-child)>.btn:first-child {\n\t  border-bottom-left-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.btn-group .dropdown-toggle:active,\n\t.btn-group.open .dropdown-toggle {\n\t  outline: 0;\n\t}\n\n\t.btn+.dropdown-toggle-split {\n\t  padding-right: 0.75rem;\n\t  padding-left: 0.75rem;\n\t}\n\n\t.btn+.dropdown-toggle-split::after {\n\t  margin-left: 0;\n\t}\n\n\t.btn-sm+.dropdown-toggle-split,\n\t.btn-group-sm>.btn+.dropdown-toggle-split {\n\t  padding-right: 0.375rem;\n\t  padding-left: 0.375rem;\n\t}\n\n\t.btn-lg+.dropdown-toggle-split,\n\t.btn-group-lg>.btn+.dropdown-toggle-split {\n\t  padding-right: 1.125rem;\n\t  padding-left: 1.125rem;\n\t}\n\n\t.btn-group-vertical {\n\t  display: inline-flex;\n\t  flex-direction: column;\n\t  align-items: flex-start;\n\t  justify-content: center;\n\t}\n\n\t.btn-group-vertical .btn,\n\t.btn-group-vertical .btn-group {\n\t  width: 100%;\n\t}\n\n\t.btn-group-vertical>.btn+.btn,\n\t.btn-group-vertical>.btn+.btn-group,\n\t.btn-group-vertical>.btn-group+.btn,\n\t.btn-group-vertical>.btn-group+.btn-group {\n\t  margin-top: -1px;\n\t  margin-left: 0;\n\t}\n\n\t.btn-group-vertical>.btn:not(:first-child):not(:last-child) {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn:first-child:not(:last-child) {\n\t  border-bottom-right-radius: 0;\n\t  border-bottom-left-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn:last-child:not(:first-child) {\n\t  border-top-right-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn-group:not(:first-child):not(:last-child)>.btn {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn-group:first-child:not(:last-child)>.btn:last-child,\n\t.btn-group-vertical>.btn-group:first-child:not(:last-child)>.dropdown-toggle {\n\t  border-bottom-right-radius: 0;\n\t  border-bottom-left-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn-group:last-child:not(:first-child)>.btn:first-child {\n\t  border-top-right-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t[data-toggle=\"buttons\"]>.btn input[type=\"radio\"],\n\t[data-toggle=\"buttons\"]>.btn input[type=\"checkbox\"],\n\t[data-toggle=\"buttons\"]>.btn-group>.btn input[type=\"radio\"],\n\t[data-toggle=\"buttons\"]>.btn-group>.btn input[type=\"checkbox\"] {\n\t  position: absolute;\n\t  clip: rect(0, 0, 0, 0);\n\t  pointer-events: none;\n\t}\n\n\t.input-group {\n\t  position: relative;\n\t  display: flex;\n\t  width: 100%;\n\t}\n\n\t.input-group .form-control {\n\t  position: relative;\n\t  z-index: 2;\n\t  flex: 1 1 auto;\n\t  width: 1%;\n\t  margin-bottom: 0;\n\t}\n\n\t.input-group .form-control:focus,\n\t.input-group .form-control:active,\n\t.input-group .form-control:hover {\n\t  z-index: 3;\n\t}\n\n\t.input-group-addon,\n\t.input-group-btn,\n\t.input-group .form-control {\n\t  display: flex;\n\t  flex-direction: column;\n\t  justify-content: center;\n\t}\n\n\t.input-group-addon:not(:first-child):not(:last-child),\n\t.input-group-btn:not(:first-child):not(:last-child),\n\t.input-group .form-control:not(:first-child):not(:last-child) {\n\t  border-radius: 0;\n\t}\n\n\t.input-group-addon,\n\t.input-group-btn {\n\t  white-space: nowrap;\n\t  vertical-align: middle;\n\t}\n\n\t.input-group-addon {\n\t  padding: 0.5rem 0.75rem;\n\t  margin-bottom: 0;\n\t  font-size: 1rem;\n\t  font-weight: normal;\n\t  line-height: 1.25;\n\t  color: #464a4c;\n\t  text-align: center;\n\t  background-color: #eceeef;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.input-group-addon.form-control-sm,\n\t.input-group-sm>.input-group-addon,\n\t.input-group-sm>.input-group-btn>.input-group-addon.btn {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t  border-radius: 0.2rem;\n\t}\n\n\t.input-group-addon.form-control-lg,\n\t.input-group-lg>.input-group-addon,\n\t.input-group-lg>.input-group-btn>.input-group-addon.btn {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t  border-radius: 0.3rem;\n\t}\n\n\t.input-group-addon input[type=\"radio\"],\n\t.input-group-addon input[type=\"checkbox\"] {\n\t  margin-top: 0;\n\t}\n\n\t.input-group .form-control:not(:last-child),\n\t.input-group-addon:not(:last-child),\n\t.input-group-btn:not(:last-child)>.btn,\n\t.input-group-btn:not(:last-child)>.btn-group>.btn,\n\t.input-group-btn:not(:last-child)>.dropdown-toggle,\n\t.input-group-btn:not(:first-child)>.btn:not(:last-child):not(.dropdown-toggle),\n\t.input-group-btn:not(:first-child)>.btn-group:not(:last-child)>.btn {\n\t  border-bottom-right-radius: 0;\n\t  border-top-right-radius: 0;\n\t}\n\n\t.input-group-addon:not(:last-child) {\n\t  border-right: 0;\n\t}\n\n\t.input-group .form-control:not(:first-child),\n\t.input-group-addon:not(:first-child),\n\t.input-group-btn:not(:first-child)>.btn,\n\t.input-group-btn:not(:first-child)>.btn-group>.btn,\n\t.input-group-btn:not(:first-child)>.dropdown-toggle,\n\t.input-group-btn:not(:last-child)>.btn:not(:first-child),\n\t.input-group-btn:not(:last-child)>.btn-group:not(:first-child)>.btn {\n\t  border-bottom-left-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.form-control+.input-group-addon:not(:first-child) {\n\t  border-left: 0;\n\t}\n\n\t.input-group-btn {\n\t  position: relative;\n\t  font-size: 0;\n\t  white-space: nowrap;\n\t}\n\n\t.input-group-btn>.btn {\n\t  position: relative;\n\t  flex: 1;\n\t}\n\n\t.input-group-btn>.btn+.btn {\n\t  margin-left: -1px;\n\t}\n\n\t.input-group-btn>.btn:focus,\n\t.input-group-btn>.btn:active,\n\t.input-group-btn>.btn:hover {\n\t  z-index: 3;\n\t}\n\n\t.input-group-btn:not(:last-child)>.btn,\n\t.input-group-btn:not(:last-child)>.btn-group {\n\t  margin-right: -1px;\n\t}\n\n\t.input-group-btn:not(:first-child)>.btn,\n\t.input-group-btn:not(:first-child)>.btn-group {\n\t  z-index: 2;\n\t  margin-left: -1px;\n\t}\n\n\t.input-group-btn:not(:first-child)>.btn:focus,\n\t.input-group-btn:not(:first-child)>.btn:active,\n\t.input-group-btn:not(:first-child)>.btn:hover,\n\t.input-group-btn:not(:first-child)>.btn-group:focus,\n\t.input-group-btn:not(:first-child)>.btn-group:active,\n\t.input-group-btn:not(:first-child)>.btn-group:hover {\n\t  z-index: 3;\n\t}\n\n\t.custom-control {\n\t  position: relative;\n\t  display: inline-flex;\n\t  min-height: 1.5rem;\n\t  padding-left: 1.5rem;\n\t  margin-right: 1rem;\n\t  cursor: pointer;\n\t}\n\n\t.custom-control-input {\n\t  position: absolute;\n\t  z-index: -1;\n\t  opacity: 0;\n\t}\n\n\t.custom-control-input:checked~.custom-control-indicator {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t}\n\n\t.custom-control-input:focus~.custom-control-indicator {\n\t  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #0f8699;\n\t}\n\n\t.custom-control-input:active~.custom-control-indicator {\n\t  color: #fff;\n\t  background-color: #6adef0;\n\t}\n\n\t.custom-control-input:disabled~.custom-control-indicator {\n\t  cursor: not-allowed;\n\t  background-color: #eceeef;\n\t}\n\n\t.custom-control-input:disabled~.custom-control-description {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t}\n\n\t.custom-control-indicator {\n\t  position: absolute;\n\t  top: 0.25rem;\n\t  left: 0;\n\t  display: block;\n\t  width: 1rem;\n\t  height: 1rem;\n\t  pointer-events: none;\n\t  user-select: none;\n\t  background-color: #ddd;\n\t  background-repeat: no-repeat;\n\t  background-position: center center;\n\t  background-size: 50% 50%;\n\t}\n\n\t.custom-checkbox .custom-control-indicator {\n\t  border-radius: 0.25rem;\n\t}\n\n\t.custom-checkbox .custom-control-input:checked~.custom-control-indicator {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E\");\n\t}\n\n\t.custom-checkbox .custom-control-input:indeterminate~.custom-control-indicator {\n\t  background-color: #0f8699;\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E\");\n\t}\n\n\t.custom-radio .custom-control-indicator {\n\t  border-radius: 50%;\n\t}\n\n\t.custom-radio .custom-control-input:checked~.custom-control-indicator {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E\");\n\t}\n\n\t.custom-controls-stacked {\n\t  display: flex;\n\t  flex-direction: column;\n\t}\n\n\t.custom-controls-stacked .custom-control {\n\t  margin-bottom: 0.25rem;\n\t}\n\n\t.custom-controls-stacked .custom-control+.custom-control {\n\t  margin-left: 0;\n\t}\n\n\t.custom-select {\n\t  display: inline-block;\n\t  max-width: 100%;\n\t  height: calc(2.25rem + 2px);\n\t  padding: 0.375rem 1.75rem 0.375rem 0.75rem;\n\t  line-height: 1.25;\n\t  color: #464a4c;\n\t  vertical-align: middle;\n\t  background: #fff url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E\") no-repeat right 0.75rem center;\n\t  background-size: 8px 10px;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t  -moz-appearance: none;\n\t  -webkit-appearance: none;\n\t}\n\n\t.custom-select:focus {\n\t  border-color: #3cd4ec;\n\t  outline: none;\n\t}\n\n\t.custom-select:focus::-ms-value {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t}\n\n\t.custom-select:disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t  background-color: #eceeef;\n\t}\n\n\t.custom-select::-ms-expand {\n\t  opacity: 0;\n\t}\n\n\t.custom-select-sm {\n\t  padding-top: 0.375rem;\n\t  padding-bottom: 0.375rem;\n\t  font-size: 75%;\n\t}\n\n\t.custom-file {\n\t  position: relative;\n\t  display: inline-block;\n\t  max-width: 100%;\n\t  height: 2.5rem;\n\t  margin-bottom: 0;\n\t  cursor: pointer;\n\t}\n\n\t.custom-file-input {\n\t  min-width: 14rem;\n\t  max-width: 100%;\n\t  height: 2.5rem;\n\t  margin: 0;\n\t  filter: alpha(opacity=0);\n\t  opacity: 0;\n\t}\n\n\t.custom-file-control {\n\t  position: absolute;\n\t  top: 0;\n\t  right: 0;\n\t  left: 0;\n\t  z-index: 5;\n\t  height: 2.5rem;\n\t  padding: 0.5rem 1rem;\n\t  line-height: 1.5;\n\t  color: #464a4c;\n\t  pointer-events: none;\n\t  user-select: none;\n\t  background-color: #fff;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.custom-file-control:lang(en)::after {\n\t  content: \"Choose file...\";\n\t}\n\n\t.custom-file-control::before {\n\t  position: absolute;\n\t  top: -1px;\n\t  right: -1px;\n\t  bottom: -1px;\n\t  z-index: 6;\n\t  display: block;\n\t  height: 2.5rem;\n\t  padding: 0.5rem 1rem;\n\t  line-height: 1.5;\n\t  color: #464a4c;\n\t  background-color: #eceeef;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0 0.25rem 0.25rem 0;\n\t}\n\n\t.custom-file-control:lang(en)::before {\n\t  content: \"Browse\";\n\t}\n\n\t.nav {\n\t  display: flex;\n\t  padding-left: 0;\n\t  margin-bottom: 0;\n\t  list-style: none;\n\t}\n\n\t.nav-link {\n\t  display: block;\n\t  padding: 0.5em 1em;\n\t}\n\n\t.nav-link:focus,\n\t.nav-link:hover {\n\t  text-decoration: none;\n\t}\n\n\t.nav-link.disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t}\n\n\t.nav-tabs {\n\t  border-bottom: 1px solid #ddd;\n\t}\n\n\t.nav-tabs .nav-item {\n\t  margin-bottom: -1px;\n\t}\n\n\t.nav-tabs .nav-link {\n\t  border: 1px solid transparent;\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.nav-tabs .nav-link:focus,\n\t.nav-tabs .nav-link:hover {\n\t  border-color: #eceeef #eceeef #ddd;\n\t}\n\n\t.nav-tabs .nav-link.disabled {\n\t  color: #636c72;\n\t  background-color: transparent;\n\t  border-color: transparent;\n\t}\n\n\t.nav-tabs .nav-link.active,\n\t.nav-tabs .nav-item.show .nav-link {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t  border-color: #ddd #ddd #fff;\n\t}\n\n\t.nav-tabs .dropdown-menu {\n\t  margin-top: -1px;\n\t  border-top-right-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.nav-pills .nav-link {\n\t  border-radius: 0.25rem;\n\t}\n\n\t.nav-pills .nav-link.active,\n\t.nav-pills .nav-item.show .nav-link {\n\t  color: #fff;\n\t  cursor: default;\n\t  background-color: #0f8699;\n\t}\n\n\t.nav-fill .nav-item {\n\t  flex: 1 1 auto;\n\t  text-align: center;\n\t}\n\n\t.nav-justified .nav-item {\n\t  flex: 1 1 100%;\n\t  text-align: center;\n\t}\n\n\t.tab-content>.tab-pane {\n\t  display: none;\n\t}\n\n\t.tab-content>.active {\n\t  display: block;\n\t}\n\n\t.navbar {\n\t  position: relative;\n\t  display: flex;\n\t  flex-direction: column;\n\t  padding: 0.5rem 1rem;\n\t}\n\n\t.navbar-brand {\n\t  display: inline-block;\n\t  padding-top: .25rem;\n\t  padding-bottom: .25rem;\n\t  margin-right: 1rem;\n\t  font-size: 1.25rem;\n\t  line-height: inherit;\n\t  white-space: nowrap;\n\t}\n\n\t.navbar-brand:focus,\n\t.navbar-brand:hover {\n\t  text-decoration: none;\n\t}\n\n\t.navbar-nav {\n\t  display: flex;\n\t  flex-direction: column;\n\t  padding-left: 0;\n\t  margin-bottom: 0;\n\t  list-style: none;\n\t}\n\n\t.navbar-nav .nav-link {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.navbar-text {\n\t  display: inline-block;\n\t  padding-top: .425rem;\n\t  padding-bottom: .425rem;\n\t}\n\n\t.navbar-toggler {\n\t  align-self: flex-start;\n\t  padding: 0.25rem 0.75rem;\n\t  font-size: 1.25rem;\n\t  line-height: 1;\n\t  background: transparent;\n\t  border: 1px solid transparent;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.navbar-toggler:focus,\n\t.navbar-toggler:hover {\n\t  text-decoration: none;\n\t}\n\n\t.navbar-toggler-icon {\n\t  display: inline-block;\n\t  width: 1.5em;\n\t  height: 1.5em;\n\t  vertical-align: middle;\n\t  content: \"\";\n\t  background: no-repeat center center;\n\t  background-size: 100% 100%;\n\t}\n\n\t.navbar-toggler-left {\n\t  position: absolute;\n\t  left: 1rem;\n\t}\n\n\t.navbar-toggler-right {\n\t  position: absolute;\n\t  right: 1rem;\n\t}\n\n\t@media (max-width: 575px) {\n\t  .navbar-toggleable .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .navbar-toggleable {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t@media (max-width: 767px) {\n\t  .navbar-toggleable-sm .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable-sm>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .navbar-toggleable-sm {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-sm .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable-sm .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable-sm>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-sm .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable-sm .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t@media (max-width: 991px) {\n\t  .navbar-toggleable-md .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable-md>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .navbar-toggleable-md {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-md .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable-md .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable-md>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-md .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable-md .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t@media (max-width: 1199px) {\n\t  .navbar-toggleable-lg .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable-lg>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .navbar-toggleable-lg {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-lg .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable-lg .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable-lg>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-lg .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable-lg .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t.navbar-toggleable-xl {\n\t  flex-direction: row;\n\t  flex-wrap: nowrap;\n\t  align-items: center;\n\t}\n\n\t.navbar-toggleable-xl .navbar-nav .dropdown-menu {\n\t  position: static;\n\t  float: none;\n\t}\n\n\t.navbar-toggleable-xl>.container {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.navbar-toggleable-xl .navbar-nav {\n\t  flex-direction: row;\n\t}\n\n\t.navbar-toggleable-xl .navbar-nav .nav-link {\n\t  padding-right: .5rem;\n\t  padding-left: .5rem;\n\t}\n\n\t.navbar-toggleable-xl>.container {\n\t  display: flex;\n\t  flex-wrap: nowrap;\n\t  align-items: center;\n\t}\n\n\t.navbar-toggleable-xl .navbar-collapse {\n\t  display: flex !important;\n\t  width: 100%;\n\t}\n\n\t.navbar-toggleable-xl .navbar-toggler {\n\t  display: none;\n\t}\n\n\t.navbar-light .navbar-brand,\n\t.navbar-light .navbar-toggler {\n\t  color: rgba(0, 0, 0, 0.9);\n\t}\n\n\t.navbar-light .navbar-brand:focus,\n\t.navbar-light .navbar-brand:hover,\n\t.navbar-light .navbar-toggler:focus,\n\t.navbar-light .navbar-toggler:hover {\n\t  color: rgba(0, 0, 0, 0.9);\n\t}\n\n\t.navbar-light .navbar-nav .nav-link {\n\t  color: rgba(0, 0, 0, 0.5);\n\t}\n\n\t.navbar-light .navbar-nav .nav-link:focus,\n\t.navbar-light .navbar-nav .nav-link:hover {\n\t  color: rgba(0, 0, 0, 0.7);\n\t}\n\n\t.navbar-light .navbar-nav .nav-link.disabled {\n\t  color: rgba(0, 0, 0, 0.3);\n\t}\n\n\t.navbar-light .navbar-nav .open>.nav-link,\n\t.navbar-light .navbar-nav .active>.nav-link,\n\t.navbar-light .navbar-nav .nav-link.open,\n\t.navbar-light .navbar-nav .nav-link.active {\n\t  color: rgba(0, 0, 0, 0.9);\n\t}\n\n\t.navbar-light .navbar-toggler {\n\t  border-color: rgba(0, 0, 0, 0.1);\n\t}\n\n\t.navbar-light .navbar-toggler-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n\t}\n\n\t.navbar-light .navbar-text {\n\t  color: rgba(0, 0, 0, 0.5);\n\t}\n\n\t.navbar-inverse .navbar-brand,\n\t.navbar-inverse .navbar-toggler {\n\t  color: white;\n\t}\n\n\t.navbar-inverse .navbar-brand:focus,\n\t.navbar-inverse .navbar-brand:hover,\n\t.navbar-inverse .navbar-toggler:focus,\n\t.navbar-inverse .navbar-toggler:hover {\n\t  color: white;\n\t}\n\n\t.navbar-inverse .navbar-nav .nav-link {\n\t  color: rgba(255, 255, 255, 0.5);\n\t}\n\n\t.navbar-inverse .navbar-nav .nav-link:focus,\n\t.navbar-inverse .navbar-nav .nav-link:hover {\n\t  color: rgba(255, 255, 255, 0.75);\n\t}\n\n\t.navbar-inverse .navbar-nav .nav-link.disabled {\n\t  color: rgba(255, 255, 255, 0.25);\n\t}\n\n\t.navbar-inverse .navbar-nav .open>.nav-link,\n\t.navbar-inverse .navbar-nav .active>.nav-link,\n\t.navbar-inverse .navbar-nav .nav-link.open,\n\t.navbar-inverse .navbar-nav .nav-link.active {\n\t  color: white;\n\t}\n\n\t.navbar-inverse .navbar-toggler {\n\t  border-color: rgba(255, 255, 255, 0.1);\n\t}\n\n\t.navbar-inverse .navbar-toggler-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n\t}\n\n\t.navbar-inverse .navbar-text {\n\t  color: rgba(255, 255, 255, 0.5);\n\t}\n\n\t.card {\n\t  position: relative;\n\t  display: flex;\n\t  flex-direction: column;\n\t  background-color: #fff;\n\t  border: 1px solid rgba(0, 0, 0, 0.125);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.card-block {\n\t  flex: 1 1 auto;\n\t  padding: 1.25rem;\n\t}\n\n\t.card-title {\n\t  margin-bottom: 0.75rem;\n\t}\n\n\t.card-subtitle {\n\t  margin-top: -0.375rem;\n\t  margin-bottom: 0;\n\t}\n\n\t.card-text:last-child {\n\t  margin-bottom: 0;\n\t}\n\n\t.card-link:hover {\n\t  text-decoration: none;\n\t}\n\n\t.card-link+.card-link {\n\t  margin-left: 1.25rem;\n\t}\n\n\t.card>.list-group:first-child .list-group-item:first-child {\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.card>.list-group:last-child .list-group-item:last-child {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-bottom-left-radius: 0.25rem;\n\t}\n\n\t.card-header {\n\t  padding: 0.75rem 1.25rem;\n\t  margin-bottom: 0;\n\t  background-color: #f7f7f9;\n\t  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n\t}\n\n\t.card-header:first-child {\n\t  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;\n\t}\n\n\t.card-footer {\n\t  padding: 0.75rem 1.25rem;\n\t  background-color: #f7f7f9;\n\t  border-top: 1px solid rgba(0, 0, 0, 0.125);\n\t}\n\n\t.card-footer:last-child {\n\t  border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);\n\t}\n\n\t.card-header-tabs {\n\t  margin-right: -0.625rem;\n\t  margin-bottom: -0.75rem;\n\t  margin-left: -0.625rem;\n\t  border-bottom: 0;\n\t}\n\n\t.card-header-pills {\n\t  margin-right: -0.625rem;\n\t  margin-left: -0.625rem;\n\t}\n\n\t.card-primary {\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.card-primary .card-header,\n\t.card-primary .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-success {\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.card-success .card-header,\n\t.card-success .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-info {\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.card-info .card-header,\n\t.card-info .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-warning {\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.card-warning .card-header,\n\t.card-warning .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-danger {\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.card-danger .card-header,\n\t.card-danger .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-outline-primary {\n\t  background-color: transparent;\n\t  border-color: #0f8699;\n\t}\n\n\t.card-outline-secondary {\n\t  background-color: transparent;\n\t  border-color: #ccc;\n\t}\n\n\t.card-outline-info {\n\t  background-color: transparent;\n\t  border-color: #5bc0de;\n\t}\n\n\t.card-outline-success {\n\t  background-color: transparent;\n\t  border-color: #5cb85c;\n\t}\n\n\t.card-outline-warning {\n\t  background-color: transparent;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.card-outline-danger {\n\t  background-color: transparent;\n\t  border-color: #d9534f;\n\t}\n\n\t.card-inverse {\n\t  color: rgba(255, 255, 255, 0.65);\n\t}\n\n\t.card-inverse .card-header,\n\t.card-inverse .card-footer {\n\t  background-color: transparent;\n\t  border-color: rgba(255, 255, 255, 0.2);\n\t}\n\n\t.card-inverse .card-header,\n\t.card-inverse .card-footer,\n\t.card-inverse .card-title,\n\t.card-inverse .card-blockquote {\n\t  color: #fff;\n\t}\n\n\t.card-inverse .card-link,\n\t.card-inverse .card-text,\n\t.card-inverse .card-subtitle,\n\t.card-inverse .card-blockquote .blockquote-footer {\n\t  color: rgba(255, 255, 255, 0.65);\n\t}\n\n\t.card-inverse .card-link:focus,\n\t.card-inverse .card-link:hover {\n\t  color: #fff;\n\t}\n\n\t.card-blockquote {\n\t  padding: 0;\n\t  margin-bottom: 0;\n\t  border-left: 0;\n\t}\n\n\t.card-img {\n\t  border-radius: calc(0.25rem - 1px);\n\t}\n\n\t.card-img-overlay {\n\t  position: absolute;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  padding: 1.25rem;\n\t}\n\n\t.card-img-top {\n\t  border-top-right-radius: calc(0.25rem - 1px);\n\t  border-top-left-radius: calc(0.25rem - 1px);\n\t}\n\n\t.card-img-bottom {\n\t  border-bottom-right-radius: calc(0.25rem - 1px);\n\t  border-bottom-left-radius: calc(0.25rem - 1px);\n\t}\n\n\t@media (min-width: 576px) {\n\t  .card-deck {\n\t    display: flex;\n\t    flex-flow: row wrap;\n\t  }\n\t  .card-deck .card {\n\t    display: flex;\n\t    flex: 1 0 0;\n\t    flex-direction: column;\n\t  }\n\t  .card-deck .card:not(:first-child) {\n\t    margin-left: 15px;\n\t  }\n\t  .card-deck .card:not(:last-child) {\n\t    margin-right: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .card-group {\n\t    display: flex;\n\t    flex-flow: row wrap;\n\t  }\n\t  .card-group .card {\n\t    flex: 1 0 0;\n\t  }\n\t  .card-group .card+.card {\n\t    margin-left: 0;\n\t    border-left: 0;\n\t  }\n\t  .card-group .card:first-child {\n\t    border-bottom-right-radius: 0;\n\t    border-top-right-radius: 0;\n\t  }\n\t  .card-group .card:first-child .card-img-top {\n\t    border-top-right-radius: 0;\n\t  }\n\t  .card-group .card:first-child .card-img-bottom {\n\t    border-bottom-right-radius: 0;\n\t  }\n\t  .card-group .card:last-child {\n\t    border-bottom-left-radius: 0;\n\t    border-top-left-radius: 0;\n\t  }\n\t  .card-group .card:last-child .card-img-top {\n\t    border-top-left-radius: 0;\n\t  }\n\t  .card-group .card:last-child .card-img-bottom {\n\t    border-bottom-left-radius: 0;\n\t  }\n\t  .card-group .card:not(:first-child):not(:last-child) {\n\t    border-radius: 0;\n\t  }\n\t  .card-group .card:not(:first-child):not(:last-child) .card-img-top,\n\t  .card-group .card:not(:first-child):not(:last-child) .card-img-bottom {\n\t    border-radius: 0;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .card-columns {\n\t    column-count: 3;\n\t    column-gap: 1.25rem;\n\t  }\n\t  .card-columns .card {\n\t    display: inline-block;\n\t    width: 100%;\n\t    margin-bottom: 0.75rem;\n\t  }\n\t}\n\n\t.breadcrumb {\n\t  padding: 0.75rem 1rem;\n\t  margin-bottom: 1rem;\n\t  list-style: none;\n\t  background-color: #eceeef;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.breadcrumb::after {\n\t  display: block;\n\t  content: \"\";\n\t  clear: both;\n\t}\n\n\t.breadcrumb-item {\n\t  float: left;\n\t}\n\n\t.breadcrumb-item+.breadcrumb-item::before {\n\t  display: inline-block;\n\t  padding-right: 0.5rem;\n\t  padding-left: 0.5rem;\n\t  color: #636c72;\n\t  content: \"/\";\n\t}\n\n\t.breadcrumb-item+.breadcrumb-item:hover::before {\n\t  text-decoration: underline;\n\t}\n\n\t.breadcrumb-item+.breadcrumb-item:hover::before {\n\t  text-decoration: none;\n\t}\n\n\t.breadcrumb-item.active {\n\t  color: #636c72;\n\t}\n\n\t.pagination {\n\t  display: flex;\n\t  padding-left: 0;\n\t  list-style: none;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.page-item:first-child .page-link {\n\t  margin-left: 0;\n\t  border-bottom-left-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.page-item:last-child .page-link {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-top-right-radius: 0.25rem;\n\t}\n\n\t.page-item.active .page-link {\n\t  z-index: 2;\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.page-item.disabled .page-link {\n\t  color: #636c72;\n\t  pointer-events: none;\n\t  cursor: not-allowed;\n\t  background-color: #fff;\n\t  border-color: #ddd;\n\t}\n\n\t.page-link {\n\t  position: relative;\n\t  display: block;\n\t  padding: 0.5rem 0.75rem;\n\t  margin-left: -1px;\n\t  line-height: 1.25;\n\t  color: #0f8699;\n\t  background-color: #fff;\n\t  border: 1px solid #ddd;\n\t}\n\n\t.page-link:focus,\n\t.page-link:hover {\n\t  color: #084953;\n\t  text-decoration: none;\n\t  background-color: #eceeef;\n\t  border-color: #ddd;\n\t}\n\n\t.pagination-lg .page-link {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t}\n\n\t.pagination-lg .page-item:first-child .page-link {\n\t  border-bottom-left-radius: 0.3rem;\n\t  border-top-left-radius: 0.3rem;\n\t}\n\n\t.pagination-lg .page-item:last-child .page-link {\n\t  border-bottom-right-radius: 0.3rem;\n\t  border-top-right-radius: 0.3rem;\n\t}\n\n\t.pagination-sm .page-link {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t}\n\n\t.pagination-sm .page-item:first-child .page-link {\n\t  border-bottom-left-radius: 0.2rem;\n\t  border-top-left-radius: 0.2rem;\n\t}\n\n\t.pagination-sm .page-item:last-child .page-link {\n\t  border-bottom-right-radius: 0.2rem;\n\t  border-top-right-radius: 0.2rem;\n\t}\n\n\t.badge {\n\t  display: inline-block;\n\t  padding: 0.25em 0.4em;\n\t  font-size: 75%;\n\t  font-weight: bold;\n\t  line-height: 1;\n\t  color: #fff;\n\t  text-align: center;\n\t  white-space: nowrap;\n\t  vertical-align: baseline;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.badge:empty {\n\t  display: none;\n\t}\n\n\t.btn .badge {\n\t  position: relative;\n\t  top: -1px;\n\t}\n\n\ta.badge:focus,\n\ta.badge:hover {\n\t  color: #fff;\n\t  text-decoration: none;\n\t  cursor: pointer;\n\t}\n\n\t.badge-pill {\n\t  padding-right: 0.6em;\n\t  padding-left: 0.6em;\n\t  border-radius: 10rem;\n\t}\n\n\t.badge-default {\n\t  background-color: #636c72;\n\t}\n\n\t.badge-default[href]:focus,\n\t.badge-default[href]:hover {\n\t  background-color: #4b5257;\n\t}\n\n\t.badge-primary {\n\t  background-color: #0f8699;\n\t}\n\n\t.badge-primary[href]:focus,\n\t.badge-primary[href]:hover {\n\t  background-color: #0a5d6b;\n\t}\n\n\t.badge-success {\n\t  background-color: #5cb85c;\n\t}\n\n\t.badge-success[href]:focus,\n\t.badge-success[href]:hover {\n\t  background-color: #449d44;\n\t}\n\n\t.badge-info {\n\t  background-color: #5bc0de;\n\t}\n\n\t.badge-info[href]:focus,\n\t.badge-info[href]:hover {\n\t  background-color: #31b0d5;\n\t}\n\n\t.badge-warning {\n\t  background-color: #f0ad4e;\n\t}\n\n\t.badge-warning[href]:focus,\n\t.badge-warning[href]:hover {\n\t  background-color: #ec971f;\n\t}\n\n\t.badge-danger {\n\t  background-color: #d9534f;\n\t}\n\n\t.badge-danger[href]:focus,\n\t.badge-danger[href]:hover {\n\t  background-color: #c9302c;\n\t}\n\n\t.jumbotron {\n\t  padding: 2rem 1rem;\n\t  margin-bottom: 2rem;\n\t  background-color: #eceeef;\n\t  border-radius: 0.3rem;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .jumbotron {\n\t    padding: 4rem 2rem;\n\t  }\n\t}\n\n\t.jumbotron-hr {\n\t  border-top-color: #d0d5d8;\n\t}\n\n\t.jumbotron-fluid {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t  border-radius: 0;\n\t}\n\n\t.alert {\n\t  padding: 0.75rem 1.25rem;\n\t  margin-bottom: 1rem;\n\t  border: 1px solid transparent;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.alert-heading {\n\t  color: inherit;\n\t}\n\n\t.alert-link {\n\t  font-weight: bold;\n\t}\n\n\t.alert-dismissible .close {\n\t  position: relative;\n\t  top: -0.75rem;\n\t  right: -1.25rem;\n\t  padding: 0.75rem 1.25rem;\n\t  color: inherit;\n\t}\n\n\t.alert-success {\n\t  background-color: #dff0d8;\n\t  border-color: #d0e9c6;\n\t  color: #3c763d;\n\t}\n\n\t.alert-success hr {\n\t  border-top-color: #c1e2b3;\n\t}\n\n\t.alert-success .alert-link {\n\t  color: #2b542c;\n\t}\n\n\t.alert-info {\n\t  background-color: #d9edf7;\n\t  border-color: #bcdff1;\n\t  color: #31708f;\n\t}\n\n\t.alert-info hr {\n\t  border-top-color: #a6d5ec;\n\t}\n\n\t.alert-info .alert-link {\n\t  color: #245269;\n\t}\n\n\t.alert-warning {\n\t  background-color: #fcf8e3;\n\t  border-color: #faf2cc;\n\t  color: #8a6d3b;\n\t}\n\n\t.alert-warning hr {\n\t  border-top-color: #f7ecb5;\n\t}\n\n\t.alert-warning .alert-link {\n\t  color: #66512c;\n\t}\n\n\t.alert-danger {\n\t  background-color: #f2dede;\n\t  border-color: #ebcccc;\n\t  color: #a94442;\n\t}\n\n\t.alert-danger hr {\n\t  border-top-color: #e4b9b9;\n\t}\n\n\t.alert-danger .alert-link {\n\t  color: #843534;\n\t}\n\n\t@keyframes progress-bar-stripes {\n\t  from {\n\t    background-position: 1rem 0;\n\t  }\n\t  to {\n\t    background-position: 0 0;\n\t  }\n\t}\n\n\t.progress {\n\t  display: flex;\n\t  overflow: hidden;\n\t  font-size: 0.75rem;\n\t  line-height: 1rem;\n\t  text-align: center;\n\t  background-color: #eceeef;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.progress-bar {\n\t  height: 1rem;\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t}\n\n\t.progress-bar-striped {\n\t  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n\t  background-size: 1rem 1rem;\n\t}\n\n\t.progress-bar-animated {\n\t  animation: progress-bar-stripes 1s linear infinite;\n\t}\n\n\t.media {\n\t  display: flex;\n\t  align-items: flex-start;\n\t}\n\n\t.media-body {\n\t  flex: 1;\n\t}\n\n\t.list-group {\n\t  display: flex;\n\t  flex-direction: column;\n\t  padding-left: 0;\n\t  margin-bottom: 0;\n\t}\n\n\t.list-group-item-action {\n\t  width: 100%;\n\t  color: #464a4c;\n\t  text-align: inherit;\n\t}\n\n\t.list-group-item-action .list-group-item-heading {\n\t  color: #292b2c;\n\t}\n\n\t.list-group-item-action:focus,\n\t.list-group-item-action:hover {\n\t  color: #464a4c;\n\t  text-decoration: none;\n\t  background-color: #f7f7f9;\n\t}\n\n\t.list-group-item-action:active {\n\t  color: #292b2c;\n\t  background-color: #eceeef;\n\t}\n\n\t.list-group-item {\n\t  position: relative;\n\t  display: flex;\n\t  flex-flow: row wrap;\n\t  align-items: center;\n\t  padding: 0.75rem 1.25rem;\n\t  margin-bottom: -1px;\n\t  background-color: #fff;\n\t  border: 1px solid rgba(0, 0, 0, 0.125);\n\t}\n\n\t.list-group-item:first-child {\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.list-group-item:last-child {\n\t  margin-bottom: 0;\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-bottom-left-radius: 0.25rem;\n\t}\n\n\t.list-group-item:focus,\n\t.list-group-item:hover {\n\t  text-decoration: none;\n\t}\n\n\t.list-group-item.disabled,\n\t.list-group-item:disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t  background-color: #fff;\n\t}\n\n\t.list-group-item.disabled .list-group-item-heading,\n\t.list-group-item:disabled .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\t.list-group-item.disabled .list-group-item-text,\n\t.list-group-item:disabled .list-group-item-text {\n\t  color: #636c72;\n\t}\n\n\t.list-group-item.active {\n\t  z-index: 2;\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.list-group-item.active .list-group-item-heading,\n\t.list-group-item.active .list-group-item-heading>small,\n\t.list-group-item.active .list-group-item-heading>.small {\n\t  color: inherit;\n\t}\n\n\t.list-group-item.active .list-group-item-text {\n\t  color: #b0edf7;\n\t}\n\n\t.list-group-flush .list-group-item {\n\t  border-right: 0;\n\t  border-left: 0;\n\t  border-radius: 0;\n\t}\n\n\t.list-group-flush:first-child .list-group-item:first-child {\n\t  border-top: 0;\n\t}\n\n\t.list-group-flush:last-child .list-group-item:last-child {\n\t  border-bottom: 0;\n\t}\n\n\t.list-group-item-success {\n\t  color: #3c763d;\n\t  background-color: #dff0d8;\n\t}\n\n\ta.list-group-item-success,\n\tbutton.list-group-item-success {\n\t  color: #3c763d;\n\t}\n\n\ta.list-group-item-success .list-group-item-heading,\n\tbutton.list-group-item-success .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-success:focus,\n\ta.list-group-item-success:hover,\n\tbutton.list-group-item-success:focus,\n\tbutton.list-group-item-success:hover {\n\t  color: #3c763d;\n\t  background-color: #d0e9c6;\n\t}\n\n\ta.list-group-item-success.active,\n\tbutton.list-group-item-success.active {\n\t  color: #fff;\n\t  background-color: #3c763d;\n\t  border-color: #3c763d;\n\t}\n\n\t.list-group-item-info {\n\t  color: #31708f;\n\t  background-color: #d9edf7;\n\t}\n\n\ta.list-group-item-info,\n\tbutton.list-group-item-info {\n\t  color: #31708f;\n\t}\n\n\ta.list-group-item-info .list-group-item-heading,\n\tbutton.list-group-item-info .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-info:focus,\n\ta.list-group-item-info:hover,\n\tbutton.list-group-item-info:focus,\n\tbutton.list-group-item-info:hover {\n\t  color: #31708f;\n\t  background-color: #c4e3f3;\n\t}\n\n\ta.list-group-item-info.active,\n\tbutton.list-group-item-info.active {\n\t  color: #fff;\n\t  background-color: #31708f;\n\t  border-color: #31708f;\n\t}\n\n\t.list-group-item-warning {\n\t  color: #8a6d3b;\n\t  background-color: #fcf8e3;\n\t}\n\n\ta.list-group-item-warning,\n\tbutton.list-group-item-warning {\n\t  color: #8a6d3b;\n\t}\n\n\ta.list-group-item-warning .list-group-item-heading,\n\tbutton.list-group-item-warning .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-warning:focus,\n\ta.list-group-item-warning:hover,\n\tbutton.list-group-item-warning:focus,\n\tbutton.list-group-item-warning:hover {\n\t  color: #8a6d3b;\n\t  background-color: #faf2cc;\n\t}\n\n\ta.list-group-item-warning.active,\n\tbutton.list-group-item-warning.active {\n\t  color: #fff;\n\t  background-color: #8a6d3b;\n\t  border-color: #8a6d3b;\n\t}\n\n\t.list-group-item-danger {\n\t  color: #a94442;\n\t  background-color: #f2dede;\n\t}\n\n\ta.list-group-item-danger,\n\tbutton.list-group-item-danger {\n\t  color: #a94442;\n\t}\n\n\ta.list-group-item-danger .list-group-item-heading,\n\tbutton.list-group-item-danger .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-danger:focus,\n\ta.list-group-item-danger:hover,\n\tbutton.list-group-item-danger:focus,\n\tbutton.list-group-item-danger:hover {\n\t  color: #a94442;\n\t  background-color: #ebcccc;\n\t}\n\n\ta.list-group-item-danger.active,\n\tbutton.list-group-item-danger.active {\n\t  color: #fff;\n\t  background-color: #a94442;\n\t  border-color: #a94442;\n\t}\n\n\t.embed-responsive {\n\t  position: relative;\n\t  display: block;\n\t  width: 100%;\n\t  padding: 0;\n\t  overflow: hidden;\n\t}\n\n\t.embed-responsive::before {\n\t  display: block;\n\t  content: \"\";\n\t}\n\n\t.embed-responsive .embed-responsive-item,\n\t.embed-responsive iframe,\n\t.embed-responsive embed,\n\t.embed-responsive object,\n\t.embed-responsive video {\n\t  position: absolute;\n\t  top: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  width: 100%;\n\t  height: 100%;\n\t  border: 0;\n\t}\n\n\t.embed-responsive-21by9::before {\n\t  padding-top: 42.85714%;\n\t}\n\n\t.embed-responsive-16by9::before {\n\t  padding-top: 56.25%;\n\t}\n\n\t.embed-responsive-4by3::before {\n\t  padding-top: 75%;\n\t}\n\n\t.embed-responsive-1by1::before {\n\t  padding-top: 100%;\n\t}\n\n\t.close {\n\t  float: right;\n\t  font-size: 1.5rem;\n\t  font-weight: bold;\n\t  line-height: 1;\n\t  color: #000;\n\t  text-shadow: 0 1px 0 #fff;\n\t  opacity: .5;\n\t}\n\n\t.close:focus,\n\t.close:hover {\n\t  color: #000;\n\t  text-decoration: none;\n\t  cursor: pointer;\n\t  opacity: .75;\n\t}\n\n\tbutton.close {\n\t  padding: 0;\n\t  cursor: pointer;\n\t  background: transparent;\n\t  border: 0;\n\t  -webkit-appearance: none;\n\t}\n\n\t.modal-open {\n\t  overflow: hidden;\n\t}\n\n\t.modal {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 1050;\n\t  display: none;\n\t  overflow: hidden;\n\t  outline: 0;\n\t}\n\n\t.modal.fade .modal-dialog {\n\t  transition: transform 0.3s ease-out;\n\t  transform: translate(0, -25%);\n\t}\n\n\t.modal.show .modal-dialog {\n\t  transform: translate(0, 0);\n\t}\n\n\t.modal-open .modal {\n\t  overflow-x: hidden;\n\t  overflow-y: auto;\n\t}\n\n\t.modal-dialog {\n\t  position: relative;\n\t  width: auto;\n\t  margin: 10px;\n\t}\n\n\t.modal-content {\n\t  position: relative;\n\t  display: flex;\n\t  flex-direction: column;\n\t  background-color: #fff;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.2);\n\t  border-radius: 0.3rem;\n\t  outline: 0;\n\t}\n\n\t.modal-backdrop {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 1040;\n\t  background-color: #000;\n\t}\n\n\t.modal-backdrop.fade {\n\t  opacity: 0;\n\t}\n\n\t.modal-backdrop.show {\n\t  opacity: 0.5;\n\t}\n\n\t.modal-header {\n\t  display: flex;\n\t  align-items: center;\n\t  justify-content: space-between;\n\t  padding: 15px;\n\t  border-bottom: 1px solid #eceeef;\n\t}\n\n\t.modal-title {\n\t  margin-bottom: 0;\n\t  line-height: 1.5;\n\t}\n\n\t.modal-body {\n\t  position: relative;\n\t  flex: 1 1 auto;\n\t  padding: 15px;\n\t}\n\n\t.modal-footer {\n\t  display: flex;\n\t  align-items: center;\n\t  justify-content: flex-end;\n\t  padding: 15px;\n\t  border-top: 1px solid #eceeef;\n\t}\n\n\t.modal-footer> :not(:first-child) {\n\t  margin-left: .25rem;\n\t}\n\n\t.modal-footer> :not(:last-child) {\n\t  margin-right: .25rem;\n\t}\n\n\t.modal-scrollbar-measure {\n\t  position: absolute;\n\t  top: -9999px;\n\t  width: 50px;\n\t  height: 50px;\n\t  overflow: scroll;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .modal-dialog {\n\t    max-width: 500px;\n\t    margin: 30px auto;\n\t  }\n\t  .modal-sm {\n\t    max-width: 300px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .modal-lg {\n\t    max-width: 800px;\n\t  }\n\t}\n\n\t.tooltip {\n\t  position: absolute;\n\t  z-index: 1070;\n\t  display: block;\n\t  font-family: -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n\t  font-style: normal;\n\t  font-weight: normal;\n\t  letter-spacing: normal;\n\t  line-break: auto;\n\t  line-height: 1.5;\n\t  text-align: left;\n\t  text-align: start;\n\t  text-decoration: none;\n\t  text-shadow: none;\n\t  text-transform: none;\n\t  white-space: normal;\n\t  word-break: normal;\n\t  word-spacing: normal;\n\t  font-size: 0.875rem;\n\t  word-wrap: break-word;\n\t  opacity: 0;\n\t}\n\n\t.tooltip.show {\n\t  opacity: 0.9;\n\t}\n\n\t.tooltip.tooltip-top,\n\t.tooltip.bs-tether-element-attached-bottom {\n\t  padding: 5px 0;\n\t  margin-top: -3px;\n\t}\n\n\t.tooltip.tooltip-top .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-bottom .tooltip-inner::before {\n\t  bottom: 0;\n\t  left: 50%;\n\t  margin-left: -5px;\n\t  content: \"\";\n\t  border-width: 5px 5px 0;\n\t  border-top-color: #000;\n\t}\n\n\t.tooltip.tooltip-right,\n\t.tooltip.bs-tether-element-attached-left {\n\t  padding: 0 5px;\n\t  margin-left: 3px;\n\t}\n\n\t.tooltip.tooltip-right .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-left .tooltip-inner::before {\n\t  top: 50%;\n\t  left: 0;\n\t  margin-top: -5px;\n\t  content: \"\";\n\t  border-width: 5px 5px 5px 0;\n\t  border-right-color: #000;\n\t}\n\n\t.tooltip.tooltip-bottom,\n\t.tooltip.bs-tether-element-attached-top {\n\t  padding: 5px 0;\n\t  margin-top: 3px;\n\t}\n\n\t.tooltip.tooltip-bottom .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-top .tooltip-inner::before {\n\t  top: 0;\n\t  left: 50%;\n\t  margin-left: -5px;\n\t  content: \"\";\n\t  border-width: 0 5px 5px;\n\t  border-bottom-color: #000;\n\t}\n\n\t.tooltip.tooltip-left,\n\t.tooltip.bs-tether-element-attached-right {\n\t  padding: 0 5px;\n\t  margin-left: -3px;\n\t}\n\n\t.tooltip.tooltip-left .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-right .tooltip-inner::before {\n\t  top: 50%;\n\t  right: 0;\n\t  margin-top: -5px;\n\t  content: \"\";\n\t  border-width: 5px 0 5px 5px;\n\t  border-left-color: #000;\n\t}\n\n\t.tooltip-inner {\n\t  max-width: 200px;\n\t  padding: 3px 8px;\n\t  color: #fff;\n\t  text-align: center;\n\t  background-color: #000;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.tooltip-inner::before {\n\t  position: absolute;\n\t  width: 0;\n\t  height: 0;\n\t  border-color: transparent;\n\t  border-style: solid;\n\t}\n\n\t.popover {\n\t  position: absolute;\n\t  top: 0;\n\t  left: 0;\n\t  z-index: 1060;\n\t  display: block;\n\t  max-width: 276px;\n\t  padding: 1px;\n\t  font-family: -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n\t  font-style: normal;\n\t  font-weight: normal;\n\t  letter-spacing: normal;\n\t  line-break: auto;\n\t  line-height: 1.5;\n\t  text-align: left;\n\t  text-align: start;\n\t  text-decoration: none;\n\t  text-shadow: none;\n\t  text-transform: none;\n\t  white-space: normal;\n\t  word-break: normal;\n\t  word-spacing: normal;\n\t  font-size: 0.875rem;\n\t  word-wrap: break-word;\n\t  background-color: #fff;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.2);\n\t  border-radius: 0.3rem;\n\t}\n\n\t.popover.popover-top,\n\t.popover.bs-tether-element-attached-bottom {\n\t  margin-top: -10px;\n\t}\n\n\t.popover.popover-top::before,\n\t.popover.popover-top::after,\n\t.popover.bs-tether-element-attached-bottom::before,\n\t.popover.bs-tether-element-attached-bottom::after {\n\t  left: 50%;\n\t  border-bottom-width: 0;\n\t}\n\n\t.popover.popover-top::before,\n\t.popover.bs-tether-element-attached-bottom::before {\n\t  bottom: -11px;\n\t  margin-left: -11px;\n\t  border-top-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-top::after,\n\t.popover.bs-tether-element-attached-bottom::after {\n\t  bottom: -10px;\n\t  margin-left: -10px;\n\t  border-top-color: #fff;\n\t}\n\n\t.popover.popover-right,\n\t.popover.bs-tether-element-attached-left {\n\t  margin-left: 10px;\n\t}\n\n\t.popover.popover-right::before,\n\t.popover.popover-right::after,\n\t.popover.bs-tether-element-attached-left::before,\n\t.popover.bs-tether-element-attached-left::after {\n\t  top: 50%;\n\t  border-left-width: 0;\n\t}\n\n\t.popover.popover-right::before,\n\t.popover.bs-tether-element-attached-left::before {\n\t  left: -11px;\n\t  margin-top: -11px;\n\t  border-right-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-right::after,\n\t.popover.bs-tether-element-attached-left::after {\n\t  left: -10px;\n\t  margin-top: -10px;\n\t  border-right-color: #fff;\n\t}\n\n\t.popover.popover-bottom,\n\t.popover.bs-tether-element-attached-top {\n\t  margin-top: 10px;\n\t}\n\n\t.popover.popover-bottom::before,\n\t.popover.popover-bottom::after,\n\t.popover.bs-tether-element-attached-top::before,\n\t.popover.bs-tether-element-attached-top::after {\n\t  left: 50%;\n\t  border-top-width: 0;\n\t}\n\n\t.popover.popover-bottom::before,\n\t.popover.bs-tether-element-attached-top::before {\n\t  top: -11px;\n\t  margin-left: -11px;\n\t  border-bottom-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-bottom::after,\n\t.popover.bs-tether-element-attached-top::after {\n\t  top: -10px;\n\t  margin-left: -10px;\n\t  border-bottom-color: #f7f7f7;\n\t}\n\n\t.popover.popover-bottom .popover-title::before,\n\t.popover.bs-tether-element-attached-top .popover-title::before {\n\t  position: absolute;\n\t  top: 0;\n\t  left: 50%;\n\t  display: block;\n\t  width: 20px;\n\t  margin-left: -10px;\n\t  content: \"\";\n\t  border-bottom: 1px solid #f7f7f7;\n\t}\n\n\t.popover.popover-left,\n\t.popover.bs-tether-element-attached-right {\n\t  margin-left: -10px;\n\t}\n\n\t.popover.popover-left::before,\n\t.popover.popover-left::after,\n\t.popover.bs-tether-element-attached-right::before,\n\t.popover.bs-tether-element-attached-right::after {\n\t  top: 50%;\n\t  border-right-width: 0;\n\t}\n\n\t.popover.popover-left::before,\n\t.popover.bs-tether-element-attached-right::before {\n\t  right: -11px;\n\t  margin-top: -11px;\n\t  border-left-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-left::after,\n\t.popover.bs-tether-element-attached-right::after {\n\t  right: -10px;\n\t  margin-top: -10px;\n\t  border-left-color: #fff;\n\t}\n\n\t.popover-title {\n\t  padding: 8px 14px;\n\t  margin-bottom: 0;\n\t  font-size: 1rem;\n\t  background-color: #f7f7f7;\n\t  border-bottom: 1px solid #ebebeb;\n\t  border-top-right-radius: calc(0.3rem - 1px);\n\t  border-top-left-radius: calc(0.3rem - 1px);\n\t}\n\n\t.popover-title:empty {\n\t  display: none;\n\t}\n\n\t.popover-content {\n\t  padding: 9px 14px;\n\t}\n\n\t.popover::before,\n\t.popover::after {\n\t  position: absolute;\n\t  display: block;\n\t  width: 0;\n\t  height: 0;\n\t  border-color: transparent;\n\t  border-style: solid;\n\t}\n\n\t.popover::before {\n\t  content: \"\";\n\t  border-width: 11px;\n\t}\n\n\t.popover::after {\n\t  content: \"\";\n\t  border-width: 10px;\n\t}\n\n\t.carousel {\n\t  position: relative;\n\t}\n\n\t.carousel-inner {\n\t  position: relative;\n\t  width: 100%;\n\t  overflow: hidden;\n\t}\n\n\t.carousel-item {\n\t  position: relative;\n\t  display: none;\n\t  width: 100%;\n\t}\n\n\t@media (-webkit-transform-3d) {\n\t  .carousel-item {\n\t    transition: transform 0.6s ease-in-out;\n\t    backface-visibility: hidden;\n\t    perspective: 1000px;\n\t  }\n\t}\n\n\t@supports (transform: translate3d(0,\n\t0,\n\t0)) {\n\t  .carousel-item {\n\t    transition: transform 0.6s ease-in-out;\n\t    backface-visibility: hidden;\n\t    perspective: 1000px;\n\t  }\n\t}\n\n\t.carousel-item.active,\n\t.carousel-item-next,\n\t.carousel-item-prev {\n\t  display: flex;\n\t}\n\n\t.carousel-item-next,\n\t.carousel-item-prev {\n\t  position: absolute;\n\t  top: 0;\n\t}\n\n\t@media (-webkit-transform-3d) {\n\t  .carousel-item-next.carousel-item-left,\n\t  .carousel-item-prev.carousel-item-right {\n\t    transform: translate3d(0, 0, 0);\n\t  }\n\t  .carousel-item-next,\n\t  .active.carousel-item-right {\n\t    transform: translate3d(100%, 0, 0);\n\t  }\n\t  .carousel-item-prev,\n\t  .active.carousel-item-left {\n\t    transform: translate3d(-100%, 0, 0);\n\t  }\n\t}\n\n\t@supports (transform: translate3d(0,\n\t0,\n\t0)) {\n\t  .carousel-item-next.carousel-item-left,\n\t  .carousel-item-prev.carousel-item-right {\n\t    transform: translate3d(0, 0, 0);\n\t  }\n\t  .carousel-item-next,\n\t  .active.carousel-item-right {\n\t    transform: translate3d(100%, 0, 0);\n\t  }\n\t  .carousel-item-prev,\n\t  .active.carousel-item-left {\n\t    transform: translate3d(-100%, 0, 0);\n\t  }\n\t}\n\n\t.carousel-control-prev,\n\t.carousel-control-next {\n\t  position: absolute;\n\t  top: 0;\n\t  bottom: 0;\n\t  display: flex;\n\t  align-items: center;\n\t  justify-content: center;\n\t  width: 15%;\n\t  color: #fff;\n\t  text-align: center;\n\t  opacity: 0.5;\n\t}\n\n\t.carousel-control-prev:focus,\n\t.carousel-control-prev:hover,\n\t.carousel-control-next:focus,\n\t.carousel-control-next:hover {\n\t  color: #fff;\n\t  text-decoration: none;\n\t  outline: 0;\n\t  opacity: .9;\n\t}\n\n\t.carousel-control-prev {\n\t  left: 0;\n\t}\n\n\t.carousel-control-next {\n\t  right: 0;\n\t}\n\n\t.carousel-control-prev-icon,\n\t.carousel-control-next-icon {\n\t  display: inline-block;\n\t  width: 20px;\n\t  height: 20px;\n\t  background: transparent no-repeat center center;\n\t  background-size: 100% 100%;\n\t}\n\n\t.carousel-control-prev-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M4 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E\");\n\t}\n\n\t.carousel-control-next-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E\");\n\t}\n\n\t.carousel-indicators {\n\t  position: absolute;\n\t  right: 0;\n\t  bottom: 10px;\n\t  left: 0;\n\t  z-index: 15;\n\t  display: flex;\n\t  justify-content: center;\n\t  padding-left: 0;\n\t  margin-right: 15%;\n\t  margin-left: 15%;\n\t  list-style: none;\n\t}\n\n\t.carousel-indicators li {\n\t  position: relative;\n\t  flex: 1 0 auto;\n\t  max-width: 30px;\n\t  height: 3px;\n\t  margin-right: 3px;\n\t  margin-left: 3px;\n\t  text-indent: -999px;\n\t  cursor: pointer;\n\t  background-color: rgba(255, 255, 255, 0.5);\n\t}\n\n\t.carousel-indicators li::before {\n\t  position: absolute;\n\t  top: -10px;\n\t  left: 0;\n\t  display: inline-block;\n\t  width: 100%;\n\t  height: 10px;\n\t  content: \"\";\n\t}\n\n\t.carousel-indicators li::after {\n\t  position: absolute;\n\t  bottom: -10px;\n\t  left: 0;\n\t  display: inline-block;\n\t  width: 100%;\n\t  height: 10px;\n\t  content: \"\";\n\t}\n\n\t.carousel-indicators .active {\n\t  background-color: #fff;\n\t}\n\n\t.carousel-caption {\n\t  position: absolute;\n\t  right: 15%;\n\t  bottom: 20px;\n\t  left: 15%;\n\t  z-index: 10;\n\t  padding-top: 20px;\n\t  padding-bottom: 20px;\n\t  color: #fff;\n\t  text-align: center;\n\t}\n\n\t.align-baseline {\n\t  vertical-align: baseline !important;\n\t}\n\n\t.align-top {\n\t  vertical-align: top !important;\n\t}\n\n\t.align-middle {\n\t  vertical-align: middle !important;\n\t}\n\n\t.align-bottom {\n\t  vertical-align: bottom !important;\n\t}\n\n\t.align-text-bottom {\n\t  vertical-align: text-bottom !important;\n\t}\n\n\t.align-text-top {\n\t  vertical-align: text-top !important;\n\t}\n\n\t.bg-faded {\n\t  background-color: #f7f7f7;\n\t}\n\n\t.bg-primary {\n\t  background-color: #0f8699 !important;\n\t}\n\n\ta.bg-primary:focus,\n\ta.bg-primary:hover {\n\t  background-color: #0a5d6b !important;\n\t}\n\n\t.bg-success {\n\t  background-color: #5cb85c !important;\n\t}\n\n\ta.bg-success:focus,\n\ta.bg-success:hover {\n\t  background-color: #449d44 !important;\n\t}\n\n\t.bg-info {\n\t  background-color: #5bc0de !important;\n\t}\n\n\ta.bg-info:focus,\n\ta.bg-info:hover {\n\t  background-color: #31b0d5 !important;\n\t}\n\n\t.bg-warning {\n\t  background-color: #f0ad4e !important;\n\t}\n\n\ta.bg-warning:focus,\n\ta.bg-warning:hover {\n\t  background-color: #ec971f !important;\n\t}\n\n\t.bg-danger {\n\t  background-color: #d9534f !important;\n\t}\n\n\ta.bg-danger:focus,\n\ta.bg-danger:hover {\n\t  background-color: #c9302c !important;\n\t}\n\n\t.bg-inverse {\n\t  background-color: #292b2c !important;\n\t}\n\n\ta.bg-inverse:focus,\n\ta.bg-inverse:hover {\n\t  background-color: #101112 !important;\n\t}\n\n\t.border-0 {\n\t  border: 0 !important;\n\t}\n\n\t.border-top-0 {\n\t  border-top: 0 !important;\n\t}\n\n\t.border-right-0 {\n\t  border-right: 0 !important;\n\t}\n\n\t.border-bottom-0 {\n\t  border-bottom: 0 !important;\n\t}\n\n\t.border-left-0 {\n\t  border-left: 0 !important;\n\t}\n\n\t.rounded {\n\t  border-radius: 0.25rem;\n\t}\n\n\t.rounded-top {\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.rounded-right {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-top-right-radius: 0.25rem;\n\t}\n\n\t.rounded-bottom {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-bottom-left-radius: 0.25rem;\n\t}\n\n\t.rounded-left {\n\t  border-bottom-left-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.rounded-circle {\n\t  border-radius: 50%;\n\t}\n\n\t.rounded-0 {\n\t  border-radius: 0;\n\t}\n\n\t.d-none {\n\t  display: none !important;\n\t}\n\n\t.d-inline {\n\t  display: inline !important;\n\t}\n\n\t.d-inline-block {\n\t  display: inline-block !important;\n\t}\n\n\t.d-block {\n\t  display: block !important;\n\t}\n\n\t.d-table {\n\t  display: table !important;\n\t}\n\n\t.d-table-cell {\n\t  display: table-cell !important;\n\t}\n\n\t.d-flex {\n\t  display: flex !important;\n\t}\n\n\t.d-inline-flex {\n\t  display: inline-flex !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .d-sm-none {\n\t    display: none !important;\n\t  }\n\t  .d-sm-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-sm-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-sm-block {\n\t    display: block !important;\n\t  }\n\t  .d-sm-table {\n\t    display: table !important;\n\t  }\n\t  .d-sm-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-sm-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-sm-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .d-md-none {\n\t    display: none !important;\n\t  }\n\t  .d-md-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-md-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-md-block {\n\t    display: block !important;\n\t  }\n\t  .d-md-table {\n\t    display: table !important;\n\t  }\n\t  .d-md-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-md-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-md-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .d-lg-none {\n\t    display: none !important;\n\t  }\n\t  .d-lg-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-lg-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-lg-block {\n\t    display: block !important;\n\t  }\n\t  .d-lg-table {\n\t    display: table !important;\n\t  }\n\t  .d-lg-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-lg-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-lg-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .d-xl-none {\n\t    display: none !important;\n\t  }\n\t  .d-xl-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-xl-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-xl-block {\n\t    display: block !important;\n\t  }\n\t  .d-xl-table {\n\t    display: table !important;\n\t  }\n\t  .d-xl-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-xl-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-xl-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t.flex-first {\n\t  order: -1;\n\t}\n\n\t.flex-last {\n\t  order: 1;\n\t}\n\n\t.flex-unordered {\n\t  order: 0;\n\t}\n\n\t.flex-row {\n\t  flex-direction: row !important;\n\t}\n\n\t.flex-column {\n\t  flex-direction: column !important;\n\t}\n\n\t.flex-row-reverse {\n\t  flex-direction: row-reverse !important;\n\t}\n\n\t.flex-column-reverse {\n\t  flex-direction: column-reverse !important;\n\t}\n\n\t.flex-wrap {\n\t  flex-wrap: wrap !important;\n\t}\n\n\t.flex-nowrap {\n\t  flex-wrap: nowrap !important;\n\t}\n\n\t.flex-wrap-reverse {\n\t  flex-wrap: wrap-reverse !important;\n\t}\n\n\t.justify-content-start {\n\t  justify-content: flex-start !important;\n\t}\n\n\t.justify-content-end {\n\t  justify-content: flex-end !important;\n\t}\n\n\t.justify-content-center {\n\t  justify-content: center !important;\n\t}\n\n\t.justify-content-between {\n\t  justify-content: space-between !important;\n\t}\n\n\t.justify-content-around {\n\t  justify-content: space-around !important;\n\t}\n\n\t.align-items-start {\n\t  align-items: flex-start !important;\n\t}\n\n\t.align-items-end {\n\t  align-items: flex-end !important;\n\t}\n\n\t.align-items-center {\n\t  align-items: center !important;\n\t}\n\n\t.align-items-baseline {\n\t  align-items: baseline !important;\n\t}\n\n\t.align-items-stretch {\n\t  align-items: stretch !important;\n\t}\n\n\t.align-content-start {\n\t  align-content: flex-start !important;\n\t}\n\n\t.align-content-end {\n\t  align-content: flex-end !important;\n\t}\n\n\t.align-content-center {\n\t  align-content: center !important;\n\t}\n\n\t.align-content-between {\n\t  align-content: space-between !important;\n\t}\n\n\t.align-content-around {\n\t  align-content: space-around !important;\n\t}\n\n\t.align-content-stretch {\n\t  align-content: stretch !important;\n\t}\n\n\t.align-self-auto {\n\t  align-self: auto !important;\n\t}\n\n\t.align-self-start {\n\t  align-self: flex-start !important;\n\t}\n\n\t.align-self-end {\n\t  align-self: flex-end !important;\n\t}\n\n\t.align-self-center {\n\t  align-self: center !important;\n\t}\n\n\t.align-self-baseline {\n\t  align-self: baseline !important;\n\t}\n\n\t.align-self-stretch {\n\t  align-self: stretch !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .flex-sm-first {\n\t    order: -1;\n\t  }\n\t  .flex-sm-last {\n\t    order: 1;\n\t  }\n\t  .flex-sm-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-sm-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-sm-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-sm-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-sm-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-sm-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-sm-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-sm-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-sm-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-sm-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-sm-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-sm-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-sm-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-sm-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-sm-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-sm-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-sm-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-sm-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-sm-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-sm-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-sm-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-sm-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-sm-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-sm-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-sm-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-sm-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-sm-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-sm-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-sm-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-sm-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .flex-md-first {\n\t    order: -1;\n\t  }\n\t  .flex-md-last {\n\t    order: 1;\n\t  }\n\t  .flex-md-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-md-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-md-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-md-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-md-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-md-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-md-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-md-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-md-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-md-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-md-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-md-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-md-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-md-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-md-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-md-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-md-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-md-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-md-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-md-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-md-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-md-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-md-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-md-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-md-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-md-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-md-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-md-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-md-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-md-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .flex-lg-first {\n\t    order: -1;\n\t  }\n\t  .flex-lg-last {\n\t    order: 1;\n\t  }\n\t  .flex-lg-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-lg-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-lg-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-lg-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-lg-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-lg-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-lg-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-lg-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-lg-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-lg-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-lg-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-lg-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-lg-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-lg-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-lg-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-lg-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-lg-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-lg-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-lg-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-lg-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-lg-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-lg-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-lg-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-lg-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-lg-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-lg-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-lg-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-lg-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-lg-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-lg-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .flex-xl-first {\n\t    order: -1;\n\t  }\n\t  .flex-xl-last {\n\t    order: 1;\n\t  }\n\t  .flex-xl-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-xl-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-xl-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-xl-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-xl-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-xl-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-xl-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-xl-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-xl-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-xl-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-xl-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-xl-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-xl-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-xl-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-xl-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-xl-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-xl-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-xl-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-xl-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-xl-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-xl-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-xl-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-xl-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-xl-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-xl-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-xl-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-xl-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-xl-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-xl-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-xl-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t.float-left {\n\t  float: left !important;\n\t}\n\n\t.float-right {\n\t  float: right !important;\n\t}\n\n\t.float-none {\n\t  float: none !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .float-sm-left {\n\t    float: left !important;\n\t  }\n\t  .float-sm-right {\n\t    float: right !important;\n\t  }\n\t  .float-sm-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .float-md-left {\n\t    float: left !important;\n\t  }\n\t  .float-md-right {\n\t    float: right !important;\n\t  }\n\t  .float-md-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .float-lg-left {\n\t    float: left !important;\n\t  }\n\t  .float-lg-right {\n\t    float: right !important;\n\t  }\n\t  .float-lg-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .float-xl-left {\n\t    float: left !important;\n\t  }\n\t  .float-xl-right {\n\t    float: right !important;\n\t  }\n\t  .float-xl-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t.fixed-top {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  left: 0;\n\t  z-index: 1030;\n\t}\n\n\t.fixed-bottom {\n\t  position: fixed;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 1030;\n\t}\n\n\t.sticky-top {\n\t  position: sticky;\n\t  top: 0;\n\t  z-index: 1030;\n\t}\n\n\t.sr-only {\n\t  position: absolute;\n\t  width: 1px;\n\t  height: 1px;\n\t  padding: 0;\n\t  margin: -1px;\n\t  overflow: hidden;\n\t  clip: rect(0, 0, 0, 0);\n\t  border: 0;\n\t}\n\n\t.sr-only-focusable:active,\n\t.sr-only-focusable:focus {\n\t  position: static;\n\t  width: auto;\n\t  height: auto;\n\t  margin: 0;\n\t  overflow: visible;\n\t  clip: auto;\n\t}\n\n\t.w-25 {\n\t  width: 25% !important;\n\t}\n\n\t.w-50 {\n\t  width: 50% !important;\n\t}\n\n\t.w-75 {\n\t  width: 75% !important;\n\t}\n\n\t.w-100 {\n\t  width: 100% !important;\n\t}\n\n\t.h-25 {\n\t  height: 25% !important;\n\t}\n\n\t.h-50 {\n\t  height: 50% !important;\n\t}\n\n\t.h-75 {\n\t  height: 75% !important;\n\t}\n\n\t.h-100 {\n\t  height: 100% !important;\n\t}\n\n\t.mw-100 {\n\t  max-width: 100% !important;\n\t}\n\n\t.mh-100 {\n\t  max-height: 100% !important;\n\t}\n\n\t.m-0 {\n\t  margin: 0 0 !important;\n\t}\n\n\t.mt-0 {\n\t  margin-top: 0 !important;\n\t}\n\n\t.mr-0 {\n\t  margin-right: 0 !important;\n\t}\n\n\t.mb-0 {\n\t  margin-bottom: 0 !important;\n\t}\n\n\t.ml-0 {\n\t  margin-left: 0 !important;\n\t}\n\n\t.mx-0 {\n\t  margin-right: 0 !important;\n\t  margin-left: 0 !important;\n\t}\n\n\t.my-0 {\n\t  margin-top: 0 !important;\n\t  margin-bottom: 0 !important;\n\t}\n\n\t.m-1 {\n\t  margin: 0.25rem 0.25rem !important;\n\t}\n\n\t.mt-1 {\n\t  margin-top: 0.25rem !important;\n\t}\n\n\t.mr-1 {\n\t  margin-right: 0.25rem !important;\n\t}\n\n\t.mb-1 {\n\t  margin-bottom: 0.25rem !important;\n\t}\n\n\t.ml-1 {\n\t  margin-left: 0.25rem !important;\n\t}\n\n\t.mx-1 {\n\t  margin-right: 0.25rem !important;\n\t  margin-left: 0.25rem !important;\n\t}\n\n\t.my-1 {\n\t  margin-top: 0.25rem !important;\n\t  margin-bottom: 0.25rem !important;\n\t}\n\n\t.m-2 {\n\t  margin: 0.5rem 0.5rem !important;\n\t}\n\n\t.mt-2 {\n\t  margin-top: 0.5rem !important;\n\t}\n\n\t.mr-2 {\n\t  margin-right: 0.5rem !important;\n\t}\n\n\t.mb-2 {\n\t  margin-bottom: 0.5rem !important;\n\t}\n\n\t.ml-2 {\n\t  margin-left: 0.5rem !important;\n\t}\n\n\t.mx-2 {\n\t  margin-right: 0.5rem !important;\n\t  margin-left: 0.5rem !important;\n\t}\n\n\t.my-2 {\n\t  margin-top: 0.5rem !important;\n\t  margin-bottom: 0.5rem !important;\n\t}\n\n\t.m-3 {\n\t  margin: 1rem 1rem !important;\n\t}\n\n\t.mt-3 {\n\t  margin-top: 1rem !important;\n\t}\n\n\t.mr-3 {\n\t  margin-right: 1rem !important;\n\t}\n\n\t.mb-3 {\n\t  margin-bottom: 1rem !important;\n\t}\n\n\t.ml-3 {\n\t  margin-left: 1rem !important;\n\t}\n\n\t.mx-3 {\n\t  margin-right: 1rem !important;\n\t  margin-left: 1rem !important;\n\t}\n\n\t.my-3 {\n\t  margin-top: 1rem !important;\n\t  margin-bottom: 1rem !important;\n\t}\n\n\t.m-4 {\n\t  margin: 1.5rem 1.5rem !important;\n\t}\n\n\t.mt-4 {\n\t  margin-top: 1.5rem !important;\n\t}\n\n\t.mr-4 {\n\t  margin-right: 1.5rem !important;\n\t}\n\n\t.mb-4 {\n\t  margin-bottom: 1.5rem !important;\n\t}\n\n\t.ml-4 {\n\t  margin-left: 1.5rem !important;\n\t}\n\n\t.mx-4 {\n\t  margin-right: 1.5rem !important;\n\t  margin-left: 1.5rem !important;\n\t}\n\n\t.my-4 {\n\t  margin-top: 1.5rem !important;\n\t  margin-bottom: 1.5rem !important;\n\t}\n\n\t.m-5 {\n\t  margin: 3rem 3rem !important;\n\t}\n\n\t.mt-5 {\n\t  margin-top: 3rem !important;\n\t}\n\n\t.mr-5 {\n\t  margin-right: 3rem !important;\n\t}\n\n\t.mb-5 {\n\t  margin-bottom: 3rem !important;\n\t}\n\n\t.ml-5 {\n\t  margin-left: 3rem !important;\n\t}\n\n\t.mx-5 {\n\t  margin-right: 3rem !important;\n\t  margin-left: 3rem !important;\n\t}\n\n\t.my-5 {\n\t  margin-top: 3rem !important;\n\t  margin-bottom: 3rem !important;\n\t}\n\n\t.p-0 {\n\t  padding: 0 0 !important;\n\t}\n\n\t.pt-0 {\n\t  padding-top: 0 !important;\n\t}\n\n\t.pr-0 {\n\t  padding-right: 0 !important;\n\t}\n\n\t.pb-0 {\n\t  padding-bottom: 0 !important;\n\t}\n\n\t.pl-0 {\n\t  padding-left: 0 !important;\n\t}\n\n\t.px-0 {\n\t  padding-right: 0 !important;\n\t  padding-left: 0 !important;\n\t}\n\n\t.py-0 {\n\t  padding-top: 0 !important;\n\t  padding-bottom: 0 !important;\n\t}\n\n\t.p-1 {\n\t  padding: 0.25rem 0.25rem !important;\n\t}\n\n\t.pt-1 {\n\t  padding-top: 0.25rem !important;\n\t}\n\n\t.pr-1 {\n\t  padding-right: 0.25rem !important;\n\t}\n\n\t.pb-1 {\n\t  padding-bottom: 0.25rem !important;\n\t}\n\n\t.pl-1 {\n\t  padding-left: 0.25rem !important;\n\t}\n\n\t.px-1 {\n\t  padding-right: 0.25rem !important;\n\t  padding-left: 0.25rem !important;\n\t}\n\n\t.py-1 {\n\t  padding-top: 0.25rem !important;\n\t  padding-bottom: 0.25rem !important;\n\t}\n\n\t.p-2 {\n\t  padding: 0.5rem 0.5rem !important;\n\t}\n\n\t.pt-2 {\n\t  padding-top: 0.5rem !important;\n\t}\n\n\t.pr-2 {\n\t  padding-right: 0.5rem !important;\n\t}\n\n\t.pb-2 {\n\t  padding-bottom: 0.5rem !important;\n\t}\n\n\t.pl-2 {\n\t  padding-left: 0.5rem !important;\n\t}\n\n\t.px-2 {\n\t  padding-right: 0.5rem !important;\n\t  padding-left: 0.5rem !important;\n\t}\n\n\t.py-2 {\n\t  padding-top: 0.5rem !important;\n\t  padding-bottom: 0.5rem !important;\n\t}\n\n\t.p-3 {\n\t  padding: 1rem 1rem !important;\n\t}\n\n\t.pt-3 {\n\t  padding-top: 1rem !important;\n\t}\n\n\t.pr-3 {\n\t  padding-right: 1rem !important;\n\t}\n\n\t.pb-3 {\n\t  padding-bottom: 1rem !important;\n\t}\n\n\t.pl-3 {\n\t  padding-left: 1rem !important;\n\t}\n\n\t.px-3 {\n\t  padding-right: 1rem !important;\n\t  padding-left: 1rem !important;\n\t}\n\n\t.py-3 {\n\t  padding-top: 1rem !important;\n\t  padding-bottom: 1rem !important;\n\t}\n\n\t.p-4 {\n\t  padding: 1.5rem 1.5rem !important;\n\t}\n\n\t.pt-4 {\n\t  padding-top: 1.5rem !important;\n\t}\n\n\t.pr-4 {\n\t  padding-right: 1.5rem !important;\n\t}\n\n\t.pb-4 {\n\t  padding-bottom: 1.5rem !important;\n\t}\n\n\t.pl-4 {\n\t  padding-left: 1.5rem !important;\n\t}\n\n\t.px-4 {\n\t  padding-right: 1.5rem !important;\n\t  padding-left: 1.5rem !important;\n\t}\n\n\t.py-4 {\n\t  padding-top: 1.5rem !important;\n\t  padding-bottom: 1.5rem !important;\n\t}\n\n\t.p-5 {\n\t  padding: 3rem 3rem !important;\n\t}\n\n\t.pt-5 {\n\t  padding-top: 3rem !important;\n\t}\n\n\t.pr-5 {\n\t  padding-right: 3rem !important;\n\t}\n\n\t.pb-5 {\n\t  padding-bottom: 3rem !important;\n\t}\n\n\t.pl-5 {\n\t  padding-left: 3rem !important;\n\t}\n\n\t.px-5 {\n\t  padding-right: 3rem !important;\n\t  padding-left: 3rem !important;\n\t}\n\n\t.py-5 {\n\t  padding-top: 3rem !important;\n\t  padding-bottom: 3rem !important;\n\t}\n\n\t.m-auto {\n\t  margin: auto !important;\n\t}\n\n\t.mt-auto {\n\t  margin-top: auto !important;\n\t}\n\n\t.mr-auto {\n\t  margin-right: auto !important;\n\t}\n\n\t.mb-auto {\n\t  margin-bottom: auto !important;\n\t}\n\n\t.ml-auto {\n\t  margin-left: auto !important;\n\t}\n\n\t.mx-auto {\n\t  margin-right: auto !important;\n\t  margin-left: auto !important;\n\t}\n\n\t.my-auto {\n\t  margin-top: auto !important;\n\t  margin-bottom: auto !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .m-sm-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-sm-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-sm-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-sm-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-sm-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-sm-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-sm-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-sm-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-sm-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-sm-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-sm-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-sm-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-sm-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-sm-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-sm-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-sm-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-sm-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-sm-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-sm-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-sm-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-sm-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-sm-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-sm-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-sm-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-sm-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-sm-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-sm-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-sm-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-sm-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-sm-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-sm-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-sm-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-sm-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-sm-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-sm-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-sm-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-sm-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-sm-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-sm-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-sm-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-sm-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-sm-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-sm-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-sm-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-sm-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-sm-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-sm-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-sm-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-sm-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-sm-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-sm-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-sm-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-sm-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-sm-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-sm-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-sm-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-sm-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-sm-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-sm-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-sm-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-sm-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-sm-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-sm-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-sm-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-sm-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-sm-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-sm-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-sm-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-sm-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-sm-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-sm-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-sm-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-sm-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-sm-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-sm-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-sm-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-sm-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-sm-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-sm-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-sm-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-sm-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-sm-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-sm-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-sm-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-sm-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-sm-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-sm-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-sm-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-sm-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-sm-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-sm-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .m-md-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-md-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-md-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-md-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-md-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-md-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-md-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-md-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-md-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-md-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-md-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-md-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-md-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-md-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-md-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-md-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-md-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-md-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-md-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-md-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-md-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-md-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-md-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-md-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-md-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-md-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-md-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-md-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-md-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-md-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-md-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-md-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-md-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-md-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-md-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-md-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-md-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-md-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-md-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-md-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-md-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-md-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-md-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-md-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-md-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-md-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-md-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-md-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-md-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-md-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-md-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-md-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-md-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-md-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-md-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-md-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-md-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-md-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-md-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-md-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-md-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-md-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-md-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-md-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-md-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-md-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-md-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-md-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-md-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-md-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-md-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-md-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-md-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-md-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-md-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-md-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-md-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-md-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-md-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-md-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-md-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-md-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-md-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-md-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-md-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-md-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-md-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-md-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-md-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-md-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-md-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .m-lg-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-lg-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-lg-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-lg-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-lg-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-lg-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-lg-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-lg-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-lg-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-lg-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-lg-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-lg-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-lg-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-lg-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-lg-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-lg-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-lg-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-lg-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-lg-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-lg-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-lg-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-lg-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-lg-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-lg-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-lg-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-lg-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-lg-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-lg-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-lg-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-lg-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-lg-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-lg-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-lg-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-lg-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-lg-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-lg-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-lg-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-lg-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-lg-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-lg-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-lg-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-lg-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-lg-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-lg-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-lg-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-lg-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-lg-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-lg-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-lg-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-lg-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-lg-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-lg-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-lg-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-lg-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-lg-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-lg-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-lg-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-lg-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-lg-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-lg-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-lg-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-lg-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-lg-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-lg-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-lg-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-lg-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-lg-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-lg-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-lg-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-lg-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-lg-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-lg-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-lg-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-lg-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-lg-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-lg-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-lg-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-lg-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-lg-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-lg-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-lg-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-lg-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-lg-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-lg-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-lg-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-lg-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-lg-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-lg-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-lg-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-lg-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-lg-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .m-xl-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-xl-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-xl-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-xl-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-xl-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-xl-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-xl-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-xl-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-xl-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-xl-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-xl-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-xl-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-xl-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-xl-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-xl-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-xl-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-xl-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-xl-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-xl-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-xl-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-xl-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-xl-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-xl-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-xl-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-xl-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-xl-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-xl-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-xl-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-xl-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-xl-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-xl-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-xl-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-xl-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-xl-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-xl-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-xl-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-xl-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-xl-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-xl-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-xl-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-xl-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-xl-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-xl-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-xl-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-xl-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-xl-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-xl-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-xl-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-xl-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-xl-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-xl-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-xl-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-xl-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-xl-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-xl-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-xl-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-xl-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-xl-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-xl-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-xl-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-xl-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-xl-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-xl-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-xl-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-xl-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-xl-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-xl-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-xl-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-xl-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-xl-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-xl-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-xl-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-xl-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-xl-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-xl-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-xl-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-xl-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-xl-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-xl-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-xl-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-xl-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-xl-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-xl-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-xl-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-xl-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-xl-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-xl-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-xl-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-xl-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-xl-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-xl-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t.text-justify {\n\t  text-align: justify !important;\n\t}\n\n\t.text-nowrap {\n\t  white-space: nowrap !important;\n\t}\n\n\t.text-truncate {\n\t  overflow: hidden;\n\t  text-overflow: ellipsis;\n\t  white-space: nowrap;\n\t}\n\n\t.text-left {\n\t  text-align: left !important;\n\t}\n\n\t.text-right {\n\t  text-align: right !important;\n\t}\n\n\t.text-center {\n\t  text-align: center !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .text-sm-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-sm-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-sm-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .text-md-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-md-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-md-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .text-lg-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-lg-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-lg-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .text-xl-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-xl-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-xl-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t.text-lowercase {\n\t  text-transform: lowercase !important;\n\t}\n\n\t.text-uppercase {\n\t  text-transform: uppercase !important;\n\t}\n\n\t.text-capitalize {\n\t  text-transform: capitalize !important;\n\t}\n\n\t.font-weight-normal {\n\t  font-weight: normal;\n\t}\n\n\t.font-weight-bold {\n\t  font-weight: bold;\n\t}\n\n\t.font-italic {\n\t  font-style: italic;\n\t}\n\n\t.text-white {\n\t  color: #fff !important;\n\t}\n\n\t.text-muted {\n\t  color: #636c72 !important;\n\t}\n\n\ta.text-muted:focus,\n\ta.text-muted:hover {\n\t  color: #4b5257 !important;\n\t}\n\n\t.text-primary {\n\t  color: #0f8699 !important;\n\t}\n\n\ta.text-primary:focus,\n\ta.text-primary:hover {\n\t  color: #0a5d6b !important;\n\t}\n\n\t.text-success {\n\t  color: #5cb85c !important;\n\t}\n\n\ta.text-success:focus,\n\ta.text-success:hover {\n\t  color: #449d44 !important;\n\t}\n\n\t.text-info {\n\t  color: #5bc0de !important;\n\t}\n\n\ta.text-info:focus,\n\ta.text-info:hover {\n\t  color: #31b0d5 !important;\n\t}\n\n\t.text-warning {\n\t  color: #f0ad4e !important;\n\t}\n\n\ta.text-warning:focus,\n\ta.text-warning:hover {\n\t  color: #ec971f !important;\n\t}\n\n\t.text-danger {\n\t  color: #d9534f !important;\n\t}\n\n\ta.text-danger:focus,\n\ta.text-danger:hover {\n\t  color: #c9302c !important;\n\t}\n\n\t.text-gray-dark {\n\t  color: #292b2c !important;\n\t}\n\n\ta.text-gray-dark:focus,\n\ta.text-gray-dark:hover {\n\t  color: #101112 !important;\n\t}\n\n\t.text-hide {\n\t  font: 0/0 a;\n\t  color: transparent;\n\t  text-shadow: none;\n\t  background-color: transparent;\n\t  border: 0;\n\t}\n\n\t.invisible {\n\t  visibility: hidden !important;\n\t}\n\n\t.hidden-xs-up {\n\t  display: none !important;\n\t}\n\n\t@media (max-width: 575px) {\n\t  .hidden-xs-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .hidden-sm-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (max-width: 767px) {\n\t  .hidden-sm-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .hidden-md-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (max-width: 991px) {\n\t  .hidden-md-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .hidden-lg-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (max-width: 1199px) {\n\t  .hidden-lg-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .hidden-xl-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t.hidden-xl-down {\n\t  display: none !important;\n\t}\n\n\t.visible-print-block {\n\t  display: none !important;\n\t}\n\n\t@media print {\n\t  .visible-print-block {\n\t    display: block !important;\n\t  }\n\t}\n\n\t.visible-print-inline {\n\t  display: none !important;\n\t}\n\n\t@media print {\n\t  .visible-print-inline {\n\t    display: inline !important;\n\t  }\n\t}\n\n\t.visible-print-inline-block {\n\t  display: none !important;\n\t}\n\n\t@media print {\n\t  .visible-print-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t}\n\n\t@media print {\n\t  .hidden-print {\n\t    display: none !important;\n\t  }\n\t}\n\n\tbody>* {\n\t  background-size: cover;\n\t  background-repeat: none;\n\t  background-position: center;\n\t}\n\n\t.cover .container,\n\t.cover .container-fluid {\n\t  min-height: 100% !important;\n\t  display: flex;\n\t  flex-direction: column;\n\t  justify-content: center;\n\t}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 345 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(41)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "/*styles for home content only*/", ""]);
+
+// exports
+
+
+/***/ }),
+/* 346 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(41)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(41)(undefined);
 // imports
 
 
@@ -67858,14 +68571,31 @@ exports.push([module.i, "h1 {\n  color: #00BCD4;\n}", ""]);
 
 
 /***/ }),
-/* 330 */,
-/* 331 */
+/* 348 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Heutige Bestellungen</h1>\n<ul class=\"bestellungen\">\n  <li *ngFor=\"let bestellung of bestellungen\" [class.selected]=\"bestellung === selectedBestellung\" (click)=\"onSelect(bestellung)\">\n    <span class=\"badge\">Bestellung: {{bestellung.name}}</span>\n    <span >{{bestellung.bestellung}}</span>\n    <span >{{bestellung.extras}}</span>\n    <span >Fleisch: {{bestellung.fleisch}}</span>\n    <span >Soße: {{bestellung.sauce}}</span>\n    <span >Nummer: {{bestellung.telefonnummer}}</span>\n    <span >     bezahlt: </span>\n    <span> <input id=\"bestellung.bezahlt.haken\" \n    type=\"checkbox\" \n    [checked]=\"bestellung.bezahlt\" \n    (click)=\"update(bestellung);\"   [(ngModel)]=\"bestellung.bezahlt\" />                </span>\n\n    <button class=\"delete\" (click)=\"delete(bestellung); $event.stopPropagation()\">Löschen</button>\n\n  </li>\n</ul>\n"
+module.exports = "<h1>Heutige Bestellungen</h1>\n<ul class=\"bestellungen\">\n  <li *ngFor=\"let bestellung of bestellungen ; let idx=index\" [class.selected]=\"bestellung === selectedBestellung\" (click)=\"onSelect(bestellung)\">\n    <span>{{idx+1}}</span>\n    <span class=\"price\">{{bestellung.price}}</span>\n    <span><input [(ngModel)]=\"bestellung.price\" type=\"number\" /></span>\n    <span class=\"badge\">Bestellung: {{bestellung.name}}</span>\n    <span>{{bestellung.bestellung}}</span>\n    <span>{{bestellung.extras}}</span>\n    <span>Fleisch: {{bestellung.fleisch}}</span>\n    <span>{{bestellung.sauce}}</span>\n    <span>Telefon: {{bestellung.telefonnummer}}</span>\n\n\n  </li>\n</ul>\n<input type=\"text\" value='{{ getTotal() }}' />\n"
 
 /***/ }),
-/* 332 */
+/* 349 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"py-5 bg-faded\" style=\"border-bottom: 3px solid #0f8699\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8\">\n        <h1 class=\"text-primary text-center py-5\">GOD DÖNER BESTELLUNG</h1>\n        <p class=\"lead text-center\">Hier könnt Ihr euren Döner bestellen. Einfach Name, Nummer und Extras</p>\n      </div>\n      <div class=\"col-md-4\">\n        <img class=\"center-block img-fluid d-block float-right\" [src]=\"doenerLogo\">\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"py-5\" style=\"border-bottom: 3px solid #0f8699\">\n  <div class=\"container\">\n    <form #contactForm=\"ngForm\" novalidate>\n      <!-- <form action=\"/saveMe\" method=\"post\" enctype='application/json'> -->\n      <div class=\"row\">\n        <div class=\"col-md-4\">\n\n          <div class=\"form-group\">\n            <label>Name (Pflicht)</label> <input [(ngModel)]=\"bestellung.name\" type=\"text\" class=\"form-control\" min=\"3\" max=\"20\"\n              required=\"required\" placeholder=\"*Namen eingeben\" name=\"name\" id=\"name\">\n          </div>\n\n          <div class=\"form-group\">\n            <label>Bestellung (Pflicht)</label> <input [(ngModel)]=\"bestellung.bestellung\" type=\"text\" class=\"form-control\"\n              min=\"2\" max=\"40\" required=\"required\" placeholder=\"Bestellnummer oder Bezeichnung\" name=\"bestellung\" id=\"bestellung\">\n          </div>\n\n          <div class=\"form-group\">\n            <label>Preis (Pflicht)</label> <input [(ngModel)]=\"bestellung.price\" type=\"number\" class=\"form-control\" required=\"required\"\n              placeholder=\"Bitte Preis eintragen\" name=\"price\" id=\"price\">\n          </div>\n\n          <div class=\"form-group\">\n            <label>Email zur Benachrichtigung</label> <input [(ngModel)]=\"bestellung.email\" type=\"text\" class=\"form-control\"\n              placeholder=\"Emailbenachrichtigung, noch ohne Funktion\" name=\"email\" id=\"email\">\n          </div>\n\n\n        </div>\n        <div class=\"col-md-8\">\n          <div class=\"row\">\n            <div class=\"col-md-6 col-sm-6 col-6\">\n              <div class=\"form-group\">\n                <label for=\"telefonnummer\">Telefon (optional)</label> <input [(ngModel)]=\"bestellung.telefonnummer\" type=\"text\"\n                  class=\"form-control\" placeholder=\"Durchwahl\" name=\"telefonnummer\" id=\"telefonnummer\">\n              </div>\n            </div>\n\n            <div class=\"col-md-6 col-sm-6 col-6\">\n              <div class=\"form-group\">\n                <label for=\"fleisch\">Fleischauswahl: (Pflicht)</label>\n                <select id=\"fleisch\" name=\"fleisch\" class=\"btn btn-primary dropdown-toggle form-control\" [(ngModel)]=\"bestellung.fleisch\"\n                  required=\"required\">\n\t\t\t\t\t\t\t\t\t\t<option value=\"\" disabled=\"disabled\" selected=\"selected\"\n\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary dropdown-toggle \" id=\"fleischId\"\n\t\t\t\t\t\t\t\t\t\t\tlabel=\"Fleisch\"></option>\n\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Kalb</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Hähnchen</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">kein Fleisch</option>\n\t\t\t\t\t\t\t\t\t</select>\n              </div>\n            </div>\n\n            <div class=\"col-md-6 col-sm-6 col-6\">\n              <div class=\"form-group\">\n                <label>Extras</label> <input [(ngModel)]=\"bestellung.extras\" type=\"text\" class=\"form-control\" placeholder=\"extra Wünsche\"\n                  name=\"extras\" id=\"extras\">\n              </div>\n            </div>\n            <div class=\"col-md-6 col-sm-6 col-6\">\n              <div class=\"form-group\">\n                <label for=\"mySelect\">Soßenauswahl: (Pflicht)</label>\n                <select id=\"mySelect\" name=\"sauce\" class=\"btn btn-primary dropdown-toggle form-control\" [(ngModel)]=\"bestellung.sauce\">\n\t\t\t\t\t\t\t\t\t\t<option value=\"\" disabled=\"disabled\" selected=\"selected\" \n\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary dropdown-toggle\" id=\"optId\"\n\t\t\t\t\t\t\t\t\t\t\tlabel=\"Soßeauswahl\"></option>\n\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Alles</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">ohne Sauce</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Scharf</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Knoblauch</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Kräuter</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Alles ohne Knoblauch</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Alles ohne scharf</option>\n\t\t\t\t\t\t\t\t\t</select>\n              </div>\n            </div>\n          </div>\n        </div>\n\n      </div>\n      <button [disabled]=\"!contactForm.form.valid\" (click)=\"saveBestellung(bestellung)\" type=\"submit\" class=\"btn btn-primary\" formenctype='application/json'>verbindlich\n          Abschicken</button>\n    </form>\n  </div>\n</div>\n<div class=\"py-5 section text-center\">\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-md-12\">\n\n\n        <p class=\"lead\"></p>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"bg-faded py-0 text-center\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-6 p-5\">\n        <h1 class=\"m-y-2 m-y-lg  pi-item text-center\">Adar Imbiss</h1>\n        <h3 class=\"m-y-2 m-y-lg  pi-item text-center\">Südländische Spezialitäten\n        </h3>\n        <p class=\"text-center\">\n          Welfenplatz. 2 | 38126 Braunschweig&nbsp;<br>http://adar-imbiss.webnode.com\n        </p>\n        <div class=\"my-2 m-y-lg row text-center\">\n          <div class=\"col-4\">\n            <a></a>\n          </div>\n          <div class=\"col-4\"></div>\n          <div class=\"col-4\">\n            <a></a>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+/* 350 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <h1 x-large class=\"sample-content\">Herzlich Willkommen zur GOD Döner App</h1>\n\n\n</div>\n"
+
+/***/ }),
+/* 351 */
+/***/ (function(module, exports) {
+
+module.exports = "<img class=\"center-block img-fluid d-block float-right\" [src]=\"hinten\">\n<img class=\"center-block img-fluid d-block float-right\" [src]=\"vorn\">\n"
+
+/***/ }),
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67875,8 +68605,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subject_1 = __webpack_require__(51);
-var ObjectUnsubscribedError_1 = __webpack_require__(144);
+var Subject_1 = __webpack_require__(52);
+var ObjectUnsubscribedError_1 = __webpack_require__(150);
 /**
  * @class BehaviorSubject<T>
  */
@@ -67920,7 +68650,7 @@ exports.BehaviorSubject = BehaviorSubject;
 //# sourceMappingURL=BehaviorSubject.js.map
 
 /***/ }),
-/* 333 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67962,12 +68692,12 @@ exports.InnerSubscriber = InnerSubscriber;
 //# sourceMappingURL=InnerSubscriber.js.map
 
 /***/ }),
-/* 334 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var Observable_1 = __webpack_require__(8);
+var Observable_1 = __webpack_require__(9);
 /**
  * Represents a push-based event or value that an {@link Observable} can emit.
  * This class is particularly useful for operators that manage notifications,
@@ -68095,7 +68825,7 @@ exports.Notification = Notification;
 //# sourceMappingURL=Notification.js.map
 
 /***/ }),
-/* 335 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68105,7 +68835,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscription_1 = __webpack_require__(63);
+var Subscription_1 = __webpack_require__(64);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -68141,29 +68871,29 @@ exports.SubjectSubscription = SubjectSubscription;
 //# sourceMappingURL=SubjectSubscription.js.map
 
 /***/ }),
-/* 336 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var Observable_1 = __webpack_require__(8);
-var of_1 = __webpack_require__(141);
+var Observable_1 = __webpack_require__(9);
+var of_1 = __webpack_require__(147);
 Observable_1.Observable.of = of_1.of;
 //# sourceMappingURL=of.js.map
 
 /***/ }),
-/* 337 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var Observable_1 = __webpack_require__(8);
-var toPromise_1 = __webpack_require__(358);
+var Observable_1 = __webpack_require__(9);
+var toPromise_1 = __webpack_require__(378);
 Observable_1.Observable.prototype.toPromise = toPromise_1.toPromise;
 //# sourceMappingURL=toPromise.js.map
 
 /***/ }),
-/* 338 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68173,9 +68903,9 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Observable_1 = __webpack_require__(8);
-var ScalarObservable_1 = __webpack_require__(139);
-var EmptyObservable_1 = __webpack_require__(92);
+var Observable_1 = __webpack_require__(9);
+var ScalarObservable_1 = __webpack_require__(145);
+var EmptyObservable_1 = __webpack_require__(96);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -68239,7 +68969,7 @@ exports.ArrayLikeObservable = ArrayLikeObservable;
 //# sourceMappingURL=ArrayLikeObservable.js.map
 
 /***/ }),
-/* 339 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68249,10 +68979,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subject_1 = __webpack_require__(51);
-var Observable_1 = __webpack_require__(8);
+var Subject_1 = __webpack_require__(52);
+var Observable_1 = __webpack_require__(9);
 var Subscriber_1 = __webpack_require__(17);
-var Subscription_1 = __webpack_require__(63);
+var Subscription_1 = __webpack_require__(64);
 /**
  * @class ConnectableObservable<T>
  */
@@ -68407,7 +69137,7 @@ var RefCountSubscriber = (function (_super) {
 //# sourceMappingURL=ConnectableObservable.js.map
 
 /***/ }),
-/* 340 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68417,11 +69147,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Observable_1 = __webpack_require__(8);
-var EmptyObservable_1 = __webpack_require__(92);
-var isArray_1 = __webpack_require__(64);
-var subscribeToResult_1 = __webpack_require__(65);
-var OuterSubscriber_1 = __webpack_require__(62);
+var Observable_1 = __webpack_require__(9);
+var EmptyObservable_1 = __webpack_require__(96);
+var isArray_1 = __webpack_require__(65);
+var subscribeToResult_1 = __webpack_require__(66);
+var OuterSubscriber_1 = __webpack_require__(63);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -68525,7 +69255,7 @@ var ForkJoinSubscriber = (function (_super) {
 //# sourceMappingURL=ForkJoinObservable.js.map
 
 /***/ }),
-/* 341 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68535,16 +69265,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isArray_1 = __webpack_require__(64);
-var isPromise_1 = __webpack_require__(148);
-var PromiseObservable_1 = __webpack_require__(138);
-var IteratorObservable_1 = __webpack_require__(342);
-var ArrayObservable_1 = __webpack_require__(91);
-var ArrayLikeObservable_1 = __webpack_require__(338);
-var iterator_1 = __webpack_require__(94);
-var Observable_1 = __webpack_require__(8);
-var observeOn_1 = __webpack_require__(355);
-var observable_1 = __webpack_require__(95);
+var isArray_1 = __webpack_require__(65);
+var isPromise_1 = __webpack_require__(154);
+var PromiseObservable_1 = __webpack_require__(144);
+var IteratorObservable_1 = __webpack_require__(362);
+var ArrayObservable_1 = __webpack_require__(95);
+var ArrayLikeObservable_1 = __webpack_require__(358);
+var iterator_1 = __webpack_require__(98);
+var Observable_1 = __webpack_require__(9);
+var observeOn_1 = __webpack_require__(375);
+var observable_1 = __webpack_require__(99);
 var isArrayLike = (function (x) { return x && typeof x.length === 'number'; });
 /**
  * We need this JSDoc comment for affecting ESDoc.
@@ -68653,7 +69383,7 @@ exports.FromObservable = FromObservable;
 //# sourceMappingURL=FromObservable.js.map
 
 /***/ }),
-/* 342 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68663,9 +69393,9 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var root_1 = __webpack_require__(32);
-var Observable_1 = __webpack_require__(8);
-var iterator_1 = __webpack_require__(94);
+var root_1 = __webpack_require__(33);
+var Observable_1 = __webpack_require__(9);
+var iterator_1 = __webpack_require__(98);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -68822,37 +69552,37 @@ function sign(value) {
 //# sourceMappingURL=IteratorObservable.js.map
 
 /***/ }),
-/* 343 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ForkJoinObservable_1 = __webpack_require__(340);
+var ForkJoinObservable_1 = __webpack_require__(360);
 exports.forkJoin = ForkJoinObservable_1.ForkJoinObservable.create;
 //# sourceMappingURL=forkJoin.js.map
 
 /***/ }),
-/* 344 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var FromObservable_1 = __webpack_require__(341);
+var FromObservable_1 = __webpack_require__(361);
 exports.from = FromObservable_1.FromObservable.create;
 //# sourceMappingURL=from.js.map
 
 /***/ }),
-/* 345 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var merge_1 = __webpack_require__(353);
+var merge_1 = __webpack_require__(373);
 exports.merge = merge_1.mergeStatic;
 //# sourceMappingURL=merge.js.map
 
 /***/ }),
-/* 346 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68862,8 +69592,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var OuterSubscriber_1 = __webpack_require__(62);
-var subscribeToResult_1 = __webpack_require__(65);
+var OuterSubscriber_1 = __webpack_require__(63);
+var subscribeToResult_1 = __webpack_require__(66);
 /**
  * Catches errors on the observable to be handled by returning a new observable or throwing an error.
  * @param {function} selector a function that takes as arguments `err`, which is the error, and `caught`, which
@@ -68924,12 +69654,12 @@ var CatchSubscriber = (function (_super) {
 //# sourceMappingURL=catch.js.map
 
 /***/ }),
-/* 347 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var mergeAll_1 = __webpack_require__(93);
+var mergeAll_1 = __webpack_require__(97);
 /* tslint:disable:max-line-length */
 /**
  * Converts a higher-order Observable into a first-order Observable by
@@ -68986,12 +69716,12 @@ exports.concatAll = concatAll;
 //# sourceMappingURL=concatAll.js.map
 
 /***/ }),
-/* 348 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var mergeMap_1 = __webpack_require__(143);
+var mergeMap_1 = __webpack_require__(149);
 /* tslint:disable:max-line-length */
 /**
  * Projects each source value to an Observable which is merged in the output
@@ -69062,7 +69792,7 @@ exports.concatMap = concatMap;
 //# sourceMappingURL=concatMap.js.map
 
 /***/ }),
-/* 349 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69142,7 +69872,7 @@ var EverySubscriber = (function (_super) {
 //# sourceMappingURL=every.js.map
 
 /***/ }),
-/* 350 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69241,7 +69971,7 @@ var FilterSubscriber = (function (_super) {
 //# sourceMappingURL=filter.js.map
 
 /***/ }),
-/* 351 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69252,7 +69982,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(17);
-var EmptyError_1 = __webpack_require__(97);
+var EmptyError_1 = __webpack_require__(101);
 /**
  * Emits only the first value (or the first value that meets some condition)
  * emitted by the source Observable.
@@ -69399,7 +70129,7 @@ var FirstSubscriber = (function (_super) {
 //# sourceMappingURL=first.js.map
 
 /***/ }),
-/* 352 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69410,7 +70140,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(17);
-var EmptyError_1 = __webpack_require__(97);
+var EmptyError_1 = __webpack_require__(101);
 /* tslint:disable:max-line-length */
 /**
  * Returns an Observable that emits only the last item emitted by the source Observable.
@@ -69524,14 +70254,14 @@ var LastSubscriber = (function (_super) {
 //# sourceMappingURL=last.js.map
 
 /***/ }),
-/* 353 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ArrayObservable_1 = __webpack_require__(91);
-var mergeAll_1 = __webpack_require__(93);
-var isScheduler_1 = __webpack_require__(149);
+var ArrayObservable_1 = __webpack_require__(95);
+var mergeAll_1 = __webpack_require__(97);
+var isScheduler_1 = __webpack_require__(155);
 /* tslint:disable:max-line-length */
 /**
  * Creates an output Observable which concurrently emits all values from every
@@ -69674,12 +70404,12 @@ exports.mergeStatic = mergeStatic;
 //# sourceMappingURL=merge.js.map
 
 /***/ }),
-/* 354 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ConnectableObservable_1 = __webpack_require__(339);
+var ConnectableObservable_1 = __webpack_require__(359);
 /* tslint:disable:max-line-length */
 /**
  * Returns an Observable that emits the results of invoking a specified selector on items
@@ -69737,7 +70467,7 @@ exports.MulticastOperator = MulticastOperator;
 //# sourceMappingURL=multicast.js.map
 
 /***/ }),
-/* 355 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69748,7 +70478,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(17);
-var Notification_1 = __webpack_require__(334);
+var Notification_1 = __webpack_require__(354);
 /**
  * @see {@link Notification}
  *
@@ -69822,7 +70552,7 @@ exports.ObserveOnMessage = ObserveOnMessage;
 //# sourceMappingURL=observeOn.js.map
 
 /***/ }),
-/* 356 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69951,13 +70681,13 @@ exports.ReduceSubscriber = ReduceSubscriber;
 //# sourceMappingURL=reduce.js.map
 
 /***/ }),
-/* 357 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var multicast_1 = __webpack_require__(354);
-var Subject_1 = __webpack_require__(51);
+var multicast_1 = __webpack_require__(374);
+var Subject_1 = __webpack_require__(52);
 function shareSubjectFactory() {
     return new Subject_1.Subject();
 }
@@ -69981,12 +70711,12 @@ exports.share = share;
 //# sourceMappingURL=share.js.map
 
 /***/ }),
-/* 358 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var root_1 = __webpack_require__(32);
+var root_1 = __webpack_require__(33);
 /* tslint:disable:max-line-length */
 /**
  * @param PromiseCtor
@@ -70016,7 +70746,7 @@ exports.toPromise = toPromise;
 //# sourceMappingURL=toPromise.js.map
 
 /***/ }),
-/* 359 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70047,14 +70777,14 @@ exports.UnsubscriptionError = UnsubscriptionError;
 //# sourceMappingURL=UnsubscriptionError.js.map
 
 /***/ }),
-/* 360 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Subscriber_1 = __webpack_require__(17);
-var rxSubscriber_1 = __webpack_require__(96);
-var Observer_1 = __webpack_require__(137);
+var rxSubscriber_1 = __webpack_require__(100);
+var Observer_1 = __webpack_require__(143);
 function toSubscriber(nextOrObserver, error, complete) {
     if (nextOrObserver) {
         if (nextOrObserver instanceof Subscriber_1.Subscriber) {
@@ -70073,12 +70803,12 @@ exports.toSubscriber = toSubscriber;
 //# sourceMappingURL=toSubscriber.js.map
 
 /***/ }),
-/* 361 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var errorObject_1 = __webpack_require__(145);
+var errorObject_1 = __webpack_require__(151);
 var tryCatchTarget;
 function tryCatcher() {
     try {
@@ -70098,13 +70828,13 @@ exports.tryCatch = tryCatch;
 //# sourceMappingURL=tryCatch.js.map
 
 /***/ }),
-/* 362 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(327);
+var content = __webpack_require__(341);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -70112,7 +70842,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(150)(content, options);
+var update = __webpack_require__(156)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -70129,13 +70859,13 @@ if(false) {
 }
 
 /***/ }),
-/* 363 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(329);
+var content = __webpack_require__(347);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -70143,7 +70873,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(150)(content, options);
+var update = __webpack_require__(156)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -70160,7 +70890,7 @@ if(false) {
 }
 
 /***/ }),
-/* 364 */
+/* 384 */
 /***/ (function(module, exports) {
 
 
@@ -70255,11 +70985,67 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 365 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(328);
+        var result = __webpack_require__(342);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(343);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(344);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(345);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(346);
 
         if (typeof result === "string") {
             module.exports = result;

@@ -28,7 +28,7 @@ public class BestellungController {
 		this.repositoy = repositoy;
 	}
 
-	@RequestMapping("/findAll")
+	@RequestMapping("/api/findAll")
 	public String showAll() {
 
 		String result = "";
@@ -80,7 +80,7 @@ public class BestellungController {
 
 	}
 
-	@RequestMapping(value = "/emailSenden", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
+	@RequestMapping(value = "/api/emailSenden", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
 	public String emailVersenden() {
 		List<String> alleMails = new ArrayList<>();
 		List<Bestellung> heutigeBestellungen = repositoy.findByBestelldatum(Heute.get());
@@ -118,7 +118,7 @@ public class BestellungController {
 
 	}
 
-	@RequestMapping(value = "/test1", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/test1", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Bestellung requestKontrollMethode(@RequestBody String a, @RequestBody String b) {
 		System.out.println("Request: " + a);
 		System.out.println("Und: " + b);
@@ -137,8 +137,8 @@ public class BestellungController {
 	}
 
 	@Transactional
-	@RequestMapping(value = "/saveMe", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Bestellung saveBestellung(String bestellung, String name, String extras, String telefonnummer, String fleisch, String sauce, String email) {
+	@RequestMapping(value = "/api/saveMe", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Bestellung saveBestellung(String bestellung, String name, String extras, String telefonnummer, String fleisch, String sauce, String email, String price) {
 		System.out.println("Bestellung: " + bestellung + " Name: " + name);
 		Bestellung b = new Bestellung();
 		b.setName(name);
@@ -150,12 +150,13 @@ public class BestellungController {
 		b.setEmail(email);
 		b.setSauce(sauce == null ? "ohne" : sauce);
 		b.setBezahlt(false);
+		b.setPrice(price);
 		System.out.println("Bestellung: " + b + " Name: " + name);
 		return repositoy.save(b);
 
 	}
 
-	@RequestMapping(value = "/get")
+	@RequestMapping(value = "/api/get")
 	public Bestellung get() {
 		Bestellung b = new Bestellung();
 		b.setName("myName");
