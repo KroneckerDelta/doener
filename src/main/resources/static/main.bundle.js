@@ -146,7 +146,7 @@ var ac_main =
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 195);
+/******/ 	return __webpack_require__(__webpack_require__.s = 197);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -155,9 +155,7 @@ var ac_main =
 /* 2 */,
 /* 3 */,
 /* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -360,9 +358,9 @@ var ac_main =
 /* unused harmony export ɵx */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_merge__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_merge__ = __webpack_require__(369);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_merge__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_share__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_share__ = __webpack_require__(381);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_share___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operator_share__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__);
@@ -6264,7 +6262,7 @@ var SystemJsNgModuleLoader = (function () {
         if (exportName === undefined) {
             exportName = 'default';
         }
-        return __webpack_require__(157)(module)
+        return __webpack_require__(158)(module)
             .then(function (module) { return module[exportName]; })
             .then(function (type) { return checkNotEmpty(type, module, exportName); })
             .then(function (type) { return _this._compiler.compileModuleAsync(type); });
@@ -6280,7 +6278,7 @@ var SystemJsNgModuleLoader = (function () {
             exportName = 'default';
             factoryClassSuffix = '';
         }
-        return __webpack_require__(157)(this._config.factoryPathPrefix + module + this._config.factoryPathSuffix)
+        return __webpack_require__(158)(this._config.factoryPathPrefix + module + this._config.factoryPathSuffix)
             .then(function (module) { return module[exportName + factoryClassSuffix]; })
             .then(function (factory) { return checkNotEmpty(factory, module, exportName); });
     };
@@ -14539,15 +14537,17 @@ function transition$$1(stateChangeExpr, steps) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(67)))
 
 /***/ }),
+/* 6 */,
+/* 7 */,
 /* 8 */,
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var root_1 = __webpack_require__(33);
-var toSubscriber_1 = __webpack_require__(380);
-var observable_1 = __webpack_require__(99);
+var root_1 = __webpack_require__(34);
+var toSubscriber_1 = __webpack_require__(384);
+var observable_1 = __webpack_require__(100);
 /**
  * A representation of any set of values over any amount of time. This the most basic building block
  * of RxJS.
@@ -14678,11 +14678,194 @@ exports.Observable = Observable;
 /* 10 */,
 /* 11 */,
 /* 12 */,
-/* 13 */,
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export __extends */
+/* unused harmony export __assign */
+/* unused harmony export __rest */
+/* harmony export (immutable) */ __webpack_exports__["a"] = __decorate;
+/* harmony export (immutable) */ __webpack_exports__["c"] = __param;
+/* harmony export (immutable) */ __webpack_exports__["b"] = __metadata;
+/* unused harmony export __awaiter */
+/* unused harmony export __generator */
+/* unused harmony export __exportStar */
+/* unused harmony export __values */
+/* unused harmony export __read */
+/* unused harmony export __spread */
+/* unused harmony export __await */
+/* unused harmony export __asyncGenerator */
+/* unused harmony export __asyncDelegator */
+/* unused harmony export __asyncValues */
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = Object.setPrototypeOf ||
+    ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+    function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = Object.assign || function __assign(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+function __exportStar(m, exports) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+
+function __values(o) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    if (m) return m.call(o);
+    return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { if (o[n]) i[n] = function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; }; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator];
+    return m ? m.call(o) : typeof __values === "function" ? __values(o) : o[Symbol.iterator]();
+}
+
+/***/ }),
 /* 14 */,
 /* 15 */,
 /* 16 */,
-/* 17 */
+/* 17 */,
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14692,10 +14875,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isFunction_1 = __webpack_require__(152);
+var isFunction_1 = __webpack_require__(153);
 var Subscription_1 = __webpack_require__(64);
-var Observer_1 = __webpack_require__(143);
-var rxSubscriber_1 = __webpack_require__(100);
+var Observer_1 = __webpack_require__(144);
+var rxSubscriber_1 = __webpack_require__(101);
 /**
  * Implements the {@link Observer} interface and extends the
  * {@link Subscription} class. While the {@link Observer} is the public API for
@@ -14937,189 +15120,6 @@ var SafeSubscriber = (function (_super) {
 //# sourceMappingURL=Subscriber.js.map
 
 /***/ }),
-/* 18 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export __extends */
-/* unused harmony export __assign */
-/* unused harmony export __rest */
-/* harmony export (immutable) */ __webpack_exports__["a"] = __decorate;
-/* unused harmony export __param */
-/* harmony export (immutable) */ __webpack_exports__["b"] = __metadata;
-/* unused harmony export __awaiter */
-/* unused harmony export __generator */
-/* unused harmony export __exportStar */
-/* unused harmony export __values */
-/* unused harmony export __read */
-/* unused harmony export __spread */
-/* unused harmony export __await */
-/* unused harmony export __asyncGenerator */
-/* unused harmony export __asyncDelegator */
-/* unused harmony export __asyncValues */
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = Object.setPrototypeOf ||
-    ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-    function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-
-function __extends(d, b) {
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
-var __assign = Object.assign || function __assign(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-    }
-    return t;
-}
-
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
-    return t;
-}
-
-function __decorate(decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-}
-
-function __param(paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-}
-
-function __metadata(metadataKey, metadataValue) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
-
-function __exportStar(m, exports) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-
-function __values(o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-    if (m) return m.call(o);
-    return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-}
-
-function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-}
-
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
-
-function __await(v) {
-    return this instanceof __await ? (this.v = v, this) : new __await(v);
-}
-
-function __asyncGenerator(thisArg, _arguments, generator) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
-    function fulfill(value) { resume("next", value); }
-    function reject(value) { resume("throw", value); }
-    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-}
-
-function __asyncDelegator(o) {
-    var i, p;
-    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { if (o[n]) i[n] = function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; }; }
-}
-
-function __asyncValues(o) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator];
-    return m ? m.call(o) : typeof __values === "function" ? __values(o) : o[Symbol.iterator]();
-}
-
-/***/ }),
 /* 19 */,
 /* 20 */,
 /* 21 */,
@@ -15135,33 +15135,6 @@ function __asyncValues(o) {
 /* 31 */,
 /* 32 */,
 /* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-/**
- * window: browser in DOM main thread
- * self: browser in WebWorker
- * global: Node.js/other
- */
-exports.root = (typeof window == 'object' && window.window === window && window
-    || typeof self == 'object' && self.self === self && self
-    || typeof global == 'object' && global.global === global && global);
-if (!exports.root) {
-    throw new Error('RxJS could not find any global context (window, self, global)');
-}
-//# sourceMappingURL=root.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(67)))
-
-/***/ }),
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */
 /***/ (function(module, exports) {
 
 /*
@@ -15243,6 +15216,33 @@ function toComment(sourceMap) {
 
 
 /***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+/**
+ * window: browser in DOM main thread
+ * self: browser in WebWorker
+ * global: Node.js/other
+ */
+exports.root = (typeof window == 'object' && window.window === window && window
+    || typeof self == 'object' && self.self === self && self
+    || typeof global == 'object' && global.global === global && global);
+if (!exports.root) {
+    throw new Error('RxJS could not find any global context (window, self, global)');
+}
+//# sourceMappingURL=root.js.map
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(67)))
+
+/***/ }),
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
 /* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15293,7 +15293,7 @@ function toComment(sourceMap) {
 /* unused harmony export ɵd */
 /* unused harmony export ɵe */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -19774,11 +19774,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(9);
-var Subscriber_1 = __webpack_require__(17);
+var Subscriber_1 = __webpack_require__(18);
 var Subscription_1 = __webpack_require__(64);
-var ObjectUnsubscribedError_1 = __webpack_require__(150);
-var SubjectSubscription_1 = __webpack_require__(355);
-var rxSubscriber_1 = __webpack_require__(100);
+var ObjectUnsubscribedError_1 = __webpack_require__(151);
+var SubjectSubscription_1 = __webpack_require__(359);
+var rxSubscriber_1 = __webpack_require__(101);
 /**
  * @class SubjectSubscriber<T>
  */
@@ -19949,7 +19949,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(17);
+var Subscriber_1 = __webpack_require__(18);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -19986,11 +19986,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var isArray_1 = __webpack_require__(65);
-var isObject_1 = __webpack_require__(153);
-var isFunction_1 = __webpack_require__(152);
-var tryCatch_1 = __webpack_require__(381);
-var errorObject_1 = __webpack_require__(151);
-var UnsubscriptionError_1 = __webpack_require__(379);
+var isObject_1 = __webpack_require__(154);
+var isFunction_1 = __webpack_require__(153);
+var tryCatch_1 = __webpack_require__(385);
+var errorObject_1 = __webpack_require__(152);
+var UnsubscriptionError_1 = __webpack_require__(383);
 /**
  * Represents a disposable resource, such as the execution of an Observable. A
  * Subscription has one important method, `unsubscribe`, that takes no argument
@@ -20173,14 +20173,14 @@ exports.isArray = Array.isArray || (function (x) { return x && typeof x.length =
 
 "use strict";
 
-var root_1 = __webpack_require__(33);
+var root_1 = __webpack_require__(34);
 var isArray_1 = __webpack_require__(65);
-var isPromise_1 = __webpack_require__(154);
-var isObject_1 = __webpack_require__(153);
+var isPromise_1 = __webpack_require__(155);
+var isObject_1 = __webpack_require__(154);
 var Observable_1 = __webpack_require__(9);
-var iterator_1 = __webpack_require__(98);
-var InnerSubscriber_1 = __webpack_require__(353);
-var observable_1 = __webpack_require__(99);
+var iterator_1 = __webpack_require__(99);
+var InnerSubscriber_1 = __webpack_require__(357);
+var observable_1 = __webpack_require__(100);
 function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
     var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
     if (destination.closed) {
@@ -20330,7 +20330,7 @@ module.exports = g;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Location; });
 /* unused harmony export ɵa */
 /* unused harmony export ɵb */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -24305,6 +24305,6086 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export AbstractControlDirective */
+/* unused harmony export AbstractFormGroupDirective */
+/* unused harmony export CheckboxControlValueAccessor */
+/* unused harmony export ControlContainer */
+/* unused harmony export NG_VALUE_ACCESSOR */
+/* unused harmony export COMPOSITION_BUFFER_MODE */
+/* unused harmony export DefaultValueAccessor */
+/* unused harmony export NgControl */
+/* unused harmony export NgControlStatus */
+/* unused harmony export NgControlStatusGroup */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NgForm; });
+/* unused harmony export NgModel */
+/* unused harmony export NgModelGroup */
+/* unused harmony export RadioControlValueAccessor */
+/* unused harmony export FormControlDirective */
+/* unused harmony export FormControlName */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return FormGroupDirective; });
+/* unused harmony export FormArrayName */
+/* unused harmony export FormGroupName */
+/* unused harmony export NgSelectOption */
+/* unused harmony export SelectControlValueAccessor */
+/* unused harmony export SelectMultipleControlValueAccessor */
+/* unused harmony export CheckboxRequiredValidator */
+/* unused harmony export EmailValidator */
+/* unused harmony export MaxLengthValidator */
+/* unused harmony export MinLengthValidator */
+/* unused harmony export PatternValidator */
+/* unused harmony export RequiredValidator */
+/* unused harmony export FormBuilder */
+/* unused harmony export AbstractControl */
+/* unused harmony export FormArray */
+/* unused harmony export FormControl */
+/* unused harmony export FormGroup */
+/* unused harmony export NG_ASYNC_VALIDATORS */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NG_VALIDATORS; });
+/* unused harmony export Validators */
+/* unused harmony export VERSION */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormsModule; });
+/* unused harmony export ReactiveFormsModule */
+/* unused harmony export ɵba */
+/* unused harmony export ɵz */
+/* unused harmony export ɵx */
+/* unused harmony export ɵy */
+/* unused harmony export ɵa */
+/* unused harmony export ɵb */
+/* unused harmony export ɵc */
+/* unused harmony export ɵd */
+/* unused harmony export ɵe */
+/* unused harmony export ɵf */
+/* unused harmony export ɵg */
+/* unused harmony export ɵbf */
+/* unused harmony export ɵbb */
+/* unused harmony export ɵbc */
+/* unused harmony export ɵh */
+/* unused harmony export ɵi */
+/* unused harmony export ɵbd */
+/* unused harmony export ɵbe */
+/* unused harmony export ɵj */
+/* unused harmony export ɵk */
+/* unused harmony export ɵl */
+/* unused harmony export ɵn */
+/* unused harmony export ɵm */
+/* unused harmony export ɵo */
+/* unused harmony export ɵq */
+/* unused harmony export ɵp */
+/* unused harmony export ɵs */
+/* unused harmony export ɵt */
+/* unused harmony export ɵv */
+/* unused harmony export ɵu */
+/* unused harmony export ɵw */
+/* unused harmony export ɵr */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(42);
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+/**
+ * @license Angular v4.1.3
+ * (c) 2010-2017 Google, Inc. https://angular.io/
+ * License: MIT
+ */
+
+
+
+
+
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Base class for control directives.
+ *
+ * Only used internally in the forms module.
+ *
+ * \@stable
+ * @abstract
+ */
+var AbstractControlDirective = (function () {
+    function AbstractControlDirective() {
+    }
+    /**
+     * @abstract
+     * @return {?}
+     */
+    AbstractControlDirective.prototype.control = function () { };
+    Object.defineProperty(AbstractControlDirective.prototype, "value", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.value : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "valid", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.valid : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "invalid", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.invalid : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "pending", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.pending : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "errors", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.errors : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "pristine", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.pristine : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "dirty", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.dirty : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "touched", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.touched : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "untouched", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.untouched : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "disabled", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.disabled : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "enabled", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.control ? this.control.enabled : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "statusChanges", {
+        /**
+         * @return {?}
+         */
+        get: function () {
+            return this.control ? this.control.statusChanges : null;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "valueChanges", {
+        /**
+         * @return {?}
+         */
+        get: function () {
+            return this.control ? this.control.valueChanges : null;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlDirective.prototype, "path", {
+        /**
+         * @return {?}
+         */
+        get: function () { return null; },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?=} value
+     * @return {?}
+     */
+    AbstractControlDirective.prototype.reset = function (value) {
+        if (value === void 0) { value = undefined; }
+        if (this.control)
+            this.control.reset(value);
+    };
+    /**
+     * @param {?} errorCode
+     * @param {?=} path
+     * @return {?}
+     */
+    AbstractControlDirective.prototype.hasError = function (errorCode, path) {
+        return this.control ? this.control.hasError(errorCode, path) : false;
+    };
+    /**
+     * @param {?} errorCode
+     * @param {?=} path
+     * @return {?}
+     */
+    AbstractControlDirective.prototype.getError = function (errorCode, path) {
+        return this.control ? this.control.getError(errorCode, path) : null;
+    };
+    return AbstractControlDirective;
+}());
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * A directive that contains multiple {\@link NgControl}s.
+ *
+ * Only used by the forms module.
+ *
+ * \@stable
+ * @abstract
+ */
+var ControlContainer = (function (_super) {
+    __extends(ControlContainer, _super);
+    function ControlContainer() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Object.defineProperty(ControlContainer.prototype, "formDirective", {
+        /**
+         * Get the form to which this container belongs.
+         * @return {?}
+         */
+        get: function () { return null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ControlContainer.prototype, "path", {
+        /**
+         * Get the path to this container.
+         * @return {?}
+         */
+        get: function () { return null; },
+        enumerable: true,
+        configurable: true
+    });
+    return ControlContainer;
+}(AbstractControlDirective));
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var __assign = (undefined && undefined.__assign) || Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s)
+            if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+    }
+    return t;
+};
+/**
+ * @param {?} value
+ * @return {?}
+ */
+function isEmptyInputValue(value) {
+    // we don't check for string here so it also works with arrays
+    return value == null || value.length === 0;
+}
+/**
+ * Providers for validators to be used for {\@link FormControl}s in a form.
+ *
+ * Provide this using `multi: true` to add validators.
+ *
+ * \@stable
+ */
+var NG_VALIDATORS = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* InjectionToken */]('NgValidators');
+/**
+ * Providers for asynchronous validators to be used for {\@link FormControl}s
+ * in a form.
+ *
+ * Provide this using `multi: true` to add validators.
+ *
+ * See {\@link NG_VALIDATORS} for more details.
+ *
+ * \@stable
+ */
+var NG_ASYNC_VALIDATORS = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* InjectionToken */]('NgAsyncValidators');
+var EMAIL_REGEXP = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
+/**
+ * Provides a set of validators used by form controls.
+ *
+ * A validator is a function that processes a {\@link FormControl} or collection of
+ * controls and returns a map of errors. A null map means that validation has passed.
+ *
+ * ### Example
+ *
+ * ```typescript
+ * var loginControl = new FormControl("", Validators.required)
+ * ```
+ *
+ * \@stable
+ */
+var Validators = (function () {
+    function Validators() {
+    }
+    /**
+     * Validator that requires controls to have a non-empty value.
+     * @param {?} control
+     * @return {?}
+     */
+    Validators.required = function (control) {
+        return isEmptyInputValue(control.value) ? { 'required': true } : null;
+    };
+    /**
+     * Validator that requires control value to be true.
+     * @param {?} control
+     * @return {?}
+     */
+    Validators.requiredTrue = function (control) {
+        return control.value === true ? null : { 'required': true };
+    };
+    /**
+     * Validator that performs email validation.
+     * @param {?} control
+     * @return {?}
+     */
+    Validators.email = function (control) {
+        return EMAIL_REGEXP.test(control.value) ? null : { 'email': true };
+    };
+    /**
+     * Validator that requires controls to have a value of a minimum length.
+     * @param {?} minLength
+     * @return {?}
+     */
+    Validators.minLength = function (minLength) {
+        return function (control) {
+            if (isEmptyInputValue(control.value)) {
+                return null; // don't validate empty values to allow optional controls
+            }
+            var /** @type {?} */ length = control.value ? control.value.length : 0;
+            return length < minLength ?
+                { 'minlength': { 'requiredLength': minLength, 'actualLength': length } } :
+                null;
+        };
+    };
+    /**
+     * Validator that requires controls to have a value of a maximum length.
+     * @param {?} maxLength
+     * @return {?}
+     */
+    Validators.maxLength = function (maxLength) {
+        return function (control) {
+            var /** @type {?} */ length = control.value ? control.value.length : 0;
+            return length > maxLength ?
+                { 'maxlength': { 'requiredLength': maxLength, 'actualLength': length } } :
+                null;
+        };
+    };
+    /**
+     * Validator that requires a control to match a regex to its value.
+     * @param {?} pattern
+     * @return {?}
+     */
+    Validators.pattern = function (pattern) {
+        if (!pattern)
+            return Validators.nullValidator;
+        var /** @type {?} */ regex;
+        var /** @type {?} */ regexStr;
+        if (typeof pattern === 'string') {
+            regexStr = "^" + pattern + "$";
+            regex = new RegExp(regexStr);
+        }
+        else {
+            regexStr = pattern.toString();
+            regex = pattern;
+        }
+        return function (control) {
+            if (isEmptyInputValue(control.value)) {
+                return null; // don't validate empty values to allow optional controls
+            }
+            var /** @type {?} */ value = control.value;
+            return regex.test(value) ? null :
+                { 'pattern': { 'requiredPattern': regexStr, 'actualValue': value } };
+        };
+    };
+    /**
+     * No-op validator.
+     * @param {?} c
+     * @return {?}
+     */
+    Validators.nullValidator = function (c) { return null; };
+    /**
+     * @param {?} validators
+     * @return {?}
+     */
+    Validators.compose = function (validators) {
+        if (!validators)
+            return null;
+        var /** @type {?} */ presentValidators = (validators.filter(isPresent));
+        if (presentValidators.length == 0)
+            return null;
+        return function (control) {
+            return _mergeErrors(_executeValidators(control, presentValidators));
+        };
+    };
+    /**
+     * @param {?} validators
+     * @return {?}
+     */
+    Validators.composeAsync = function (validators) {
+        if (!validators)
+            return null;
+        var /** @type {?} */ presentValidators = (validators.filter(isPresent));
+        if (presentValidators.length == 0)
+            return null;
+        return function (control) {
+            var /** @type {?} */ observables = _executeAsyncValidators(control, presentValidators).map(toObservable);
+            return __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map__["map"].call(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin__["forkJoin"])(observables), _mergeErrors);
+        };
+    };
+    return Validators;
+}());
+/**
+ * @param {?} o
+ * @return {?}
+ */
+function isPresent(o) {
+    return o != null;
+}
+/**
+ * @param {?} r
+ * @return {?}
+ */
+function toObservable(r) {
+    var /** @type {?} */ obs = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* ɵisPromise */])(r) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise__["fromPromise"])(r) : r;
+    if (!(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* ɵisObservable */])(obs))) {
+        throw new Error("Expected validator to return Promise or Observable.");
+    }
+    return obs;
+}
+/**
+ * @param {?} control
+ * @param {?} validators
+ * @return {?}
+ */
+function _executeValidators(control, validators) {
+    return validators.map(function (v) { return v(control); });
+}
+/**
+ * @param {?} control
+ * @param {?} validators
+ * @return {?}
+ */
+function _executeAsyncValidators(control, validators) {
+    return validators.map(function (v) { return v(control); });
+}
+/**
+ * @param {?} arrayOfErrors
+ * @return {?}
+ */
+function _mergeErrors(arrayOfErrors) {
+    var /** @type {?} */ res = arrayOfErrors.reduce(function (res, errors) {
+        return errors != null ? __assign({}, /** @type {?} */ ((res)), errors) : ((res));
+    }, {});
+    return Object.keys(res).length === 0 ? null : res;
+}
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Used to provide a {\@link ControlValueAccessor} for form controls.
+ *
+ * See {\@link DefaultValueAccessor} for how to implement one.
+ * \@stable
+ */
+var NG_VALUE_ACCESSOR = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* InjectionToken */]('NgValueAccessor');
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var CHECKBOX_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return CheckboxControlValueAccessor; }),
+    multi: true,
+};
+/**
+ * The accessor for writing a value and listening to changes on a checkbox input element.
+ *
+ *  ### Example
+ *  ```
+ *  <input type="checkbox" name="rememberLogin" ngModel>
+ *  ```
+ *
+ *  \@stable
+ */
+var CheckboxControlValueAccessor = (function () {
+    /**
+     * @param {?} _renderer
+     * @param {?} _elementRef
+     */
+    function CheckboxControlValueAccessor(_renderer, _elementRef) {
+        this._renderer = _renderer;
+        this._elementRef = _elementRef;
+        this.onChange = function (_) { };
+        this.onTouched = function () { };
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    CheckboxControlValueAccessor.prototype.writeValue = function (value) {
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'checked', value);
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    CheckboxControlValueAccessor.prototype.registerOnChange = function (fn) { this.onChange = fn; };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    CheckboxControlValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
+    /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    CheckboxControlValueAccessor.prototype.setDisabledState = function (isDisabled) {
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    };
+    return CheckboxControlValueAccessor;
+}());
+CheckboxControlValueAccessor.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'input[type=checkbox][formControlName],input[type=checkbox][formControl],input[type=checkbox][ngModel]',
+                host: { '(change)': 'onChange($event.target.checked)', '(blur)': 'onTouched()' },
+                providers: [CHECKBOX_VALUE_ACCESSOR]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+CheckboxControlValueAccessor.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
+]; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var DEFAULT_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return DefaultValueAccessor; }),
+    multi: true
+};
+/**
+ * We must check whether the agent is Android because composition events
+ * behave differently between iOS and Android.
+ * @return {?}
+ */
+function _isAndroid() {
+    var /** @type {?} */ userAgent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["c" /* ɵgetDOM */])() ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["c" /* ɵgetDOM */])().getUserAgent() : '';
+    return /android (\d+)/.test(userAgent.toLowerCase());
+}
+/**
+ * Turn this mode on if you want form directives to buffer IME input until compositionend
+ * \@experimental
+ */
+var COMPOSITION_BUFFER_MODE = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* InjectionToken */]('CompositionEventMode');
+/**
+ * The default accessor for writing a value and listening to changes that is used by the
+ * {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName} directives.
+ *
+ *  ### Example
+ *  ```
+ *  <input type="text" name="searchQuery" ngModel>
+ *  ```
+ *
+ *  \@stable
+ */
+var DefaultValueAccessor = (function () {
+    /**
+     * @param {?} _renderer
+     * @param {?} _elementRef
+     * @param {?} _compositionMode
+     */
+    function DefaultValueAccessor(_renderer, _elementRef, _compositionMode) {
+        this._renderer = _renderer;
+        this._elementRef = _elementRef;
+        this._compositionMode = _compositionMode;
+        this.onChange = function (_) { };
+        this.onTouched = function () { };
+        this._composing = false;
+        if (this._compositionMode == null) {
+            this._compositionMode = !_isAndroid();
+        }
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    DefaultValueAccessor.prototype.writeValue = function (value) {
+        var /** @type {?} */ normalizedValue = value == null ? '' : value;
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', normalizedValue);
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    DefaultValueAccessor.prototype.registerOnChange = function (fn) { this.onChange = fn; };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    DefaultValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
+    /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    DefaultValueAccessor.prototype.setDisabledState = function (isDisabled) {
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    DefaultValueAccessor.prototype._handleInput = function (value) {
+        if (!this._compositionMode || (this._compositionMode && !this._composing)) {
+            this.onChange(value);
+        }
+    };
+    /**
+     * @return {?}
+     */
+    DefaultValueAccessor.prototype._compositionStart = function () { this._composing = true; };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    DefaultValueAccessor.prototype._compositionEnd = function (value) {
+        this._composing = false;
+        this._compositionMode && this.onChange(value);
+    };
+    return DefaultValueAccessor;
+}());
+DefaultValueAccessor.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'input:not([type=checkbox])[formControlName],textarea[formControlName],input:not([type=checkbox])[formControl],textarea[formControl],input:not([type=checkbox])[ngModel],textarea[ngModel],[ngDefaultControl]',
+                // TODO: vsavkin replace the above selector with the one below it once
+                // https://github.com/angular/angular/issues/3011 is implemented
+                // selector: '[ngModel],[formControl],[formControlName]',
+                host: {
+                    '(input)': '_handleInput($event.target.value)',
+                    '(blur)': 'onTouched()',
+                    '(compositionstart)': '_compositionStart()',
+                    '(compositionend)': '_compositionEnd($event.target.value)'
+                },
+                providers: [DEFAULT_VALUE_ACCESSOR]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+DefaultValueAccessor.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
+    { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [COMPOSITION_BUFFER_MODE,] },] },
+]; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @param {?} validator
+ * @return {?}
+ */
+function normalizeValidator(validator) {
+    if (((validator)).validate) {
+        return function (c) { return ((validator)).validate(c); };
+    }
+    else {
+        return (validator);
+    }
+}
+/**
+ * @param {?} validator
+ * @return {?}
+ */
+function normalizeAsyncValidator(validator) {
+    if (((validator)).validate) {
+        return function (c) { return ((validator)).validate(c); };
+    }
+    else {
+        return (validator);
+    }
+}
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var NUMBER_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NumberValueAccessor; }),
+    multi: true
+};
+/**
+ * The accessor for writing a number value and listening to changes that is used by the
+ * {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName} directives.
+ *
+ *  ### Example
+ *  ```
+ *  <input type="number" [(ngModel)]="age">
+ *  ```
+ */
+var NumberValueAccessor = (function () {
+    /**
+     * @param {?} _renderer
+     * @param {?} _elementRef
+     */
+    function NumberValueAccessor(_renderer, _elementRef) {
+        this._renderer = _renderer;
+        this._elementRef = _elementRef;
+        this.onChange = function (_) { };
+        this.onTouched = function () { };
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    NumberValueAccessor.prototype.writeValue = function (value) {
+        // The value needs to be normalized for IE9, otherwise it is set to 'null' when null
+        var /** @type {?} */ normalizedValue = value == null ? '' : value;
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', normalizedValue);
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    NumberValueAccessor.prototype.registerOnChange = function (fn) {
+        this.onChange = function (value) { fn(value == '' ? null : parseFloat(value)); };
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    NumberValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
+    /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    NumberValueAccessor.prototype.setDisabledState = function (isDisabled) {
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    };
+    return NumberValueAccessor;
+}());
+NumberValueAccessor.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'input[type=number][formControlName],input[type=number][formControl],input[type=number][ngModel]',
+                host: {
+                    '(change)': 'onChange($event.target.value)',
+                    '(input)': 'onChange($event.target.value)',
+                    '(blur)': 'onTouched()'
+                },
+                providers: [NUMBER_VALUE_ACCESSOR]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+NumberValueAccessor.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
+]; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @return {?}
+ */
+function unimplemented() {
+    throw new Error('unimplemented');
+}
+/**
+ * A base class that all control directive extend.
+ * It binds a {\@link FormControl} object to a DOM element.
+ *
+ * Used internally by Angular forms.
+ *
+ * \@stable
+ * @abstract
+ */
+var NgControl = (function (_super) {
+    __extends(NgControl, _super);
+    function NgControl() {
+        var _this = _super.apply(this, arguments) || this;
+        /**
+         * \@internal
+         */
+        _this._parent = null;
+        _this.name = null;
+        _this.valueAccessor = null;
+        /**
+         * \@internal
+         */
+        _this._rawValidators = [];
+        /**
+         * \@internal
+         */
+        _this._rawAsyncValidators = [];
+        return _this;
+    }
+    Object.defineProperty(NgControl.prototype, "validator", {
+        /**
+         * @return {?}
+         */
+        get: function () { return (unimplemented()); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgControl.prototype, "asyncValidator", {
+        /**
+         * @return {?}
+         */
+        get: function () { return (unimplemented()); },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @abstract
+     * @param {?} newValue
+     * @return {?}
+     */
+    NgControl.prototype.viewToModelUpdate = function (newValue) { };
+    return NgControl;
+}(AbstractControlDirective));
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var RADIO_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return RadioControlValueAccessor; }),
+    multi: true
+};
+/**
+ * Internal class used by Angular to uncheck radio buttons with the matching name.
+ */
+var RadioControlRegistry = (function () {
+    function RadioControlRegistry() {
+        this._accessors = [];
+    }
+    /**
+     * @param {?} control
+     * @param {?} accessor
+     * @return {?}
+     */
+    RadioControlRegistry.prototype.add = function (control, accessor) {
+        this._accessors.push([control, accessor]);
+    };
+    /**
+     * @param {?} accessor
+     * @return {?}
+     */
+    RadioControlRegistry.prototype.remove = function (accessor) {
+        for (var /** @type {?} */ i = this._accessors.length - 1; i >= 0; --i) {
+            if (this._accessors[i][1] === accessor) {
+                this._accessors.splice(i, 1);
+                return;
+            }
+        }
+    };
+    /**
+     * @param {?} accessor
+     * @return {?}
+     */
+    RadioControlRegistry.prototype.select = function (accessor) {
+        var _this = this;
+        this._accessors.forEach(function (c) {
+            if (_this._isSameGroup(c, accessor) && c[1] !== accessor) {
+                c[1].fireUncheck(accessor.value);
+            }
+        });
+    };
+    /**
+     * @param {?} controlPair
+     * @param {?} accessor
+     * @return {?}
+     */
+    RadioControlRegistry.prototype._isSameGroup = function (controlPair, accessor) {
+        if (!controlPair[0].control)
+            return false;
+        return controlPair[0]._parent === accessor._control._parent &&
+            controlPair[1].name === accessor.name;
+    };
+    return RadioControlRegistry;
+}());
+RadioControlRegistry.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */] },
+];
+/**
+ * @nocollapse
+ */
+RadioControlRegistry.ctorParameters = function () { return []; };
+/**
+ * \@whatItDoes Writes radio control values and listens to radio control changes.
+ *
+ * Used by {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName}
+ * to keep the view synced with the {\@link FormControl} model.
+ *
+ * \@howToUse
+ *
+ * If you have imported the {\@link FormsModule} or the {\@link ReactiveFormsModule}, this
+ * value accessor will be active on any radio control that has a form directive. You do
+ * **not** need to add a special selector to activate it.
+ *
+ * ### How to use radio buttons with form directives
+ *
+ * To use radio buttons in a template-driven form, you'll want to ensure that radio buttons
+ * in the same group have the same `name` attribute.  Radio buttons with different `name`
+ * attributes do not affect each other.
+ *
+ * {\@example forms/ts/radioButtons/radio_button_example.ts region='TemplateDriven'}
+ *
+ * When using radio buttons in a reactive form, radio buttons in the same group should have the
+ * same `formControlName`. You can also add a `name` attribute, but it's optional.
+ *
+ * {\@example forms/ts/reactiveRadioButtons/reactive_radio_button_example.ts region='Reactive'}
+ *
+ *  * **npm package**: `\@angular/forms`
+ *
+ *  \@stable
+ */
+var RadioControlValueAccessor = (function () {
+    /**
+     * @param {?} _renderer
+     * @param {?} _elementRef
+     * @param {?} _registry
+     * @param {?} _injector
+     */
+    function RadioControlValueAccessor(_renderer, _elementRef, _registry, _injector) {
+        this._renderer = _renderer;
+        this._elementRef = _elementRef;
+        this._registry = _registry;
+        this._injector = _injector;
+        this.onChange = function () { };
+        this.onTouched = function () { };
+    }
+    /**
+     * @return {?}
+     */
+    RadioControlValueAccessor.prototype.ngOnInit = function () {
+        this._control = this._injector.get(NgControl);
+        this._checkName();
+        this._registry.add(this._control, this);
+    };
+    /**
+     * @return {?}
+     */
+    RadioControlValueAccessor.prototype.ngOnDestroy = function () { this._registry.remove(this); };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    RadioControlValueAccessor.prototype.writeValue = function (value) {
+        this._state = value === this.value;
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'checked', this._state);
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    RadioControlValueAccessor.prototype.registerOnChange = function (fn) {
+        var _this = this;
+        this._fn = fn;
+        this.onChange = function () {
+            fn(_this.value);
+            _this._registry.select(_this);
+        };
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    RadioControlValueAccessor.prototype.fireUncheck = function (value) { this.writeValue(value); };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    RadioControlValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
+    /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    RadioControlValueAccessor.prototype.setDisabledState = function (isDisabled) {
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    };
+    /**
+     * @return {?}
+     */
+    RadioControlValueAccessor.prototype._checkName = function () {
+        if (this.name && this.formControlName && this.name !== this.formControlName) {
+            this._throwNameError();
+        }
+        if (!this.name && this.formControlName)
+            this.name = this.formControlName;
+    };
+    /**
+     * @return {?}
+     */
+    RadioControlValueAccessor.prototype._throwNameError = function () {
+        throw new Error("\n      If you define both a name and a formControlName attribute on your radio button, their values\n      must match. Ex: <input type=\"radio\" formControlName=\"food\" name=\"food\">\n    ");
+    };
+    return RadioControlValueAccessor;
+}());
+RadioControlValueAccessor.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'input[type=radio][formControlName],input[type=radio][formControl],input[type=radio][ngModel]',
+                host: { '(change)': 'onChange()', '(blur)': 'onTouched()' },
+                providers: [RADIO_VALUE_ACCESSOR]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+RadioControlValueAccessor.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
+    { type: RadioControlRegistry, },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Injector */], },
+]; };
+RadioControlValueAccessor.propDecorators = {
+    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+    'formControlName': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+    'value': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+};
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var RANGE_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return RangeValueAccessor; }),
+    multi: true
+};
+/**
+ * The accessor for writing a range value and listening to changes that is used by the
+ * {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName} directives.
+ *
+ *  ### Example
+ *  ```
+ *  <input type="range" [(ngModel)]="age" >
+ *  ```
+ */
+var RangeValueAccessor = (function () {
+    /**
+     * @param {?} _renderer
+     * @param {?} _elementRef
+     */
+    function RangeValueAccessor(_renderer, _elementRef) {
+        this._renderer = _renderer;
+        this._elementRef = _elementRef;
+        this.onChange = function (_) { };
+        this.onTouched = function () { };
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    RangeValueAccessor.prototype.writeValue = function (value) {
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', parseFloat(value));
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    RangeValueAccessor.prototype.registerOnChange = function (fn) {
+        this.onChange = function (value) { fn(value == '' ? null : parseFloat(value)); };
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    RangeValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
+    /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    RangeValueAccessor.prototype.setDisabledState = function (isDisabled) {
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    };
+    return RangeValueAccessor;
+}());
+RangeValueAccessor.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'input[type=range][formControlName],input[type=range][formControl],input[type=range][ngModel]',
+                host: {
+                    '(change)': 'onChange($event.target.value)',
+                    '(input)': 'onChange($event.target.value)',
+                    '(blur)': 'onTouched()'
+                },
+                providers: [RANGE_VALUE_ACCESSOR]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+RangeValueAccessor.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
+]; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var SELECT_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return SelectControlValueAccessor; }),
+    multi: true
+};
+/**
+ * @param {?} id
+ * @param {?} value
+ * @return {?}
+ */
+function _buildValueString(id, value) {
+    if (id == null)
+        return "" + value;
+    if (value && typeof value === 'object')
+        value = 'Object';
+    return (id + ": " + value).slice(0, 50);
+}
+/**
+ * @param {?} valueString
+ * @return {?}
+ */
+function _extractId(valueString) {
+    return valueString.split(':')[0];
+}
+/**
+ * \@whatItDoes Writes values and listens to changes on a select element.
+ *
+ * Used by {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName}
+ * to keep the view synced with the {\@link FormControl} model.
+ *
+ * \@howToUse
+ *
+ * If you have imported the {\@link FormsModule} or the {\@link ReactiveFormsModule}, this
+ * value accessor will be active on any select control that has a form directive. You do
+ * **not** need to add a special selector to activate it.
+ *
+ * ### How to use select controls with form directives
+ *
+ * To use a select in a template-driven form, simply add an `ngModel` and a `name`
+ * attribute to the main `<select>` tag.
+ *
+ * If your option values are simple strings, you can bind to the normal `value` property
+ * on the option.  If your option values happen to be objects (and you'd like to save the
+ * selection in your form as an object), use `ngValue` instead:
+ *
+ * {\@example forms/ts/selectControl/select_control_example.ts region='Component'}
+ *
+ * In reactive forms, you'll also want to add your form directive (`formControlName` or
+ * `formControl`) on the main `<select>` tag. Like in the former example, you have the
+ * choice of binding to the  `value` or `ngValue` property on the select's options.
+ *
+ * {\@example forms/ts/reactiveSelectControl/reactive_select_control_example.ts region='Component'}
+ *
+ * ### Caveat: Option selection
+ *
+ * Angular uses object identity to select option. It's possible for the identities of items
+ * to change while the data does not. This can happen, for example, if the items are produced
+ * from an RPC to the server, and that RPC is re-run. Even if the data hasn't changed, the
+ * second response will produce objects with different identities.
+ *
+ * To customize the default option comparison algorithm, `<select>` supports `compareWith` input.
+ * `compareWith` takes a **function** which has two arguments: `option1` and `option2`.
+ * If `compareWith` is given, Angular selects option by the return value of the function.
+ *
+ * #### Syntax
+ *
+ * ```
+ * <select [compareWith]="compareFn"  [(ngModel)]="selectedCountries">
+ *     <option *ngFor="let country of countries" [ngValue]="country">
+ *         {{country.name}}
+ *     </option>
+ * </select>
+ *
+ * compareFn(c1: Country, c2: Country): boolean {
+ *     return c1 && c2 ? c1.id === c2.id : c1 === c2;
+ * }
+ * ```
+ *
+ * Note: We listen to the 'change' event because 'input' events aren't fired
+ * for selects in Firefox and IE:
+ * https://bugzilla.mozilla.org/show_bug.cgi?id=1024350
+ * https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4660045/
+ *
+ * * **npm package**: `\@angular/forms`
+ *
+ * \@stable
+ */
+var SelectControlValueAccessor = (function () {
+    /**
+     * @param {?} _renderer
+     * @param {?} _elementRef
+     */
+    function SelectControlValueAccessor(_renderer, _elementRef) {
+        this._renderer = _renderer;
+        this._elementRef = _elementRef;
+        /**
+         * \@internal
+         */
+        this._optionMap = new Map();
+        /**
+         * \@internal
+         */
+        this._idCounter = 0;
+        this.onChange = function (_) { };
+        this.onTouched = function () { };
+        this._compareWith = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵlooseIdentical */];
+    }
+    Object.defineProperty(SelectControlValueAccessor.prototype, "compareWith", {
+        /**
+         * @param {?} fn
+         * @return {?}
+         */
+        set: function (fn) {
+            if (typeof fn !== 'function') {
+                throw new Error("compareWith must be a function, but received " + JSON.stringify(fn));
+            }
+            this._compareWith = fn;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    SelectControlValueAccessor.prototype.writeValue = function (value) {
+        this.value = value;
+        var /** @type {?} */ id = this._getOptionId(value);
+        if (id == null) {
+            this._renderer.setElementProperty(this._elementRef.nativeElement, 'selectedIndex', -1);
+        }
+        var /** @type {?} */ valueString = _buildValueString(id, value);
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', valueString);
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    SelectControlValueAccessor.prototype.registerOnChange = function (fn) {
+        var _this = this;
+        this.onChange = function (valueString) {
+            _this.value = valueString;
+            fn(_this._getOptionValue(valueString));
+        };
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    SelectControlValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
+    /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    SelectControlValueAccessor.prototype.setDisabledState = function (isDisabled) {
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    SelectControlValueAccessor.prototype._registerOption = function () { return (this._idCounter++).toString(); };
+    /**
+     * \@internal
+     * @param {?} value
+     * @return {?}
+     */
+    SelectControlValueAccessor.prototype._getOptionId = function (value) {
+        for (var _i = 0, _a = Array.from(this._optionMap.keys()); _i < _a.length; _i++) {
+            var id = _a[_i];
+            if (this._compareWith(this._optionMap.get(id), value))
+                return id;
+        }
+        return null;
+    };
+    /**
+     * \@internal
+     * @param {?} valueString
+     * @return {?}
+     */
+    SelectControlValueAccessor.prototype._getOptionValue = function (valueString) {
+        var /** @type {?} */ id = _extractId(valueString);
+        return this._optionMap.has(id) ? this._optionMap.get(id) : valueString;
+    };
+    return SelectControlValueAccessor;
+}());
+SelectControlValueAccessor.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'select:not([multiple])[formControlName],select:not([multiple])[formControl],select:not([multiple])[ngModel]',
+                host: { '(change)': 'onChange($event.target.value)', '(blur)': 'onTouched()' },
+                providers: [SELECT_VALUE_ACCESSOR]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+SelectControlValueAccessor.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
+]; };
+SelectControlValueAccessor.propDecorators = {
+    'compareWith': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+};
+/**
+ * \@whatItDoes Marks `<option>` as dynamic, so Angular can be notified when options change.
+ *
+ * \@howToUse
+ *
+ * See docs for {\@link SelectControlValueAccessor} for usage examples.
+ *
+ * \@stable
+ */
+var NgSelectOption = (function () {
+    /**
+     * @param {?} _element
+     * @param {?} _renderer
+     * @param {?} _select
+     */
+    function NgSelectOption(_element, _renderer, _select) {
+        this._element = _element;
+        this._renderer = _renderer;
+        this._select = _select;
+        if (this._select)
+            this.id = this._select._registerOption();
+    }
+    Object.defineProperty(NgSelectOption.prototype, "ngValue", {
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        set: function (value) {
+            if (this._select == null)
+                return;
+            this._select._optionMap.set(this.id, value);
+            this._setElementValue(_buildValueString(this.id, value));
+            this._select.writeValue(this._select.value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgSelectOption.prototype, "value", {
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        set: function (value) {
+            this._setElementValue(value);
+            if (this._select)
+                this._select.writeValue(this._select.value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * \@internal
+     * @param {?} value
+     * @return {?}
+     */
+    NgSelectOption.prototype._setElementValue = function (value) {
+        this._renderer.setElementProperty(this._element.nativeElement, 'value', value);
+    };
+    /**
+     * @return {?}
+     */
+    NgSelectOption.prototype.ngOnDestroy = function () {
+        if (this._select) {
+            this._select._optionMap.delete(this.id);
+            this._select.writeValue(this._select.value);
+        }
+    };
+    return NgSelectOption;
+}());
+NgSelectOption.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: 'option' },] },
+];
+/**
+ * @nocollapse
+ */
+NgSelectOption.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
+    { type: SelectControlValueAccessor, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] },] },
+]; };
+NgSelectOption.propDecorators = {
+    'ngValue': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngValue',] },],
+    'value': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['value',] },],
+};
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var SELECT_MULTIPLE_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return SelectMultipleControlValueAccessor; }),
+    multi: true
+};
+/**
+ * @param {?} id
+ * @param {?} value
+ * @return {?}
+ */
+function _buildValueString$1(id, value) {
+    if (id == null)
+        return "" + value;
+    if (typeof value === 'string')
+        value = "'" + value + "'";
+    if (value && typeof value === 'object')
+        value = 'Object';
+    return (id + ": " + value).slice(0, 50);
+}
+/**
+ * @param {?} valueString
+ * @return {?}
+ */
+function _extractId$1(valueString) {
+    return valueString.split(':')[0];
+}
+/**
+ * The accessor for writing a value and listening to changes on a select element.
+ *
+ *  ### Caveat: Options selection
+ *
+ * Angular uses object identity to select options. It's possible for the identities of items
+ * to change while the data does not. This can happen, for example, if the items are produced
+ * from an RPC to the server, and that RPC is re-run. Even if the data hasn't changed, the
+ * second response will produce objects with different identities.
+ *
+ * To customize the default option comparison algorithm, `<select multiple>` supports `compareWith`
+ * input. `compareWith` takes a **function** which has two arguments: `option1` and `option2`.
+ * If `compareWith` is given, Angular selects options by the return value of the function.
+ *
+ * #### Syntax
+ *
+ * ```
+ * <select multiple [compareWith]="compareFn"  [(ngModel)]="selectedCountries">
+ *     <option *ngFor="let country of countries" [ngValue]="country">
+ *         {{country.name}}
+ *     </option>
+ * </select>
+ *
+ * compareFn(c1: Country, c2: Country): boolean {
+ *     return c1 && c2 ? c1.id === c2.id : c1 === c2;
+ * }
+ * ```
+ *
+ * \@stable
+ */
+var SelectMultipleControlValueAccessor = (function () {
+    /**
+     * @param {?} _renderer
+     * @param {?} _elementRef
+     */
+    function SelectMultipleControlValueAccessor(_renderer, _elementRef) {
+        this._renderer = _renderer;
+        this._elementRef = _elementRef;
+        /**
+         * \@internal
+         */
+        this._optionMap = new Map();
+        /**
+         * \@internal
+         */
+        this._idCounter = 0;
+        this.onChange = function (_) { };
+        this.onTouched = function () { };
+        this._compareWith = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵlooseIdentical */];
+    }
+    Object.defineProperty(SelectMultipleControlValueAccessor.prototype, "compareWith", {
+        /**
+         * @param {?} fn
+         * @return {?}
+         */
+        set: function (fn) {
+            if (typeof fn !== 'function') {
+                throw new Error("compareWith must be a function, but received " + JSON.stringify(fn));
+            }
+            this._compareWith = fn;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    SelectMultipleControlValueAccessor.prototype.writeValue = function (value) {
+        var _this = this;
+        this.value = value;
+        var /** @type {?} */ optionSelectedStateSetter;
+        if (Array.isArray(value)) {
+            // convert values to ids
+            var /** @type {?} */ ids_1 = value.map(function (v) { return _this._getOptionId(v); });
+            optionSelectedStateSetter = function (opt, o) { opt._setSelected(ids_1.indexOf(o.toString()) > -1); };
+        }
+        else {
+            optionSelectedStateSetter = function (opt, o) { opt._setSelected(false); };
+        }
+        this._optionMap.forEach(optionSelectedStateSetter);
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    SelectMultipleControlValueAccessor.prototype.registerOnChange = function (fn) {
+        var _this = this;
+        this.onChange = function (_) {
+            var /** @type {?} */ selected = [];
+            if (_.hasOwnProperty('selectedOptions')) {
+                var /** @type {?} */ options = _.selectedOptions;
+                for (var /** @type {?} */ i = 0; i < options.length; i++) {
+                    var /** @type {?} */ opt = options.item(i);
+                    var /** @type {?} */ val = _this._getOptionValue(opt.value);
+                    selected.push(val);
+                }
+            }
+            else {
+                var /** @type {?} */ options = (_.options);
+                for (var /** @type {?} */ i = 0; i < options.length; i++) {
+                    var /** @type {?} */ opt = options.item(i);
+                    if (opt.selected) {
+                        var /** @type {?} */ val = _this._getOptionValue(opt.value);
+                        selected.push(val);
+                    }
+                }
+            }
+            _this.value = selected;
+            fn(selected);
+        };
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    SelectMultipleControlValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
+    /**
+     * @param {?} isDisabled
+     * @return {?}
+     */
+    SelectMultipleControlValueAccessor.prototype.setDisabledState = function (isDisabled) {
+        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    };
+    /**
+     * \@internal
+     * @param {?} value
+     * @return {?}
+     */
+    SelectMultipleControlValueAccessor.prototype._registerOption = function (value) {
+        var /** @type {?} */ id = (this._idCounter++).toString();
+        this._optionMap.set(id, value);
+        return id;
+    };
+    /**
+     * \@internal
+     * @param {?} value
+     * @return {?}
+     */
+    SelectMultipleControlValueAccessor.prototype._getOptionId = function (value) {
+        for (var _i = 0, _a = Array.from(this._optionMap.keys()); _i < _a.length; _i++) {
+            var id = _a[_i];
+            if (this._compareWith(/** @type {?} */ ((this._optionMap.get(id)))._value, value))
+                return id;
+        }
+        return null;
+    };
+    /**
+     * \@internal
+     * @param {?} valueString
+     * @return {?}
+     */
+    SelectMultipleControlValueAccessor.prototype._getOptionValue = function (valueString) {
+        var /** @type {?} */ id = _extractId$1(valueString);
+        return this._optionMap.has(id) ? ((this._optionMap.get(id)))._value : valueString;
+    };
+    return SelectMultipleControlValueAccessor;
+}());
+SelectMultipleControlValueAccessor.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'select[multiple][formControlName],select[multiple][formControl],select[multiple][ngModel]',
+                host: { '(change)': 'onChange($event.target)', '(blur)': 'onTouched()' },
+                providers: [SELECT_MULTIPLE_VALUE_ACCESSOR]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+SelectMultipleControlValueAccessor.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
+]; };
+SelectMultipleControlValueAccessor.propDecorators = {
+    'compareWith': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+};
+/**
+ * Marks `<option>` as dynamic, so Angular can be notified when options change.
+ *
+ * ### Example
+ *
+ * ```
+ * <select multiple name="city" ngModel>
+ *   <option *ngFor="let c of cities" [value]="c"></option>
+ * </select>
+ * ```
+ */
+var NgSelectMultipleOption = (function () {
+    /**
+     * @param {?} _element
+     * @param {?} _renderer
+     * @param {?} _select
+     */
+    function NgSelectMultipleOption(_element, _renderer, _select) {
+        this._element = _element;
+        this._renderer = _renderer;
+        this._select = _select;
+        if (this._select) {
+            this.id = this._select._registerOption(this);
+        }
+    }
+    Object.defineProperty(NgSelectMultipleOption.prototype, "ngValue", {
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        set: function (value) {
+            if (this._select == null)
+                return;
+            this._value = value;
+            this._setElementValue(_buildValueString$1(this.id, value));
+            this._select.writeValue(this._select.value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgSelectMultipleOption.prototype, "value", {
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        set: function (value) {
+            if (this._select) {
+                this._value = value;
+                this._setElementValue(_buildValueString$1(this.id, value));
+                this._select.writeValue(this._select.value);
+            }
+            else {
+                this._setElementValue(value);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * \@internal
+     * @param {?} value
+     * @return {?}
+     */
+    NgSelectMultipleOption.prototype._setElementValue = function (value) {
+        this._renderer.setElementProperty(this._element.nativeElement, 'value', value);
+    };
+    /**
+     * \@internal
+     * @param {?} selected
+     * @return {?}
+     */
+    NgSelectMultipleOption.prototype._setSelected = function (selected) {
+        this._renderer.setElementProperty(this._element.nativeElement, 'selected', selected);
+    };
+    /**
+     * @return {?}
+     */
+    NgSelectMultipleOption.prototype.ngOnDestroy = function () {
+        if (this._select) {
+            this._select._optionMap.delete(this.id);
+            this._select.writeValue(this._select.value);
+        }
+    };
+    return NgSelectMultipleOption;
+}());
+NgSelectMultipleOption.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: 'option' },] },
+];
+/**
+ * @nocollapse
+ */
+NgSelectMultipleOption.ctorParameters = function () { return [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
+    { type: SelectMultipleControlValueAccessor, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] },] },
+]; };
+NgSelectMultipleOption.propDecorators = {
+    'ngValue': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngValue',] },],
+    'value': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['value',] },],
+};
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @param {?} name
+ * @param {?} parent
+ * @return {?}
+ */
+function controlPath(name, parent) {
+    return ((parent.path)).concat([name]);
+}
+/**
+ * @param {?} control
+ * @param {?} dir
+ * @return {?}
+ */
+function setUpControl(control, dir) {
+    if (!control)
+        _throwError(dir, 'Cannot find control with');
+    if (!dir.valueAccessor)
+        _throwError(dir, 'No value accessor for form control with');
+    control.validator = Validators.compose([/** @type {?} */ ((control.validator)), dir.validator]);
+    control.asyncValidator = Validators.composeAsync([/** @type {?} */ ((control.asyncValidator)), dir.asyncValidator]); /** @type {?} */
+    ((dir.valueAccessor)).writeValue(control.value); /** @type {?} */
+    ((
+    // view -> model
+    dir.valueAccessor)).registerOnChange(function (newValue) {
+        dir.viewToModelUpdate(newValue);
+        control.markAsDirty();
+        control.setValue(newValue, { emitModelToViewChange: false });
+    }); /** @type {?} */
+    ((
+    // touched
+    dir.valueAccessor)).registerOnTouched(function () { return control.markAsTouched(); });
+    control.registerOnChange(function (newValue, emitModelEvent) {
+        ((
+        // control -> view
+        dir.valueAccessor)).writeValue(newValue);
+        // control -> ngModel
+        if (emitModelEvent)
+            dir.viewToModelUpdate(newValue);
+    });
+    if (((dir.valueAccessor)).setDisabledState) {
+        control.registerOnDisabledChange(function (isDisabled) { /** @type {?} */ ((((dir.valueAccessor)).setDisabledState))(isDisabled); });
+    }
+    // re-run validation when validator binding changes, e.g. minlength=3 -> minlength=4
+    dir._rawValidators.forEach(function (validator) {
+        if (((validator)).registerOnValidatorChange)
+            ((((validator)).registerOnValidatorChange))(function () { return control.updateValueAndValidity(); });
+    });
+    dir._rawAsyncValidators.forEach(function (validator) {
+        if (((validator)).registerOnValidatorChange)
+            ((((validator)).registerOnValidatorChange))(function () { return control.updateValueAndValidity(); });
+    });
+}
+/**
+ * @param {?} control
+ * @param {?} dir
+ * @return {?}
+ */
+function cleanUpControl(control, dir) {
+    ((dir.valueAccessor)).registerOnChange(function () { return _noControlError(dir); }); /** @type {?} */
+    ((dir.valueAccessor)).registerOnTouched(function () { return _noControlError(dir); });
+    dir._rawValidators.forEach(function (validator) {
+        if (validator.registerOnValidatorChange) {
+            validator.registerOnValidatorChange(null);
+        }
+    });
+    dir._rawAsyncValidators.forEach(function (validator) {
+        if (validator.registerOnValidatorChange) {
+            validator.registerOnValidatorChange(null);
+        }
+    });
+    if (control)
+        control._clearChangeFns();
+}
+/**
+ * @param {?} control
+ * @param {?} dir
+ * @return {?}
+ */
+function setUpFormContainer(control, dir) {
+    if (control == null)
+        _throwError(dir, 'Cannot find control with');
+    control.validator = Validators.compose([control.validator, dir.validator]);
+    control.asyncValidator = Validators.composeAsync([control.asyncValidator, dir.asyncValidator]);
+}
+/**
+ * @param {?} dir
+ * @return {?}
+ */
+function _noControlError(dir) {
+    return _throwError(dir, 'There is no FormControl instance attached to form control element with');
+}
+/**
+ * @param {?} dir
+ * @param {?} message
+ * @return {?}
+ */
+function _throwError(dir, message) {
+    var /** @type {?} */ messageEnd;
+    if (((dir.path)).length > 1) {
+        messageEnd = "path: '" + ((dir.path)).join(' -> ') + "'";
+    }
+    else if (((dir.path))[0]) {
+        messageEnd = "name: '" + dir.path + "'";
+    }
+    else {
+        messageEnd = 'unspecified name attribute';
+    }
+    throw new Error(message + " " + messageEnd);
+}
+/**
+ * @param {?} validators
+ * @return {?}
+ */
+function composeValidators(validators) {
+    return validators != null ? Validators.compose(validators.map(normalizeValidator)) : null;
+}
+/**
+ * @param {?} validators
+ * @return {?}
+ */
+function composeAsyncValidators(validators) {
+    return validators != null ? Validators.composeAsync(validators.map(normalizeAsyncValidator)) :
+        null;
+}
+/**
+ * @param {?} changes
+ * @param {?} viewModel
+ * @return {?}
+ */
+function isPropertyUpdated(changes, viewModel) {
+    if (!changes.hasOwnProperty('model'))
+        return false;
+    var /** @type {?} */ change = changes['model'];
+    if (change.isFirstChange())
+        return true;
+    return !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵlooseIdentical */])(viewModel, change.currentValue);
+}
+var BUILTIN_ACCESSORS = [
+    CheckboxControlValueAccessor,
+    RangeValueAccessor,
+    NumberValueAccessor,
+    SelectControlValueAccessor,
+    SelectMultipleControlValueAccessor,
+    RadioControlValueAccessor,
+];
+/**
+ * @param {?} valueAccessor
+ * @return {?}
+ */
+function isBuiltInAccessor(valueAccessor) {
+    return BUILTIN_ACCESSORS.some(function (a) { return valueAccessor.constructor === a; });
+}
+/**
+ * @param {?} dir
+ * @param {?} valueAccessors
+ * @return {?}
+ */
+function selectValueAccessor(dir, valueAccessors) {
+    if (!valueAccessors)
+        return null;
+    var /** @type {?} */ defaultAccessor = undefined;
+    var /** @type {?} */ builtinAccessor = undefined;
+    var /** @type {?} */ customAccessor = undefined;
+    valueAccessors.forEach(function (v) {
+        if (v.constructor === DefaultValueAccessor) {
+            defaultAccessor = v;
+        }
+        else if (isBuiltInAccessor(v)) {
+            if (builtinAccessor)
+                _throwError(dir, 'More than one built-in value accessor matches form control with');
+            builtinAccessor = v;
+        }
+        else {
+            if (customAccessor)
+                _throwError(dir, 'More than one custom value accessor matches form control with');
+            customAccessor = v;
+        }
+    });
+    if (customAccessor)
+        return customAccessor;
+    if (builtinAccessor)
+        return builtinAccessor;
+    if (defaultAccessor)
+        return defaultAccessor;
+    _throwError(dir, 'No valid value accessor for form control with');
+    return null;
+}
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * This is a base class for code shared between {\@link NgModelGroup} and {\@link FormGroupName}.
+ *
+ * \@stable
+ */
+var AbstractFormGroupDirective = (function (_super) {
+    __extends(AbstractFormGroupDirective, _super);
+    function AbstractFormGroupDirective() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * @return {?}
+     */
+    AbstractFormGroupDirective.prototype.ngOnInit = function () {
+        this._checkParentType(); /** @type {?} */
+        ((this.formDirective)).addFormGroup(this);
+    };
+    /**
+     * @return {?}
+     */
+    AbstractFormGroupDirective.prototype.ngOnDestroy = function () {
+        if (this.formDirective) {
+            this.formDirective.removeFormGroup(this);
+        }
+    };
+    Object.defineProperty(AbstractFormGroupDirective.prototype, "control", {
+        /**
+         * Get the {\@link FormGroup} backing this binding.
+         * @return {?}
+         */
+        get: function () { return ((this.formDirective)).getFormGroup(this); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractFormGroupDirective.prototype, "path", {
+        /**
+         * Get the path to this control group.
+         * @return {?}
+         */
+        get: function () { return controlPath(this.name, this._parent); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractFormGroupDirective.prototype, "formDirective", {
+        /**
+         * Get the {\@link Form} to which this group belongs.
+         * @return {?}
+         */
+        get: function () { return this._parent ? this._parent.formDirective : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractFormGroupDirective.prototype, "validator", {
+        /**
+         * @return {?}
+         */
+        get: function () { return composeValidators(this._validators); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractFormGroupDirective.prototype, "asyncValidator", {
+        /**
+         * @return {?}
+         */
+        get: function () {
+            return composeAsyncValidators(this._asyncValidators);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * \@internal
+     * @return {?}
+     */
+    AbstractFormGroupDirective.prototype._checkParentType = function () { };
+    return AbstractFormGroupDirective;
+}(ControlContainer));
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var AbstractControlStatus = (function () {
+    /**
+     * @param {?} cd
+     */
+    function AbstractControlStatus(cd) {
+        this._cd = cd;
+    }
+    Object.defineProperty(AbstractControlStatus.prototype, "ngClassUntouched", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._cd.control ? this._cd.control.untouched : false; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlStatus.prototype, "ngClassTouched", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._cd.control ? this._cd.control.touched : false; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlStatus.prototype, "ngClassPristine", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._cd.control ? this._cd.control.pristine : false; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlStatus.prototype, "ngClassDirty", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._cd.control ? this._cd.control.dirty : false; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlStatus.prototype, "ngClassValid", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._cd.control ? this._cd.control.valid : false; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlStatus.prototype, "ngClassInvalid", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._cd.control ? this._cd.control.invalid : false; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControlStatus.prototype, "ngClassPending", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._cd.control ? this._cd.control.pending : false; },
+        enumerable: true,
+        configurable: true
+    });
+    return AbstractControlStatus;
+}());
+var ngControlStatusHost = {
+    '[class.ng-untouched]': 'ngClassUntouched',
+    '[class.ng-touched]': 'ngClassTouched',
+    '[class.ng-pristine]': 'ngClassPristine',
+    '[class.ng-dirty]': 'ngClassDirty',
+    '[class.ng-valid]': 'ngClassValid',
+    '[class.ng-invalid]': 'ngClassInvalid',
+    '[class.ng-pending]': 'ngClassPending',
+};
+/**
+ * Directive automatically applied to Angular form controls that sets CSS classes
+ * based on control status (valid/invalid/dirty/etc).
+ *
+ * \@stable
+ */
+var NgControlStatus = (function (_super) {
+    __extends(NgControlStatus, _super);
+    /**
+     * @param {?} cd
+     */
+    function NgControlStatus(cd) {
+        return _super.call(this, cd) || this;
+    }
+    return NgControlStatus;
+}(AbstractControlStatus));
+NgControlStatus.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formControlName],[ngModel],[formControl]', host: ngControlStatusHost },] },
+];
+/**
+ * @nocollapse
+ */
+NgControlStatus.ctorParameters = function () { return [
+    { type: NgControl, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] },] },
+]; };
+/**
+ * Directive automatically applied to Angular form groups that sets CSS classes
+ * based on control status (valid/invalid/dirty/etc).
+ *
+ * \@stable
+ */
+var NgControlStatusGroup = (function (_super) {
+    __extends(NgControlStatusGroup, _super);
+    /**
+     * @param {?} cd
+     */
+    function NgControlStatusGroup(cd) {
+        return _super.call(this, cd) || this;
+    }
+    return NgControlStatusGroup;
+}(AbstractControlStatus));
+NgControlStatusGroup.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: '[formGroupName],[formArrayName],[ngModelGroup],[formGroup],form:not([ngNoForm]),[ngForm]',
+                host: ngControlStatusHost
+            },] },
+];
+/**
+ * @nocollapse
+ */
+NgControlStatusGroup.ctorParameters = function () { return [
+    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] },] },
+]; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Indicates that a FormControl is valid, i.e. that no errors exist in the input value.
+ */
+var VALID = 'VALID';
+/**
+ * Indicates that a FormControl is invalid, i.e. that an error exists in the input value.
+ */
+var INVALID = 'INVALID';
+/**
+ * Indicates that a FormControl is pending, i.e. that async validation is occurring and
+ * errors are not yet available for the input value.
+ */
+var PENDING = 'PENDING';
+/**
+ * Indicates that a FormControl is disabled, i.e. that the control is exempt from ancestor
+ * calculations of validity or value.
+ */
+var DISABLED = 'DISABLED';
+/**
+ * @param {?} control
+ * @param {?} path
+ * @param {?} delimiter
+ * @return {?}
+ */
+function _find(control, path, delimiter) {
+    if (path == null)
+        return null;
+    if (!(path instanceof Array)) {
+        path = ((path)).split(delimiter);
+    }
+    if (path instanceof Array && (path.length === 0))
+        return null;
+    return ((path)).reduce(function (v, name) {
+        if (v instanceof FormGroup) {
+            return v.controls[name] || null;
+        }
+        if (v instanceof FormArray) {
+            return v.at(/** @type {?} */ (name)) || null;
+        }
+        return null;
+    }, control);
+}
+/**
+ * @param {?=} validator
+ * @return {?}
+ */
+function coerceToValidator(validator) {
+    return Array.isArray(validator) ? composeValidators(validator) : validator || null;
+}
+/**
+ * @param {?=} asyncValidator
+ * @return {?}
+ */
+function coerceToAsyncValidator(asyncValidator) {
+    return Array.isArray(asyncValidator) ? composeAsyncValidators(asyncValidator) :
+        asyncValidator || null;
+}
+/**
+ * \@whatItDoes This is the base class for {\@link FormControl}, {\@link FormGroup}, and
+ * {\@link FormArray}.
+ *
+ * It provides some of the shared behavior that all controls and groups of controls have, like
+ * running validators, calculating status, and resetting state. It also defines the properties
+ * that are shared between all sub-classes, like `value`, `valid`, and `dirty`. It shouldn't be
+ * instantiated directly.
+ *
+ * \@stable
+ * @abstract
+ */
+var AbstractControl = (function () {
+    /**
+     * @param {?} validator
+     * @param {?} asyncValidator
+     */
+    function AbstractControl(validator, asyncValidator) {
+        this.validator = validator;
+        this.asyncValidator = asyncValidator;
+        /**
+         * \@internal
+         */
+        this._onCollectionChange = function () { };
+        this._pristine = true;
+        this._touched = false;
+        /**
+         * \@internal
+         */
+        this._onDisabledChange = [];
+    }
+    Object.defineProperty(AbstractControl.prototype, "value", {
+        /**
+         * The value of the control.
+         * @return {?}
+         */
+        get: function () { return this._value; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "parent", {
+        /**
+         * The parent control.
+         * @return {?}
+         */
+        get: function () { return this._parent; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "status", {
+        /**
+         * The validation status of the control. There are four possible
+         * validation statuses:
+         *
+         * * **VALID**:  control has passed all validation checks
+         * * **INVALID**: control has failed at least one validation check
+         * * **PENDING**: control is in the midst of conducting a validation check
+         * * **DISABLED**: control is exempt from validation checks
+         *
+         * These statuses are mutually exclusive, so a control cannot be
+         * both valid AND invalid or invalid AND disabled.
+         * @return {?}
+         */
+        get: function () { return this._status; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "valid", {
+        /**
+         * A control is `valid` when its `status === VALID`.
+         *
+         * In order to have this status, the control must have passed all its
+         * validation checks.
+         * @return {?}
+         */
+        get: function () { return this._status === VALID; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "invalid", {
+        /**
+         * A control is `invalid` when its `status === INVALID`.
+         *
+         * In order to have this status, the control must have failed
+         * at least one of its validation checks.
+         * @return {?}
+         */
+        get: function () { return this._status === INVALID; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "pending", {
+        /**
+         * A control is `pending` when its `status === PENDING`.
+         *
+         * In order to have this status, the control must be in the
+         * middle of conducting a validation check.
+         * @return {?}
+         */
+        get: function () { return this._status == PENDING; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "disabled", {
+        /**
+         * A control is `disabled` when its `status === DISABLED`.
+         *
+         * Disabled controls are exempt from validation checks and
+         * are not included in the aggregate value of their ancestor
+         * controls.
+         * @return {?}
+         */
+        get: function () { return this._status === DISABLED; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "enabled", {
+        /**
+         * A control is `enabled` as long as its `status !== DISABLED`.
+         *
+         * In other words, it has a status of `VALID`, `INVALID`, or
+         * `PENDING`.
+         * @return {?}
+         */
+        get: function () { return this._status !== DISABLED; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "errors", {
+        /**
+         * Returns any errors generated by failing validation. If there
+         * are no errors, it will return null.
+         * @return {?}
+         */
+        get: function () { return this._errors; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "pristine", {
+        /**
+         * A control is `pristine` if the user has not yet changed
+         * the value in the UI.
+         *
+         * Note that programmatic changes to a control's value will
+         * *not* mark it dirty.
+         * @return {?}
+         */
+        get: function () { return this._pristine; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "dirty", {
+        /**
+         * A control is `dirty` if the user has changed the value
+         * in the UI.
+         *
+         * Note that programmatic changes to a control's value will
+         * *not* mark it dirty.
+         * @return {?}
+         */
+        get: function () { return !this.pristine; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "touched", {
+        /**
+         * A control is marked `touched` once the user has triggered
+         * a `blur` event on it.
+         * @return {?}
+         */
+        get: function () { return this._touched; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "untouched", {
+        /**
+         * A control is `untouched` if the user has not yet triggered
+         * a `blur` event on it.
+         * @return {?}
+         */
+        get: function () { return !this._touched; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "valueChanges", {
+        /**
+         * Emits an event every time the value of the control changes, in
+         * the UI or programmatically.
+         * @return {?}
+         */
+        get: function () { return this._valueChanges; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AbstractControl.prototype, "statusChanges", {
+        /**
+         * Emits an event every time the validation status of the control
+         * is re-calculated.
+         * @return {?}
+         */
+        get: function () { return this._statusChanges; },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * Sets the synchronous validators that are active on this control.  Calling
+     * this will overwrite any existing sync validators.
+     * @param {?} newValidator
+     * @return {?}
+     */
+    AbstractControl.prototype.setValidators = function (newValidator) {
+        this.validator = coerceToValidator(newValidator);
+    };
+    /**
+     * Sets the async validators that are active on this control. Calling this
+     * will overwrite any existing async validators.
+     * @param {?} newValidator
+     * @return {?}
+     */
+    AbstractControl.prototype.setAsyncValidators = function (newValidator) {
+        this.asyncValidator = coerceToAsyncValidator(newValidator);
+    };
+    /**
+     * Empties out the sync validator list.
+     * @return {?}
+     */
+    AbstractControl.prototype.clearValidators = function () { this.validator = null; };
+    /**
+     * Empties out the async validator list.
+     * @return {?}
+     */
+    AbstractControl.prototype.clearAsyncValidators = function () { this.asyncValidator = null; };
+    /**
+     * Marks the control as `touched`.
+     *
+     * This will also mark all direct ancestors as `touched` to maintain
+     * the model.
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype.markAsTouched = function (_a) {
+        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
+        this._touched = true;
+        if (this._parent && !onlySelf) {
+            this._parent.markAsTouched({ onlySelf: onlySelf });
+        }
+    };
+    /**
+     * Marks the control as `untouched`.
+     *
+     * If the control has any children, it will also mark all children as `untouched`
+     * to maintain the model, and re-calculate the `touched` status of all parent
+     * controls.
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype.markAsUntouched = function (_a) {
+        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
+        this._touched = false;
+        this._forEachChild(function (control) { control.markAsUntouched({ onlySelf: true }); });
+        if (this._parent && !onlySelf) {
+            this._parent._updateTouched({ onlySelf: onlySelf });
+        }
+    };
+    /**
+     * Marks the control as `dirty`.
+     *
+     * This will also mark all direct ancestors as `dirty` to maintain
+     * the model.
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype.markAsDirty = function (_a) {
+        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
+        this._pristine = false;
+        if (this._parent && !onlySelf) {
+            this._parent.markAsDirty({ onlySelf: onlySelf });
+        }
+    };
+    /**
+     * Marks the control as `pristine`.
+     *
+     * If the control has any children, it will also mark all children as `pristine`
+     * to maintain the model, and re-calculate the `pristine` status of all parent
+     * controls.
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype.markAsPristine = function (_a) {
+        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
+        this._pristine = true;
+        this._forEachChild(function (control) { control.markAsPristine({ onlySelf: true }); });
+        if (this._parent && !onlySelf) {
+            this._parent._updatePristine({ onlySelf: onlySelf });
+        }
+    };
+    /**
+     * Marks the control as `pending`.
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype.markAsPending = function (_a) {
+        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
+        this._status = PENDING;
+        if (this._parent && !onlySelf) {
+            this._parent.markAsPending({ onlySelf: onlySelf });
+        }
+    };
+    /**
+     * Disables the control. This means the control will be exempt from validation checks and
+     * excluded from the aggregate value of any parent. Its status is `DISABLED`.
+     *
+     * If the control has children, all children will be disabled to maintain the model.
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype.disable = function (_a) {
+        var _b = _a === void 0 ? {} : _a, onlySelf = _b.onlySelf, emitEvent = _b.emitEvent;
+        this._status = DISABLED;
+        this._errors = null;
+        this._forEachChild(function (control) { control.disable({ onlySelf: true }); });
+        this._updateValue();
+        if (emitEvent !== false) {
+            this._valueChanges.emit(this._value);
+            this._statusChanges.emit(this._status);
+        }
+        this._updateAncestors(!!onlySelf);
+        this._onDisabledChange.forEach(function (changeFn) { return changeFn(true); });
+    };
+    /**
+     * Enables the control. This means the control will be included in validation checks and
+     * the aggregate value of its parent. Its status is re-calculated based on its value and
+     * its validators.
+     *
+     * If the control has children, all children will be enabled.
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype.enable = function (_a) {
+        var _b = _a === void 0 ? {} : _a, onlySelf = _b.onlySelf, emitEvent = _b.emitEvent;
+        this._status = VALID;
+        this._forEachChild(function (control) { control.enable({ onlySelf: true }); });
+        this.updateValueAndValidity({ onlySelf: true, emitEvent: emitEvent });
+        this._updateAncestors(!!onlySelf);
+        this._onDisabledChange.forEach(function (changeFn) { return changeFn(false); });
+    };
+    /**
+     * @param {?} onlySelf
+     * @return {?}
+     */
+    AbstractControl.prototype._updateAncestors = function (onlySelf) {
+        if (this._parent && !onlySelf) {
+            this._parent.updateValueAndValidity();
+            this._parent._updatePristine();
+            this._parent._updateTouched();
+        }
+    };
+    /**
+     * @param {?} parent
+     * @return {?}
+     */
+    AbstractControl.prototype.setParent = function (parent) { this._parent = parent; };
+    /**
+     * Sets the value of the control. Abstract method (implemented in sub-classes).
+     * @abstract
+     * @param {?} value
+     * @param {?=} options
+     * @return {?}
+     */
+    AbstractControl.prototype.setValue = function (value, options) { };
+    /**
+     * Patches the value of the control. Abstract method (implemented in sub-classes).
+     * @abstract
+     * @param {?} value
+     * @param {?=} options
+     * @return {?}
+     */
+    AbstractControl.prototype.patchValue = function (value, options) { };
+    /**
+     * Resets the control. Abstract method (implemented in sub-classes).
+     * @abstract
+     * @param {?=} value
+     * @param {?=} options
+     * @return {?}
+     */
+    AbstractControl.prototype.reset = function (value, options) { };
+    /**
+     * Re-calculates the value and validation status of the control.
+     *
+     * By default, it will also update the value and validity of its ancestors.
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype.updateValueAndValidity = function (_a) {
+        var _b = _a === void 0 ? {} : _a, onlySelf = _b.onlySelf, emitEvent = _b.emitEvent;
+        this._setInitialStatus();
+        this._updateValue();
+        if (this.enabled) {
+            this._cancelExistingSubscription();
+            this._errors = this._runValidator();
+            this._status = this._calculateStatus();
+            if (this._status === VALID || this._status === PENDING) {
+                this._runAsyncValidator(emitEvent);
+            }
+        }
+        if (emitEvent !== false) {
+            this._valueChanges.emit(this._value);
+            this._statusChanges.emit(this._status);
+        }
+        if (this._parent && !onlySelf) {
+            this._parent.updateValueAndValidity({ onlySelf: onlySelf, emitEvent: emitEvent });
+        }
+    };
+    /**
+     * \@internal
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype._updateTreeValidity = function (_a) {
+        var emitEvent = (_a === void 0 ? { emitEvent: true } : _a).emitEvent;
+        this._forEachChild(function (ctrl) { return ctrl._updateTreeValidity({ emitEvent: emitEvent }); });
+        this.updateValueAndValidity({ onlySelf: true, emitEvent: emitEvent });
+    };
+    /**
+     * @return {?}
+     */
+    AbstractControl.prototype._setInitialStatus = function () { this._status = this._allControlsDisabled() ? DISABLED : VALID; };
+    /**
+     * @return {?}
+     */
+    AbstractControl.prototype._runValidator = function () {
+        return this.validator ? this.validator(this) : null;
+    };
+    /**
+     * @param {?=} emitEvent
+     * @return {?}
+     */
+    AbstractControl.prototype._runAsyncValidator = function (emitEvent) {
+        var _this = this;
+        if (this.asyncValidator) {
+            this._status = PENDING;
+            var /** @type {?} */ obs = toObservable(this.asyncValidator(this));
+            this._asyncValidationSubscription =
+                obs.subscribe(function (errors) { return _this.setErrors(errors, { emitEvent: emitEvent }); });
+        }
+    };
+    /**
+     * @return {?}
+     */
+    AbstractControl.prototype._cancelExistingSubscription = function () {
+        if (this._asyncValidationSubscription) {
+            this._asyncValidationSubscription.unsubscribe();
+        }
+    };
+    /**
+     * Sets errors on a form control.
+     *
+     * This is used when validations are run manually by the user, rather than automatically.
+     *
+     * Calling `setErrors` will also update the validity of the parent control.
+     *
+     * ### Example
+     *
+     * ```
+     * const login = new FormControl("someLogin");
+     * login.setErrors({
+     *   "notUnique": true
+     * });
+     *
+     * expect(login.valid).toEqual(false);
+     * expect(login.errors).toEqual({"notUnique": true});
+     *
+     * login.setValue("someOtherLogin");
+     *
+     * expect(login.valid).toEqual(true);
+     * ```
+     * @param {?} errors
+     * @param {?=} __1
+     * @return {?}
+     */
+    AbstractControl.prototype.setErrors = function (errors, _a) {
+        var emitEvent = (_a === void 0 ? {} : _a).emitEvent;
+        this._errors = errors;
+        this._updateControlsErrors(emitEvent !== false);
+    };
+    /**
+     * Retrieves a child control given the control's name or path.
+     *
+     * Paths can be passed in as an array or a string delimited by a dot.
+     *
+     * To get a control nested within a `person` sub-group:
+     *
+     * * `this.form.get('person.name');`
+     *
+     * -OR-
+     *
+     * * `this.form.get(['person', 'name']);`
+     * @param {?} path
+     * @return {?}
+     */
+    AbstractControl.prototype.get = function (path) { return _find(this, path, '.'); };
+    /**
+     * Returns true if the control with the given path has the error specified. Otherwise
+     * returns null or undefined.
+     *
+     * If no path is given, it checks for the error on the present control.
+     * @param {?} errorCode
+     * @param {?=} path
+     * @return {?}
+     */
+    AbstractControl.prototype.getError = function (errorCode, path) {
+        var /** @type {?} */ control = path ? this.get(path) : this;
+        return control && control._errors ? control._errors[errorCode] : null;
+    };
+    /**
+     * Returns true if the control with the given path has the error specified. Otherwise
+     * returns false.
+     *
+     * If no path is given, it checks for the error on the present control.
+     * @param {?} errorCode
+     * @param {?=} path
+     * @return {?}
+     */
+    AbstractControl.prototype.hasError = function (errorCode, path) { return !!this.getError(errorCode, path); };
+    Object.defineProperty(AbstractControl.prototype, "root", {
+        /**
+         * Retrieves the top-level ancestor of this control.
+         * @return {?}
+         */
+        get: function () {
+            var /** @type {?} */ x = this;
+            while (x._parent) {
+                x = x._parent;
+            }
+            return x;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * \@internal
+     * @param {?} emitEvent
+     * @return {?}
+     */
+    AbstractControl.prototype._updateControlsErrors = function (emitEvent) {
+        this._status = this._calculateStatus();
+        if (emitEvent) {
+            this._statusChanges.emit(this._status);
+        }
+        if (this._parent) {
+            this._parent._updateControlsErrors(emitEvent);
+        }
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    AbstractControl.prototype._initObservables = function () {
+        this._valueChanges = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        this._statusChanges = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+    };
+    /**
+     * @return {?}
+     */
+    AbstractControl.prototype._calculateStatus = function () {
+        if (this._allControlsDisabled())
+            return DISABLED;
+        if (this._errors)
+            return INVALID;
+        if (this._anyControlsHaveStatus(PENDING))
+            return PENDING;
+        if (this._anyControlsHaveStatus(INVALID))
+            return INVALID;
+        return VALID;
+    };
+    /**
+     * \@internal
+     * @abstract
+     * @return {?}
+     */
+    AbstractControl.prototype._updateValue = function () { };
+    /**
+     * \@internal
+     * @abstract
+     * @param {?} cb
+     * @return {?}
+     */
+    AbstractControl.prototype._forEachChild = function (cb) { };
+    /**
+     * \@internal
+     * @abstract
+     * @param {?} condition
+     * @return {?}
+     */
+    AbstractControl.prototype._anyControls = function (condition) { };
+    /**
+     * \@internal
+     * @abstract
+     * @return {?}
+     */
+    AbstractControl.prototype._allControlsDisabled = function () { };
+    /**
+     * \@internal
+     * @param {?} status
+     * @return {?}
+     */
+    AbstractControl.prototype._anyControlsHaveStatus = function (status) {
+        return this._anyControls(function (control) { return control.status === status; });
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    AbstractControl.prototype._anyControlsDirty = function () {
+        return this._anyControls(function (control) { return control.dirty; });
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    AbstractControl.prototype._anyControlsTouched = function () {
+        return this._anyControls(function (control) { return control.touched; });
+    };
+    /**
+     * \@internal
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype._updatePristine = function (_a) {
+        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
+        this._pristine = !this._anyControlsDirty();
+        if (this._parent && !onlySelf) {
+            this._parent._updatePristine({ onlySelf: onlySelf });
+        }
+    };
+    /**
+     * \@internal
+     * @param {?=} __0
+     * @return {?}
+     */
+    AbstractControl.prototype._updateTouched = function (_a) {
+        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
+        this._touched = this._anyControlsTouched();
+        if (this._parent && !onlySelf) {
+            this._parent._updateTouched({ onlySelf: onlySelf });
+        }
+    };
+    /**
+     * \@internal
+     * @param {?} formState
+     * @return {?}
+     */
+    AbstractControl.prototype._isBoxedValue = function (formState) {
+        return typeof formState === 'object' && formState !== null &&
+            Object.keys(formState).length === 2 && 'value' in formState && 'disabled' in formState;
+    };
+    /**
+     * \@internal
+     * @param {?} fn
+     * @return {?}
+     */
+    AbstractControl.prototype._registerOnCollectionChange = function (fn) { this._onCollectionChange = fn; };
+    return AbstractControl;
+}());
+/**
+ * \@whatItDoes Tracks the value and validation status of an individual form control.
+ *
+ * It is one of the three fundamental building blocks of Angular forms, along with
+ * {\@link FormGroup} and {\@link FormArray}.
+ *
+ * \@howToUse
+ *
+ * When instantiating a {\@link FormControl}, you can pass in an initial value as the
+ * first argument. Example:
+ *
+ * ```ts
+ * const ctrl = new FormControl('some value');
+ * console.log(ctrl.value);     // 'some value'
+ * ```
+ *
+ * You can also initialize the control with a form state object on instantiation,
+ * which includes both the value and whether or not the control is disabled.
+ * You can't use the value key without the disabled key; both are required
+ * to use this way of initialization.
+ *
+ * ```ts
+ * const ctrl = new FormControl({value: 'n/a', disabled: true});
+ * console.log(ctrl.value);     // 'n/a'
+ * console.log(ctrl.status);   // 'DISABLED'
+ * ```
+ *
+ * To include a sync validator (or an array of sync validators) with the control,
+ * pass it in as the second argument. Async validators are also supported, but
+ * have to be passed in separately as the third arg.
+ *
+ * ```ts
+ * const ctrl = new FormControl('', Validators.required);
+ * console.log(ctrl.value);     // ''
+ * console.log(ctrl.status);   // 'INVALID'
+ * ```
+ *
+ * See its superclass, {\@link AbstractControl}, for more properties and methods.
+ *
+ * * **npm package**: `\@angular/forms`
+ *
+ * \@stable
+ */
+var FormControl = (function (_super) {
+    __extends(FormControl, _super);
+    /**
+     * @param {?=} formState
+     * @param {?=} validator
+     * @param {?=} asyncValidator
+     */
+    function FormControl(formState, validator, asyncValidator) {
+        if (formState === void 0) { formState = null; }
+        var _this = _super.call(this, coerceToValidator(validator), coerceToAsyncValidator(asyncValidator)) || this;
+        /**
+         * \@internal
+         */
+        _this._onChange = [];
+        _this._applyFormState(formState);
+        _this.updateValueAndValidity({ onlySelf: true, emitEvent: false });
+        _this._initObservables();
+        return _this;
+    }
+    /**
+     * Set the value of the form control to `value`.
+     *
+     * If `onlySelf` is `true`, this change will only affect the validation of this `FormControl`
+     * and not its parent component. This defaults to false.
+     *
+     * If `emitEvent` is `true`, this
+     * change will cause a `valueChanges` event on the `FormControl` to be emitted. This defaults
+     * to true (as it falls through to `updateValueAndValidity`).
+     *
+     * If `emitModelToViewChange` is `true`, the view will be notified about the new value
+     * via an `onChange` event. This is the default behavior if `emitModelToViewChange` is not
+     * specified.
+     *
+     * If `emitViewToModelChange` is `true`, an ngModelChange event will be fired to update the
+     * model.  This is the default behavior if `emitViewToModelChange` is not specified.
+     * @param {?} value
+     * @param {?=} options
+     * @return {?}
+     */
+    FormControl.prototype.setValue = function (value, options) {
+        var _this = this;
+        if (options === void 0) { options = {}; }
+        this._value = value;
+        if (this._onChange.length && options.emitModelToViewChange !== false) {
+            this._onChange.forEach(function (changeFn) { return changeFn(_this._value, options.emitViewToModelChange !== false); });
+        }
+        this.updateValueAndValidity(options);
+    };
+    /**
+     * Patches the value of a control.
+     *
+     * This function is functionally the same as {\@link FormControl#setValue} at this level.
+     * It exists for symmetry with {\@link FormGroup#patchValue} on `FormGroups` and `FormArrays`,
+     * where it does behave differently.
+     * @param {?} value
+     * @param {?=} options
+     * @return {?}
+     */
+    FormControl.prototype.patchValue = function (value, options) {
+        if (options === void 0) { options = {}; }
+        this.setValue(value, options);
+    };
+    /**
+     * Resets the form control. This means by default:
+     *
+     * * it is marked as `pristine`
+     * * it is marked as `untouched`
+     * * value is set to null
+     *
+     * You can also reset to a specific form state by passing through a standalone
+     * value or a form state object that contains both a value and a disabled state
+     * (these are the only two properties that cannot be calculated).
+     *
+     * Ex:
+     *
+     * ```ts
+     * this.control.reset('Nancy');
+     *
+     * console.log(this.control.value);  // 'Nancy'
+     * ```
+     *
+     * OR
+     *
+     * ```
+     * this.control.reset({value: 'Nancy', disabled: true});
+     *
+     * console.log(this.control.value);  // 'Nancy'
+     * console.log(this.control.status);  // 'DISABLED'
+     * ```
+     * @param {?=} formState
+     * @param {?=} options
+     * @return {?}
+     */
+    FormControl.prototype.reset = function (formState, options) {
+        if (formState === void 0) { formState = null; }
+        if (options === void 0) { options = {}; }
+        this._applyFormState(formState);
+        this.markAsPristine(options);
+        this.markAsUntouched(options);
+        this.setValue(this._value, options);
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormControl.prototype._updateValue = function () { };
+    /**
+     * \@internal
+     * @param {?} condition
+     * @return {?}
+     */
+    FormControl.prototype._anyControls = function (condition) { return false; };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormControl.prototype._allControlsDisabled = function () { return this.disabled; };
+    /**
+     * Register a listener for change events.
+     * @param {?} fn
+     * @return {?}
+     */
+    FormControl.prototype.registerOnChange = function (fn) { this._onChange.push(fn); };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormControl.prototype._clearChangeFns = function () {
+        this._onChange = [];
+        this._onDisabledChange = [];
+        this._onCollectionChange = function () { };
+    };
+    /**
+     * Register a listener for disabled events.
+     * @param {?} fn
+     * @return {?}
+     */
+    FormControl.prototype.registerOnDisabledChange = function (fn) {
+        this._onDisabledChange.push(fn);
+    };
+    /**
+     * \@internal
+     * @param {?} cb
+     * @return {?}
+     */
+    FormControl.prototype._forEachChild = function (cb) { };
+    /**
+     * @param {?} formState
+     * @return {?}
+     */
+    FormControl.prototype._applyFormState = function (formState) {
+        if (this._isBoxedValue(formState)) {
+            this._value = formState.value;
+            formState.disabled ? this.disable({ onlySelf: true, emitEvent: false }) :
+                this.enable({ onlySelf: true, emitEvent: false });
+        }
+        else {
+            this._value = formState;
+        }
+    };
+    return FormControl;
+}(AbstractControl));
+/**
+ * \@whatItDoes Tracks the value and validity state of a group of {\@link FormControl}
+ * instances.
+ *
+ * A `FormGroup` aggregates the values of each child {\@link FormControl} into one object,
+ * with each control name as the key.  It calculates its status by reducing the statuses
+ * of its children. For example, if one of the controls in a group is invalid, the entire
+ * group becomes invalid.
+ *
+ * `FormGroup` is one of the three fundamental building blocks used to define forms in Angular,
+ * along with {\@link FormControl} and {\@link FormArray}.
+ *
+ * \@howToUse
+ *
+ * When instantiating a {\@link FormGroup}, pass in a collection of child controls as the first
+ * argument. The key for each child will be the name under which it is registered.
+ *
+ * ### Example
+ *
+ * ```
+ * const form = new FormGroup({
+ *   first: new FormControl('Nancy', Validators.minLength(2)),
+ *   last: new FormControl('Drew'),
+ * });
+ *
+ * console.log(form.value);   // {first: 'Nancy', last; 'Drew'}
+ * console.log(form.status);  // 'VALID'
+ * ```
+ *
+ * You can also include group-level validators as the second arg, or group-level async
+ * validators as the third arg. These come in handy when you want to perform validation
+ * that considers the value of more than one child control.
+ *
+ * ### Example
+ *
+ * ```
+ * const form = new FormGroup({
+ *   password: new FormControl('', Validators.minLength(2)),
+ *   passwordConfirm: new FormControl('', Validators.minLength(2)),
+ * }, passwordMatchValidator);
+ *
+ *
+ * function passwordMatchValidator(g: FormGroup) {
+ *    return g.get('password').value === g.get('passwordConfirm').value
+ *       ? null : {'mismatch': true};
+ * }
+ * ```
+ *
+ * * **npm package**: `\@angular/forms`
+ *
+ * \@stable
+ */
+var FormGroup = (function (_super) {
+    __extends(FormGroup, _super);
+    /**
+     * @param {?} controls
+     * @param {?=} validator
+     * @param {?=} asyncValidator
+     */
+    function FormGroup(controls, validator, asyncValidator) {
+        var _this = _super.call(this, validator || null, asyncValidator || null) || this;
+        _this.controls = controls;
+        _this._initObservables();
+        _this._setUpControls();
+        _this.updateValueAndValidity({ onlySelf: true, emitEvent: false });
+        return _this;
+    }
+    /**
+     * Registers a control with the group's list of controls.
+     *
+     * This method does not update value or validity of the control, so for
+     * most cases you'll want to use {\@link FormGroup#addControl} instead.
+     * @param {?} name
+     * @param {?} control
+     * @return {?}
+     */
+    FormGroup.prototype.registerControl = function (name, control) {
+        if (this.controls[name])
+            return this.controls[name];
+        this.controls[name] = control;
+        control.setParent(this);
+        control._registerOnCollectionChange(this._onCollectionChange);
+        return control;
+    };
+    /**
+     * Add a control to this group.
+     * @param {?} name
+     * @param {?} control
+     * @return {?}
+     */
+    FormGroup.prototype.addControl = function (name, control) {
+        this.registerControl(name, control);
+        this.updateValueAndValidity();
+        this._onCollectionChange();
+    };
+    /**
+     * Remove a control from this group.
+     * @param {?} name
+     * @return {?}
+     */
+    FormGroup.prototype.removeControl = function (name) {
+        if (this.controls[name])
+            this.controls[name]._registerOnCollectionChange(function () { });
+        delete (this.controls[name]);
+        this.updateValueAndValidity();
+        this._onCollectionChange();
+    };
+    /**
+     * Replace an existing control.
+     * @param {?} name
+     * @param {?} control
+     * @return {?}
+     */
+    FormGroup.prototype.setControl = function (name, control) {
+        if (this.controls[name])
+            this.controls[name]._registerOnCollectionChange(function () { });
+        delete (this.controls[name]);
+        if (control)
+            this.registerControl(name, control);
+        this.updateValueAndValidity();
+        this._onCollectionChange();
+    };
+    /**
+     * Check whether there is an enabled control with the given name in the group.
+     *
+     * It will return false for disabled controls. If you'd like to check for
+     * existence in the group only, use {\@link AbstractControl#get} instead.
+     * @param {?} controlName
+     * @return {?}
+     */
+    FormGroup.prototype.contains = function (controlName) {
+        return this.controls.hasOwnProperty(controlName) && this.controls[controlName].enabled;
+    };
+    /**
+     *  Sets the value of the {\@link FormGroup}. It accepts an object that matches
+     *  the structure of the group, with control names as keys.
+     *
+     * This method performs strict checks, so it will throw an error if you try
+     * to set the value of a control that doesn't exist or if you exclude the
+     * value of a control.
+     *
+     *  ### Example
+     *
+     *  ```
+     *  const form = new FormGroup({
+     *     first: new FormControl(),
+     *     last: new FormControl()
+     *  });
+     *  console.log(form.value);   // {first: null, last: null}
+     *
+     *  form.setValue({first: 'Nancy', last: 'Drew'});
+     *  console.log(form.value);   // {first: 'Nancy', last: 'Drew'}
+     *
+     *  ```
+     * @param {?} value
+     * @param {?=} options
+     * @return {?}
+     */
+    FormGroup.prototype.setValue = function (value, options) {
+        var _this = this;
+        if (options === void 0) { options = {}; }
+        this._checkAllValuesPresent(value);
+        Object.keys(value).forEach(function (name) {
+            _this._throwIfControlMissing(name);
+            _this.controls[name].setValue(value[name], { onlySelf: true, emitEvent: options.emitEvent });
+        });
+        this.updateValueAndValidity(options);
+    };
+    /**
+     *  Patches the value of the {\@link FormGroup}. It accepts an object with control
+     *  names as keys, and will do its best to match the values to the correct controls
+     *  in the group.
+     *
+     *  It accepts both super-sets and sub-sets of the group without throwing an error.
+     *
+     *  ### Example
+     *
+     *  ```
+     *  const form = new FormGroup({
+     *     first: new FormControl(),
+     *     last: new FormControl()
+     *  });
+     *  console.log(form.value);   // {first: null, last: null}
+     *
+     *  form.patchValue({first: 'Nancy'});
+     *  console.log(form.value);   // {first: 'Nancy', last: null}
+     *
+     *  ```
+     * @param {?} value
+     * @param {?=} options
+     * @return {?}
+     */
+    FormGroup.prototype.patchValue = function (value, options) {
+        var _this = this;
+        if (options === void 0) { options = {}; }
+        Object.keys(value).forEach(function (name) {
+            if (_this.controls[name]) {
+                _this.controls[name].patchValue(value[name], { onlySelf: true, emitEvent: options.emitEvent });
+            }
+        });
+        this.updateValueAndValidity(options);
+    };
+    /**
+     * Resets the {\@link FormGroup}. This means by default:
+     *
+     * * The group and all descendants are marked `pristine`
+     * * The group and all descendants are marked `untouched`
+     * * The value of all descendants will be null or null maps
+     *
+     * You can also reset to a specific form state by passing in a map of states
+     * that matches the structure of your form, with control names as keys. The state
+     * can be a standalone value or a form state object with both a value and a disabled
+     * status.
+     *
+     * ### Example
+     *
+     * ```ts
+     * this.form.reset({first: 'name', last: 'last name'});
+     *
+     * console.log(this.form.value);  // {first: 'name', last: 'last name'}
+     * ```
+     *
+     * - OR -
+     *
+     * ```
+     * this.form.reset({
+     *   first: {value: 'name', disabled: true},
+     *   last: 'last'
+     * });
+     *
+     * console.log(this.form.value);  // {first: 'name', last: 'last name'}
+     * console.log(this.form.get('first').status);  // 'DISABLED'
+     * ```
+     * @param {?=} value
+     * @param {?=} options
+     * @return {?}
+     */
+    FormGroup.prototype.reset = function (value, options) {
+        if (value === void 0) { value = {}; }
+        if (options === void 0) { options = {}; }
+        this._forEachChild(function (control, name) {
+            control.reset(value[name], { onlySelf: true, emitEvent: options.emitEvent });
+        });
+        this.updateValueAndValidity(options);
+        this._updatePristine(options);
+        this._updateTouched(options);
+    };
+    /**
+     * The aggregate value of the {\@link FormGroup}, including any disabled controls.
+     *
+     * If you'd like to include all values regardless of disabled status, use this method.
+     * Otherwise, the `value` property is the best way to get the value of the group.
+     * @return {?}
+     */
+    FormGroup.prototype.getRawValue = function () {
+        return this._reduceChildren({}, function (acc, control, name) {
+            acc[name] = control instanceof FormControl ? control.value : ((control)).getRawValue();
+            return acc;
+        });
+    };
+    /**
+     * \@internal
+     * @param {?} name
+     * @return {?}
+     */
+    FormGroup.prototype._throwIfControlMissing = function (name) {
+        if (!Object.keys(this.controls).length) {
+            throw new Error("\n        There are no form controls registered with this group yet.  If you're using ngModel,\n        you may want to check next tick (e.g. use setTimeout).\n      ");
+        }
+        if (!this.controls[name]) {
+            throw new Error("Cannot find form control with name: " + name + ".");
+        }
+    };
+    /**
+     * \@internal
+     * @param {?} cb
+     * @return {?}
+     */
+    FormGroup.prototype._forEachChild = function (cb) {
+        var _this = this;
+        Object.keys(this.controls).forEach(function (k) { return cb(_this.controls[k], k); });
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormGroup.prototype._setUpControls = function () {
+        var _this = this;
+        this._forEachChild(function (control) {
+            control.setParent(_this);
+            control._registerOnCollectionChange(_this._onCollectionChange);
+        });
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormGroup.prototype._updateValue = function () { this._value = this._reduceValue(); };
+    /**
+     * \@internal
+     * @param {?} condition
+     * @return {?}
+     */
+    FormGroup.prototype._anyControls = function (condition) {
+        var _this = this;
+        var /** @type {?} */ res = false;
+        this._forEachChild(function (control, name) {
+            res = res || (_this.contains(name) && condition(control));
+        });
+        return res;
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormGroup.prototype._reduceValue = function () {
+        var _this = this;
+        return this._reduceChildren({}, function (acc, control, name) {
+            if (control.enabled || _this.disabled) {
+                acc[name] = control.value;
+            }
+            return acc;
+        });
+    };
+    /**
+     * \@internal
+     * @param {?} initValue
+     * @param {?} fn
+     * @return {?}
+     */
+    FormGroup.prototype._reduceChildren = function (initValue, fn) {
+        var /** @type {?} */ res = initValue;
+        this._forEachChild(function (control, name) { res = fn(res, control, name); });
+        return res;
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormGroup.prototype._allControlsDisabled = function () {
+        for (var _i = 0, _a = Object.keys(this.controls); _i < _a.length; _i++) {
+            var controlName = _a[_i];
+            if (this.controls[controlName].enabled) {
+                return false;
+            }
+        }
+        return Object.keys(this.controls).length > 0 || this.disabled;
+    };
+    /**
+     * \@internal
+     * @param {?} value
+     * @return {?}
+     */
+    FormGroup.prototype._checkAllValuesPresent = function (value) {
+        this._forEachChild(function (control, name) {
+            if (value[name] === undefined) {
+                throw new Error("Must supply a value for form control with name: '" + name + "'.");
+            }
+        });
+    };
+    return FormGroup;
+}(AbstractControl));
+/**
+ * \@whatItDoes Tracks the value and validity state of an array of {\@link FormControl},
+ * {\@link FormGroup} or {\@link FormArray} instances.
+ *
+ * A `FormArray` aggregates the values of each child {\@link FormControl} into an array.
+ * It calculates its status by reducing the statuses of its children. For example, if one of
+ * the controls in a `FormArray` is invalid, the entire array becomes invalid.
+ *
+ * `FormArray` is one of the three fundamental building blocks used to define forms in Angular,
+ * along with {\@link FormControl} and {\@link FormGroup}.
+ *
+ * \@howToUse
+ *
+ * When instantiating a {\@link FormArray}, pass in an array of child controls as the first
+ * argument.
+ *
+ * ### Example
+ *
+ * ```
+ * const arr = new FormArray([
+ *   new FormControl('Nancy', Validators.minLength(2)),
+ *   new FormControl('Drew'),
+ * ]);
+ *
+ * console.log(arr.value);   // ['Nancy', 'Drew']
+ * console.log(arr.status);  // 'VALID'
+ * ```
+ *
+ * You can also include array-level validators as the second arg, or array-level async
+ * validators as the third arg. These come in handy when you want to perform validation
+ * that considers the value of more than one child control.
+ *
+ * ### Adding or removing controls
+ *
+ * To change the controls in the array, use the `push`, `insert`, or `removeAt` methods
+ * in `FormArray` itself. These methods ensure the controls are properly tracked in the
+ * form's hierarchy. Do not modify the array of `AbstractControl`s used to instantiate
+ * the `FormArray` directly, as that will result in strange and unexpected behavior such
+ * as broken change detection.
+ *
+ * * **npm package**: `\@angular/forms`
+ *
+ * \@stable
+ */
+var FormArray = (function (_super) {
+    __extends(FormArray, _super);
+    /**
+     * @param {?} controls
+     * @param {?=} validator
+     * @param {?=} asyncValidator
+     */
+    function FormArray(controls, validator, asyncValidator) {
+        var _this = _super.call(this, validator || null, asyncValidator || null) || this;
+        _this.controls = controls;
+        _this._initObservables();
+        _this._setUpControls();
+        _this.updateValueAndValidity({ onlySelf: true, emitEvent: false });
+        return _this;
+    }
+    /**
+     * Get the {\@link AbstractControl} at the given `index` in the array.
+     * @param {?} index
+     * @return {?}
+     */
+    FormArray.prototype.at = function (index) { return this.controls[index]; };
+    /**
+     * Insert a new {\@link AbstractControl} at the end of the array.
+     * @param {?} control
+     * @return {?}
+     */
+    FormArray.prototype.push = function (control) {
+        this.controls.push(control);
+        this._registerControl(control);
+        this.updateValueAndValidity();
+        this._onCollectionChange();
+    };
+    /**
+     * Insert a new {\@link AbstractControl} at the given `index` in the array.
+     * @param {?} index
+     * @param {?} control
+     * @return {?}
+     */
+    FormArray.prototype.insert = function (index, control) {
+        this.controls.splice(index, 0, control);
+        this._registerControl(control);
+        this.updateValueAndValidity();
+        this._onCollectionChange();
+    };
+    /**
+     * Remove the control at the given `index` in the array.
+     * @param {?} index
+     * @return {?}
+     */
+    FormArray.prototype.removeAt = function (index) {
+        if (this.controls[index])
+            this.controls[index]._registerOnCollectionChange(function () { });
+        this.controls.splice(index, 1);
+        this.updateValueAndValidity();
+        this._onCollectionChange();
+    };
+    /**
+     * Replace an existing control.
+     * @param {?} index
+     * @param {?} control
+     * @return {?}
+     */
+    FormArray.prototype.setControl = function (index, control) {
+        if (this.controls[index])
+            this.controls[index]._registerOnCollectionChange(function () { });
+        this.controls.splice(index, 1);
+        if (control) {
+            this.controls.splice(index, 0, control);
+            this._registerControl(control);
+        }
+        this.updateValueAndValidity();
+        this._onCollectionChange();
+    };
+    Object.defineProperty(FormArray.prototype, "length", {
+        /**
+         * Length of the control array.
+         * @return {?}
+         */
+        get: function () { return this.controls.length; },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     *  Sets the value of the {\@link FormArray}. It accepts an array that matches
+     *  the structure of the control.
+     *
+     * This method performs strict checks, so it will throw an error if you try
+     * to set the value of a control that doesn't exist or if you exclude the
+     * value of a control.
+     *
+     *  ### Example
+     *
+     *  ```
+     *  const arr = new FormArray([
+     *     new FormControl(),
+     *     new FormControl()
+     *  ]);
+     *  console.log(arr.value);   // [null, null]
+     *
+     *  arr.setValue(['Nancy', 'Drew']);
+     *  console.log(arr.value);   // ['Nancy', 'Drew']
+     *  ```
+     * @param {?} value
+     * @param {?=} options
+     * @return {?}
+     */
+    FormArray.prototype.setValue = function (value, options) {
+        var _this = this;
+        if (options === void 0) { options = {}; }
+        this._checkAllValuesPresent(value);
+        value.forEach(function (newValue, index) {
+            _this._throwIfControlMissing(index);
+            _this.at(index).setValue(newValue, { onlySelf: true, emitEvent: options.emitEvent });
+        });
+        this.updateValueAndValidity(options);
+    };
+    /**
+     *  Patches the value of the {\@link FormArray}. It accepts an array that matches the
+     *  structure of the control, and will do its best to match the values to the correct
+     *  controls in the group.
+     *
+     *  It accepts both super-sets and sub-sets of the array without throwing an error.
+     *
+     *  ### Example
+     *
+     *  ```
+     *  const arr = new FormArray([
+     *     new FormControl(),
+     *     new FormControl()
+     *  ]);
+     *  console.log(arr.value);   // [null, null]
+     *
+     *  arr.patchValue(['Nancy']);
+     *  console.log(arr.value);   // ['Nancy', null]
+     *  ```
+     * @param {?} value
+     * @param {?=} options
+     * @return {?}
+     */
+    FormArray.prototype.patchValue = function (value, options) {
+        var _this = this;
+        if (options === void 0) { options = {}; }
+        value.forEach(function (newValue, index) {
+            if (_this.at(index)) {
+                _this.at(index).patchValue(newValue, { onlySelf: true, emitEvent: options.emitEvent });
+            }
+        });
+        this.updateValueAndValidity(options);
+    };
+    /**
+     * Resets the {\@link FormArray}. This means by default:
+     *
+     * * The array and all descendants are marked `pristine`
+     * * The array and all descendants are marked `untouched`
+     * * The value of all descendants will be null or null maps
+     *
+     * You can also reset to a specific form state by passing in an array of states
+     * that matches the structure of the control. The state can be a standalone value
+     * or a form state object with both a value and a disabled status.
+     *
+     * ### Example
+     *
+     * ```ts
+     * this.arr.reset(['name', 'last name']);
+     *
+     * console.log(this.arr.value);  // ['name', 'last name']
+     * ```
+     *
+     * - OR -
+     *
+     * ```
+     * this.arr.reset([
+     *   {value: 'name', disabled: true},
+     *   'last'
+     * ]);
+     *
+     * console.log(this.arr.value);  // ['name', 'last name']
+     * console.log(this.arr.get(0).status);  // 'DISABLED'
+     * ```
+     * @param {?=} value
+     * @param {?=} options
+     * @return {?}
+     */
+    FormArray.prototype.reset = function (value, options) {
+        if (value === void 0) { value = []; }
+        if (options === void 0) { options = {}; }
+        this._forEachChild(function (control, index) {
+            control.reset(value[index], { onlySelf: true, emitEvent: options.emitEvent });
+        });
+        this.updateValueAndValidity(options);
+        this._updatePristine(options);
+        this._updateTouched(options);
+    };
+    /**
+     * The aggregate value of the array, including any disabled controls.
+     *
+     * If you'd like to include all values regardless of disabled status, use this method.
+     * Otherwise, the `value` property is the best way to get the value of the array.
+     * @return {?}
+     */
+    FormArray.prototype.getRawValue = function () {
+        return this.controls.map(function (control) {
+            return control instanceof FormControl ? control.value : ((control)).getRawValue();
+        });
+    };
+    /**
+     * \@internal
+     * @param {?} index
+     * @return {?}
+     */
+    FormArray.prototype._throwIfControlMissing = function (index) {
+        if (!this.controls.length) {
+            throw new Error("\n        There are no form controls registered with this array yet.  If you're using ngModel,\n        you may want to check next tick (e.g. use setTimeout).\n      ");
+        }
+        if (!this.at(index)) {
+            throw new Error("Cannot find form control at index " + index);
+        }
+    };
+    /**
+     * \@internal
+     * @param {?} cb
+     * @return {?}
+     */
+    FormArray.prototype._forEachChild = function (cb) {
+        this.controls.forEach(function (control, index) { cb(control, index); });
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormArray.prototype._updateValue = function () {
+        var _this = this;
+        this._value = this.controls.filter(function (control) { return control.enabled || _this.disabled; })
+            .map(function (control) { return control.value; });
+    };
+    /**
+     * \@internal
+     * @param {?} condition
+     * @return {?}
+     */
+    FormArray.prototype._anyControls = function (condition) {
+        return this.controls.some(function (control) { return control.enabled && condition(control); });
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormArray.prototype._setUpControls = function () {
+        var _this = this;
+        this._forEachChild(function (control) { return _this._registerControl(control); });
+    };
+    /**
+     * \@internal
+     * @param {?} value
+     * @return {?}
+     */
+    FormArray.prototype._checkAllValuesPresent = function (value) {
+        this._forEachChild(function (control, i) {
+            if (value[i] === undefined) {
+                throw new Error("Must supply a value for form control at index: " + i + ".");
+            }
+        });
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormArray.prototype._allControlsDisabled = function () {
+        for (var _i = 0, _a = this.controls; _i < _a.length; _i++) {
+            var control = _a[_i];
+            if (control.enabled)
+                return false;
+        }
+        return this.controls.length > 0 || this.disabled;
+    };
+    /**
+     * @param {?} control
+     * @return {?}
+     */
+    FormArray.prototype._registerControl = function (control) {
+        control.setParent(this);
+        control._registerOnCollectionChange(this._onCollectionChange);
+    };
+    return FormArray;
+}(AbstractControl));
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var formDirectiveProvider = {
+    provide: ControlContainer,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NgForm; })
+};
+var resolvedPromise = Promise.resolve(null);
+/**
+ * \@whatItDoes Creates a top-level {\@link FormGroup} instance and binds it to a form
+ * to track aggregate form value and validation status.
+ *
+ * \@howToUse
+ *
+ * As soon as you import the `FormsModule`, this directive becomes active by default on
+ * all `<form>` tags.  You don't need to add a special selector.
+ *
+ * You can export the directive into a local template variable using `ngForm` as the key
+ * (ex: `#myForm="ngForm"`). This is optional, but useful.  Many properties from the underlying
+ * {\@link FormGroup} instance are duplicated on the directive itself, so a reference to it
+ * will give you access to the aggregate value and validity status of the form, as well as
+ * user interaction properties like `dirty` and `touched`.
+ *
+ * To register child controls with the form, you'll want to use {\@link NgModel} with a
+ * `name` attribute.  You can also use {\@link NgModelGroup} if you'd like to create
+ * sub-groups within the form.
+ *
+ * You can listen to the directive's `ngSubmit` event to be notified when the user has
+ * triggered a form submission. The `ngSubmit` event will be emitted with the original form
+ * submission event.
+ *
+ * {\@example forms/ts/simpleForm/simple_form_example.ts region='Component'}
+ *
+ * * **npm package**: `\@angular/forms`
+ *
+ * * **NgModule**: `FormsModule`
+ *
+ *  \@stable
+ */
+var NgForm = (function (_super) {
+    __extends(NgForm, _super);
+    /**
+     * @param {?} validators
+     * @param {?} asyncValidators
+     */
+    function NgForm(validators, asyncValidators) {
+        var _this = _super.call(this) || this;
+        _this._submitted = false;
+        _this.ngSubmit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        _this.form =
+            new FormGroup({}, composeValidators(validators), composeAsyncValidators(asyncValidators));
+        return _this;
+    }
+    Object.defineProperty(NgForm.prototype, "submitted", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._submitted; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgForm.prototype, "formDirective", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgForm.prototype, "control", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.form; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgForm.prototype, "path", {
+        /**
+         * @return {?}
+         */
+        get: function () { return []; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgForm.prototype, "controls", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.form.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    NgForm.prototype.addControl = function (dir) {
+        var _this = this;
+        resolvedPromise.then(function () {
+            var /** @type {?} */ container = _this._findContainer(dir.path);
+            dir._control = (container.registerControl(dir.name, dir.control));
+            setUpControl(dir.control, dir);
+            dir.control.updateValueAndValidity({ emitEvent: false });
+        });
+    };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    NgForm.prototype.getControl = function (dir) { return (this.form.get(dir.path)); };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    NgForm.prototype.removeControl = function (dir) {
+        var _this = this;
+        resolvedPromise.then(function () {
+            var /** @type {?} */ container = _this._findContainer(dir.path);
+            if (container) {
+                container.removeControl(dir.name);
+            }
+        });
+    };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    NgForm.prototype.addFormGroup = function (dir) {
+        var _this = this;
+        resolvedPromise.then(function () {
+            var /** @type {?} */ container = _this._findContainer(dir.path);
+            var /** @type {?} */ group = new FormGroup({});
+            setUpFormContainer(group, dir);
+            container.registerControl(dir.name, group);
+            group.updateValueAndValidity({ emitEvent: false });
+        });
+    };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    NgForm.prototype.removeFormGroup = function (dir) {
+        var _this = this;
+        resolvedPromise.then(function () {
+            var /** @type {?} */ container = _this._findContainer(dir.path);
+            if (container) {
+                container.removeControl(dir.name);
+            }
+        });
+    };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    NgForm.prototype.getFormGroup = function (dir) { return (this.form.get(dir.path)); };
+    /**
+     * @param {?} dir
+     * @param {?} value
+     * @return {?}
+     */
+    NgForm.prototype.updateModel = function (dir, value) {
+        var _this = this;
+        resolvedPromise.then(function () {
+            var /** @type {?} */ ctrl = (_this.form.get(/** @type {?} */ ((dir.path))));
+            ctrl.setValue(value);
+        });
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    NgForm.prototype.setValue = function (value) { this.control.setValue(value); };
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    NgForm.prototype.onSubmit = function ($event) {
+        this._submitted = true;
+        this.ngSubmit.emit($event);
+        return false;
+    };
+    /**
+     * @return {?}
+     */
+    NgForm.prototype.onReset = function () { this.resetForm(); };
+    /**
+     * @param {?=} value
+     * @return {?}
+     */
+    NgForm.prototype.resetForm = function (value) {
+        if (value === void 0) { value = undefined; }
+        this.form.reset(value);
+        this._submitted = false;
+    };
+    /**
+     * \@internal
+     * @param {?} path
+     * @return {?}
+     */
+    NgForm.prototype._findContainer = function (path) {
+        path.pop();
+        return path.length ? (this.form.get(path)) : this.form;
+    };
+    return NgForm;
+}(ControlContainer));
+NgForm.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'form:not([ngNoForm]):not([formGroup]),ngForm,[ngForm]',
+                providers: [formDirectiveProvider],
+                host: { '(submit)': 'onSubmit($event)', '(reset)': 'onReset()' },
+                outputs: ['ngSubmit'],
+                exportAs: 'ngForm'
+            },] },
+];
+/**
+ * @nocollapse
+ */
+NgForm.ctorParameters = function () { return [
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+]; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var FormErrorExamples = {
+    formControlName: "\n    <div [formGroup]=\"myGroup\">\n      <input formControlName=\"firstName\">\n    </div>\n\n    In your class:\n\n    this.myGroup = new FormGroup({\n       firstName: new FormControl()\n    });",
+    formGroupName: "\n    <div [formGroup]=\"myGroup\">\n       <div formGroupName=\"person\">\n          <input formControlName=\"firstName\">\n       </div>\n    </div>\n\n    In your class:\n\n    this.myGroup = new FormGroup({\n       person: new FormGroup({ firstName: new FormControl() })\n    });",
+    formArrayName: "\n    <div [formGroup]=\"myGroup\">\n      <div formArrayName=\"cities\">\n        <div *ngFor=\"let city of cityArray.controls; index as i\">\n          <input [formControlName]=\"i\">\n        </div>\n      </div>\n    </div>\n\n    In your class:\n\n    this.cityArray = new FormArray([new FormControl('SF')]);\n    this.myGroup = new FormGroup({\n      cities: this.cityArray\n    });",
+    ngModelGroup: "\n    <form>\n       <div ngModelGroup=\"person\">\n          <input [(ngModel)]=\"person.name\" name=\"firstName\">\n       </div>\n    </form>",
+    ngModelWithFormGroup: "\n    <div [formGroup]=\"myGroup\">\n       <input formControlName=\"firstName\">\n       <input [(ngModel)]=\"showMoreControls\" [ngModelOptions]=\"{standalone: true}\">\n    </div>\n  "
+};
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var TemplateDrivenErrors = (function () {
+    function TemplateDrivenErrors() {
+    }
+    /**
+     * @return {?}
+     */
+    TemplateDrivenErrors.modelParentException = function () {
+        throw new Error("\n      ngModel cannot be used to register form controls with a parent formGroup directive.  Try using\n      formGroup's partner directive \"formControlName\" instead.  Example:\n\n      " + FormErrorExamples.formControlName + "\n\n      Or, if you'd like to avoid registering this form control, indicate that it's standalone in ngModelOptions:\n\n      Example:\n\n      " + FormErrorExamples.ngModelWithFormGroup);
+    };
+    /**
+     * @return {?}
+     */
+    TemplateDrivenErrors.formGroupNameException = function () {
+        throw new Error("\n      ngModel cannot be used to register form controls with a parent formGroupName or formArrayName directive.\n\n      Option 1: Use formControlName instead of ngModel (reactive strategy):\n\n      " + FormErrorExamples.formGroupName + "\n\n      Option 2:  Update ngModel's parent be ngModelGroup (template-driven strategy):\n\n      " + FormErrorExamples.ngModelGroup);
+    };
+    /**
+     * @return {?}
+     */
+    TemplateDrivenErrors.missingNameException = function () {
+        throw new Error("If ngModel is used within a form tag, either the name attribute must be set or the form\n      control must be defined as 'standalone' in ngModelOptions.\n\n      Example 1: <input [(ngModel)]=\"person.firstName\" name=\"first\">\n      Example 2: <input [(ngModel)]=\"person.firstName\" [ngModelOptions]=\"{standalone: true}\">");
+    };
+    /**
+     * @return {?}
+     */
+    TemplateDrivenErrors.modelGroupParentException = function () {
+        throw new Error("\n      ngModelGroup cannot be used with a parent formGroup directive.\n\n      Option 1: Use formGroupName instead of ngModelGroup (reactive strategy):\n\n      " + FormErrorExamples.formGroupName + "\n\n      Option 2:  Use a regular form tag instead of the formGroup directive (template-driven strategy):\n\n      " + FormErrorExamples.ngModelGroup);
+    };
+    return TemplateDrivenErrors;
+}());
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var modelGroupProvider = {
+    provide: ControlContainer,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NgModelGroup; })
+};
+/**
+ * \@whatItDoes Creates and binds a {\@link FormGroup} instance to a DOM element.
+ *
+ * \@howToUse
+ *
+ * This directive can only be used as a child of {\@link NgForm} (or in other words,
+ * within `<form>` tags).
+ *
+ * Use this directive if you'd like to create a sub-group within a form. This can
+ * come in handy if you want to validate a sub-group of your form separately from
+ * the rest of your form, or if some values in your domain model make more sense to
+ * consume together in a nested object.
+ *
+ * Pass in the name you'd like this sub-group to have and it will become the key
+ * for the sub-group in the form's full value. You can also export the directive into
+ * a local template variable using `ngModelGroup` (ex: `#myGroup="ngModelGroup"`).
+ *
+ * {\@example forms/ts/ngModelGroup/ng_model_group_example.ts region='Component'}
+ *
+ * * **npm package**: `\@angular/forms`
+ *
+ * * **NgModule**: `FormsModule`
+ *
+ * \@stable
+ */
+var NgModelGroup = (function (_super) {
+    __extends(NgModelGroup, _super);
+    /**
+     * @param {?} parent
+     * @param {?} validators
+     * @param {?} asyncValidators
+     */
+    function NgModelGroup(parent, validators, asyncValidators) {
+        var _this = _super.call(this) || this;
+        _this._parent = parent;
+        _this._validators = validators;
+        _this._asyncValidators = asyncValidators;
+        return _this;
+    }
+    /**
+     * \@internal
+     * @return {?}
+     */
+    NgModelGroup.prototype._checkParentType = function () {
+        if (!(this._parent instanceof NgModelGroup) && !(this._parent instanceof NgForm)) {
+            TemplateDrivenErrors.modelGroupParentException();
+        }
+    };
+    return NgModelGroup;
+}(AbstractFormGroupDirective));
+NgModelGroup.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[ngModelGroup]', providers: [modelGroupProvider], exportAs: 'ngModelGroup' },] },
+];
+/**
+ * @nocollapse
+ */
+NgModelGroup.ctorParameters = function () { return [
+    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+]; };
+NgModelGroup.propDecorators = {
+    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModelGroup',] },],
+};
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var formControlBinding = {
+    provide: NgControl,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NgModel; })
+};
+/**
+ * `ngModel` forces an additional change detection run when its inputs change:
+ * E.g.:
+ * ```
+ * <div>{{myModel.valid}}</div>
+ * <input [(ngModel)]="myValue" #myModel="ngModel">
+ * ```
+ * I.e. `ngModel` can export itself on the element and then be used in the template.
+ * Normally, this would result in expressions before the `input` that use the exported directive
+ * to have and old value as they have been
+ * dirty checked before. As this is a very common case for `ngModel`, we added this second change
+ * detection run.
+ *
+ * Notes:
+ * - this is just one extra run no matter how many `ngModel` have been changed.
+ * - this is a general problem when using `exportAs` for directives!
+ */
+var resolvedPromise$1 = Promise.resolve(null);
+/**
+ * \@whatItDoes Creates a {\@link FormControl} instance from a domain model and binds it
+ * to a form control element.
+ *
+ * The {\@link FormControl} instance will track the value, user interaction, and
+ * validation status of the control and keep the view synced with the model. If used
+ * within a parent form, the directive will also register itself with the form as a child
+ * control.
+ *
+ * \@howToUse
+ *
+ * This directive can be used by itself or as part of a larger form. All you need is the
+ * `ngModel` selector to activate it.
+ *
+ * It accepts a domain model as an optional {\@link Input}. If you have a one-way binding
+ * to `ngModel` with `[]` syntax, changing the value of the domain model in the component
+ * class will set the value in the view. If you have a two-way binding with `[()]` syntax
+ * (also known as 'banana-box syntax'), the value in the UI will always be synced back to
+ * the domain model in your class as well.
+ *
+ * If you wish to inspect the properties of the associated {\@link FormControl} (like
+ * validity state), you can also export the directive into a local template variable using
+ * `ngModel` as the key (ex: `#myVar="ngModel"`). You can then access the control using the
+ * directive's `control` property, but most properties you'll need (like `valid` and `dirty`)
+ * will fall through to the control anyway, so you can access them directly. You can see a
+ * full list of properties directly available in {\@link AbstractControlDirective}.
+ *
+ * The following is an example of a simple standalone control using `ngModel`:
+ *
+ * {\@example forms/ts/simpleNgModel/simple_ng_model_example.ts region='Component'}
+ *
+ * When using the `ngModel` within `<form>` tags, you'll also need to supply a `name` attribute
+ * so that the control can be registered with the parent form under that name.
+ *
+ * It's worth noting that in the context of a parent form, you often can skip one-way or
+ * two-way binding because the parent form will sync the value for you. You can access
+ * its properties by exporting it into a local template variable using `ngForm` (ex:
+ * `#f="ngForm"`). Then you can pass it where it needs to go on submit.
+ *
+ * If you do need to populate initial values into your form, using a one-way binding for
+ * `ngModel` tends to be sufficient as long as you use the exported form's value rather
+ * than the domain model's value on submit.
+ *
+ * Take a look at an example of using `ngModel` within a form:
+ *
+ * {\@example forms/ts/simpleForm/simple_form_example.ts region='Component'}
+ *
+ * To see `ngModel` examples with different form control types, see:
+ *
+ * * Radio buttons: {\@link RadioControlValueAccessor}
+ * * Selects: {\@link SelectControlValueAccessor}
+ *
+ * **npm package**: `\@angular/forms`
+ *
+ * **NgModule**: `FormsModule`
+ *
+ *  \@stable
+ */
+var NgModel = (function (_super) {
+    __extends(NgModel, _super);
+    /**
+     * @param {?} parent
+     * @param {?} validators
+     * @param {?} asyncValidators
+     * @param {?} valueAccessors
+     */
+    function NgModel(parent, validators, asyncValidators, valueAccessors) {
+        var _this = _super.call(this) || this;
+        /**
+         * \@internal
+         */
+        _this._control = new FormControl();
+        /**
+         * \@internal
+         */
+        _this._registered = false;
+        _this.update = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        _this._parent = parent;
+        _this._rawValidators = validators || [];
+        _this._rawAsyncValidators = asyncValidators || [];
+        _this.valueAccessor = selectValueAccessor(_this, valueAccessors);
+        return _this;
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    NgModel.prototype.ngOnChanges = function (changes) {
+        this._checkForErrors();
+        if (!this._registered)
+            this._setUpControl();
+        if ('isDisabled' in changes) {
+            this._updateDisabled(changes);
+        }
+        if (isPropertyUpdated(changes, this.viewModel)) {
+            this._updateValue(this.model);
+            this.viewModel = this.model;
+        }
+    };
+    /**
+     * @return {?}
+     */
+    NgModel.prototype.ngOnDestroy = function () { this.formDirective && this.formDirective.removeControl(this); };
+    Object.defineProperty(NgModel.prototype, "control", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._control; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgModel.prototype, "path", {
+        /**
+         * @return {?}
+         */
+        get: function () {
+            return this._parent ? controlPath(this.name, this._parent) : [this.name];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgModel.prototype, "formDirective", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._parent ? this._parent.formDirective : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgModel.prototype, "validator", {
+        /**
+         * @return {?}
+         */
+        get: function () { return composeValidators(this._rawValidators); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgModel.prototype, "asyncValidator", {
+        /**
+         * @return {?}
+         */
+        get: function () {
+            return composeAsyncValidators(this._rawAsyncValidators);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} newValue
+     * @return {?}
+     */
+    NgModel.prototype.viewToModelUpdate = function (newValue) {
+        this.viewModel = newValue;
+        this.update.emit(newValue);
+    };
+    /**
+     * @return {?}
+     */
+    NgModel.prototype._setUpControl = function () {
+        this._isStandalone() ? this._setUpStandalone() :
+            this.formDirective.addControl(this);
+        this._registered = true;
+    };
+    /**
+     * @return {?}
+     */
+    NgModel.prototype._isStandalone = function () {
+        return !this._parent || !!(this.options && this.options.standalone);
+    };
+    /**
+     * @return {?}
+     */
+    NgModel.prototype._setUpStandalone = function () {
+        setUpControl(this._control, this);
+        this._control.updateValueAndValidity({ emitEvent: false });
+    };
+    /**
+     * @return {?}
+     */
+    NgModel.prototype._checkForErrors = function () {
+        if (!this._isStandalone()) {
+            this._checkParentType();
+        }
+        this._checkName();
+    };
+    /**
+     * @return {?}
+     */
+    NgModel.prototype._checkParentType = function () {
+        if (!(this._parent instanceof NgModelGroup) &&
+            this._parent instanceof AbstractFormGroupDirective) {
+            TemplateDrivenErrors.formGroupNameException();
+        }
+        else if (!(this._parent instanceof NgModelGroup) && !(this._parent instanceof NgForm)) {
+            TemplateDrivenErrors.modelParentException();
+        }
+    };
+    /**
+     * @return {?}
+     */
+    NgModel.prototype._checkName = function () {
+        if (this.options && this.options.name)
+            this.name = this.options.name;
+        if (!this._isStandalone() && !this.name) {
+            TemplateDrivenErrors.missingNameException();
+        }
+    };
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    NgModel.prototype._updateValue = function (value) {
+        var _this = this;
+        resolvedPromise$1.then(function () { _this.control.setValue(value, { emitViewToModelChange: false }); });
+    };
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    NgModel.prototype._updateDisabled = function (changes) {
+        var _this = this;
+        var /** @type {?} */ disabledValue = changes['isDisabled'].currentValue;
+        var /** @type {?} */ isDisabled = disabledValue === '' || (disabledValue && disabledValue !== 'false');
+        resolvedPromise$1.then(function () {
+            if (isDisabled && !_this.control.disabled) {
+                _this.control.disable();
+            }
+            else if (!isDisabled && _this.control.disabled) {
+                _this.control.enable();
+            }
+        });
+    };
+    return NgModel;
+}(NgControl));
+NgModel.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: '[ngModel]:not([formControlName]):not([formControl])',
+                providers: [formControlBinding],
+                exportAs: 'ngModel'
+            },] },
+];
+/**
+ * @nocollapse
+ */
+NgModel.ctorParameters = function () { return [
+    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
+]; };
+NgModel.propDecorators = {
+    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+    'isDisabled': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['disabled',] },],
+    'model': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModel',] },],
+    'options': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModelOptions',] },],
+    'update': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */], args: ['ngModelChange',] },],
+};
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var ReactiveErrors = (function () {
+    function ReactiveErrors() {
+    }
+    /**
+     * @return {?}
+     */
+    ReactiveErrors.controlParentException = function () {
+        throw new Error("formControlName must be used with a parent formGroup directive.  You'll want to add a formGroup\n       directive and pass it an existing FormGroup instance (you can create one in your class).\n\n      Example:\n\n      " + FormErrorExamples.formControlName);
+    };
+    /**
+     * @return {?}
+     */
+    ReactiveErrors.ngModelGroupException = function () {
+        throw new Error("formControlName cannot be used with an ngModelGroup parent. It is only compatible with parents\n       that also have a \"form\" prefix: formGroupName, formArrayName, or formGroup.\n\n       Option 1:  Update the parent to be formGroupName (reactive form strategy)\n\n        " + FormErrorExamples.formGroupName + "\n\n        Option 2: Use ngModel instead of formControlName (template-driven strategy)\n\n        " + FormErrorExamples.ngModelGroup);
+    };
+    /**
+     * @return {?}
+     */
+    ReactiveErrors.missingFormException = function () {
+        throw new Error("formGroup expects a FormGroup instance. Please pass one in.\n\n       Example:\n\n       " + FormErrorExamples.formControlName);
+    };
+    /**
+     * @return {?}
+     */
+    ReactiveErrors.groupParentException = function () {
+        throw new Error("formGroupName must be used with a parent formGroup directive.  You'll want to add a formGroup\n      directive and pass it an existing FormGroup instance (you can create one in your class).\n\n      Example:\n\n      " + FormErrorExamples.formGroupName);
+    };
+    /**
+     * @return {?}
+     */
+    ReactiveErrors.arrayParentException = function () {
+        throw new Error("formArrayName must be used with a parent formGroup directive.  You'll want to add a formGroup\n       directive and pass it an existing FormGroup instance (you can create one in your class).\n\n        Example:\n\n        " + FormErrorExamples.formArrayName);
+    };
+    /**
+     * @return {?}
+     */
+    ReactiveErrors.disabledAttrWarning = function () {
+        console.warn("\n      It looks like you're using the disabled attribute with a reactive form directive. If you set disabled to true\n      when you set up this control in your component class, the disabled attribute will actually be set in the DOM for\n      you. We recommend using this approach to avoid 'changed after checked' errors.\n       \n      Example: \n      form = new FormGroup({\n        first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),\n        last: new FormControl('Drew', Validators.required)\n      });\n    ");
+    };
+    return ReactiveErrors;
+}());
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var formControlBinding$1 = {
+    provide: NgControl,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormControlDirective; })
+};
+/**
+ * \@whatItDoes Syncs a standalone {\@link FormControl} instance to a form control element.
+ *
+ * In other words, this directive ensures that any values written to the {\@link FormControl}
+ * instance programmatically will be written to the DOM element (model -> view). Conversely,
+ * any values written to the DOM element through user input will be reflected in the
+ * {\@link FormControl} instance (view -> model).
+ *
+ * \@howToUse
+ *
+ * Use this directive if you'd like to create and manage a {\@link FormControl} instance directly.
+ * Simply create a {\@link FormControl}, save it to your component class, and pass it into the
+ * {\@link FormControlDirective}.
+ *
+ * This directive is designed to be used as a standalone control.  Unlike {\@link FormControlName},
+ * it does not require that your {\@link FormControl} instance be part of any parent
+ * {\@link FormGroup}, and it won't be registered to any {\@link FormGroupDirective} that
+ * exists above it.
+ *
+ * **Get the value**: the `value` property is always synced and available on the
+ * {\@link FormControl} instance. See a full list of available properties in
+ * {\@link AbstractControl}.
+ *
+ * **Set the value**: You can pass in an initial value when instantiating the {\@link FormControl},
+ * or you can set it programmatically later using {\@link AbstractControl#setValue} or
+ * {\@link AbstractControl#patchValue}.
+ *
+ * **Listen to value**: If you want to listen to changes in the value of the control, you can
+ * subscribe to the {\@link AbstractControl#valueChanges} event.  You can also listen to
+ * {\@link AbstractControl#statusChanges} to be notified when the validation status is
+ * re-calculated.
+ *
+ * ### Example
+ *
+ * {\@example forms/ts/simpleFormControl/simple_form_control_example.ts region='Component'}
+ *
+ * * **npm package**: `\@angular/forms`
+ *
+ * * **NgModule**: `ReactiveFormsModule`
+ *
+ *  \@stable
+ */
+var FormControlDirective = (function (_super) {
+    __extends(FormControlDirective, _super);
+    /**
+     * @param {?} validators
+     * @param {?} asyncValidators
+     * @param {?} valueAccessors
+     */
+    function FormControlDirective(validators, asyncValidators, valueAccessors) {
+        var _this = _super.call(this) || this;
+        _this.update = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        _this._rawValidators = validators || [];
+        _this._rawAsyncValidators = asyncValidators || [];
+        _this.valueAccessor = selectValueAccessor(_this, valueAccessors);
+        return _this;
+    }
+    Object.defineProperty(FormControlDirective.prototype, "isDisabled", {
+        /**
+         * @param {?} isDisabled
+         * @return {?}
+         */
+        set: function (isDisabled) { ReactiveErrors.disabledAttrWarning(); },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    FormControlDirective.prototype.ngOnChanges = function (changes) {
+        if (this._isControlChanged(changes)) {
+            setUpControl(this.form, this);
+            if (this.control.disabled && ((this.valueAccessor)).setDisabledState) {
+                ((((this.valueAccessor)).setDisabledState))(true);
+            }
+            this.form.updateValueAndValidity({ emitEvent: false });
+        }
+        if (isPropertyUpdated(changes, this.viewModel)) {
+            this.form.setValue(this.model);
+            this.viewModel = this.model;
+        }
+    };
+    Object.defineProperty(FormControlDirective.prototype, "path", {
+        /**
+         * @return {?}
+         */
+        get: function () { return []; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormControlDirective.prototype, "validator", {
+        /**
+         * @return {?}
+         */
+        get: function () { return composeValidators(this._rawValidators); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormControlDirective.prototype, "asyncValidator", {
+        /**
+         * @return {?}
+         */
+        get: function () {
+            return composeAsyncValidators(this._rawAsyncValidators);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormControlDirective.prototype, "control", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.form; },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} newValue
+     * @return {?}
+     */
+    FormControlDirective.prototype.viewToModelUpdate = function (newValue) {
+        this.viewModel = newValue;
+        this.update.emit(newValue);
+    };
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    FormControlDirective.prototype._isControlChanged = function (changes) {
+        return changes.hasOwnProperty('form');
+    };
+    return FormControlDirective;
+}(NgControl));
+FormControlDirective.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formControl]', providers: [formControlBinding$1], exportAs: 'ngForm' },] },
+];
+/**
+ * @nocollapse
+ */
+FormControlDirective.ctorParameters = function () { return [
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
+]; };
+FormControlDirective.propDecorators = {
+    'form': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formControl',] },],
+    'model': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModel',] },],
+    'update': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */], args: ['ngModelChange',] },],
+    'isDisabled': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['disabled',] },],
+};
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var formDirectiveProvider$1 = {
+    provide: ControlContainer,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormGroupDirective; })
+};
+/**
+ * \@whatItDoes Binds an existing {\@link FormGroup} to a DOM element.
+ *
+ * \@howToUse
+ *
+ * This directive accepts an existing {\@link FormGroup} instance. It will then use this
+ * {\@link FormGroup} instance to match any child {\@link FormControl}, {\@link FormGroup},
+ * and {\@link FormArray} instances to child {\@link FormControlName}, {\@link FormGroupName},
+ * and {\@link FormArrayName} directives.
+ *
+ * **Set value**: You can set the form's initial value when instantiating the
+ * {\@link FormGroup}, or you can set it programmatically later using the {\@link FormGroup}'s
+ * {\@link AbstractControl#setValue} or {\@link AbstractControl#patchValue} methods.
+ *
+ * **Listen to value**: If you want to listen to changes in the value of the form, you can subscribe
+ * to the {\@link FormGroup}'s {\@link AbstractControl#valueChanges} event.  You can also listen to
+ * its {\@link AbstractControl#statusChanges} event to be notified when the validation status is
+ * re-calculated.
+ *
+ * Furthermore, you can listen to the directive's `ngSubmit` event to be notified when the user has
+ * triggered a form submission. The `ngSubmit` event will be emitted with the original form
+ * submission event.
+ *
+ * ### Example
+ *
+ * In this example, we create form controls for first name and last name.
+ *
+ * {\@example forms/ts/simpleFormGroup/simple_form_group_example.ts region='Component'}
+ *
+ * **npm package**: `\@angular/forms`
+ *
+ * **NgModule**: {\@link ReactiveFormsModule}
+ *
+ *  \@stable
+ */
+var FormGroupDirective = (function (_super) {
+    __extends(FormGroupDirective, _super);
+    /**
+     * @param {?} _validators
+     * @param {?} _asyncValidators
+     */
+    function FormGroupDirective(_validators, _asyncValidators) {
+        var _this = _super.call(this) || this;
+        _this._validators = _validators;
+        _this._asyncValidators = _asyncValidators;
+        _this._submitted = false;
+        _this.directives = [];
+        _this.form = ((null));
+        _this.ngSubmit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        return _this;
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    FormGroupDirective.prototype.ngOnChanges = function (changes) {
+        this._checkFormPresent();
+        if (changes.hasOwnProperty('form')) {
+            this._updateValidators();
+            this._updateDomValue();
+            this._updateRegistrations();
+        }
+    };
+    Object.defineProperty(FormGroupDirective.prototype, "submitted", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._submitted; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormGroupDirective.prototype, "formDirective", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormGroupDirective.prototype, "control", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this.form; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormGroupDirective.prototype, "path", {
+        /**
+         * @return {?}
+         */
+        get: function () { return []; },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    FormGroupDirective.prototype.addControl = function (dir) {
+        var /** @type {?} */ ctrl = this.form.get(dir.path);
+        setUpControl(ctrl, dir);
+        ctrl.updateValueAndValidity({ emitEvent: false });
+        this.directives.push(dir);
+        return ctrl;
+    };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    FormGroupDirective.prototype.getControl = function (dir) { return (this.form.get(dir.path)); };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    FormGroupDirective.prototype.removeControl = function (dir) { remove(this.directives, dir); };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    FormGroupDirective.prototype.addFormGroup = function (dir) {
+        var /** @type {?} */ ctrl = this.form.get(dir.path);
+        setUpFormContainer(ctrl, dir);
+        ctrl.updateValueAndValidity({ emitEvent: false });
+    };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    FormGroupDirective.prototype.removeFormGroup = function (dir) { };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    FormGroupDirective.prototype.getFormGroup = function (dir) { return (this.form.get(dir.path)); };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    FormGroupDirective.prototype.addFormArray = function (dir) {
+        var /** @type {?} */ ctrl = this.form.get(dir.path);
+        setUpFormContainer(ctrl, dir);
+        ctrl.updateValueAndValidity({ emitEvent: false });
+    };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    FormGroupDirective.prototype.removeFormArray = function (dir) { };
+    /**
+     * @param {?} dir
+     * @return {?}
+     */
+    FormGroupDirective.prototype.getFormArray = function (dir) { return (this.form.get(dir.path)); };
+    /**
+     * @param {?} dir
+     * @param {?} value
+     * @return {?}
+     */
+    FormGroupDirective.prototype.updateModel = function (dir, value) {
+        var /** @type {?} */ ctrl = (this.form.get(dir.path));
+        ctrl.setValue(value);
+    };
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    FormGroupDirective.prototype.onSubmit = function ($event) {
+        this._submitted = true;
+        this.ngSubmit.emit($event);
+        return false;
+    };
+    /**
+     * @return {?}
+     */
+    FormGroupDirective.prototype.onReset = function () { this.resetForm(); };
+    /**
+     * @param {?=} value
+     * @return {?}
+     */
+    FormGroupDirective.prototype.resetForm = function (value) {
+        if (value === void 0) { value = undefined; }
+        this.form.reset(value);
+        this._submitted = false;
+    };
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormGroupDirective.prototype._updateDomValue = function () {
+        var _this = this;
+        this.directives.forEach(function (dir) {
+            var /** @type {?} */ newCtrl = _this.form.get(dir.path);
+            if (dir._control !== newCtrl) {
+                cleanUpControl(dir._control, dir);
+                if (newCtrl)
+                    setUpControl(newCtrl, dir);
+                dir._control = newCtrl;
+            }
+        });
+        this.form._updateTreeValidity({ emitEvent: false });
+    };
+    /**
+     * @return {?}
+     */
+    FormGroupDirective.prototype._updateRegistrations = function () {
+        var _this = this;
+        this.form._registerOnCollectionChange(function () { return _this._updateDomValue(); });
+        if (this._oldForm)
+            this._oldForm._registerOnCollectionChange(function () { });
+        this._oldForm = this.form;
+    };
+    /**
+     * @return {?}
+     */
+    FormGroupDirective.prototype._updateValidators = function () {
+        var /** @type {?} */ sync = composeValidators(this._validators);
+        this.form.validator = Validators.compose([/** @type {?} */ ((this.form.validator)), /** @type {?} */ ((sync))]);
+        var /** @type {?} */ async = composeAsyncValidators(this._asyncValidators);
+        this.form.asyncValidator = Validators.composeAsync([/** @type {?} */ ((this.form.asyncValidator)), /** @type {?} */ ((async))]);
+    };
+    /**
+     * @return {?}
+     */
+    FormGroupDirective.prototype._checkFormPresent = function () {
+        if (!this.form) {
+            ReactiveErrors.missingFormException();
+        }
+    };
+    return FormGroupDirective;
+}(ControlContainer));
+FormGroupDirective.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: '[formGroup]',
+                providers: [formDirectiveProvider$1],
+                host: { '(submit)': 'onSubmit($event)', '(reset)': 'onReset()' },
+                exportAs: 'ngForm'
+            },] },
+];
+/**
+ * @nocollapse
+ */
+FormGroupDirective.ctorParameters = function () { return [
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+]; };
+FormGroupDirective.propDecorators = {
+    'form': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formGroup',] },],
+    'ngSubmit': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */] },],
+};
+/**
+ * @template T
+ * @param {?} list
+ * @param {?} el
+ * @return {?}
+ */
+function remove(list, el) {
+    var /** @type {?} */ index = list.indexOf(el);
+    if (index > -1) {
+        list.splice(index, 1);
+    }
+}
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var formGroupNameProvider = {
+    provide: ControlContainer,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormGroupName; })
+};
+/**
+ * \@whatItDoes Syncs a nested {\@link FormGroup} to a DOM element.
+ *
+ * \@howToUse
+ *
+ * This directive can only be used with a parent {\@link FormGroupDirective} (selector:
+ * `[formGroup]`).
+ *
+ * It accepts the string name of the nested {\@link FormGroup} you want to link, and
+ * will look for a {\@link FormGroup} registered with that name in the parent
+ * {\@link FormGroup} instance you passed into {\@link FormGroupDirective}.
+ *
+ * Nested form groups can come in handy when you want to validate a sub-group of a
+ * form separately from the rest or when you'd like to group the values of certain
+ * controls into their own nested object.
+ *
+ * **Access the group**: You can access the associated {\@link FormGroup} using the
+ * {\@link AbstractControl#get} method. Ex: `this.form.get('name')`.
+ *
+ * You can also access individual controls within the group using dot syntax.
+ * Ex: `this.form.get('name.first')`
+ *
+ * **Get the value**: the `value` property is always synced and available on the
+ * {\@link FormGroup}. See a full list of available properties in {\@link AbstractControl}.
+ *
+ * **Set the value**: You can set an initial value for each child control when instantiating
+ * the {\@link FormGroup}, or you can set it programmatically later using
+ * {\@link AbstractControl#setValue} or {\@link AbstractControl#patchValue}.
+ *
+ * **Listen to value**: If you want to listen to changes in the value of the group, you can
+ * subscribe to the {\@link AbstractControl#valueChanges} event.  You can also listen to
+ * {\@link AbstractControl#statusChanges} to be notified when the validation status is
+ * re-calculated.
+ *
+ * ### Example
+ *
+ * {\@example forms/ts/nestedFormGroup/nested_form_group_example.ts region='Component'}
+ *
+ * * **npm package**: `\@angular/forms`
+ *
+ * * **NgModule**: `ReactiveFormsModule`
+ *
+ * \@stable
+ */
+var FormGroupName = (function (_super) {
+    __extends(FormGroupName, _super);
+    /**
+     * @param {?} parent
+     * @param {?} validators
+     * @param {?} asyncValidators
+     */
+    function FormGroupName(parent, validators, asyncValidators) {
+        var _this = _super.call(this) || this;
+        _this._parent = parent;
+        _this._validators = validators;
+        _this._asyncValidators = asyncValidators;
+        return _this;
+    }
+    /**
+     * \@internal
+     * @return {?}
+     */
+    FormGroupName.prototype._checkParentType = function () {
+        if (_hasInvalidParent(this._parent)) {
+            ReactiveErrors.groupParentException();
+        }
+    };
+    return FormGroupName;
+}(AbstractFormGroupDirective));
+FormGroupName.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formGroupName]', providers: [formGroupNameProvider] },] },
+];
+/**
+ * @nocollapse
+ */
+FormGroupName.ctorParameters = function () { return [
+    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+]; };
+FormGroupName.propDecorators = {
+    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formGroupName',] },],
+};
+var formArrayNameProvider = {
+    provide: ControlContainer,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormArrayName; })
+};
+/**
+ * \@whatItDoes Syncs a nested {\@link FormArray} to a DOM element.
+ *
+ * \@howToUse
+ *
+ * This directive is designed to be used with a parent {\@link FormGroupDirective} (selector:
+ * `[formGroup]`).
+ *
+ * It accepts the string name of the nested {\@link FormArray} you want to link, and
+ * will look for a {\@link FormArray} registered with that name in the parent
+ * {\@link FormGroup} instance you passed into {\@link FormGroupDirective}.
+ *
+ * Nested form arrays can come in handy when you have a group of form controls but
+ * you're not sure how many there will be. Form arrays allow you to create new
+ * form controls dynamically.
+ *
+ * **Access the array**: You can access the associated {\@link FormArray} using the
+ * {\@link AbstractControl#get} method on the parent {\@link FormGroup}.
+ * Ex: `this.form.get('cities')`.
+ *
+ * **Get the value**: the `value` property is always synced and available on the
+ * {\@link FormArray}. See a full list of available properties in {\@link AbstractControl}.
+ *
+ * **Set the value**: You can set an initial value for each child control when instantiating
+ * the {\@link FormArray}, or you can set the value programmatically later using the
+ * {\@link FormArray}'s {\@link AbstractControl#setValue} or {\@link AbstractControl#patchValue}
+ * methods.
+ *
+ * **Listen to value**: If you want to listen to changes in the value of the array, you can
+ * subscribe to the {\@link FormArray}'s {\@link AbstractControl#valueChanges} event.  You can also
+ * listen to its {\@link AbstractControl#statusChanges} event to be notified when the validation
+ * status is re-calculated.
+ *
+ * **Add new controls**: You can add new controls to the {\@link FormArray} dynamically by
+ * calling its {\@link FormArray#push} method.
+ *  Ex: `this.form.get('cities').push(new FormControl());`
+ *
+ * ### Example
+ *
+ * {\@example forms/ts/nestedFormArray/nested_form_array_example.ts region='Component'}
+ *
+ * * **npm package**: `\@angular/forms`
+ *
+ * * **NgModule**: `ReactiveFormsModule`
+ *
+ * \@stable
+ */
+var FormArrayName = (function (_super) {
+    __extends(FormArrayName, _super);
+    /**
+     * @param {?} parent
+     * @param {?} validators
+     * @param {?} asyncValidators
+     */
+    function FormArrayName(parent, validators, asyncValidators) {
+        var _this = _super.call(this) || this;
+        _this._parent = parent;
+        _this._validators = validators;
+        _this._asyncValidators = asyncValidators;
+        return _this;
+    }
+    /**
+     * @return {?}
+     */
+    FormArrayName.prototype.ngOnInit = function () {
+        this._checkParentType(); /** @type {?} */
+        ((this.formDirective)).addFormArray(this);
+    };
+    /**
+     * @return {?}
+     */
+    FormArrayName.prototype.ngOnDestroy = function () {
+        if (this.formDirective) {
+            this.formDirective.removeFormArray(this);
+        }
+    };
+    Object.defineProperty(FormArrayName.prototype, "control", {
+        /**
+         * @return {?}
+         */
+        get: function () { return ((this.formDirective)).getFormArray(this); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormArrayName.prototype, "formDirective", {
+        /**
+         * @return {?}
+         */
+        get: function () {
+            return this._parent ? (this._parent.formDirective) : null;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormArrayName.prototype, "path", {
+        /**
+         * @return {?}
+         */
+        get: function () { return controlPath(this.name, this._parent); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormArrayName.prototype, "validator", {
+        /**
+         * @return {?}
+         */
+        get: function () { return composeValidators(this._validators); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormArrayName.prototype, "asyncValidator", {
+        /**
+         * @return {?}
+         */
+        get: function () {
+            return composeAsyncValidators(this._asyncValidators);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @return {?}
+     */
+    FormArrayName.prototype._checkParentType = function () {
+        if (_hasInvalidParent(this._parent)) {
+            ReactiveErrors.arrayParentException();
+        }
+    };
+    return FormArrayName;
+}(ControlContainer));
+FormArrayName.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formArrayName]', providers: [formArrayNameProvider] },] },
+];
+/**
+ * @nocollapse
+ */
+FormArrayName.ctorParameters = function () { return [
+    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+]; };
+FormArrayName.propDecorators = {
+    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formArrayName',] },],
+};
+/**
+ * @param {?} parent
+ * @return {?}
+ */
+function _hasInvalidParent(parent) {
+    return !(parent instanceof FormGroupName) && !(parent instanceof FormGroupDirective) &&
+        !(parent instanceof FormArrayName);
+}
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var controlNameBinding = {
+    provide: NgControl,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormControlName; })
+};
+/**
+ * \@whatItDoes Syncs a {\@link FormControl} in an existing {\@link FormGroup} to a form control
+ * element by name.
+ *
+ * In other words, this directive ensures that any values written to the {\@link FormControl}
+ * instance programmatically will be written to the DOM element (model -> view). Conversely,
+ * any values written to the DOM element through user input will be reflected in the
+ * {\@link FormControl} instance (view -> model).
+ *
+ * \@howToUse
+ *
+ * This directive is designed to be used with a parent {\@link FormGroupDirective} (selector:
+ * `[formGroup]`).
+ *
+ * It accepts the string name of the {\@link FormControl} instance you want to
+ * link, and will look for a {\@link FormControl} registered with that name in the
+ * closest {\@link FormGroup} or {\@link FormArray} above it.
+ *
+ * **Access the control**: You can access the {\@link FormControl} associated with
+ * this directive by using the {\@link AbstractControl#get} method.
+ * Ex: `this.form.get('first');`
+ *
+ * **Get value**: the `value` property is always synced and available on the {\@link FormControl}.
+ * See a full list of available properties in {\@link AbstractControl}.
+ *
+ *  **Set value**: You can set an initial value for the control when instantiating the
+ *  {\@link FormControl}, or you can set it programmatically later using
+ *  {\@link AbstractControl#setValue} or {\@link AbstractControl#patchValue}.
+ *
+ * **Listen to value**: If you want to listen to changes in the value of the control, you can
+ * subscribe to the {\@link AbstractControl#valueChanges} event.  You can also listen to
+ * {\@link AbstractControl#statusChanges} to be notified when the validation status is
+ * re-calculated.
+ *
+ * ### Example
+ *
+ * In this example, we create form controls for first name and last name.
+ *
+ * {\@example forms/ts/simpleFormGroup/simple_form_group_example.ts region='Component'}
+ *
+ * To see `formControlName` examples with different form control types, see:
+ *
+ * * Radio buttons: {\@link RadioControlValueAccessor}
+ * * Selects: {\@link SelectControlValueAccessor}
+ *
+ * **npm package**: `\@angular/forms`
+ *
+ * **NgModule**: {\@link ReactiveFormsModule}
+ *
+ *  \@stable
+ */
+var FormControlName = (function (_super) {
+    __extends(FormControlName, _super);
+    /**
+     * @param {?} parent
+     * @param {?} validators
+     * @param {?} asyncValidators
+     * @param {?} valueAccessors
+     */
+    function FormControlName(parent, validators, asyncValidators, valueAccessors) {
+        var _this = _super.call(this) || this;
+        _this._added = false;
+        _this.update = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        _this._parent = parent;
+        _this._rawValidators = validators || [];
+        _this._rawAsyncValidators = asyncValidators || [];
+        _this.valueAccessor = selectValueAccessor(_this, valueAccessors);
+        return _this;
+    }
+    Object.defineProperty(FormControlName.prototype, "isDisabled", {
+        /**
+         * @param {?} isDisabled
+         * @return {?}
+         */
+        set: function (isDisabled) { ReactiveErrors.disabledAttrWarning(); },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    FormControlName.prototype.ngOnChanges = function (changes) {
+        if (!this._added)
+            this._setUpControl();
+        if (isPropertyUpdated(changes, this.viewModel)) {
+            this.viewModel = this.model;
+            this.formDirective.updateModel(this, this.model);
+        }
+    };
+    /**
+     * @return {?}
+     */
+    FormControlName.prototype.ngOnDestroy = function () {
+        if (this.formDirective) {
+            this.formDirective.removeControl(this);
+        }
+    };
+    /**
+     * @param {?} newValue
+     * @return {?}
+     */
+    FormControlName.prototype.viewToModelUpdate = function (newValue) {
+        this.viewModel = newValue;
+        this.update.emit(newValue);
+    };
+    Object.defineProperty(FormControlName.prototype, "path", {
+        /**
+         * @return {?}
+         */
+        get: function () { return controlPath(this.name, /** @type {?} */ ((this._parent))); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormControlName.prototype, "formDirective", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._parent ? this._parent.formDirective : null; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormControlName.prototype, "validator", {
+        /**
+         * @return {?}
+         */
+        get: function () { return composeValidators(this._rawValidators); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormControlName.prototype, "asyncValidator", {
+        /**
+         * @return {?}
+         */
+        get: function () {
+            return ((composeAsyncValidators(this._rawAsyncValidators)));
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(FormControlName.prototype, "control", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._control; },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @return {?}
+     */
+    FormControlName.prototype._checkParentType = function () {
+        if (!(this._parent instanceof FormGroupName) &&
+            this._parent instanceof AbstractFormGroupDirective) {
+            ReactiveErrors.ngModelGroupException();
+        }
+        else if (!(this._parent instanceof FormGroupName) && !(this._parent instanceof FormGroupDirective) &&
+            !(this._parent instanceof FormArrayName)) {
+            ReactiveErrors.controlParentException();
+        }
+    };
+    /**
+     * @return {?}
+     */
+    FormControlName.prototype._setUpControl = function () {
+        this._checkParentType();
+        this._control = this.formDirective.addControl(this);
+        if (this.control.disabled && ((this.valueAccessor)).setDisabledState) {
+            ((((this.valueAccessor)).setDisabledState))(true);
+        }
+        this._added = true;
+    };
+    return FormControlName;
+}(NgControl));
+FormControlName.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formControlName]', providers: [controlNameBinding] },] },
+];
+/**
+ * @nocollapse
+ */
+FormControlName.ctorParameters = function () { return [
+    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
+    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
+]; };
+FormControlName.propDecorators = {
+    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formControlName',] },],
+    'model': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModel',] },],
+    'update': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */], args: ['ngModelChange',] },],
+    'isDisabled': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['disabled',] },],
+};
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var REQUIRED_VALIDATOR = {
+    provide: NG_VALIDATORS,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return RequiredValidator; }),
+    multi: true
+};
+var CHECKBOX_REQUIRED_VALIDATOR = {
+    provide: NG_VALIDATORS,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return CheckboxRequiredValidator; }),
+    multi: true
+};
+/**
+ * A Directive that adds the `required` validator to any controls marked with the
+ * `required` attribute, via the {\@link NG_VALIDATORS} binding.
+ *
+ * ### Example
+ *
+ * ```
+ * <input name="fullName" ngModel required>
+ * ```
+ *
+ * \@stable
+ */
+var RequiredValidator = (function () {
+    function RequiredValidator() {
+    }
+    Object.defineProperty(RequiredValidator.prototype, "required", {
+        /**
+         * @return {?}
+         */
+        get: function () { return this._required; },
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        set: function (value) {
+            this._required = value != null && value !== false && "" + value !== 'false';
+            if (this._onChange)
+                this._onChange();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} c
+     * @return {?}
+     */
+    RequiredValidator.prototype.validate = function (c) {
+        return this.required ? Validators.required(c) : null;
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    RequiredValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
+    return RequiredValidator;
+}());
+RequiredValidator.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: ':not([type=checkbox])[required][formControlName],:not([type=checkbox])[required][formControl],:not([type=checkbox])[required][ngModel]',
+                providers: [REQUIRED_VALIDATOR],
+                host: { '[attr.required]': 'required ? "" : null' }
+            },] },
+];
+/**
+ * @nocollapse
+ */
+RequiredValidator.ctorParameters = function () { return []; };
+RequiredValidator.propDecorators = {
+    'required': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+};
+/**
+ * A Directive that adds the `required` validator to checkbox controls marked with the
+ * `required` attribute, via the {\@link NG_VALIDATORS} binding.
+ *
+ * ### Example
+ *
+ * ```
+ * <input type="checkbox" name="active" ngModel required>
+ * ```
+ *
+ * \@experimental
+ */
+var CheckboxRequiredValidator = (function (_super) {
+    __extends(CheckboxRequiredValidator, _super);
+    function CheckboxRequiredValidator() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * @param {?} c
+     * @return {?}
+     */
+    CheckboxRequiredValidator.prototype.validate = function (c) {
+        return this.required ? Validators.requiredTrue(c) : null;
+    };
+    return CheckboxRequiredValidator;
+}(RequiredValidator));
+CheckboxRequiredValidator.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'input[type=checkbox][required][formControlName],input[type=checkbox][required][formControl],input[type=checkbox][required][ngModel]',
+                providers: [CHECKBOX_REQUIRED_VALIDATOR],
+                host: { '[attr.required]': 'required ? "" : null' }
+            },] },
+];
+/**
+ * @nocollapse
+ */
+CheckboxRequiredValidator.ctorParameters = function () { return []; };
+/**
+ * Provider which adds {@link EmailValidator} to {@link NG_VALIDATORS}.
+ */
+var EMAIL_VALIDATOR = {
+    provide: NG_VALIDATORS,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return EmailValidator; }),
+    multi: true
+};
+/**
+ * A Directive that adds the `email` validator to controls marked with the
+ * `email` attribute, via the {\@link NG_VALIDATORS} binding.
+ *
+ * ### Example
+ *
+ * ```
+ * <input type="email" name="email" ngModel email>
+ * <input type="email" name="email" ngModel email="true">
+ * <input type="email" name="email" ngModel [email]="true">
+ * ```
+ *
+ * \@experimental
+ */
+var EmailValidator = (function () {
+    function EmailValidator() {
+    }
+    Object.defineProperty(EmailValidator.prototype, "email", {
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        set: function (value) {
+            this._enabled = value === '' || value === true || value === 'true';
+            if (this._onChange)
+                this._onChange();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * @param {?} c
+     * @return {?}
+     */
+    EmailValidator.prototype.validate = function (c) {
+        return this._enabled ? Validators.email(c) : null;
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    EmailValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
+    return EmailValidator;
+}());
+EmailValidator.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: '[email][formControlName],[email][formControl],[email][ngModel]',
+                providers: [EMAIL_VALIDATOR]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+EmailValidator.ctorParameters = function () { return []; };
+EmailValidator.propDecorators = {
+    'email': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+};
+/**
+ * Provider which adds {@link MinLengthValidator} to {@link NG_VALIDATORS}.
+ *
+ * ## Example:
+ *
+ * {@example common/forms/ts/validators/validators.ts region='min'}
+ */
+var MIN_LENGTH_VALIDATOR = {
+    provide: NG_VALIDATORS,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return MinLengthValidator; }),
+    multi: true
+};
+/**
+ * A directive which installs the {\@link MinLengthValidator} for any `formControlName`,
+ * `formControl`, or control with `ngModel` that also has a `minlength` attribute.
+ *
+ * \@stable
+ */
+var MinLengthValidator = (function () {
+    function MinLengthValidator() {
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    MinLengthValidator.prototype.ngOnChanges = function (changes) {
+        if ('minlength' in changes) {
+            this._createValidator();
+            if (this._onChange)
+                this._onChange();
+        }
+    };
+    /**
+     * @param {?} c
+     * @return {?}
+     */
+    MinLengthValidator.prototype.validate = function (c) {
+        return this.minlength == null ? null : this._validator(c);
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    MinLengthValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
+    /**
+     * @return {?}
+     */
+    MinLengthValidator.prototype._createValidator = function () {
+        this._validator = Validators.minLength(parseInt(this.minlength, 10));
+    };
+    return MinLengthValidator;
+}());
+MinLengthValidator.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: '[minlength][formControlName],[minlength][formControl],[minlength][ngModel]',
+                providers: [MIN_LENGTH_VALIDATOR],
+                host: { '[attr.minlength]': 'minlength ? minlength : null' }
+            },] },
+];
+/**
+ * @nocollapse
+ */
+MinLengthValidator.ctorParameters = function () { return []; };
+MinLengthValidator.propDecorators = {
+    'minlength': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+};
+/**
+ * Provider which adds {@link MaxLengthValidator} to {@link NG_VALIDATORS}.
+ *
+ * ## Example:
+ *
+ * {@example common/forms/ts/validators/validators.ts region='max'}
+ */
+var MAX_LENGTH_VALIDATOR = {
+    provide: NG_VALIDATORS,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return MaxLengthValidator; }),
+    multi: true
+};
+/**
+ * A directive which installs the {\@link MaxLengthValidator} for any `formControlName,
+ * `formControl`,
+ * or control with `ngModel` that also has a `maxlength` attribute.
+ *
+ * \@stable
+ */
+var MaxLengthValidator = (function () {
+    function MaxLengthValidator() {
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    MaxLengthValidator.prototype.ngOnChanges = function (changes) {
+        if ('maxlength' in changes) {
+            this._createValidator();
+            if (this._onChange)
+                this._onChange();
+        }
+    };
+    /**
+     * @param {?} c
+     * @return {?}
+     */
+    MaxLengthValidator.prototype.validate = function (c) {
+        return this.maxlength != null ? this._validator(c) : null;
+    };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    MaxLengthValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
+    /**
+     * @return {?}
+     */
+    MaxLengthValidator.prototype._createValidator = function () {
+        this._validator = Validators.maxLength(parseInt(this.maxlength, 10));
+    };
+    return MaxLengthValidator;
+}());
+MaxLengthValidator.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: '[maxlength][formControlName],[maxlength][formControl],[maxlength][ngModel]',
+                providers: [MAX_LENGTH_VALIDATOR],
+                host: { '[attr.maxlength]': 'maxlength ? maxlength : null' }
+            },] },
+];
+/**
+ * @nocollapse
+ */
+MaxLengthValidator.ctorParameters = function () { return []; };
+MaxLengthValidator.propDecorators = {
+    'maxlength': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+};
+var PATTERN_VALIDATOR = {
+    provide: NG_VALIDATORS,
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return PatternValidator; }),
+    multi: true
+};
+/**
+ * A Directive that adds the `pattern` validator to any controls marked with the
+ * `pattern` attribute, via the {\@link NG_VALIDATORS} binding. Uses attribute value
+ * as the regex to validate Control value against.  Follows pattern attribute
+ * semantics; i.e. regex must match entire Control value.
+ *
+ * ### Example
+ *
+ * ```
+ * <input [name]="fullName" pattern="[a-zA-Z ]*" ngModel>
+ * ```
+ * \@stable
+ */
+var PatternValidator = (function () {
+    function PatternValidator() {
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    PatternValidator.prototype.ngOnChanges = function (changes) {
+        if ('pattern' in changes) {
+            this._createValidator();
+            if (this._onChange)
+                this._onChange();
+        }
+    };
+    /**
+     * @param {?} c
+     * @return {?}
+     */
+    PatternValidator.prototype.validate = function (c) { return this._validator(c); };
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    PatternValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
+    /**
+     * @return {?}
+     */
+    PatternValidator.prototype._createValidator = function () { this._validator = Validators.pattern(this.pattern); };
+    return PatternValidator;
+}());
+PatternValidator.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: '[pattern][formControlName],[pattern][formControl],[pattern][ngModel]',
+                providers: [PATTERN_VALIDATOR],
+                host: { '[attr.pattern]': 'pattern ? pattern : null' }
+            },] },
+];
+/**
+ * @nocollapse
+ */
+PatternValidator.ctorParameters = function () { return []; };
+PatternValidator.propDecorators = {
+    'pattern': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
+};
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * \@whatItDoes Creates an {\@link AbstractControl} from a user-specified configuration.
+ *
+ * It is essentially syntactic sugar that shortens the `new FormGroup()`,
+ * `new FormControl()`, and `new FormArray()` boilerplate that can build up in larger
+ * forms.
+ *
+ * \@howToUse
+ *
+ * To use, inject `FormBuilder` into your component class. You can then call its methods
+ * directly.
+ *
+ * {\@example forms/ts/formBuilder/form_builder_example.ts region='Component'}
+ *
+ *  * **npm package**: `\@angular/forms`
+ *
+ *  * **NgModule**: {\@link ReactiveFormsModule}
+ *
+ * \@stable
+ */
+var FormBuilder = (function () {
+    function FormBuilder() {
+    }
+    /**
+     * Construct a new {\@link FormGroup} with the given map of configuration.
+     * Valid keys for the `extra` parameter map are `validator` and `asyncValidator`.
+     *
+     * See the {\@link FormGroup} constructor for more details.
+     * @param {?} controlsConfig
+     * @param {?=} extra
+     * @return {?}
+     */
+    FormBuilder.prototype.group = function (controlsConfig, extra) {
+        if (extra === void 0) { extra = null; }
+        var /** @type {?} */ controls = this._reduceControls(controlsConfig);
+        var /** @type {?} */ validator = extra != null ? extra['validator'] : null;
+        var /** @type {?} */ asyncValidator = extra != null ? extra['asyncValidator'] : null;
+        return new FormGroup(controls, validator, asyncValidator);
+    };
+    /**
+     * Construct a new {\@link FormControl} with the given `formState`,`validator`, and
+     * `asyncValidator`.
+     *
+     * `formState` can either be a standalone value for the form control or an object
+     * that contains both a value and a disabled status.
+     *
+     * @param {?} formState
+     * @param {?=} validator
+     * @param {?=} asyncValidator
+     * @return {?}
+     */
+    FormBuilder.prototype.control = function (formState, validator, asyncValidator) {
+        return new FormControl(formState, validator, asyncValidator);
+    };
+    /**
+     * Construct a {\@link FormArray} from the given `controlsConfig` array of
+     * configuration, with the given optional `validator` and `asyncValidator`.
+     * @param {?} controlsConfig
+     * @param {?=} validator
+     * @param {?=} asyncValidator
+     * @return {?}
+     */
+    FormBuilder.prototype.array = function (controlsConfig, validator, asyncValidator) {
+        var _this = this;
+        var /** @type {?} */ controls = controlsConfig.map(function (c) { return _this._createControl(c); });
+        return new FormArray(controls, validator, asyncValidator);
+    };
+    /**
+     * \@internal
+     * @param {?} controlsConfig
+     * @return {?}
+     */
+    FormBuilder.prototype._reduceControls = function (controlsConfig) {
+        var _this = this;
+        var /** @type {?} */ controls = {};
+        Object.keys(controlsConfig).forEach(function (controlName) {
+            controls[controlName] = _this._createControl(controlsConfig[controlName]);
+        });
+        return controls;
+    };
+    /**
+     * \@internal
+     * @param {?} controlConfig
+     * @return {?}
+     */
+    FormBuilder.prototype._createControl = function (controlConfig) {
+        if (controlConfig instanceof FormControl || controlConfig instanceof FormGroup ||
+            controlConfig instanceof FormArray) {
+            return controlConfig;
+        }
+        else if (Array.isArray(controlConfig)) {
+            var /** @type {?} */ value = controlConfig[0];
+            var /** @type {?} */ validator = controlConfig.length > 1 ? controlConfig[1] : null;
+            var /** @type {?} */ asyncValidator = controlConfig.length > 2 ? controlConfig[2] : null;
+            return this.control(value, validator, asyncValidator);
+        }
+        else {
+            return this.control(controlConfig);
+        }
+    };
+    return FormBuilder;
+}());
+FormBuilder.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */] },
+];
+/**
+ * @nocollapse
+ */
+FormBuilder.ctorParameters = function () { return []; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @module
+ * @description
+ * Entry point for all public APIs of the common package.
+ */
+/**
+ * \@stable
+ */
+var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]('4.1.3');
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * \@whatItDoes Adds `novalidate` attribute to all forms by default.
+ *
+ * `novalidate` is used to disable browser's native form validation.
+ *
+ * If you want to use native validation with Angular forms, just add `ngNativeValidate` attribute:
+ *
+ * ```
+ * <form ngNativeValidate></form>
+ * ```
+ *
+ * \@experimental
+ */
+var NgNoValidate = (function () {
+    function NgNoValidate() {
+    }
+    return NgNoValidate;
+}());
+NgNoValidate.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+                selector: 'form:not([ngNoForm]):not([ngNativeValidate])',
+                host: { 'novalidate': '' },
+            },] },
+];
+/**
+ * @nocollapse
+ */
+NgNoValidate.ctorParameters = function () { return []; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var SHARED_FORM_DIRECTIVES = [
+    NgNoValidate,
+    NgSelectOption,
+    NgSelectMultipleOption,
+    DefaultValueAccessor,
+    NumberValueAccessor,
+    RangeValueAccessor,
+    CheckboxControlValueAccessor,
+    SelectControlValueAccessor,
+    SelectMultipleControlValueAccessor,
+    RadioControlValueAccessor,
+    NgControlStatus,
+    NgControlStatusGroup,
+    RequiredValidator,
+    MinLengthValidator,
+    MaxLengthValidator,
+    PatternValidator,
+    CheckboxRequiredValidator,
+    EmailValidator,
+];
+var TEMPLATE_DRIVEN_DIRECTIVES = [NgModel, NgModelGroup, NgForm];
+var REACTIVE_DRIVEN_DIRECTIVES = [FormControlDirective, FormGroupDirective, FormControlName, FormGroupName, FormArrayName];
+/**
+ * Internal module used for sharing directives between FormsModule and ReactiveFormsModule
+ */
+var InternalFormsSharedModule = (function () {
+    function InternalFormsSharedModule() {
+    }
+    return InternalFormsSharedModule;
+}());
+InternalFormsSharedModule.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */], args: [{
+                declarations: SHARED_FORM_DIRECTIVES,
+                exports: SHARED_FORM_DIRECTIVES,
+            },] },
+];
+/**
+ * @nocollapse
+ */
+InternalFormsSharedModule.ctorParameters = function () { return []; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * The ng module for forms.
+ * \@stable
+ */
+var FormsModule = (function () {
+    function FormsModule() {
+    }
+    return FormsModule;
+}());
+FormsModule.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */], args: [{
+                declarations: TEMPLATE_DRIVEN_DIRECTIVES,
+                providers: [RadioControlRegistry],
+                exports: [InternalFormsSharedModule, TEMPLATE_DRIVEN_DIRECTIVES]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+FormsModule.ctorParameters = function () { return []; };
+/**
+ * The ng module for reactive forms.
+ * \@stable
+ */
+var ReactiveFormsModule = (function () {
+    function ReactiveFormsModule() {
+    }
+    return ReactiveFormsModule;
+}());
+ReactiveFormsModule.decorators = [
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */], args: [{
+                declarations: [REACTIVE_DRIVEN_DIRECTIVES],
+                providers: [FormBuilder, RadioControlRegistry],
+                exports: [InternalFormsSharedModule, REACTIVE_DRIVEN_DIRECTIVES]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+ReactiveFormsModule.ctorParameters = function () { return []; };
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @module
+ * @description
+ * This module is used for handling user input, by defining and building a {@link FormGroup} that
+ * consists of {@link FormControl} objects, and mapping them onto the DOM. {@link FormControl}
+ * objects can then be used to read information from the form DOM elements.
+ *
+ * Forms providers are not included in default providers; you must import these providers
+ * explicitly.
+ */
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @module
+ * @description
+ * Entry point for all public APIs of the forms package.
+ */
+// This file only reexports content of the `src` folder. Keep it that way.
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+//# sourceMappingURL=forms.es5.js.map
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* unused harmony export BrowserXhr */
 /* unused harmony export JSONPBackend */
 /* unused harmony export JSONPConnection */
@@ -24338,7 +30418,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]
 /* unused harmony export ɵb */
 /* unused harmony export ɵc */
 /* unused harmony export ɵd */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(42);
@@ -26530,7 +32610,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26585,43 +32665,43 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]
 /* unused harmony export ɵk */
 /* unused harmony export ɵl */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_from__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_from__ = __webpack_require__(368);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_from___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_from__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_observable_of__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_observable_of__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_concatMap__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_concatMap__ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_concatMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_operator_concatMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_every__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_every__ = __webpack_require__(373);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_every___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_operator_every__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operator_first__ = __webpack_require__(371);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operator_first__ = __webpack_require__(375);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operator_first___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_operator_first__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operator_map__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operator_map__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operator_mergeMap__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operator_mergeMap__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operator_mergeMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_rxjs_operator_mergeMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operator_reduce__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operator_reduce__ = __webpack_require__(380);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operator_reduce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_rxjs_operator_reduce__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_Observable__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operator_catch__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operator_catch__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_rxjs_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operator_concatAll__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operator_concatAll__ = __webpack_require__(371);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operator_concatAll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_rxjs_operator_concatAll__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_rxjs_util_EmptyError__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_rxjs_util_EmptyError__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_rxjs_util_EmptyError___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_rxjs_util_EmptyError__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_rxjs_observable_fromPromise__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_rxjs_observable_fromPromise__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_rxjs_observable_fromPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_rxjs_operator_last__ = __webpack_require__(372);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_rxjs_operator_last__ = __webpack_require__(376);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_rxjs_operator_last___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_rxjs_operator_last__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_rxjs_operator_mergeAll__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_rxjs_operator_mergeAll__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_rxjs_operator_mergeAll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_rxjs_operator_mergeAll__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_platform_browser__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_rxjs_operator_filter__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_rxjs_operator_filter__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_rxjs_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_rxjs_operator_filter__);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -32701,13 +38781,13 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["D" /* Version */]
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppState; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
 
 
 var AppState = (function () {
@@ -32758,15 +38838,15 @@ AppState = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestellungService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__ = __webpack_require__(361);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_toPromise__);
 
 
@@ -32842,7 +38922,6 @@ BestellungService = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 
 
 /***/ }),
-/* 73 */,
 /* 74 */,
 /* 75 */,
 /* 76 */,
@@ -32863,7 +38942,8 @@ BestellungService = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 /* 91 */,
 /* 92 */,
 /* 93 */,
-/* 94 */
+/* 94 */,
+/* 95 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -33053,7 +39133,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33064,9 +39144,9 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(9);
-var ScalarObservable_1 = __webpack_require__(145);
-var EmptyObservable_1 = __webpack_require__(96);
-var isScheduler_1 = __webpack_require__(155);
+var ScalarObservable_1 = __webpack_require__(146);
+var EmptyObservable_1 = __webpack_require__(97);
+var isScheduler_1 = __webpack_require__(156);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -33181,7 +39261,7 @@ exports.ArrayObservable = ArrayObservable;
 //# sourceMappingURL=ArrayObservable.js.map
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33268,7 +39348,7 @@ exports.EmptyObservable = EmptyObservable;
 //# sourceMappingURL=EmptyObservable.js.map
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33385,12 +39465,12 @@ exports.MergeAllSubscriber = MergeAllSubscriber;
 //# sourceMappingURL=mergeAll.js.map
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var root_1 = __webpack_require__(33);
+var root_1 = __webpack_require__(34);
 function symbolIteratorPonyfill(root) {
     var Symbol = root.Symbol;
     if (typeof Symbol === 'function') {
@@ -33425,12 +39505,12 @@ exports.$$iterator = symbolIteratorPonyfill(root_1.root);
 //# sourceMappingURL=iterator.js.map
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var root_1 = __webpack_require__(33);
+var root_1 = __webpack_require__(34);
 function getSymbolObservable(context) {
     var $$observable;
     var Symbol = context.Symbol;
@@ -33453,19 +39533,19 @@ exports.$$observable = getSymbolObservable(root_1.root);
 //# sourceMappingURL=observable.js.map
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var root_1 = __webpack_require__(33);
+var root_1 = __webpack_require__(34);
 var Symbol = root_1.root.Symbol;
 exports.$$rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'function') ?
     Symbol.for('rxSubscriber') : '@@rxSubscriber';
 //# sourceMappingURL=rxSubscriber.js.map
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33499,14 +39579,14 @@ exports.EmptyError = EmptyError;
 //# sourceMappingURL=EmptyError.js.map
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return decorateModuleRef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ENV_PROVIDERS; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
 /**
  * Angular 2
  */
@@ -33552,15 +39632,15 @@ var ENV_PROVIDERS = PROVIDERS.slice();
 
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestellUebersichtComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bestellungService__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bestellungService__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(5);
 
 
 
@@ -33623,8 +39703,8 @@ BestellUebersichtComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decora
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__angular_core__["_10" /* Component */])({
         selector: 'bestellungen',
         // template: '<h1>BUUUH</h1>',
-        template: __webpack_require__(348),
-        styles: [__webpack_require__(386)]
+        template: __webpack_require__(351),
+        styles: [__webpack_require__(390)]
     }),
     __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */],
         __WEBPACK_IMPORTED_MODULE_1__bestellungService__["a" /* BestellungService */]])
@@ -33633,7 +39713,7 @@ BestellUebersichtComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decora
 
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33643,22 +39723,12 @@ BestellUebersichtComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decora
 
 
 /***/ }),
-/* 105 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_component__ = __webpack_require__(189);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__home_component__["a"]; });
-
-
-
-/***/ }),
 /* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__no_content_component__ = __webpack_require__(194);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__no_content_component__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_component__ = __webpack_require__(190);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__home_component__["a"]; });
 
 
 
@@ -33667,9 +39737,19 @@ BestellUebersichtComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decora
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__no_content_component__ = __webpack_require__(195);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__no_content_component__["a"]; });
+
+
+
+/***/ }),
+/* 108 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SpeisekarteComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
 
 
 var SpeisekarteComponent = (function () {
@@ -33684,8 +39764,8 @@ var SpeisekarteComponent = (function () {
 SpeisekarteComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_10" /* Component */])({
         selector: 'speisekarte',
-        template: __webpack_require__(351),
-        styles: [__webpack_require__(389)]
+        template: __webpack_require__(354),
+        styles: [__webpack_require__(393)]
     }),
     __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [])
 ], SpeisekarteComponent);
@@ -33693,7 +39773,6 @@ SpeisekarteComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]
 
 
 /***/ }),
-/* 108 */,
 /* 109 */,
 /* 110 */,
 /* 111 */,
@@ -33728,7 +39807,8 @@ SpeisekarteComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]
 /* 140 */,
 /* 141 */,
 /* 142 */,
-/* 143 */
+/* 143 */,
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33742,7 +39822,7 @@ exports.empty = {
 //# sourceMappingURL=Observer.js.map
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33752,7 +39832,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var root_1 = __webpack_require__(33);
+var root_1 = __webpack_require__(34);
 var Observable_1 = __webpack_require__(9);
 /**
  * We need this JSDoc comment for affecting ESDoc.
@@ -33869,7 +39949,7 @@ function dispatchError(arg) {
 //# sourceMappingURL=PromiseObservable.js.map
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33933,27 +40013,27 @@ exports.ScalarObservable = ScalarObservable;
 //# sourceMappingURL=ScalarObservable.js.map
 
 /***/ }),
-/* 146 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var PromiseObservable_1 = __webpack_require__(144);
-exports.fromPromise = PromiseObservable_1.PromiseObservable.create;
-//# sourceMappingURL=fromPromise.js.map
-
-/***/ }),
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ArrayObservable_1 = __webpack_require__(95);
+var PromiseObservable_1 = __webpack_require__(145);
+exports.fromPromise = PromiseObservable_1.PromiseObservable.create;
+//# sourceMappingURL=fromPromise.js.map
+
+/***/ }),
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var ArrayObservable_1 = __webpack_require__(96);
 exports.of = ArrayObservable_1.ArrayObservable.of;
 //# sourceMappingURL=of.js.map
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33963,7 +40043,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(17);
+var Subscriber_1 = __webpack_require__(18);
 /**
  * Applies a given `project` function to each value emitted by the source
  * Observable, and emits the resulting values as an Observable.
@@ -34046,7 +40126,7 @@ var MapSubscriber = (function (_super) {
 //# sourceMappingURL=map.js.map
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34223,7 +40303,7 @@ exports.MergeMapSubscriber = MergeMapSubscriber;
 //# sourceMappingURL=mergeMap.js.map
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34256,7 +40336,7 @@ exports.ObjectUnsubscribedError = ObjectUnsubscribedError;
 //# sourceMappingURL=ObjectUnsubscribedError.js.map
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34266,7 +40346,7 @@ exports.errorObject = { e: {} };
 //# sourceMappingURL=errorObject.js.map
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34278,7 +40358,7 @@ exports.isFunction = isFunction;
 //# sourceMappingURL=isFunction.js.map
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34290,7 +40370,7 @@ exports.isObject = isObject;
 //# sourceMappingURL=isObject.js.map
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34302,7 +40382,7 @@ exports.isPromise = isPromise;
 //# sourceMappingURL=isPromise.js.map
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34314,7 +40394,7 @@ exports.isScheduler = isScheduler;
 //# sourceMappingURL=isScheduler.js.map
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -34360,7 +40440,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(384);
+var	fixUrls = __webpack_require__(388);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -34673,7 +40753,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -34682,10 +40762,10 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 157;
+webpackEmptyAsyncContext.id = 158;
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34694,8 +40774,8 @@ webpackEmptyAsyncContext.id = 157;
 /* unused harmony export VERSION */
 /* unused harmony export ɵINTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS */
 /* unused harmony export ɵResourceLoaderImpl */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_compiler__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_compiler__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(42);
 var __extends = (this && this.__extends) || function (d, b) {
@@ -34871,7 +40951,7 @@ var platformBrowserDynamic = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
 
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34884,7 +40964,6 @@ var platformBrowserDynamic = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
 
 
 /***/ }),
-/* 160 */,
 /* 161 */,
 /* 162 */,
 /* 163 */,
@@ -34904,7 +40983,8 @@ var platformBrowserDynamic = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
 /* 177 */,
 /* 178 */,
 /* 179 */,
-/* 180 */
+/* 180 */,
+/* 181 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35091,7 +41171,7 @@ var platformBrowserDynamic = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
 /* unused harmony export splitClasses */
 /* unused harmony export createElementCssSelector */
 /* unused harmony export removeSummaryDuplicates */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -61520,6094 +67600,14 @@ var ImportResolver = (function () {
 //# sourceMappingURL=compiler.es5.js.map
 
 /***/ }),
-/* 181 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export AbstractControlDirective */
-/* unused harmony export AbstractFormGroupDirective */
-/* unused harmony export CheckboxControlValueAccessor */
-/* unused harmony export ControlContainer */
-/* unused harmony export NG_VALUE_ACCESSOR */
-/* unused harmony export COMPOSITION_BUFFER_MODE */
-/* unused harmony export DefaultValueAccessor */
-/* unused harmony export NgControl */
-/* unused harmony export NgControlStatus */
-/* unused harmony export NgControlStatusGroup */
-/* unused harmony export NgForm */
-/* unused harmony export NgModel */
-/* unused harmony export NgModelGroup */
-/* unused harmony export RadioControlValueAccessor */
-/* unused harmony export FormControlDirective */
-/* unused harmony export FormControlName */
-/* unused harmony export FormGroupDirective */
-/* unused harmony export FormArrayName */
-/* unused harmony export FormGroupName */
-/* unused harmony export NgSelectOption */
-/* unused harmony export SelectControlValueAccessor */
-/* unused harmony export SelectMultipleControlValueAccessor */
-/* unused harmony export CheckboxRequiredValidator */
-/* unused harmony export EmailValidator */
-/* unused harmony export MaxLengthValidator */
-/* unused harmony export MinLengthValidator */
-/* unused harmony export PatternValidator */
-/* unused harmony export RequiredValidator */
-/* unused harmony export FormBuilder */
-/* unused harmony export AbstractControl */
-/* unused harmony export FormArray */
-/* unused harmony export FormControl */
-/* unused harmony export FormGroup */
-/* unused harmony export NG_ASYNC_VALIDATORS */
-/* unused harmony export NG_VALIDATORS */
-/* unused harmony export Validators */
-/* unused harmony export VERSION */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormsModule; });
-/* unused harmony export ReactiveFormsModule */
-/* unused harmony export ɵba */
-/* unused harmony export ɵz */
-/* unused harmony export ɵx */
-/* unused harmony export ɵy */
-/* unused harmony export ɵa */
-/* unused harmony export ɵb */
-/* unused harmony export ɵc */
-/* unused harmony export ɵd */
-/* unused harmony export ɵe */
-/* unused harmony export ɵf */
-/* unused harmony export ɵg */
-/* unused harmony export ɵbf */
-/* unused harmony export ɵbb */
-/* unused harmony export ɵbc */
-/* unused harmony export ɵh */
-/* unused harmony export ɵi */
-/* unused harmony export ɵbd */
-/* unused harmony export ɵbe */
-/* unused harmony export ɵj */
-/* unused harmony export ɵk */
-/* unused harmony export ɵl */
-/* unused harmony export ɵn */
-/* unused harmony export ɵm */
-/* unused harmony export ɵo */
-/* unused harmony export ɵq */
-/* unused harmony export ɵp */
-/* unused harmony export ɵs */
-/* unused harmony export ɵt */
-/* unused harmony export ɵv */
-/* unused harmony export ɵu */
-/* unused harmony export ɵw */
-/* unused harmony export ɵr */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin__ = __webpack_require__(363);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map__ = __webpack_require__(148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(42);
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-/**
- * @license Angular v4.1.3
- * (c) 2010-2017 Google, Inc. https://angular.io/
- * License: MIT
- */
-
-
-
-
-
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * Base class for control directives.
- *
- * Only used internally in the forms module.
- *
- * \@stable
- * @abstract
- */
-var AbstractControlDirective = (function () {
-    function AbstractControlDirective() {
-    }
-    /**
-     * @abstract
-     * @return {?}
-     */
-    AbstractControlDirective.prototype.control = function () { };
-    Object.defineProperty(AbstractControlDirective.prototype, "value", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.value : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "valid", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.valid : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "invalid", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.invalid : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "pending", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.pending : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "errors", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.errors : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "pristine", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.pristine : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "dirty", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.dirty : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "touched", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.touched : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "untouched", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.untouched : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "disabled", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.disabled : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "enabled", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.control ? this.control.enabled : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "statusChanges", {
-        /**
-         * @return {?}
-         */
-        get: function () {
-            return this.control ? this.control.statusChanges : null;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "valueChanges", {
-        /**
-         * @return {?}
-         */
-        get: function () {
-            return this.control ? this.control.valueChanges : null;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlDirective.prototype, "path", {
-        /**
-         * @return {?}
-         */
-        get: function () { return null; },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    AbstractControlDirective.prototype.reset = function (value) {
-        if (value === void 0) { value = undefined; }
-        if (this.control)
-            this.control.reset(value);
-    };
-    /**
-     * @param {?} errorCode
-     * @param {?=} path
-     * @return {?}
-     */
-    AbstractControlDirective.prototype.hasError = function (errorCode, path) {
-        return this.control ? this.control.hasError(errorCode, path) : false;
-    };
-    /**
-     * @param {?} errorCode
-     * @param {?=} path
-     * @return {?}
-     */
-    AbstractControlDirective.prototype.getError = function (errorCode, path) {
-        return this.control ? this.control.getError(errorCode, path) : null;
-    };
-    return AbstractControlDirective;
-}());
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * A directive that contains multiple {\@link NgControl}s.
- *
- * Only used by the forms module.
- *
- * \@stable
- * @abstract
- */
-var ControlContainer = (function (_super) {
-    __extends(ControlContainer, _super);
-    function ControlContainer() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Object.defineProperty(ControlContainer.prototype, "formDirective", {
-        /**
-         * Get the form to which this container belongs.
-         * @return {?}
-         */
-        get: function () { return null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(ControlContainer.prototype, "path", {
-        /**
-         * Get the path to this container.
-         * @return {?}
-         */
-        get: function () { return null; },
-        enumerable: true,
-        configurable: true
-    });
-    return ControlContainer;
-}(AbstractControlDirective));
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var __assign = (undefined && undefined.__assign) || Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s)
-            if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-    }
-    return t;
-};
-/**
- * @param {?} value
- * @return {?}
- */
-function isEmptyInputValue(value) {
-    // we don't check for string here so it also works with arrays
-    return value == null || value.length === 0;
-}
-/**
- * Providers for validators to be used for {\@link FormControl}s in a form.
- *
- * Provide this using `multi: true` to add validators.
- *
- * \@stable
- */
-var NG_VALIDATORS = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* InjectionToken */]('NgValidators');
-/**
- * Providers for asynchronous validators to be used for {\@link FormControl}s
- * in a form.
- *
- * Provide this using `multi: true` to add validators.
- *
- * See {\@link NG_VALIDATORS} for more details.
- *
- * \@stable
- */
-var NG_ASYNC_VALIDATORS = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* InjectionToken */]('NgAsyncValidators');
-var EMAIL_REGEXP = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
-/**
- * Provides a set of validators used by form controls.
- *
- * A validator is a function that processes a {\@link FormControl} or collection of
- * controls and returns a map of errors. A null map means that validation has passed.
- *
- * ### Example
- *
- * ```typescript
- * var loginControl = new FormControl("", Validators.required)
- * ```
- *
- * \@stable
- */
-var Validators = (function () {
-    function Validators() {
-    }
-    /**
-     * Validator that requires controls to have a non-empty value.
-     * @param {?} control
-     * @return {?}
-     */
-    Validators.required = function (control) {
-        return isEmptyInputValue(control.value) ? { 'required': true } : null;
-    };
-    /**
-     * Validator that requires control value to be true.
-     * @param {?} control
-     * @return {?}
-     */
-    Validators.requiredTrue = function (control) {
-        return control.value === true ? null : { 'required': true };
-    };
-    /**
-     * Validator that performs email validation.
-     * @param {?} control
-     * @return {?}
-     */
-    Validators.email = function (control) {
-        return EMAIL_REGEXP.test(control.value) ? null : { 'email': true };
-    };
-    /**
-     * Validator that requires controls to have a value of a minimum length.
-     * @param {?} minLength
-     * @return {?}
-     */
-    Validators.minLength = function (minLength) {
-        return function (control) {
-            if (isEmptyInputValue(control.value)) {
-                return null; // don't validate empty values to allow optional controls
-            }
-            var /** @type {?} */ length = control.value ? control.value.length : 0;
-            return length < minLength ?
-                { 'minlength': { 'requiredLength': minLength, 'actualLength': length } } :
-                null;
-        };
-    };
-    /**
-     * Validator that requires controls to have a value of a maximum length.
-     * @param {?} maxLength
-     * @return {?}
-     */
-    Validators.maxLength = function (maxLength) {
-        return function (control) {
-            var /** @type {?} */ length = control.value ? control.value.length : 0;
-            return length > maxLength ?
-                { 'maxlength': { 'requiredLength': maxLength, 'actualLength': length } } :
-                null;
-        };
-    };
-    /**
-     * Validator that requires a control to match a regex to its value.
-     * @param {?} pattern
-     * @return {?}
-     */
-    Validators.pattern = function (pattern) {
-        if (!pattern)
-            return Validators.nullValidator;
-        var /** @type {?} */ regex;
-        var /** @type {?} */ regexStr;
-        if (typeof pattern === 'string') {
-            regexStr = "^" + pattern + "$";
-            regex = new RegExp(regexStr);
-        }
-        else {
-            regexStr = pattern.toString();
-            regex = pattern;
-        }
-        return function (control) {
-            if (isEmptyInputValue(control.value)) {
-                return null; // don't validate empty values to allow optional controls
-            }
-            var /** @type {?} */ value = control.value;
-            return regex.test(value) ? null :
-                { 'pattern': { 'requiredPattern': regexStr, 'actualValue': value } };
-        };
-    };
-    /**
-     * No-op validator.
-     * @param {?} c
-     * @return {?}
-     */
-    Validators.nullValidator = function (c) { return null; };
-    /**
-     * @param {?} validators
-     * @return {?}
-     */
-    Validators.compose = function (validators) {
-        if (!validators)
-            return null;
-        var /** @type {?} */ presentValidators = (validators.filter(isPresent));
-        if (presentValidators.length == 0)
-            return null;
-        return function (control) {
-            return _mergeErrors(_executeValidators(control, presentValidators));
-        };
-    };
-    /**
-     * @param {?} validators
-     * @return {?}
-     */
-    Validators.composeAsync = function (validators) {
-        if (!validators)
-            return null;
-        var /** @type {?} */ presentValidators = (validators.filter(isPresent));
-        if (presentValidators.length == 0)
-            return null;
-        return function (control) {
-            var /** @type {?} */ observables = _executeAsyncValidators(control, presentValidators).map(toObservable);
-            return __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_map__["map"].call(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_forkJoin__["forkJoin"])(observables), _mergeErrors);
-        };
-    };
-    return Validators;
-}());
-/**
- * @param {?} o
- * @return {?}
- */
-function isPresent(o) {
-    return o != null;
-}
-/**
- * @param {?} r
- * @return {?}
- */
-function toObservable(r) {
-    var /** @type {?} */ obs = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* ɵisPromise */])(r) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_fromPromise__["fromPromise"])(r) : r;
-    if (!(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* ɵisObservable */])(obs))) {
-        throw new Error("Expected validator to return Promise or Observable.");
-    }
-    return obs;
-}
-/**
- * @param {?} control
- * @param {?} validators
- * @return {?}
- */
-function _executeValidators(control, validators) {
-    return validators.map(function (v) { return v(control); });
-}
-/**
- * @param {?} control
- * @param {?} validators
- * @return {?}
- */
-function _executeAsyncValidators(control, validators) {
-    return validators.map(function (v) { return v(control); });
-}
-/**
- * @param {?} arrayOfErrors
- * @return {?}
- */
-function _mergeErrors(arrayOfErrors) {
-    var /** @type {?} */ res = arrayOfErrors.reduce(function (res, errors) {
-        return errors != null ? __assign({}, /** @type {?} */ ((res)), errors) : ((res));
-    }, {});
-    return Object.keys(res).length === 0 ? null : res;
-}
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * Used to provide a {\@link ControlValueAccessor} for form controls.
- *
- * See {\@link DefaultValueAccessor} for how to implement one.
- * \@stable
- */
-var NG_VALUE_ACCESSOR = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* InjectionToken */]('NgValueAccessor');
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var CHECKBOX_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return CheckboxControlValueAccessor; }),
-    multi: true,
-};
-/**
- * The accessor for writing a value and listening to changes on a checkbox input element.
- *
- *  ### Example
- *  ```
- *  <input type="checkbox" name="rememberLogin" ngModel>
- *  ```
- *
- *  \@stable
- */
-var CheckboxControlValueAccessor = (function () {
-    /**
-     * @param {?} _renderer
-     * @param {?} _elementRef
-     */
-    function CheckboxControlValueAccessor(_renderer, _elementRef) {
-        this._renderer = _renderer;
-        this._elementRef = _elementRef;
-        this.onChange = function (_) { };
-        this.onTouched = function () { };
-    }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    CheckboxControlValueAccessor.prototype.writeValue = function (value) {
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'checked', value);
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    CheckboxControlValueAccessor.prototype.registerOnChange = function (fn) { this.onChange = fn; };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    CheckboxControlValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
-    /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    CheckboxControlValueAccessor.prototype.setDisabledState = function (isDisabled) {
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
-    };
-    return CheckboxControlValueAccessor;
-}());
-CheckboxControlValueAccessor.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'input[type=checkbox][formControlName],input[type=checkbox][formControl],input[type=checkbox][ngModel]',
-                host: { '(change)': 'onChange($event.target.checked)', '(blur)': 'onTouched()' },
-                providers: [CHECKBOX_VALUE_ACCESSOR]
-            },] },
-];
-/**
- * @nocollapse
- */
-CheckboxControlValueAccessor.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
-]; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var DEFAULT_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return DefaultValueAccessor; }),
-    multi: true
-};
-/**
- * We must check whether the agent is Android because composition events
- * behave differently between iOS and Android.
- * @return {?}
- */
-function _isAndroid() {
-    var /** @type {?} */ userAgent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["c" /* ɵgetDOM */])() ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["c" /* ɵgetDOM */])().getUserAgent() : '';
-    return /android (\d+)/.test(userAgent.toLowerCase());
-}
-/**
- * Turn this mode on if you want form directives to buffer IME input until compositionend
- * \@experimental
- */
-var COMPOSITION_BUFFER_MODE = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* InjectionToken */]('CompositionEventMode');
-/**
- * The default accessor for writing a value and listening to changes that is used by the
- * {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName} directives.
- *
- *  ### Example
- *  ```
- *  <input type="text" name="searchQuery" ngModel>
- *  ```
- *
- *  \@stable
- */
-var DefaultValueAccessor = (function () {
-    /**
-     * @param {?} _renderer
-     * @param {?} _elementRef
-     * @param {?} _compositionMode
-     */
-    function DefaultValueAccessor(_renderer, _elementRef, _compositionMode) {
-        this._renderer = _renderer;
-        this._elementRef = _elementRef;
-        this._compositionMode = _compositionMode;
-        this.onChange = function (_) { };
-        this.onTouched = function () { };
-        this._composing = false;
-        if (this._compositionMode == null) {
-            this._compositionMode = !_isAndroid();
-        }
-    }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    DefaultValueAccessor.prototype.writeValue = function (value) {
-        var /** @type {?} */ normalizedValue = value == null ? '' : value;
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', normalizedValue);
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    DefaultValueAccessor.prototype.registerOnChange = function (fn) { this.onChange = fn; };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    DefaultValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
-    /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    DefaultValueAccessor.prototype.setDisabledState = function (isDisabled) {
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
-    };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    DefaultValueAccessor.prototype._handleInput = function (value) {
-        if (!this._compositionMode || (this._compositionMode && !this._composing)) {
-            this.onChange(value);
-        }
-    };
-    /**
-     * @return {?}
-     */
-    DefaultValueAccessor.prototype._compositionStart = function () { this._composing = true; };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    DefaultValueAccessor.prototype._compositionEnd = function (value) {
-        this._composing = false;
-        this._compositionMode && this.onChange(value);
-    };
-    return DefaultValueAccessor;
-}());
-DefaultValueAccessor.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'input:not([type=checkbox])[formControlName],textarea[formControlName],input:not([type=checkbox])[formControl],textarea[formControl],input:not([type=checkbox])[ngModel],textarea[ngModel],[ngDefaultControl]',
-                // TODO: vsavkin replace the above selector with the one below it once
-                // https://github.com/angular/angular/issues/3011 is implemented
-                // selector: '[ngModel],[formControl],[formControlName]',
-                host: {
-                    '(input)': '_handleInput($event.target.value)',
-                    '(blur)': 'onTouched()',
-                    '(compositionstart)': '_compositionStart()',
-                    '(compositionend)': '_compositionEnd($event.target.value)'
-                },
-                providers: [DEFAULT_VALUE_ACCESSOR]
-            },] },
-];
-/**
- * @nocollapse
- */
-DefaultValueAccessor.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
-    { type: undefined, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [COMPOSITION_BUFFER_MODE,] },] },
-]; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @param {?} validator
- * @return {?}
- */
-function normalizeValidator(validator) {
-    if (((validator)).validate) {
-        return function (c) { return ((validator)).validate(c); };
-    }
-    else {
-        return (validator);
-    }
-}
-/**
- * @param {?} validator
- * @return {?}
- */
-function normalizeAsyncValidator(validator) {
-    if (((validator)).validate) {
-        return function (c) { return ((validator)).validate(c); };
-    }
-    else {
-        return (validator);
-    }
-}
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var NUMBER_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NumberValueAccessor; }),
-    multi: true
-};
-/**
- * The accessor for writing a number value and listening to changes that is used by the
- * {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName} directives.
- *
- *  ### Example
- *  ```
- *  <input type="number" [(ngModel)]="age">
- *  ```
- */
-var NumberValueAccessor = (function () {
-    /**
-     * @param {?} _renderer
-     * @param {?} _elementRef
-     */
-    function NumberValueAccessor(_renderer, _elementRef) {
-        this._renderer = _renderer;
-        this._elementRef = _elementRef;
-        this.onChange = function (_) { };
-        this.onTouched = function () { };
-    }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    NumberValueAccessor.prototype.writeValue = function (value) {
-        // The value needs to be normalized for IE9, otherwise it is set to 'null' when null
-        var /** @type {?} */ normalizedValue = value == null ? '' : value;
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', normalizedValue);
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    NumberValueAccessor.prototype.registerOnChange = function (fn) {
-        this.onChange = function (value) { fn(value == '' ? null : parseFloat(value)); };
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    NumberValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
-    /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    NumberValueAccessor.prototype.setDisabledState = function (isDisabled) {
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
-    };
-    return NumberValueAccessor;
-}());
-NumberValueAccessor.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'input[type=number][formControlName],input[type=number][formControl],input[type=number][ngModel]',
-                host: {
-                    '(change)': 'onChange($event.target.value)',
-                    '(input)': 'onChange($event.target.value)',
-                    '(blur)': 'onTouched()'
-                },
-                providers: [NUMBER_VALUE_ACCESSOR]
-            },] },
-];
-/**
- * @nocollapse
- */
-NumberValueAccessor.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
-]; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @return {?}
- */
-function unimplemented() {
-    throw new Error('unimplemented');
-}
-/**
- * A base class that all control directive extend.
- * It binds a {\@link FormControl} object to a DOM element.
- *
- * Used internally by Angular forms.
- *
- * \@stable
- * @abstract
- */
-var NgControl = (function (_super) {
-    __extends(NgControl, _super);
-    function NgControl() {
-        var _this = _super.apply(this, arguments) || this;
-        /**
-         * \@internal
-         */
-        _this._parent = null;
-        _this.name = null;
-        _this.valueAccessor = null;
-        /**
-         * \@internal
-         */
-        _this._rawValidators = [];
-        /**
-         * \@internal
-         */
-        _this._rawAsyncValidators = [];
-        return _this;
-    }
-    Object.defineProperty(NgControl.prototype, "validator", {
-        /**
-         * @return {?}
-         */
-        get: function () { return (unimplemented()); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgControl.prototype, "asyncValidator", {
-        /**
-         * @return {?}
-         */
-        get: function () { return (unimplemented()); },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @abstract
-     * @param {?} newValue
-     * @return {?}
-     */
-    NgControl.prototype.viewToModelUpdate = function (newValue) { };
-    return NgControl;
-}(AbstractControlDirective));
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var RADIO_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return RadioControlValueAccessor; }),
-    multi: true
-};
-/**
- * Internal class used by Angular to uncheck radio buttons with the matching name.
- */
-var RadioControlRegistry = (function () {
-    function RadioControlRegistry() {
-        this._accessors = [];
-    }
-    /**
-     * @param {?} control
-     * @param {?} accessor
-     * @return {?}
-     */
-    RadioControlRegistry.prototype.add = function (control, accessor) {
-        this._accessors.push([control, accessor]);
-    };
-    /**
-     * @param {?} accessor
-     * @return {?}
-     */
-    RadioControlRegistry.prototype.remove = function (accessor) {
-        for (var /** @type {?} */ i = this._accessors.length - 1; i >= 0; --i) {
-            if (this._accessors[i][1] === accessor) {
-                this._accessors.splice(i, 1);
-                return;
-            }
-        }
-    };
-    /**
-     * @param {?} accessor
-     * @return {?}
-     */
-    RadioControlRegistry.prototype.select = function (accessor) {
-        var _this = this;
-        this._accessors.forEach(function (c) {
-            if (_this._isSameGroup(c, accessor) && c[1] !== accessor) {
-                c[1].fireUncheck(accessor.value);
-            }
-        });
-    };
-    /**
-     * @param {?} controlPair
-     * @param {?} accessor
-     * @return {?}
-     */
-    RadioControlRegistry.prototype._isSameGroup = function (controlPair, accessor) {
-        if (!controlPair[0].control)
-            return false;
-        return controlPair[0]._parent === accessor._control._parent &&
-            controlPair[1].name === accessor.name;
-    };
-    return RadioControlRegistry;
-}());
-RadioControlRegistry.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */] },
-];
-/**
- * @nocollapse
- */
-RadioControlRegistry.ctorParameters = function () { return []; };
-/**
- * \@whatItDoes Writes radio control values and listens to radio control changes.
- *
- * Used by {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName}
- * to keep the view synced with the {\@link FormControl} model.
- *
- * \@howToUse
- *
- * If you have imported the {\@link FormsModule} or the {\@link ReactiveFormsModule}, this
- * value accessor will be active on any radio control that has a form directive. You do
- * **not** need to add a special selector to activate it.
- *
- * ### How to use radio buttons with form directives
- *
- * To use radio buttons in a template-driven form, you'll want to ensure that radio buttons
- * in the same group have the same `name` attribute.  Radio buttons with different `name`
- * attributes do not affect each other.
- *
- * {\@example forms/ts/radioButtons/radio_button_example.ts region='TemplateDriven'}
- *
- * When using radio buttons in a reactive form, radio buttons in the same group should have the
- * same `formControlName`. You can also add a `name` attribute, but it's optional.
- *
- * {\@example forms/ts/reactiveRadioButtons/reactive_radio_button_example.ts region='Reactive'}
- *
- *  * **npm package**: `\@angular/forms`
- *
- *  \@stable
- */
-var RadioControlValueAccessor = (function () {
-    /**
-     * @param {?} _renderer
-     * @param {?} _elementRef
-     * @param {?} _registry
-     * @param {?} _injector
-     */
-    function RadioControlValueAccessor(_renderer, _elementRef, _registry, _injector) {
-        this._renderer = _renderer;
-        this._elementRef = _elementRef;
-        this._registry = _registry;
-        this._injector = _injector;
-        this.onChange = function () { };
-        this.onTouched = function () { };
-    }
-    /**
-     * @return {?}
-     */
-    RadioControlValueAccessor.prototype.ngOnInit = function () {
-        this._control = this._injector.get(NgControl);
-        this._checkName();
-        this._registry.add(this._control, this);
-    };
-    /**
-     * @return {?}
-     */
-    RadioControlValueAccessor.prototype.ngOnDestroy = function () { this._registry.remove(this); };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    RadioControlValueAccessor.prototype.writeValue = function (value) {
-        this._state = value === this.value;
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'checked', this._state);
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    RadioControlValueAccessor.prototype.registerOnChange = function (fn) {
-        var _this = this;
-        this._fn = fn;
-        this.onChange = function () {
-            fn(_this.value);
-            _this._registry.select(_this);
-        };
-    };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    RadioControlValueAccessor.prototype.fireUncheck = function (value) { this.writeValue(value); };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    RadioControlValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
-    /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    RadioControlValueAccessor.prototype.setDisabledState = function (isDisabled) {
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
-    };
-    /**
-     * @return {?}
-     */
-    RadioControlValueAccessor.prototype._checkName = function () {
-        if (this.name && this.formControlName && this.name !== this.formControlName) {
-            this._throwNameError();
-        }
-        if (!this.name && this.formControlName)
-            this.name = this.formControlName;
-    };
-    /**
-     * @return {?}
-     */
-    RadioControlValueAccessor.prototype._throwNameError = function () {
-        throw new Error("\n      If you define both a name and a formControlName attribute on your radio button, their values\n      must match. Ex: <input type=\"radio\" formControlName=\"food\" name=\"food\">\n    ");
-    };
-    return RadioControlValueAccessor;
-}());
-RadioControlValueAccessor.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'input[type=radio][formControlName],input[type=radio][formControl],input[type=radio][ngModel]',
-                host: { '(change)': 'onChange()', '(blur)': 'onTouched()' },
-                providers: [RADIO_VALUE_ACCESSOR]
-            },] },
-];
-/**
- * @nocollapse
- */
-RadioControlValueAccessor.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
-    { type: RadioControlRegistry, },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Injector */], },
-]; };
-RadioControlValueAccessor.propDecorators = {
-    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'formControlName': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'value': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-};
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var RANGE_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return RangeValueAccessor; }),
-    multi: true
-};
-/**
- * The accessor for writing a range value and listening to changes that is used by the
- * {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName} directives.
- *
- *  ### Example
- *  ```
- *  <input type="range" [(ngModel)]="age" >
- *  ```
- */
-var RangeValueAccessor = (function () {
-    /**
-     * @param {?} _renderer
-     * @param {?} _elementRef
-     */
-    function RangeValueAccessor(_renderer, _elementRef) {
-        this._renderer = _renderer;
-        this._elementRef = _elementRef;
-        this.onChange = function (_) { };
-        this.onTouched = function () { };
-    }
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    RangeValueAccessor.prototype.writeValue = function (value) {
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', parseFloat(value));
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    RangeValueAccessor.prototype.registerOnChange = function (fn) {
-        this.onChange = function (value) { fn(value == '' ? null : parseFloat(value)); };
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    RangeValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
-    /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    RangeValueAccessor.prototype.setDisabledState = function (isDisabled) {
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
-    };
-    return RangeValueAccessor;
-}());
-RangeValueAccessor.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'input[type=range][formControlName],input[type=range][formControl],input[type=range][ngModel]',
-                host: {
-                    '(change)': 'onChange($event.target.value)',
-                    '(input)': 'onChange($event.target.value)',
-                    '(blur)': 'onTouched()'
-                },
-                providers: [RANGE_VALUE_ACCESSOR]
-            },] },
-];
-/**
- * @nocollapse
- */
-RangeValueAccessor.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
-]; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var SELECT_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return SelectControlValueAccessor; }),
-    multi: true
-};
-/**
- * @param {?} id
- * @param {?} value
- * @return {?}
- */
-function _buildValueString(id, value) {
-    if (id == null)
-        return "" + value;
-    if (value && typeof value === 'object')
-        value = 'Object';
-    return (id + ": " + value).slice(0, 50);
-}
-/**
- * @param {?} valueString
- * @return {?}
- */
-function _extractId(valueString) {
-    return valueString.split(':')[0];
-}
-/**
- * \@whatItDoes Writes values and listens to changes on a select element.
- *
- * Used by {\@link NgModel}, {\@link FormControlDirective}, and {\@link FormControlName}
- * to keep the view synced with the {\@link FormControl} model.
- *
- * \@howToUse
- *
- * If you have imported the {\@link FormsModule} or the {\@link ReactiveFormsModule}, this
- * value accessor will be active on any select control that has a form directive. You do
- * **not** need to add a special selector to activate it.
- *
- * ### How to use select controls with form directives
- *
- * To use a select in a template-driven form, simply add an `ngModel` and a `name`
- * attribute to the main `<select>` tag.
- *
- * If your option values are simple strings, you can bind to the normal `value` property
- * on the option.  If your option values happen to be objects (and you'd like to save the
- * selection in your form as an object), use `ngValue` instead:
- *
- * {\@example forms/ts/selectControl/select_control_example.ts region='Component'}
- *
- * In reactive forms, you'll also want to add your form directive (`formControlName` or
- * `formControl`) on the main `<select>` tag. Like in the former example, you have the
- * choice of binding to the  `value` or `ngValue` property on the select's options.
- *
- * {\@example forms/ts/reactiveSelectControl/reactive_select_control_example.ts region='Component'}
- *
- * ### Caveat: Option selection
- *
- * Angular uses object identity to select option. It's possible for the identities of items
- * to change while the data does not. This can happen, for example, if the items are produced
- * from an RPC to the server, and that RPC is re-run. Even if the data hasn't changed, the
- * second response will produce objects with different identities.
- *
- * To customize the default option comparison algorithm, `<select>` supports `compareWith` input.
- * `compareWith` takes a **function** which has two arguments: `option1` and `option2`.
- * If `compareWith` is given, Angular selects option by the return value of the function.
- *
- * #### Syntax
- *
- * ```
- * <select [compareWith]="compareFn"  [(ngModel)]="selectedCountries">
- *     <option *ngFor="let country of countries" [ngValue]="country">
- *         {{country.name}}
- *     </option>
- * </select>
- *
- * compareFn(c1: Country, c2: Country): boolean {
- *     return c1 && c2 ? c1.id === c2.id : c1 === c2;
- * }
- * ```
- *
- * Note: We listen to the 'change' event because 'input' events aren't fired
- * for selects in Firefox and IE:
- * https://bugzilla.mozilla.org/show_bug.cgi?id=1024350
- * https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4660045/
- *
- * * **npm package**: `\@angular/forms`
- *
- * \@stable
- */
-var SelectControlValueAccessor = (function () {
-    /**
-     * @param {?} _renderer
-     * @param {?} _elementRef
-     */
-    function SelectControlValueAccessor(_renderer, _elementRef) {
-        this._renderer = _renderer;
-        this._elementRef = _elementRef;
-        /**
-         * \@internal
-         */
-        this._optionMap = new Map();
-        /**
-         * \@internal
-         */
-        this._idCounter = 0;
-        this.onChange = function (_) { };
-        this.onTouched = function () { };
-        this._compareWith = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵlooseIdentical */];
-    }
-    Object.defineProperty(SelectControlValueAccessor.prototype, "compareWith", {
-        /**
-         * @param {?} fn
-         * @return {?}
-         */
-        set: function (fn) {
-            if (typeof fn !== 'function') {
-                throw new Error("compareWith must be a function, but received " + JSON.stringify(fn));
-            }
-            this._compareWith = fn;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    SelectControlValueAccessor.prototype.writeValue = function (value) {
-        this.value = value;
-        var /** @type {?} */ id = this._getOptionId(value);
-        if (id == null) {
-            this._renderer.setElementProperty(this._elementRef.nativeElement, 'selectedIndex', -1);
-        }
-        var /** @type {?} */ valueString = _buildValueString(id, value);
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', valueString);
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    SelectControlValueAccessor.prototype.registerOnChange = function (fn) {
-        var _this = this;
-        this.onChange = function (valueString) {
-            _this.value = valueString;
-            fn(_this._getOptionValue(valueString));
-        };
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    SelectControlValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
-    /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    SelectControlValueAccessor.prototype.setDisabledState = function (isDisabled) {
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    SelectControlValueAccessor.prototype._registerOption = function () { return (this._idCounter++).toString(); };
-    /**
-     * \@internal
-     * @param {?} value
-     * @return {?}
-     */
-    SelectControlValueAccessor.prototype._getOptionId = function (value) {
-        for (var _i = 0, _a = Array.from(this._optionMap.keys()); _i < _a.length; _i++) {
-            var id = _a[_i];
-            if (this._compareWith(this._optionMap.get(id), value))
-                return id;
-        }
-        return null;
-    };
-    /**
-     * \@internal
-     * @param {?} valueString
-     * @return {?}
-     */
-    SelectControlValueAccessor.prototype._getOptionValue = function (valueString) {
-        var /** @type {?} */ id = _extractId(valueString);
-        return this._optionMap.has(id) ? this._optionMap.get(id) : valueString;
-    };
-    return SelectControlValueAccessor;
-}());
-SelectControlValueAccessor.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'select:not([multiple])[formControlName],select:not([multiple])[formControl],select:not([multiple])[ngModel]',
-                host: { '(change)': 'onChange($event.target.value)', '(blur)': 'onTouched()' },
-                providers: [SELECT_VALUE_ACCESSOR]
-            },] },
-];
-/**
- * @nocollapse
- */
-SelectControlValueAccessor.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
-]; };
-SelectControlValueAccessor.propDecorators = {
-    'compareWith': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-};
-/**
- * \@whatItDoes Marks `<option>` as dynamic, so Angular can be notified when options change.
- *
- * \@howToUse
- *
- * See docs for {\@link SelectControlValueAccessor} for usage examples.
- *
- * \@stable
- */
-var NgSelectOption = (function () {
-    /**
-     * @param {?} _element
-     * @param {?} _renderer
-     * @param {?} _select
-     */
-    function NgSelectOption(_element, _renderer, _select) {
-        this._element = _element;
-        this._renderer = _renderer;
-        this._select = _select;
-        if (this._select)
-            this.id = this._select._registerOption();
-    }
-    Object.defineProperty(NgSelectOption.prototype, "ngValue", {
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        set: function (value) {
-            if (this._select == null)
-                return;
-            this._select._optionMap.set(this.id, value);
-            this._setElementValue(_buildValueString(this.id, value));
-            this._select.writeValue(this._select.value);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgSelectOption.prototype, "value", {
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        set: function (value) {
-            this._setElementValue(value);
-            if (this._select)
-                this._select.writeValue(this._select.value);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * \@internal
-     * @param {?} value
-     * @return {?}
-     */
-    NgSelectOption.prototype._setElementValue = function (value) {
-        this._renderer.setElementProperty(this._element.nativeElement, 'value', value);
-    };
-    /**
-     * @return {?}
-     */
-    NgSelectOption.prototype.ngOnDestroy = function () {
-        if (this._select) {
-            this._select._optionMap.delete(this.id);
-            this._select.writeValue(this._select.value);
-        }
-    };
-    return NgSelectOption;
-}());
-NgSelectOption.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: 'option' },] },
-];
-/**
- * @nocollapse
- */
-NgSelectOption.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
-    { type: SelectControlValueAccessor, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] },] },
-]; };
-NgSelectOption.propDecorators = {
-    'ngValue': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngValue',] },],
-    'value': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['value',] },],
-};
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var SELECT_MULTIPLE_VALUE_ACCESSOR = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return SelectMultipleControlValueAccessor; }),
-    multi: true
-};
-/**
- * @param {?} id
- * @param {?} value
- * @return {?}
- */
-function _buildValueString$1(id, value) {
-    if (id == null)
-        return "" + value;
-    if (typeof value === 'string')
-        value = "'" + value + "'";
-    if (value && typeof value === 'object')
-        value = 'Object';
-    return (id + ": " + value).slice(0, 50);
-}
-/**
- * @param {?} valueString
- * @return {?}
- */
-function _extractId$1(valueString) {
-    return valueString.split(':')[0];
-}
-/**
- * The accessor for writing a value and listening to changes on a select element.
- *
- *  ### Caveat: Options selection
- *
- * Angular uses object identity to select options. It's possible for the identities of items
- * to change while the data does not. This can happen, for example, if the items are produced
- * from an RPC to the server, and that RPC is re-run. Even if the data hasn't changed, the
- * second response will produce objects with different identities.
- *
- * To customize the default option comparison algorithm, `<select multiple>` supports `compareWith`
- * input. `compareWith` takes a **function** which has two arguments: `option1` and `option2`.
- * If `compareWith` is given, Angular selects options by the return value of the function.
- *
- * #### Syntax
- *
- * ```
- * <select multiple [compareWith]="compareFn"  [(ngModel)]="selectedCountries">
- *     <option *ngFor="let country of countries" [ngValue]="country">
- *         {{country.name}}
- *     </option>
- * </select>
- *
- * compareFn(c1: Country, c2: Country): boolean {
- *     return c1 && c2 ? c1.id === c2.id : c1 === c2;
- * }
- * ```
- *
- * \@stable
- */
-var SelectMultipleControlValueAccessor = (function () {
-    /**
-     * @param {?} _renderer
-     * @param {?} _elementRef
-     */
-    function SelectMultipleControlValueAccessor(_renderer, _elementRef) {
-        this._renderer = _renderer;
-        this._elementRef = _elementRef;
-        /**
-         * \@internal
-         */
-        this._optionMap = new Map();
-        /**
-         * \@internal
-         */
-        this._idCounter = 0;
-        this.onChange = function (_) { };
-        this.onTouched = function () { };
-        this._compareWith = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵlooseIdentical */];
-    }
-    Object.defineProperty(SelectMultipleControlValueAccessor.prototype, "compareWith", {
-        /**
-         * @param {?} fn
-         * @return {?}
-         */
-        set: function (fn) {
-            if (typeof fn !== 'function') {
-                throw new Error("compareWith must be a function, but received " + JSON.stringify(fn));
-            }
-            this._compareWith = fn;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    SelectMultipleControlValueAccessor.prototype.writeValue = function (value) {
-        var _this = this;
-        this.value = value;
-        var /** @type {?} */ optionSelectedStateSetter;
-        if (Array.isArray(value)) {
-            // convert values to ids
-            var /** @type {?} */ ids_1 = value.map(function (v) { return _this._getOptionId(v); });
-            optionSelectedStateSetter = function (opt, o) { opt._setSelected(ids_1.indexOf(o.toString()) > -1); };
-        }
-        else {
-            optionSelectedStateSetter = function (opt, o) { opt._setSelected(false); };
-        }
-        this._optionMap.forEach(optionSelectedStateSetter);
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    SelectMultipleControlValueAccessor.prototype.registerOnChange = function (fn) {
-        var _this = this;
-        this.onChange = function (_) {
-            var /** @type {?} */ selected = [];
-            if (_.hasOwnProperty('selectedOptions')) {
-                var /** @type {?} */ options = _.selectedOptions;
-                for (var /** @type {?} */ i = 0; i < options.length; i++) {
-                    var /** @type {?} */ opt = options.item(i);
-                    var /** @type {?} */ val = _this._getOptionValue(opt.value);
-                    selected.push(val);
-                }
-            }
-            else {
-                var /** @type {?} */ options = (_.options);
-                for (var /** @type {?} */ i = 0; i < options.length; i++) {
-                    var /** @type {?} */ opt = options.item(i);
-                    if (opt.selected) {
-                        var /** @type {?} */ val = _this._getOptionValue(opt.value);
-                        selected.push(val);
-                    }
-                }
-            }
-            _this.value = selected;
-            fn(selected);
-        };
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    SelectMultipleControlValueAccessor.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
-    /**
-     * @param {?} isDisabled
-     * @return {?}
-     */
-    SelectMultipleControlValueAccessor.prototype.setDisabledState = function (isDisabled) {
-        this._renderer.setElementProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
-    };
-    /**
-     * \@internal
-     * @param {?} value
-     * @return {?}
-     */
-    SelectMultipleControlValueAccessor.prototype._registerOption = function (value) {
-        var /** @type {?} */ id = (this._idCounter++).toString();
-        this._optionMap.set(id, value);
-        return id;
-    };
-    /**
-     * \@internal
-     * @param {?} value
-     * @return {?}
-     */
-    SelectMultipleControlValueAccessor.prototype._getOptionId = function (value) {
-        for (var _i = 0, _a = Array.from(this._optionMap.keys()); _i < _a.length; _i++) {
-            var id = _a[_i];
-            if (this._compareWith(/** @type {?} */ ((this._optionMap.get(id)))._value, value))
-                return id;
-        }
-        return null;
-    };
-    /**
-     * \@internal
-     * @param {?} valueString
-     * @return {?}
-     */
-    SelectMultipleControlValueAccessor.prototype._getOptionValue = function (valueString) {
-        var /** @type {?} */ id = _extractId$1(valueString);
-        return this._optionMap.has(id) ? ((this._optionMap.get(id)))._value : valueString;
-    };
-    return SelectMultipleControlValueAccessor;
-}());
-SelectMultipleControlValueAccessor.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'select[multiple][formControlName],select[multiple][formControl],select[multiple][ngModel]',
-                host: { '(change)': 'onChange($event.target)', '(blur)': 'onTouched()' },
-                providers: [SELECT_MULTIPLE_VALUE_ACCESSOR]
-            },] },
-];
-/**
- * @nocollapse
- */
-SelectMultipleControlValueAccessor.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
-]; };
-SelectMultipleControlValueAccessor.propDecorators = {
-    'compareWith': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-};
-/**
- * Marks `<option>` as dynamic, so Angular can be notified when options change.
- *
- * ### Example
- *
- * ```
- * <select multiple name="city" ngModel>
- *   <option *ngFor="let c of cities" [value]="c"></option>
- * </select>
- * ```
- */
-var NgSelectMultipleOption = (function () {
-    /**
-     * @param {?} _element
-     * @param {?} _renderer
-     * @param {?} _select
-     */
-    function NgSelectMultipleOption(_element, _renderer, _select) {
-        this._element = _element;
-        this._renderer = _renderer;
-        this._select = _select;
-        if (this._select) {
-            this.id = this._select._registerOption(this);
-        }
-    }
-    Object.defineProperty(NgSelectMultipleOption.prototype, "ngValue", {
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        set: function (value) {
-            if (this._select == null)
-                return;
-            this._value = value;
-            this._setElementValue(_buildValueString$1(this.id, value));
-            this._select.writeValue(this._select.value);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgSelectMultipleOption.prototype, "value", {
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        set: function (value) {
-            if (this._select) {
-                this._value = value;
-                this._setElementValue(_buildValueString$1(this.id, value));
-                this._select.writeValue(this._select.value);
-            }
-            else {
-                this._setElementValue(value);
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * \@internal
-     * @param {?} value
-     * @return {?}
-     */
-    NgSelectMultipleOption.prototype._setElementValue = function (value) {
-        this._renderer.setElementProperty(this._element.nativeElement, 'value', value);
-    };
-    /**
-     * \@internal
-     * @param {?} selected
-     * @return {?}
-     */
-    NgSelectMultipleOption.prototype._setSelected = function (selected) {
-        this._renderer.setElementProperty(this._element.nativeElement, 'selected', selected);
-    };
-    /**
-     * @return {?}
-     */
-    NgSelectMultipleOption.prototype.ngOnDestroy = function () {
-        if (this._select) {
-            this._select._optionMap.delete(this.id);
-            this._select.writeValue(this._select.value);
-        }
-    };
-    return NgSelectMultipleOption;
-}());
-NgSelectMultipleOption.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: 'option' },] },
-];
-/**
- * @nocollapse
- */
-NgSelectMultipleOption.ctorParameters = function () { return [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* ElementRef */], },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Renderer */], },
-    { type: SelectMultipleControlValueAccessor, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] },] },
-]; };
-NgSelectMultipleOption.propDecorators = {
-    'ngValue': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngValue',] },],
-    'value': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['value',] },],
-};
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @param {?} name
- * @param {?} parent
- * @return {?}
- */
-function controlPath(name, parent) {
-    return ((parent.path)).concat([name]);
-}
-/**
- * @param {?} control
- * @param {?} dir
- * @return {?}
- */
-function setUpControl(control, dir) {
-    if (!control)
-        _throwError(dir, 'Cannot find control with');
-    if (!dir.valueAccessor)
-        _throwError(dir, 'No value accessor for form control with');
-    control.validator = Validators.compose([/** @type {?} */ ((control.validator)), dir.validator]);
-    control.asyncValidator = Validators.composeAsync([/** @type {?} */ ((control.asyncValidator)), dir.asyncValidator]); /** @type {?} */
-    ((dir.valueAccessor)).writeValue(control.value); /** @type {?} */
-    ((
-    // view -> model
-    dir.valueAccessor)).registerOnChange(function (newValue) {
-        dir.viewToModelUpdate(newValue);
-        control.markAsDirty();
-        control.setValue(newValue, { emitModelToViewChange: false });
-    }); /** @type {?} */
-    ((
-    // touched
-    dir.valueAccessor)).registerOnTouched(function () { return control.markAsTouched(); });
-    control.registerOnChange(function (newValue, emitModelEvent) {
-        ((
-        // control -> view
-        dir.valueAccessor)).writeValue(newValue);
-        // control -> ngModel
-        if (emitModelEvent)
-            dir.viewToModelUpdate(newValue);
-    });
-    if (((dir.valueAccessor)).setDisabledState) {
-        control.registerOnDisabledChange(function (isDisabled) { /** @type {?} */ ((((dir.valueAccessor)).setDisabledState))(isDisabled); });
-    }
-    // re-run validation when validator binding changes, e.g. minlength=3 -> minlength=4
-    dir._rawValidators.forEach(function (validator) {
-        if (((validator)).registerOnValidatorChange)
-            ((((validator)).registerOnValidatorChange))(function () { return control.updateValueAndValidity(); });
-    });
-    dir._rawAsyncValidators.forEach(function (validator) {
-        if (((validator)).registerOnValidatorChange)
-            ((((validator)).registerOnValidatorChange))(function () { return control.updateValueAndValidity(); });
-    });
-}
-/**
- * @param {?} control
- * @param {?} dir
- * @return {?}
- */
-function cleanUpControl(control, dir) {
-    ((dir.valueAccessor)).registerOnChange(function () { return _noControlError(dir); }); /** @type {?} */
-    ((dir.valueAccessor)).registerOnTouched(function () { return _noControlError(dir); });
-    dir._rawValidators.forEach(function (validator) {
-        if (validator.registerOnValidatorChange) {
-            validator.registerOnValidatorChange(null);
-        }
-    });
-    dir._rawAsyncValidators.forEach(function (validator) {
-        if (validator.registerOnValidatorChange) {
-            validator.registerOnValidatorChange(null);
-        }
-    });
-    if (control)
-        control._clearChangeFns();
-}
-/**
- * @param {?} control
- * @param {?} dir
- * @return {?}
- */
-function setUpFormContainer(control, dir) {
-    if (control == null)
-        _throwError(dir, 'Cannot find control with');
-    control.validator = Validators.compose([control.validator, dir.validator]);
-    control.asyncValidator = Validators.composeAsync([control.asyncValidator, dir.asyncValidator]);
-}
-/**
- * @param {?} dir
- * @return {?}
- */
-function _noControlError(dir) {
-    return _throwError(dir, 'There is no FormControl instance attached to form control element with');
-}
-/**
- * @param {?} dir
- * @param {?} message
- * @return {?}
- */
-function _throwError(dir, message) {
-    var /** @type {?} */ messageEnd;
-    if (((dir.path)).length > 1) {
-        messageEnd = "path: '" + ((dir.path)).join(' -> ') + "'";
-    }
-    else if (((dir.path))[0]) {
-        messageEnd = "name: '" + dir.path + "'";
-    }
-    else {
-        messageEnd = 'unspecified name attribute';
-    }
-    throw new Error(message + " " + messageEnd);
-}
-/**
- * @param {?} validators
- * @return {?}
- */
-function composeValidators(validators) {
-    return validators != null ? Validators.compose(validators.map(normalizeValidator)) : null;
-}
-/**
- * @param {?} validators
- * @return {?}
- */
-function composeAsyncValidators(validators) {
-    return validators != null ? Validators.composeAsync(validators.map(normalizeAsyncValidator)) :
-        null;
-}
-/**
- * @param {?} changes
- * @param {?} viewModel
- * @return {?}
- */
-function isPropertyUpdated(changes, viewModel) {
-    if (!changes.hasOwnProperty('model'))
-        return false;
-    var /** @type {?} */ change = changes['model'];
-    if (change.isFirstChange())
-        return true;
-    return !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* ɵlooseIdentical */])(viewModel, change.currentValue);
-}
-var BUILTIN_ACCESSORS = [
-    CheckboxControlValueAccessor,
-    RangeValueAccessor,
-    NumberValueAccessor,
-    SelectControlValueAccessor,
-    SelectMultipleControlValueAccessor,
-    RadioControlValueAccessor,
-];
-/**
- * @param {?} valueAccessor
- * @return {?}
- */
-function isBuiltInAccessor(valueAccessor) {
-    return BUILTIN_ACCESSORS.some(function (a) { return valueAccessor.constructor === a; });
-}
-/**
- * @param {?} dir
- * @param {?} valueAccessors
- * @return {?}
- */
-function selectValueAccessor(dir, valueAccessors) {
-    if (!valueAccessors)
-        return null;
-    var /** @type {?} */ defaultAccessor = undefined;
-    var /** @type {?} */ builtinAccessor = undefined;
-    var /** @type {?} */ customAccessor = undefined;
-    valueAccessors.forEach(function (v) {
-        if (v.constructor === DefaultValueAccessor) {
-            defaultAccessor = v;
-        }
-        else if (isBuiltInAccessor(v)) {
-            if (builtinAccessor)
-                _throwError(dir, 'More than one built-in value accessor matches form control with');
-            builtinAccessor = v;
-        }
-        else {
-            if (customAccessor)
-                _throwError(dir, 'More than one custom value accessor matches form control with');
-            customAccessor = v;
-        }
-    });
-    if (customAccessor)
-        return customAccessor;
-    if (builtinAccessor)
-        return builtinAccessor;
-    if (defaultAccessor)
-        return defaultAccessor;
-    _throwError(dir, 'No valid value accessor for form control with');
-    return null;
-}
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * This is a base class for code shared between {\@link NgModelGroup} and {\@link FormGroupName}.
- *
- * \@stable
- */
-var AbstractFormGroupDirective = (function (_super) {
-    __extends(AbstractFormGroupDirective, _super);
-    function AbstractFormGroupDirective() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * @return {?}
-     */
-    AbstractFormGroupDirective.prototype.ngOnInit = function () {
-        this._checkParentType(); /** @type {?} */
-        ((this.formDirective)).addFormGroup(this);
-    };
-    /**
-     * @return {?}
-     */
-    AbstractFormGroupDirective.prototype.ngOnDestroy = function () {
-        if (this.formDirective) {
-            this.formDirective.removeFormGroup(this);
-        }
-    };
-    Object.defineProperty(AbstractFormGroupDirective.prototype, "control", {
-        /**
-         * Get the {\@link FormGroup} backing this binding.
-         * @return {?}
-         */
-        get: function () { return ((this.formDirective)).getFormGroup(this); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractFormGroupDirective.prototype, "path", {
-        /**
-         * Get the path to this control group.
-         * @return {?}
-         */
-        get: function () { return controlPath(this.name, this._parent); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractFormGroupDirective.prototype, "formDirective", {
-        /**
-         * Get the {\@link Form} to which this group belongs.
-         * @return {?}
-         */
-        get: function () { return this._parent ? this._parent.formDirective : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractFormGroupDirective.prototype, "validator", {
-        /**
-         * @return {?}
-         */
-        get: function () { return composeValidators(this._validators); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractFormGroupDirective.prototype, "asyncValidator", {
-        /**
-         * @return {?}
-         */
-        get: function () {
-            return composeAsyncValidators(this._asyncValidators);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * \@internal
-     * @return {?}
-     */
-    AbstractFormGroupDirective.prototype._checkParentType = function () { };
-    return AbstractFormGroupDirective;
-}(ControlContainer));
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var AbstractControlStatus = (function () {
-    /**
-     * @param {?} cd
-     */
-    function AbstractControlStatus(cd) {
-        this._cd = cd;
-    }
-    Object.defineProperty(AbstractControlStatus.prototype, "ngClassUntouched", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._cd.control ? this._cd.control.untouched : false; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlStatus.prototype, "ngClassTouched", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._cd.control ? this._cd.control.touched : false; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlStatus.prototype, "ngClassPristine", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._cd.control ? this._cd.control.pristine : false; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlStatus.prototype, "ngClassDirty", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._cd.control ? this._cd.control.dirty : false; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlStatus.prototype, "ngClassValid", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._cd.control ? this._cd.control.valid : false; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlStatus.prototype, "ngClassInvalid", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._cd.control ? this._cd.control.invalid : false; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControlStatus.prototype, "ngClassPending", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._cd.control ? this._cd.control.pending : false; },
-        enumerable: true,
-        configurable: true
-    });
-    return AbstractControlStatus;
-}());
-var ngControlStatusHost = {
-    '[class.ng-untouched]': 'ngClassUntouched',
-    '[class.ng-touched]': 'ngClassTouched',
-    '[class.ng-pristine]': 'ngClassPristine',
-    '[class.ng-dirty]': 'ngClassDirty',
-    '[class.ng-valid]': 'ngClassValid',
-    '[class.ng-invalid]': 'ngClassInvalid',
-    '[class.ng-pending]': 'ngClassPending',
-};
-/**
- * Directive automatically applied to Angular form controls that sets CSS classes
- * based on control status (valid/invalid/dirty/etc).
- *
- * \@stable
- */
-var NgControlStatus = (function (_super) {
-    __extends(NgControlStatus, _super);
-    /**
-     * @param {?} cd
-     */
-    function NgControlStatus(cd) {
-        return _super.call(this, cd) || this;
-    }
-    return NgControlStatus;
-}(AbstractControlStatus));
-NgControlStatus.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formControlName],[ngModel],[formControl]', host: ngControlStatusHost },] },
-];
-/**
- * @nocollapse
- */
-NgControlStatus.ctorParameters = function () { return [
-    { type: NgControl, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] },] },
-]; };
-/**
- * Directive automatically applied to Angular form groups that sets CSS classes
- * based on control status (valid/invalid/dirty/etc).
- *
- * \@stable
- */
-var NgControlStatusGroup = (function (_super) {
-    __extends(NgControlStatusGroup, _super);
-    /**
-     * @param {?} cd
-     */
-    function NgControlStatusGroup(cd) {
-        return _super.call(this, cd) || this;
-    }
-    return NgControlStatusGroup;
-}(AbstractControlStatus));
-NgControlStatusGroup.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: '[formGroupName],[formArrayName],[ngModelGroup],[formGroup],form:not([ngNoForm]),[ngForm]',
-                host: ngControlStatusHost
-            },] },
-];
-/**
- * @nocollapse
- */
-NgControlStatusGroup.ctorParameters = function () { return [
-    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] },] },
-]; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * Indicates that a FormControl is valid, i.e. that no errors exist in the input value.
- */
-var VALID = 'VALID';
-/**
- * Indicates that a FormControl is invalid, i.e. that an error exists in the input value.
- */
-var INVALID = 'INVALID';
-/**
- * Indicates that a FormControl is pending, i.e. that async validation is occurring and
- * errors are not yet available for the input value.
- */
-var PENDING = 'PENDING';
-/**
- * Indicates that a FormControl is disabled, i.e. that the control is exempt from ancestor
- * calculations of validity or value.
- */
-var DISABLED = 'DISABLED';
-/**
- * @param {?} control
- * @param {?} path
- * @param {?} delimiter
- * @return {?}
- */
-function _find(control, path, delimiter) {
-    if (path == null)
-        return null;
-    if (!(path instanceof Array)) {
-        path = ((path)).split(delimiter);
-    }
-    if (path instanceof Array && (path.length === 0))
-        return null;
-    return ((path)).reduce(function (v, name) {
-        if (v instanceof FormGroup) {
-            return v.controls[name] || null;
-        }
-        if (v instanceof FormArray) {
-            return v.at(/** @type {?} */ (name)) || null;
-        }
-        return null;
-    }, control);
-}
-/**
- * @param {?=} validator
- * @return {?}
- */
-function coerceToValidator(validator) {
-    return Array.isArray(validator) ? composeValidators(validator) : validator || null;
-}
-/**
- * @param {?=} asyncValidator
- * @return {?}
- */
-function coerceToAsyncValidator(asyncValidator) {
-    return Array.isArray(asyncValidator) ? composeAsyncValidators(asyncValidator) :
-        asyncValidator || null;
-}
-/**
- * \@whatItDoes This is the base class for {\@link FormControl}, {\@link FormGroup}, and
- * {\@link FormArray}.
- *
- * It provides some of the shared behavior that all controls and groups of controls have, like
- * running validators, calculating status, and resetting state. It also defines the properties
- * that are shared between all sub-classes, like `value`, `valid`, and `dirty`. It shouldn't be
- * instantiated directly.
- *
- * \@stable
- * @abstract
- */
-var AbstractControl = (function () {
-    /**
-     * @param {?} validator
-     * @param {?} asyncValidator
-     */
-    function AbstractControl(validator, asyncValidator) {
-        this.validator = validator;
-        this.asyncValidator = asyncValidator;
-        /**
-         * \@internal
-         */
-        this._onCollectionChange = function () { };
-        this._pristine = true;
-        this._touched = false;
-        /**
-         * \@internal
-         */
-        this._onDisabledChange = [];
-    }
-    Object.defineProperty(AbstractControl.prototype, "value", {
-        /**
-         * The value of the control.
-         * @return {?}
-         */
-        get: function () { return this._value; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "parent", {
-        /**
-         * The parent control.
-         * @return {?}
-         */
-        get: function () { return this._parent; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "status", {
-        /**
-         * The validation status of the control. There are four possible
-         * validation statuses:
-         *
-         * * **VALID**:  control has passed all validation checks
-         * * **INVALID**: control has failed at least one validation check
-         * * **PENDING**: control is in the midst of conducting a validation check
-         * * **DISABLED**: control is exempt from validation checks
-         *
-         * These statuses are mutually exclusive, so a control cannot be
-         * both valid AND invalid or invalid AND disabled.
-         * @return {?}
-         */
-        get: function () { return this._status; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "valid", {
-        /**
-         * A control is `valid` when its `status === VALID`.
-         *
-         * In order to have this status, the control must have passed all its
-         * validation checks.
-         * @return {?}
-         */
-        get: function () { return this._status === VALID; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "invalid", {
-        /**
-         * A control is `invalid` when its `status === INVALID`.
-         *
-         * In order to have this status, the control must have failed
-         * at least one of its validation checks.
-         * @return {?}
-         */
-        get: function () { return this._status === INVALID; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "pending", {
-        /**
-         * A control is `pending` when its `status === PENDING`.
-         *
-         * In order to have this status, the control must be in the
-         * middle of conducting a validation check.
-         * @return {?}
-         */
-        get: function () { return this._status == PENDING; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "disabled", {
-        /**
-         * A control is `disabled` when its `status === DISABLED`.
-         *
-         * Disabled controls are exempt from validation checks and
-         * are not included in the aggregate value of their ancestor
-         * controls.
-         * @return {?}
-         */
-        get: function () { return this._status === DISABLED; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "enabled", {
-        /**
-         * A control is `enabled` as long as its `status !== DISABLED`.
-         *
-         * In other words, it has a status of `VALID`, `INVALID`, or
-         * `PENDING`.
-         * @return {?}
-         */
-        get: function () { return this._status !== DISABLED; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "errors", {
-        /**
-         * Returns any errors generated by failing validation. If there
-         * are no errors, it will return null.
-         * @return {?}
-         */
-        get: function () { return this._errors; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "pristine", {
-        /**
-         * A control is `pristine` if the user has not yet changed
-         * the value in the UI.
-         *
-         * Note that programmatic changes to a control's value will
-         * *not* mark it dirty.
-         * @return {?}
-         */
-        get: function () { return this._pristine; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "dirty", {
-        /**
-         * A control is `dirty` if the user has changed the value
-         * in the UI.
-         *
-         * Note that programmatic changes to a control's value will
-         * *not* mark it dirty.
-         * @return {?}
-         */
-        get: function () { return !this.pristine; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "touched", {
-        /**
-         * A control is marked `touched` once the user has triggered
-         * a `blur` event on it.
-         * @return {?}
-         */
-        get: function () { return this._touched; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "untouched", {
-        /**
-         * A control is `untouched` if the user has not yet triggered
-         * a `blur` event on it.
-         * @return {?}
-         */
-        get: function () { return !this._touched; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "valueChanges", {
-        /**
-         * Emits an event every time the value of the control changes, in
-         * the UI or programmatically.
-         * @return {?}
-         */
-        get: function () { return this._valueChanges; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(AbstractControl.prototype, "statusChanges", {
-        /**
-         * Emits an event every time the validation status of the control
-         * is re-calculated.
-         * @return {?}
-         */
-        get: function () { return this._statusChanges; },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * Sets the synchronous validators that are active on this control.  Calling
-     * this will overwrite any existing sync validators.
-     * @param {?} newValidator
-     * @return {?}
-     */
-    AbstractControl.prototype.setValidators = function (newValidator) {
-        this.validator = coerceToValidator(newValidator);
-    };
-    /**
-     * Sets the async validators that are active on this control. Calling this
-     * will overwrite any existing async validators.
-     * @param {?} newValidator
-     * @return {?}
-     */
-    AbstractControl.prototype.setAsyncValidators = function (newValidator) {
-        this.asyncValidator = coerceToAsyncValidator(newValidator);
-    };
-    /**
-     * Empties out the sync validator list.
-     * @return {?}
-     */
-    AbstractControl.prototype.clearValidators = function () { this.validator = null; };
-    /**
-     * Empties out the async validator list.
-     * @return {?}
-     */
-    AbstractControl.prototype.clearAsyncValidators = function () { this.asyncValidator = null; };
-    /**
-     * Marks the control as `touched`.
-     *
-     * This will also mark all direct ancestors as `touched` to maintain
-     * the model.
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype.markAsTouched = function (_a) {
-        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
-        this._touched = true;
-        if (this._parent && !onlySelf) {
-            this._parent.markAsTouched({ onlySelf: onlySelf });
-        }
-    };
-    /**
-     * Marks the control as `untouched`.
-     *
-     * If the control has any children, it will also mark all children as `untouched`
-     * to maintain the model, and re-calculate the `touched` status of all parent
-     * controls.
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype.markAsUntouched = function (_a) {
-        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
-        this._touched = false;
-        this._forEachChild(function (control) { control.markAsUntouched({ onlySelf: true }); });
-        if (this._parent && !onlySelf) {
-            this._parent._updateTouched({ onlySelf: onlySelf });
-        }
-    };
-    /**
-     * Marks the control as `dirty`.
-     *
-     * This will also mark all direct ancestors as `dirty` to maintain
-     * the model.
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype.markAsDirty = function (_a) {
-        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
-        this._pristine = false;
-        if (this._parent && !onlySelf) {
-            this._parent.markAsDirty({ onlySelf: onlySelf });
-        }
-    };
-    /**
-     * Marks the control as `pristine`.
-     *
-     * If the control has any children, it will also mark all children as `pristine`
-     * to maintain the model, and re-calculate the `pristine` status of all parent
-     * controls.
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype.markAsPristine = function (_a) {
-        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
-        this._pristine = true;
-        this._forEachChild(function (control) { control.markAsPristine({ onlySelf: true }); });
-        if (this._parent && !onlySelf) {
-            this._parent._updatePristine({ onlySelf: onlySelf });
-        }
-    };
-    /**
-     * Marks the control as `pending`.
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype.markAsPending = function (_a) {
-        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
-        this._status = PENDING;
-        if (this._parent && !onlySelf) {
-            this._parent.markAsPending({ onlySelf: onlySelf });
-        }
-    };
-    /**
-     * Disables the control. This means the control will be exempt from validation checks and
-     * excluded from the aggregate value of any parent. Its status is `DISABLED`.
-     *
-     * If the control has children, all children will be disabled to maintain the model.
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype.disable = function (_a) {
-        var _b = _a === void 0 ? {} : _a, onlySelf = _b.onlySelf, emitEvent = _b.emitEvent;
-        this._status = DISABLED;
-        this._errors = null;
-        this._forEachChild(function (control) { control.disable({ onlySelf: true }); });
-        this._updateValue();
-        if (emitEvent !== false) {
-            this._valueChanges.emit(this._value);
-            this._statusChanges.emit(this._status);
-        }
-        this._updateAncestors(!!onlySelf);
-        this._onDisabledChange.forEach(function (changeFn) { return changeFn(true); });
-    };
-    /**
-     * Enables the control. This means the control will be included in validation checks and
-     * the aggregate value of its parent. Its status is re-calculated based on its value and
-     * its validators.
-     *
-     * If the control has children, all children will be enabled.
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype.enable = function (_a) {
-        var _b = _a === void 0 ? {} : _a, onlySelf = _b.onlySelf, emitEvent = _b.emitEvent;
-        this._status = VALID;
-        this._forEachChild(function (control) { control.enable({ onlySelf: true }); });
-        this.updateValueAndValidity({ onlySelf: true, emitEvent: emitEvent });
-        this._updateAncestors(!!onlySelf);
-        this._onDisabledChange.forEach(function (changeFn) { return changeFn(false); });
-    };
-    /**
-     * @param {?} onlySelf
-     * @return {?}
-     */
-    AbstractControl.prototype._updateAncestors = function (onlySelf) {
-        if (this._parent && !onlySelf) {
-            this._parent.updateValueAndValidity();
-            this._parent._updatePristine();
-            this._parent._updateTouched();
-        }
-    };
-    /**
-     * @param {?} parent
-     * @return {?}
-     */
-    AbstractControl.prototype.setParent = function (parent) { this._parent = parent; };
-    /**
-     * Sets the value of the control. Abstract method (implemented in sub-classes).
-     * @abstract
-     * @param {?} value
-     * @param {?=} options
-     * @return {?}
-     */
-    AbstractControl.prototype.setValue = function (value, options) { };
-    /**
-     * Patches the value of the control. Abstract method (implemented in sub-classes).
-     * @abstract
-     * @param {?} value
-     * @param {?=} options
-     * @return {?}
-     */
-    AbstractControl.prototype.patchValue = function (value, options) { };
-    /**
-     * Resets the control. Abstract method (implemented in sub-classes).
-     * @abstract
-     * @param {?=} value
-     * @param {?=} options
-     * @return {?}
-     */
-    AbstractControl.prototype.reset = function (value, options) { };
-    /**
-     * Re-calculates the value and validation status of the control.
-     *
-     * By default, it will also update the value and validity of its ancestors.
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype.updateValueAndValidity = function (_a) {
-        var _b = _a === void 0 ? {} : _a, onlySelf = _b.onlySelf, emitEvent = _b.emitEvent;
-        this._setInitialStatus();
-        this._updateValue();
-        if (this.enabled) {
-            this._cancelExistingSubscription();
-            this._errors = this._runValidator();
-            this._status = this._calculateStatus();
-            if (this._status === VALID || this._status === PENDING) {
-                this._runAsyncValidator(emitEvent);
-            }
-        }
-        if (emitEvent !== false) {
-            this._valueChanges.emit(this._value);
-            this._statusChanges.emit(this._status);
-        }
-        if (this._parent && !onlySelf) {
-            this._parent.updateValueAndValidity({ onlySelf: onlySelf, emitEvent: emitEvent });
-        }
-    };
-    /**
-     * \@internal
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype._updateTreeValidity = function (_a) {
-        var emitEvent = (_a === void 0 ? { emitEvent: true } : _a).emitEvent;
-        this._forEachChild(function (ctrl) { return ctrl._updateTreeValidity({ emitEvent: emitEvent }); });
-        this.updateValueAndValidity({ onlySelf: true, emitEvent: emitEvent });
-    };
-    /**
-     * @return {?}
-     */
-    AbstractControl.prototype._setInitialStatus = function () { this._status = this._allControlsDisabled() ? DISABLED : VALID; };
-    /**
-     * @return {?}
-     */
-    AbstractControl.prototype._runValidator = function () {
-        return this.validator ? this.validator(this) : null;
-    };
-    /**
-     * @param {?=} emitEvent
-     * @return {?}
-     */
-    AbstractControl.prototype._runAsyncValidator = function (emitEvent) {
-        var _this = this;
-        if (this.asyncValidator) {
-            this._status = PENDING;
-            var /** @type {?} */ obs = toObservable(this.asyncValidator(this));
-            this._asyncValidationSubscription =
-                obs.subscribe(function (errors) { return _this.setErrors(errors, { emitEvent: emitEvent }); });
-        }
-    };
-    /**
-     * @return {?}
-     */
-    AbstractControl.prototype._cancelExistingSubscription = function () {
-        if (this._asyncValidationSubscription) {
-            this._asyncValidationSubscription.unsubscribe();
-        }
-    };
-    /**
-     * Sets errors on a form control.
-     *
-     * This is used when validations are run manually by the user, rather than automatically.
-     *
-     * Calling `setErrors` will also update the validity of the parent control.
-     *
-     * ### Example
-     *
-     * ```
-     * const login = new FormControl("someLogin");
-     * login.setErrors({
-     *   "notUnique": true
-     * });
-     *
-     * expect(login.valid).toEqual(false);
-     * expect(login.errors).toEqual({"notUnique": true});
-     *
-     * login.setValue("someOtherLogin");
-     *
-     * expect(login.valid).toEqual(true);
-     * ```
-     * @param {?} errors
-     * @param {?=} __1
-     * @return {?}
-     */
-    AbstractControl.prototype.setErrors = function (errors, _a) {
-        var emitEvent = (_a === void 0 ? {} : _a).emitEvent;
-        this._errors = errors;
-        this._updateControlsErrors(emitEvent !== false);
-    };
-    /**
-     * Retrieves a child control given the control's name or path.
-     *
-     * Paths can be passed in as an array or a string delimited by a dot.
-     *
-     * To get a control nested within a `person` sub-group:
-     *
-     * * `this.form.get('person.name');`
-     *
-     * -OR-
-     *
-     * * `this.form.get(['person', 'name']);`
-     * @param {?} path
-     * @return {?}
-     */
-    AbstractControl.prototype.get = function (path) { return _find(this, path, '.'); };
-    /**
-     * Returns true if the control with the given path has the error specified. Otherwise
-     * returns null or undefined.
-     *
-     * If no path is given, it checks for the error on the present control.
-     * @param {?} errorCode
-     * @param {?=} path
-     * @return {?}
-     */
-    AbstractControl.prototype.getError = function (errorCode, path) {
-        var /** @type {?} */ control = path ? this.get(path) : this;
-        return control && control._errors ? control._errors[errorCode] : null;
-    };
-    /**
-     * Returns true if the control with the given path has the error specified. Otherwise
-     * returns false.
-     *
-     * If no path is given, it checks for the error on the present control.
-     * @param {?} errorCode
-     * @param {?=} path
-     * @return {?}
-     */
-    AbstractControl.prototype.hasError = function (errorCode, path) { return !!this.getError(errorCode, path); };
-    Object.defineProperty(AbstractControl.prototype, "root", {
-        /**
-         * Retrieves the top-level ancestor of this control.
-         * @return {?}
-         */
-        get: function () {
-            var /** @type {?} */ x = this;
-            while (x._parent) {
-                x = x._parent;
-            }
-            return x;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * \@internal
-     * @param {?} emitEvent
-     * @return {?}
-     */
-    AbstractControl.prototype._updateControlsErrors = function (emitEvent) {
-        this._status = this._calculateStatus();
-        if (emitEvent) {
-            this._statusChanges.emit(this._status);
-        }
-        if (this._parent) {
-            this._parent._updateControlsErrors(emitEvent);
-        }
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    AbstractControl.prototype._initObservables = function () {
-        this._valueChanges = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
-        this._statusChanges = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
-    };
-    /**
-     * @return {?}
-     */
-    AbstractControl.prototype._calculateStatus = function () {
-        if (this._allControlsDisabled())
-            return DISABLED;
-        if (this._errors)
-            return INVALID;
-        if (this._anyControlsHaveStatus(PENDING))
-            return PENDING;
-        if (this._anyControlsHaveStatus(INVALID))
-            return INVALID;
-        return VALID;
-    };
-    /**
-     * \@internal
-     * @abstract
-     * @return {?}
-     */
-    AbstractControl.prototype._updateValue = function () { };
-    /**
-     * \@internal
-     * @abstract
-     * @param {?} cb
-     * @return {?}
-     */
-    AbstractControl.prototype._forEachChild = function (cb) { };
-    /**
-     * \@internal
-     * @abstract
-     * @param {?} condition
-     * @return {?}
-     */
-    AbstractControl.prototype._anyControls = function (condition) { };
-    /**
-     * \@internal
-     * @abstract
-     * @return {?}
-     */
-    AbstractControl.prototype._allControlsDisabled = function () { };
-    /**
-     * \@internal
-     * @param {?} status
-     * @return {?}
-     */
-    AbstractControl.prototype._anyControlsHaveStatus = function (status) {
-        return this._anyControls(function (control) { return control.status === status; });
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    AbstractControl.prototype._anyControlsDirty = function () {
-        return this._anyControls(function (control) { return control.dirty; });
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    AbstractControl.prototype._anyControlsTouched = function () {
-        return this._anyControls(function (control) { return control.touched; });
-    };
-    /**
-     * \@internal
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype._updatePristine = function (_a) {
-        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
-        this._pristine = !this._anyControlsDirty();
-        if (this._parent && !onlySelf) {
-            this._parent._updatePristine({ onlySelf: onlySelf });
-        }
-    };
-    /**
-     * \@internal
-     * @param {?=} __0
-     * @return {?}
-     */
-    AbstractControl.prototype._updateTouched = function (_a) {
-        var onlySelf = (_a === void 0 ? {} : _a).onlySelf;
-        this._touched = this._anyControlsTouched();
-        if (this._parent && !onlySelf) {
-            this._parent._updateTouched({ onlySelf: onlySelf });
-        }
-    };
-    /**
-     * \@internal
-     * @param {?} formState
-     * @return {?}
-     */
-    AbstractControl.prototype._isBoxedValue = function (formState) {
-        return typeof formState === 'object' && formState !== null &&
-            Object.keys(formState).length === 2 && 'value' in formState && 'disabled' in formState;
-    };
-    /**
-     * \@internal
-     * @param {?} fn
-     * @return {?}
-     */
-    AbstractControl.prototype._registerOnCollectionChange = function (fn) { this._onCollectionChange = fn; };
-    return AbstractControl;
-}());
-/**
- * \@whatItDoes Tracks the value and validation status of an individual form control.
- *
- * It is one of the three fundamental building blocks of Angular forms, along with
- * {\@link FormGroup} and {\@link FormArray}.
- *
- * \@howToUse
- *
- * When instantiating a {\@link FormControl}, you can pass in an initial value as the
- * first argument. Example:
- *
- * ```ts
- * const ctrl = new FormControl('some value');
- * console.log(ctrl.value);     // 'some value'
- * ```
- *
- * You can also initialize the control with a form state object on instantiation,
- * which includes both the value and whether or not the control is disabled.
- * You can't use the value key without the disabled key; both are required
- * to use this way of initialization.
- *
- * ```ts
- * const ctrl = new FormControl({value: 'n/a', disabled: true});
- * console.log(ctrl.value);     // 'n/a'
- * console.log(ctrl.status);   // 'DISABLED'
- * ```
- *
- * To include a sync validator (or an array of sync validators) with the control,
- * pass it in as the second argument. Async validators are also supported, but
- * have to be passed in separately as the third arg.
- *
- * ```ts
- * const ctrl = new FormControl('', Validators.required);
- * console.log(ctrl.value);     // ''
- * console.log(ctrl.status);   // 'INVALID'
- * ```
- *
- * See its superclass, {\@link AbstractControl}, for more properties and methods.
- *
- * * **npm package**: `\@angular/forms`
- *
- * \@stable
- */
-var FormControl = (function (_super) {
-    __extends(FormControl, _super);
-    /**
-     * @param {?=} formState
-     * @param {?=} validator
-     * @param {?=} asyncValidator
-     */
-    function FormControl(formState, validator, asyncValidator) {
-        if (formState === void 0) { formState = null; }
-        var _this = _super.call(this, coerceToValidator(validator), coerceToAsyncValidator(asyncValidator)) || this;
-        /**
-         * \@internal
-         */
-        _this._onChange = [];
-        _this._applyFormState(formState);
-        _this.updateValueAndValidity({ onlySelf: true, emitEvent: false });
-        _this._initObservables();
-        return _this;
-    }
-    /**
-     * Set the value of the form control to `value`.
-     *
-     * If `onlySelf` is `true`, this change will only affect the validation of this `FormControl`
-     * and not its parent component. This defaults to false.
-     *
-     * If `emitEvent` is `true`, this
-     * change will cause a `valueChanges` event on the `FormControl` to be emitted. This defaults
-     * to true (as it falls through to `updateValueAndValidity`).
-     *
-     * If `emitModelToViewChange` is `true`, the view will be notified about the new value
-     * via an `onChange` event. This is the default behavior if `emitModelToViewChange` is not
-     * specified.
-     *
-     * If `emitViewToModelChange` is `true`, an ngModelChange event will be fired to update the
-     * model.  This is the default behavior if `emitViewToModelChange` is not specified.
-     * @param {?} value
-     * @param {?=} options
-     * @return {?}
-     */
-    FormControl.prototype.setValue = function (value, options) {
-        var _this = this;
-        if (options === void 0) { options = {}; }
-        this._value = value;
-        if (this._onChange.length && options.emitModelToViewChange !== false) {
-            this._onChange.forEach(function (changeFn) { return changeFn(_this._value, options.emitViewToModelChange !== false); });
-        }
-        this.updateValueAndValidity(options);
-    };
-    /**
-     * Patches the value of a control.
-     *
-     * This function is functionally the same as {\@link FormControl#setValue} at this level.
-     * It exists for symmetry with {\@link FormGroup#patchValue} on `FormGroups` and `FormArrays`,
-     * where it does behave differently.
-     * @param {?} value
-     * @param {?=} options
-     * @return {?}
-     */
-    FormControl.prototype.patchValue = function (value, options) {
-        if (options === void 0) { options = {}; }
-        this.setValue(value, options);
-    };
-    /**
-     * Resets the form control. This means by default:
-     *
-     * * it is marked as `pristine`
-     * * it is marked as `untouched`
-     * * value is set to null
-     *
-     * You can also reset to a specific form state by passing through a standalone
-     * value or a form state object that contains both a value and a disabled state
-     * (these are the only two properties that cannot be calculated).
-     *
-     * Ex:
-     *
-     * ```ts
-     * this.control.reset('Nancy');
-     *
-     * console.log(this.control.value);  // 'Nancy'
-     * ```
-     *
-     * OR
-     *
-     * ```
-     * this.control.reset({value: 'Nancy', disabled: true});
-     *
-     * console.log(this.control.value);  // 'Nancy'
-     * console.log(this.control.status);  // 'DISABLED'
-     * ```
-     * @param {?=} formState
-     * @param {?=} options
-     * @return {?}
-     */
-    FormControl.prototype.reset = function (formState, options) {
-        if (formState === void 0) { formState = null; }
-        if (options === void 0) { options = {}; }
-        this._applyFormState(formState);
-        this.markAsPristine(options);
-        this.markAsUntouched(options);
-        this.setValue(this._value, options);
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormControl.prototype._updateValue = function () { };
-    /**
-     * \@internal
-     * @param {?} condition
-     * @return {?}
-     */
-    FormControl.prototype._anyControls = function (condition) { return false; };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormControl.prototype._allControlsDisabled = function () { return this.disabled; };
-    /**
-     * Register a listener for change events.
-     * @param {?} fn
-     * @return {?}
-     */
-    FormControl.prototype.registerOnChange = function (fn) { this._onChange.push(fn); };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormControl.prototype._clearChangeFns = function () {
-        this._onChange = [];
-        this._onDisabledChange = [];
-        this._onCollectionChange = function () { };
-    };
-    /**
-     * Register a listener for disabled events.
-     * @param {?} fn
-     * @return {?}
-     */
-    FormControl.prototype.registerOnDisabledChange = function (fn) {
-        this._onDisabledChange.push(fn);
-    };
-    /**
-     * \@internal
-     * @param {?} cb
-     * @return {?}
-     */
-    FormControl.prototype._forEachChild = function (cb) { };
-    /**
-     * @param {?} formState
-     * @return {?}
-     */
-    FormControl.prototype._applyFormState = function (formState) {
-        if (this._isBoxedValue(formState)) {
-            this._value = formState.value;
-            formState.disabled ? this.disable({ onlySelf: true, emitEvent: false }) :
-                this.enable({ onlySelf: true, emitEvent: false });
-        }
-        else {
-            this._value = formState;
-        }
-    };
-    return FormControl;
-}(AbstractControl));
-/**
- * \@whatItDoes Tracks the value and validity state of a group of {\@link FormControl}
- * instances.
- *
- * A `FormGroup` aggregates the values of each child {\@link FormControl} into one object,
- * with each control name as the key.  It calculates its status by reducing the statuses
- * of its children. For example, if one of the controls in a group is invalid, the entire
- * group becomes invalid.
- *
- * `FormGroup` is one of the three fundamental building blocks used to define forms in Angular,
- * along with {\@link FormControl} and {\@link FormArray}.
- *
- * \@howToUse
- *
- * When instantiating a {\@link FormGroup}, pass in a collection of child controls as the first
- * argument. The key for each child will be the name under which it is registered.
- *
- * ### Example
- *
- * ```
- * const form = new FormGroup({
- *   first: new FormControl('Nancy', Validators.minLength(2)),
- *   last: new FormControl('Drew'),
- * });
- *
- * console.log(form.value);   // {first: 'Nancy', last; 'Drew'}
- * console.log(form.status);  // 'VALID'
- * ```
- *
- * You can also include group-level validators as the second arg, or group-level async
- * validators as the third arg. These come in handy when you want to perform validation
- * that considers the value of more than one child control.
- *
- * ### Example
- *
- * ```
- * const form = new FormGroup({
- *   password: new FormControl('', Validators.minLength(2)),
- *   passwordConfirm: new FormControl('', Validators.minLength(2)),
- * }, passwordMatchValidator);
- *
- *
- * function passwordMatchValidator(g: FormGroup) {
- *    return g.get('password').value === g.get('passwordConfirm').value
- *       ? null : {'mismatch': true};
- * }
- * ```
- *
- * * **npm package**: `\@angular/forms`
- *
- * \@stable
- */
-var FormGroup = (function (_super) {
-    __extends(FormGroup, _super);
-    /**
-     * @param {?} controls
-     * @param {?=} validator
-     * @param {?=} asyncValidator
-     */
-    function FormGroup(controls, validator, asyncValidator) {
-        var _this = _super.call(this, validator || null, asyncValidator || null) || this;
-        _this.controls = controls;
-        _this._initObservables();
-        _this._setUpControls();
-        _this.updateValueAndValidity({ onlySelf: true, emitEvent: false });
-        return _this;
-    }
-    /**
-     * Registers a control with the group's list of controls.
-     *
-     * This method does not update value or validity of the control, so for
-     * most cases you'll want to use {\@link FormGroup#addControl} instead.
-     * @param {?} name
-     * @param {?} control
-     * @return {?}
-     */
-    FormGroup.prototype.registerControl = function (name, control) {
-        if (this.controls[name])
-            return this.controls[name];
-        this.controls[name] = control;
-        control.setParent(this);
-        control._registerOnCollectionChange(this._onCollectionChange);
-        return control;
-    };
-    /**
-     * Add a control to this group.
-     * @param {?} name
-     * @param {?} control
-     * @return {?}
-     */
-    FormGroup.prototype.addControl = function (name, control) {
-        this.registerControl(name, control);
-        this.updateValueAndValidity();
-        this._onCollectionChange();
-    };
-    /**
-     * Remove a control from this group.
-     * @param {?} name
-     * @return {?}
-     */
-    FormGroup.prototype.removeControl = function (name) {
-        if (this.controls[name])
-            this.controls[name]._registerOnCollectionChange(function () { });
-        delete (this.controls[name]);
-        this.updateValueAndValidity();
-        this._onCollectionChange();
-    };
-    /**
-     * Replace an existing control.
-     * @param {?} name
-     * @param {?} control
-     * @return {?}
-     */
-    FormGroup.prototype.setControl = function (name, control) {
-        if (this.controls[name])
-            this.controls[name]._registerOnCollectionChange(function () { });
-        delete (this.controls[name]);
-        if (control)
-            this.registerControl(name, control);
-        this.updateValueAndValidity();
-        this._onCollectionChange();
-    };
-    /**
-     * Check whether there is an enabled control with the given name in the group.
-     *
-     * It will return false for disabled controls. If you'd like to check for
-     * existence in the group only, use {\@link AbstractControl#get} instead.
-     * @param {?} controlName
-     * @return {?}
-     */
-    FormGroup.prototype.contains = function (controlName) {
-        return this.controls.hasOwnProperty(controlName) && this.controls[controlName].enabled;
-    };
-    /**
-     *  Sets the value of the {\@link FormGroup}. It accepts an object that matches
-     *  the structure of the group, with control names as keys.
-     *
-     * This method performs strict checks, so it will throw an error if you try
-     * to set the value of a control that doesn't exist or if you exclude the
-     * value of a control.
-     *
-     *  ### Example
-     *
-     *  ```
-     *  const form = new FormGroup({
-     *     first: new FormControl(),
-     *     last: new FormControl()
-     *  });
-     *  console.log(form.value);   // {first: null, last: null}
-     *
-     *  form.setValue({first: 'Nancy', last: 'Drew'});
-     *  console.log(form.value);   // {first: 'Nancy', last: 'Drew'}
-     *
-     *  ```
-     * @param {?} value
-     * @param {?=} options
-     * @return {?}
-     */
-    FormGroup.prototype.setValue = function (value, options) {
-        var _this = this;
-        if (options === void 0) { options = {}; }
-        this._checkAllValuesPresent(value);
-        Object.keys(value).forEach(function (name) {
-            _this._throwIfControlMissing(name);
-            _this.controls[name].setValue(value[name], { onlySelf: true, emitEvent: options.emitEvent });
-        });
-        this.updateValueAndValidity(options);
-    };
-    /**
-     *  Patches the value of the {\@link FormGroup}. It accepts an object with control
-     *  names as keys, and will do its best to match the values to the correct controls
-     *  in the group.
-     *
-     *  It accepts both super-sets and sub-sets of the group without throwing an error.
-     *
-     *  ### Example
-     *
-     *  ```
-     *  const form = new FormGroup({
-     *     first: new FormControl(),
-     *     last: new FormControl()
-     *  });
-     *  console.log(form.value);   // {first: null, last: null}
-     *
-     *  form.patchValue({first: 'Nancy'});
-     *  console.log(form.value);   // {first: 'Nancy', last: null}
-     *
-     *  ```
-     * @param {?} value
-     * @param {?=} options
-     * @return {?}
-     */
-    FormGroup.prototype.patchValue = function (value, options) {
-        var _this = this;
-        if (options === void 0) { options = {}; }
-        Object.keys(value).forEach(function (name) {
-            if (_this.controls[name]) {
-                _this.controls[name].patchValue(value[name], { onlySelf: true, emitEvent: options.emitEvent });
-            }
-        });
-        this.updateValueAndValidity(options);
-    };
-    /**
-     * Resets the {\@link FormGroup}. This means by default:
-     *
-     * * The group and all descendants are marked `pristine`
-     * * The group and all descendants are marked `untouched`
-     * * The value of all descendants will be null or null maps
-     *
-     * You can also reset to a specific form state by passing in a map of states
-     * that matches the structure of your form, with control names as keys. The state
-     * can be a standalone value or a form state object with both a value and a disabled
-     * status.
-     *
-     * ### Example
-     *
-     * ```ts
-     * this.form.reset({first: 'name', last: 'last name'});
-     *
-     * console.log(this.form.value);  // {first: 'name', last: 'last name'}
-     * ```
-     *
-     * - OR -
-     *
-     * ```
-     * this.form.reset({
-     *   first: {value: 'name', disabled: true},
-     *   last: 'last'
-     * });
-     *
-     * console.log(this.form.value);  // {first: 'name', last: 'last name'}
-     * console.log(this.form.get('first').status);  // 'DISABLED'
-     * ```
-     * @param {?=} value
-     * @param {?=} options
-     * @return {?}
-     */
-    FormGroup.prototype.reset = function (value, options) {
-        if (value === void 0) { value = {}; }
-        if (options === void 0) { options = {}; }
-        this._forEachChild(function (control, name) {
-            control.reset(value[name], { onlySelf: true, emitEvent: options.emitEvent });
-        });
-        this.updateValueAndValidity(options);
-        this._updatePristine(options);
-        this._updateTouched(options);
-    };
-    /**
-     * The aggregate value of the {\@link FormGroup}, including any disabled controls.
-     *
-     * If you'd like to include all values regardless of disabled status, use this method.
-     * Otherwise, the `value` property is the best way to get the value of the group.
-     * @return {?}
-     */
-    FormGroup.prototype.getRawValue = function () {
-        return this._reduceChildren({}, function (acc, control, name) {
-            acc[name] = control instanceof FormControl ? control.value : ((control)).getRawValue();
-            return acc;
-        });
-    };
-    /**
-     * \@internal
-     * @param {?} name
-     * @return {?}
-     */
-    FormGroup.prototype._throwIfControlMissing = function (name) {
-        if (!Object.keys(this.controls).length) {
-            throw new Error("\n        There are no form controls registered with this group yet.  If you're using ngModel,\n        you may want to check next tick (e.g. use setTimeout).\n      ");
-        }
-        if (!this.controls[name]) {
-            throw new Error("Cannot find form control with name: " + name + ".");
-        }
-    };
-    /**
-     * \@internal
-     * @param {?} cb
-     * @return {?}
-     */
-    FormGroup.prototype._forEachChild = function (cb) {
-        var _this = this;
-        Object.keys(this.controls).forEach(function (k) { return cb(_this.controls[k], k); });
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormGroup.prototype._setUpControls = function () {
-        var _this = this;
-        this._forEachChild(function (control) {
-            control.setParent(_this);
-            control._registerOnCollectionChange(_this._onCollectionChange);
-        });
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormGroup.prototype._updateValue = function () { this._value = this._reduceValue(); };
-    /**
-     * \@internal
-     * @param {?} condition
-     * @return {?}
-     */
-    FormGroup.prototype._anyControls = function (condition) {
-        var _this = this;
-        var /** @type {?} */ res = false;
-        this._forEachChild(function (control, name) {
-            res = res || (_this.contains(name) && condition(control));
-        });
-        return res;
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormGroup.prototype._reduceValue = function () {
-        var _this = this;
-        return this._reduceChildren({}, function (acc, control, name) {
-            if (control.enabled || _this.disabled) {
-                acc[name] = control.value;
-            }
-            return acc;
-        });
-    };
-    /**
-     * \@internal
-     * @param {?} initValue
-     * @param {?} fn
-     * @return {?}
-     */
-    FormGroup.prototype._reduceChildren = function (initValue, fn) {
-        var /** @type {?} */ res = initValue;
-        this._forEachChild(function (control, name) { res = fn(res, control, name); });
-        return res;
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormGroup.prototype._allControlsDisabled = function () {
-        for (var _i = 0, _a = Object.keys(this.controls); _i < _a.length; _i++) {
-            var controlName = _a[_i];
-            if (this.controls[controlName].enabled) {
-                return false;
-            }
-        }
-        return Object.keys(this.controls).length > 0 || this.disabled;
-    };
-    /**
-     * \@internal
-     * @param {?} value
-     * @return {?}
-     */
-    FormGroup.prototype._checkAllValuesPresent = function (value) {
-        this._forEachChild(function (control, name) {
-            if (value[name] === undefined) {
-                throw new Error("Must supply a value for form control with name: '" + name + "'.");
-            }
-        });
-    };
-    return FormGroup;
-}(AbstractControl));
-/**
- * \@whatItDoes Tracks the value and validity state of an array of {\@link FormControl},
- * {\@link FormGroup} or {\@link FormArray} instances.
- *
- * A `FormArray` aggregates the values of each child {\@link FormControl} into an array.
- * It calculates its status by reducing the statuses of its children. For example, if one of
- * the controls in a `FormArray` is invalid, the entire array becomes invalid.
- *
- * `FormArray` is one of the three fundamental building blocks used to define forms in Angular,
- * along with {\@link FormControl} and {\@link FormGroup}.
- *
- * \@howToUse
- *
- * When instantiating a {\@link FormArray}, pass in an array of child controls as the first
- * argument.
- *
- * ### Example
- *
- * ```
- * const arr = new FormArray([
- *   new FormControl('Nancy', Validators.minLength(2)),
- *   new FormControl('Drew'),
- * ]);
- *
- * console.log(arr.value);   // ['Nancy', 'Drew']
- * console.log(arr.status);  // 'VALID'
- * ```
- *
- * You can also include array-level validators as the second arg, or array-level async
- * validators as the third arg. These come in handy when you want to perform validation
- * that considers the value of more than one child control.
- *
- * ### Adding or removing controls
- *
- * To change the controls in the array, use the `push`, `insert`, or `removeAt` methods
- * in `FormArray` itself. These methods ensure the controls are properly tracked in the
- * form's hierarchy. Do not modify the array of `AbstractControl`s used to instantiate
- * the `FormArray` directly, as that will result in strange and unexpected behavior such
- * as broken change detection.
- *
- * * **npm package**: `\@angular/forms`
- *
- * \@stable
- */
-var FormArray = (function (_super) {
-    __extends(FormArray, _super);
-    /**
-     * @param {?} controls
-     * @param {?=} validator
-     * @param {?=} asyncValidator
-     */
-    function FormArray(controls, validator, asyncValidator) {
-        var _this = _super.call(this, validator || null, asyncValidator || null) || this;
-        _this.controls = controls;
-        _this._initObservables();
-        _this._setUpControls();
-        _this.updateValueAndValidity({ onlySelf: true, emitEvent: false });
-        return _this;
-    }
-    /**
-     * Get the {\@link AbstractControl} at the given `index` in the array.
-     * @param {?} index
-     * @return {?}
-     */
-    FormArray.prototype.at = function (index) { return this.controls[index]; };
-    /**
-     * Insert a new {\@link AbstractControl} at the end of the array.
-     * @param {?} control
-     * @return {?}
-     */
-    FormArray.prototype.push = function (control) {
-        this.controls.push(control);
-        this._registerControl(control);
-        this.updateValueAndValidity();
-        this._onCollectionChange();
-    };
-    /**
-     * Insert a new {\@link AbstractControl} at the given `index` in the array.
-     * @param {?} index
-     * @param {?} control
-     * @return {?}
-     */
-    FormArray.prototype.insert = function (index, control) {
-        this.controls.splice(index, 0, control);
-        this._registerControl(control);
-        this.updateValueAndValidity();
-        this._onCollectionChange();
-    };
-    /**
-     * Remove the control at the given `index` in the array.
-     * @param {?} index
-     * @return {?}
-     */
-    FormArray.prototype.removeAt = function (index) {
-        if (this.controls[index])
-            this.controls[index]._registerOnCollectionChange(function () { });
-        this.controls.splice(index, 1);
-        this.updateValueAndValidity();
-        this._onCollectionChange();
-    };
-    /**
-     * Replace an existing control.
-     * @param {?} index
-     * @param {?} control
-     * @return {?}
-     */
-    FormArray.prototype.setControl = function (index, control) {
-        if (this.controls[index])
-            this.controls[index]._registerOnCollectionChange(function () { });
-        this.controls.splice(index, 1);
-        if (control) {
-            this.controls.splice(index, 0, control);
-            this._registerControl(control);
-        }
-        this.updateValueAndValidity();
-        this._onCollectionChange();
-    };
-    Object.defineProperty(FormArray.prototype, "length", {
-        /**
-         * Length of the control array.
-         * @return {?}
-         */
-        get: function () { return this.controls.length; },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     *  Sets the value of the {\@link FormArray}. It accepts an array that matches
-     *  the structure of the control.
-     *
-     * This method performs strict checks, so it will throw an error if you try
-     * to set the value of a control that doesn't exist or if you exclude the
-     * value of a control.
-     *
-     *  ### Example
-     *
-     *  ```
-     *  const arr = new FormArray([
-     *     new FormControl(),
-     *     new FormControl()
-     *  ]);
-     *  console.log(arr.value);   // [null, null]
-     *
-     *  arr.setValue(['Nancy', 'Drew']);
-     *  console.log(arr.value);   // ['Nancy', 'Drew']
-     *  ```
-     * @param {?} value
-     * @param {?=} options
-     * @return {?}
-     */
-    FormArray.prototype.setValue = function (value, options) {
-        var _this = this;
-        if (options === void 0) { options = {}; }
-        this._checkAllValuesPresent(value);
-        value.forEach(function (newValue, index) {
-            _this._throwIfControlMissing(index);
-            _this.at(index).setValue(newValue, { onlySelf: true, emitEvent: options.emitEvent });
-        });
-        this.updateValueAndValidity(options);
-    };
-    /**
-     *  Patches the value of the {\@link FormArray}. It accepts an array that matches the
-     *  structure of the control, and will do its best to match the values to the correct
-     *  controls in the group.
-     *
-     *  It accepts both super-sets and sub-sets of the array without throwing an error.
-     *
-     *  ### Example
-     *
-     *  ```
-     *  const arr = new FormArray([
-     *     new FormControl(),
-     *     new FormControl()
-     *  ]);
-     *  console.log(arr.value);   // [null, null]
-     *
-     *  arr.patchValue(['Nancy']);
-     *  console.log(arr.value);   // ['Nancy', null]
-     *  ```
-     * @param {?} value
-     * @param {?=} options
-     * @return {?}
-     */
-    FormArray.prototype.patchValue = function (value, options) {
-        var _this = this;
-        if (options === void 0) { options = {}; }
-        value.forEach(function (newValue, index) {
-            if (_this.at(index)) {
-                _this.at(index).patchValue(newValue, { onlySelf: true, emitEvent: options.emitEvent });
-            }
-        });
-        this.updateValueAndValidity(options);
-    };
-    /**
-     * Resets the {\@link FormArray}. This means by default:
-     *
-     * * The array and all descendants are marked `pristine`
-     * * The array and all descendants are marked `untouched`
-     * * The value of all descendants will be null or null maps
-     *
-     * You can also reset to a specific form state by passing in an array of states
-     * that matches the structure of the control. The state can be a standalone value
-     * or a form state object with both a value and a disabled status.
-     *
-     * ### Example
-     *
-     * ```ts
-     * this.arr.reset(['name', 'last name']);
-     *
-     * console.log(this.arr.value);  // ['name', 'last name']
-     * ```
-     *
-     * - OR -
-     *
-     * ```
-     * this.arr.reset([
-     *   {value: 'name', disabled: true},
-     *   'last'
-     * ]);
-     *
-     * console.log(this.arr.value);  // ['name', 'last name']
-     * console.log(this.arr.get(0).status);  // 'DISABLED'
-     * ```
-     * @param {?=} value
-     * @param {?=} options
-     * @return {?}
-     */
-    FormArray.prototype.reset = function (value, options) {
-        if (value === void 0) { value = []; }
-        if (options === void 0) { options = {}; }
-        this._forEachChild(function (control, index) {
-            control.reset(value[index], { onlySelf: true, emitEvent: options.emitEvent });
-        });
-        this.updateValueAndValidity(options);
-        this._updatePristine(options);
-        this._updateTouched(options);
-    };
-    /**
-     * The aggregate value of the array, including any disabled controls.
-     *
-     * If you'd like to include all values regardless of disabled status, use this method.
-     * Otherwise, the `value` property is the best way to get the value of the array.
-     * @return {?}
-     */
-    FormArray.prototype.getRawValue = function () {
-        return this.controls.map(function (control) {
-            return control instanceof FormControl ? control.value : ((control)).getRawValue();
-        });
-    };
-    /**
-     * \@internal
-     * @param {?} index
-     * @return {?}
-     */
-    FormArray.prototype._throwIfControlMissing = function (index) {
-        if (!this.controls.length) {
-            throw new Error("\n        There are no form controls registered with this array yet.  If you're using ngModel,\n        you may want to check next tick (e.g. use setTimeout).\n      ");
-        }
-        if (!this.at(index)) {
-            throw new Error("Cannot find form control at index " + index);
-        }
-    };
-    /**
-     * \@internal
-     * @param {?} cb
-     * @return {?}
-     */
-    FormArray.prototype._forEachChild = function (cb) {
-        this.controls.forEach(function (control, index) { cb(control, index); });
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormArray.prototype._updateValue = function () {
-        var _this = this;
-        this._value = this.controls.filter(function (control) { return control.enabled || _this.disabled; })
-            .map(function (control) { return control.value; });
-    };
-    /**
-     * \@internal
-     * @param {?} condition
-     * @return {?}
-     */
-    FormArray.prototype._anyControls = function (condition) {
-        return this.controls.some(function (control) { return control.enabled && condition(control); });
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormArray.prototype._setUpControls = function () {
-        var _this = this;
-        this._forEachChild(function (control) { return _this._registerControl(control); });
-    };
-    /**
-     * \@internal
-     * @param {?} value
-     * @return {?}
-     */
-    FormArray.prototype._checkAllValuesPresent = function (value) {
-        this._forEachChild(function (control, i) {
-            if (value[i] === undefined) {
-                throw new Error("Must supply a value for form control at index: " + i + ".");
-            }
-        });
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormArray.prototype._allControlsDisabled = function () {
-        for (var _i = 0, _a = this.controls; _i < _a.length; _i++) {
-            var control = _a[_i];
-            if (control.enabled)
-                return false;
-        }
-        return this.controls.length > 0 || this.disabled;
-    };
-    /**
-     * @param {?} control
-     * @return {?}
-     */
-    FormArray.prototype._registerControl = function (control) {
-        control.setParent(this);
-        control._registerOnCollectionChange(this._onCollectionChange);
-    };
-    return FormArray;
-}(AbstractControl));
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var formDirectiveProvider = {
-    provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NgForm; })
-};
-var resolvedPromise = Promise.resolve(null);
-/**
- * \@whatItDoes Creates a top-level {\@link FormGroup} instance and binds it to a form
- * to track aggregate form value and validation status.
- *
- * \@howToUse
- *
- * As soon as you import the `FormsModule`, this directive becomes active by default on
- * all `<form>` tags.  You don't need to add a special selector.
- *
- * You can export the directive into a local template variable using `ngForm` as the key
- * (ex: `#myForm="ngForm"`). This is optional, but useful.  Many properties from the underlying
- * {\@link FormGroup} instance are duplicated on the directive itself, so a reference to it
- * will give you access to the aggregate value and validity status of the form, as well as
- * user interaction properties like `dirty` and `touched`.
- *
- * To register child controls with the form, you'll want to use {\@link NgModel} with a
- * `name` attribute.  You can also use {\@link NgModelGroup} if you'd like to create
- * sub-groups within the form.
- *
- * You can listen to the directive's `ngSubmit` event to be notified when the user has
- * triggered a form submission. The `ngSubmit` event will be emitted with the original form
- * submission event.
- *
- * {\@example forms/ts/simpleForm/simple_form_example.ts region='Component'}
- *
- * * **npm package**: `\@angular/forms`
- *
- * * **NgModule**: `FormsModule`
- *
- *  \@stable
- */
-var NgForm = (function (_super) {
-    __extends(NgForm, _super);
-    /**
-     * @param {?} validators
-     * @param {?} asyncValidators
-     */
-    function NgForm(validators, asyncValidators) {
-        var _this = _super.call(this) || this;
-        _this._submitted = false;
-        _this.ngSubmit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
-        _this.form =
-            new FormGroup({}, composeValidators(validators), composeAsyncValidators(asyncValidators));
-        return _this;
-    }
-    Object.defineProperty(NgForm.prototype, "submitted", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._submitted; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgForm.prototype, "formDirective", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgForm.prototype, "control", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.form; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgForm.prototype, "path", {
-        /**
-         * @return {?}
-         */
-        get: function () { return []; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgForm.prototype, "controls", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.form.controls; },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    NgForm.prototype.addControl = function (dir) {
-        var _this = this;
-        resolvedPromise.then(function () {
-            var /** @type {?} */ container = _this._findContainer(dir.path);
-            dir._control = (container.registerControl(dir.name, dir.control));
-            setUpControl(dir.control, dir);
-            dir.control.updateValueAndValidity({ emitEvent: false });
-        });
-    };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    NgForm.prototype.getControl = function (dir) { return (this.form.get(dir.path)); };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    NgForm.prototype.removeControl = function (dir) {
-        var _this = this;
-        resolvedPromise.then(function () {
-            var /** @type {?} */ container = _this._findContainer(dir.path);
-            if (container) {
-                container.removeControl(dir.name);
-            }
-        });
-    };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    NgForm.prototype.addFormGroup = function (dir) {
-        var _this = this;
-        resolvedPromise.then(function () {
-            var /** @type {?} */ container = _this._findContainer(dir.path);
-            var /** @type {?} */ group = new FormGroup({});
-            setUpFormContainer(group, dir);
-            container.registerControl(dir.name, group);
-            group.updateValueAndValidity({ emitEvent: false });
-        });
-    };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    NgForm.prototype.removeFormGroup = function (dir) {
-        var _this = this;
-        resolvedPromise.then(function () {
-            var /** @type {?} */ container = _this._findContainer(dir.path);
-            if (container) {
-                container.removeControl(dir.name);
-            }
-        });
-    };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    NgForm.prototype.getFormGroup = function (dir) { return (this.form.get(dir.path)); };
-    /**
-     * @param {?} dir
-     * @param {?} value
-     * @return {?}
-     */
-    NgForm.prototype.updateModel = function (dir, value) {
-        var _this = this;
-        resolvedPromise.then(function () {
-            var /** @type {?} */ ctrl = (_this.form.get(/** @type {?} */ ((dir.path))));
-            ctrl.setValue(value);
-        });
-    };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    NgForm.prototype.setValue = function (value) { this.control.setValue(value); };
-    /**
-     * @param {?} $event
-     * @return {?}
-     */
-    NgForm.prototype.onSubmit = function ($event) {
-        this._submitted = true;
-        this.ngSubmit.emit($event);
-        return false;
-    };
-    /**
-     * @return {?}
-     */
-    NgForm.prototype.onReset = function () { this.resetForm(); };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    NgForm.prototype.resetForm = function (value) {
-        if (value === void 0) { value = undefined; }
-        this.form.reset(value);
-        this._submitted = false;
-    };
-    /**
-     * \@internal
-     * @param {?} path
-     * @return {?}
-     */
-    NgForm.prototype._findContainer = function (path) {
-        path.pop();
-        return path.length ? (this.form.get(path)) : this.form;
-    };
-    return NgForm;
-}(ControlContainer));
-NgForm.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'form:not([ngNoForm]):not([formGroup]),ngForm,[ngForm]',
-                providers: [formDirectiveProvider],
-                host: { '(submit)': 'onSubmit($event)', '(reset)': 'onReset()' },
-                outputs: ['ngSubmit'],
-                exportAs: 'ngForm'
-            },] },
-];
-/**
- * @nocollapse
- */
-NgForm.ctorParameters = function () { return [
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-]; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var FormErrorExamples = {
-    formControlName: "\n    <div [formGroup]=\"myGroup\">\n      <input formControlName=\"firstName\">\n    </div>\n\n    In your class:\n\n    this.myGroup = new FormGroup({\n       firstName: new FormControl()\n    });",
-    formGroupName: "\n    <div [formGroup]=\"myGroup\">\n       <div formGroupName=\"person\">\n          <input formControlName=\"firstName\">\n       </div>\n    </div>\n\n    In your class:\n\n    this.myGroup = new FormGroup({\n       person: new FormGroup({ firstName: new FormControl() })\n    });",
-    formArrayName: "\n    <div [formGroup]=\"myGroup\">\n      <div formArrayName=\"cities\">\n        <div *ngFor=\"let city of cityArray.controls; index as i\">\n          <input [formControlName]=\"i\">\n        </div>\n      </div>\n    </div>\n\n    In your class:\n\n    this.cityArray = new FormArray([new FormControl('SF')]);\n    this.myGroup = new FormGroup({\n      cities: this.cityArray\n    });",
-    ngModelGroup: "\n    <form>\n       <div ngModelGroup=\"person\">\n          <input [(ngModel)]=\"person.name\" name=\"firstName\">\n       </div>\n    </form>",
-    ngModelWithFormGroup: "\n    <div [formGroup]=\"myGroup\">\n       <input formControlName=\"firstName\">\n       <input [(ngModel)]=\"showMoreControls\" [ngModelOptions]=\"{standalone: true}\">\n    </div>\n  "
-};
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var TemplateDrivenErrors = (function () {
-    function TemplateDrivenErrors() {
-    }
-    /**
-     * @return {?}
-     */
-    TemplateDrivenErrors.modelParentException = function () {
-        throw new Error("\n      ngModel cannot be used to register form controls with a parent formGroup directive.  Try using\n      formGroup's partner directive \"formControlName\" instead.  Example:\n\n      " + FormErrorExamples.formControlName + "\n\n      Or, if you'd like to avoid registering this form control, indicate that it's standalone in ngModelOptions:\n\n      Example:\n\n      " + FormErrorExamples.ngModelWithFormGroup);
-    };
-    /**
-     * @return {?}
-     */
-    TemplateDrivenErrors.formGroupNameException = function () {
-        throw new Error("\n      ngModel cannot be used to register form controls with a parent formGroupName or formArrayName directive.\n\n      Option 1: Use formControlName instead of ngModel (reactive strategy):\n\n      " + FormErrorExamples.formGroupName + "\n\n      Option 2:  Update ngModel's parent be ngModelGroup (template-driven strategy):\n\n      " + FormErrorExamples.ngModelGroup);
-    };
-    /**
-     * @return {?}
-     */
-    TemplateDrivenErrors.missingNameException = function () {
-        throw new Error("If ngModel is used within a form tag, either the name attribute must be set or the form\n      control must be defined as 'standalone' in ngModelOptions.\n\n      Example 1: <input [(ngModel)]=\"person.firstName\" name=\"first\">\n      Example 2: <input [(ngModel)]=\"person.firstName\" [ngModelOptions]=\"{standalone: true}\">");
-    };
-    /**
-     * @return {?}
-     */
-    TemplateDrivenErrors.modelGroupParentException = function () {
-        throw new Error("\n      ngModelGroup cannot be used with a parent formGroup directive.\n\n      Option 1: Use formGroupName instead of ngModelGroup (reactive strategy):\n\n      " + FormErrorExamples.formGroupName + "\n\n      Option 2:  Use a regular form tag instead of the formGroup directive (template-driven strategy):\n\n      " + FormErrorExamples.ngModelGroup);
-    };
-    return TemplateDrivenErrors;
-}());
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var modelGroupProvider = {
-    provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NgModelGroup; })
-};
-/**
- * \@whatItDoes Creates and binds a {\@link FormGroup} instance to a DOM element.
- *
- * \@howToUse
- *
- * This directive can only be used as a child of {\@link NgForm} (or in other words,
- * within `<form>` tags).
- *
- * Use this directive if you'd like to create a sub-group within a form. This can
- * come in handy if you want to validate a sub-group of your form separately from
- * the rest of your form, or if some values in your domain model make more sense to
- * consume together in a nested object.
- *
- * Pass in the name you'd like this sub-group to have and it will become the key
- * for the sub-group in the form's full value. You can also export the directive into
- * a local template variable using `ngModelGroup` (ex: `#myGroup="ngModelGroup"`).
- *
- * {\@example forms/ts/ngModelGroup/ng_model_group_example.ts region='Component'}
- *
- * * **npm package**: `\@angular/forms`
- *
- * * **NgModule**: `FormsModule`
- *
- * \@stable
- */
-var NgModelGroup = (function (_super) {
-    __extends(NgModelGroup, _super);
-    /**
-     * @param {?} parent
-     * @param {?} validators
-     * @param {?} asyncValidators
-     */
-    function NgModelGroup(parent, validators, asyncValidators) {
-        var _this = _super.call(this) || this;
-        _this._parent = parent;
-        _this._validators = validators;
-        _this._asyncValidators = asyncValidators;
-        return _this;
-    }
-    /**
-     * \@internal
-     * @return {?}
-     */
-    NgModelGroup.prototype._checkParentType = function () {
-        if (!(this._parent instanceof NgModelGroup) && !(this._parent instanceof NgForm)) {
-            TemplateDrivenErrors.modelGroupParentException();
-        }
-    };
-    return NgModelGroup;
-}(AbstractFormGroupDirective));
-NgModelGroup.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[ngModelGroup]', providers: [modelGroupProvider], exportAs: 'ngModelGroup' },] },
-];
-/**
- * @nocollapse
- */
-NgModelGroup.ctorParameters = function () { return [
-    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-]; };
-NgModelGroup.propDecorators = {
-    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModelGroup',] },],
-};
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var formControlBinding = {
-    provide: NgControl,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return NgModel; })
-};
-/**
- * `ngModel` forces an additional change detection run when its inputs change:
- * E.g.:
- * ```
- * <div>{{myModel.valid}}</div>
- * <input [(ngModel)]="myValue" #myModel="ngModel">
- * ```
- * I.e. `ngModel` can export itself on the element and then be used in the template.
- * Normally, this would result in expressions before the `input` that use the exported directive
- * to have and old value as they have been
- * dirty checked before. As this is a very common case for `ngModel`, we added this second change
- * detection run.
- *
- * Notes:
- * - this is just one extra run no matter how many `ngModel` have been changed.
- * - this is a general problem when using `exportAs` for directives!
- */
-var resolvedPromise$1 = Promise.resolve(null);
-/**
- * \@whatItDoes Creates a {\@link FormControl} instance from a domain model and binds it
- * to a form control element.
- *
- * The {\@link FormControl} instance will track the value, user interaction, and
- * validation status of the control and keep the view synced with the model. If used
- * within a parent form, the directive will also register itself with the form as a child
- * control.
- *
- * \@howToUse
- *
- * This directive can be used by itself or as part of a larger form. All you need is the
- * `ngModel` selector to activate it.
- *
- * It accepts a domain model as an optional {\@link Input}. If you have a one-way binding
- * to `ngModel` with `[]` syntax, changing the value of the domain model in the component
- * class will set the value in the view. If you have a two-way binding with `[()]` syntax
- * (also known as 'banana-box syntax'), the value in the UI will always be synced back to
- * the domain model in your class as well.
- *
- * If you wish to inspect the properties of the associated {\@link FormControl} (like
- * validity state), you can also export the directive into a local template variable using
- * `ngModel` as the key (ex: `#myVar="ngModel"`). You can then access the control using the
- * directive's `control` property, but most properties you'll need (like `valid` and `dirty`)
- * will fall through to the control anyway, so you can access them directly. You can see a
- * full list of properties directly available in {\@link AbstractControlDirective}.
- *
- * The following is an example of a simple standalone control using `ngModel`:
- *
- * {\@example forms/ts/simpleNgModel/simple_ng_model_example.ts region='Component'}
- *
- * When using the `ngModel` within `<form>` tags, you'll also need to supply a `name` attribute
- * so that the control can be registered with the parent form under that name.
- *
- * It's worth noting that in the context of a parent form, you often can skip one-way or
- * two-way binding because the parent form will sync the value for you. You can access
- * its properties by exporting it into a local template variable using `ngForm` (ex:
- * `#f="ngForm"`). Then you can pass it where it needs to go on submit.
- *
- * If you do need to populate initial values into your form, using a one-way binding for
- * `ngModel` tends to be sufficient as long as you use the exported form's value rather
- * than the domain model's value on submit.
- *
- * Take a look at an example of using `ngModel` within a form:
- *
- * {\@example forms/ts/simpleForm/simple_form_example.ts region='Component'}
- *
- * To see `ngModel` examples with different form control types, see:
- *
- * * Radio buttons: {\@link RadioControlValueAccessor}
- * * Selects: {\@link SelectControlValueAccessor}
- *
- * **npm package**: `\@angular/forms`
- *
- * **NgModule**: `FormsModule`
- *
- *  \@stable
- */
-var NgModel = (function (_super) {
-    __extends(NgModel, _super);
-    /**
-     * @param {?} parent
-     * @param {?} validators
-     * @param {?} asyncValidators
-     * @param {?} valueAccessors
-     */
-    function NgModel(parent, validators, asyncValidators, valueAccessors) {
-        var _this = _super.call(this) || this;
-        /**
-         * \@internal
-         */
-        _this._control = new FormControl();
-        /**
-         * \@internal
-         */
-        _this._registered = false;
-        _this.update = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
-        _this._parent = parent;
-        _this._rawValidators = validators || [];
-        _this._rawAsyncValidators = asyncValidators || [];
-        _this.valueAccessor = selectValueAccessor(_this, valueAccessors);
-        return _this;
-    }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    NgModel.prototype.ngOnChanges = function (changes) {
-        this._checkForErrors();
-        if (!this._registered)
-            this._setUpControl();
-        if ('isDisabled' in changes) {
-            this._updateDisabled(changes);
-        }
-        if (isPropertyUpdated(changes, this.viewModel)) {
-            this._updateValue(this.model);
-            this.viewModel = this.model;
-        }
-    };
-    /**
-     * @return {?}
-     */
-    NgModel.prototype.ngOnDestroy = function () { this.formDirective && this.formDirective.removeControl(this); };
-    Object.defineProperty(NgModel.prototype, "control", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._control; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgModel.prototype, "path", {
-        /**
-         * @return {?}
-         */
-        get: function () {
-            return this._parent ? controlPath(this.name, this._parent) : [this.name];
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgModel.prototype, "formDirective", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._parent ? this._parent.formDirective : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgModel.prototype, "validator", {
-        /**
-         * @return {?}
-         */
-        get: function () { return composeValidators(this._rawValidators); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgModel.prototype, "asyncValidator", {
-        /**
-         * @return {?}
-         */
-        get: function () {
-            return composeAsyncValidators(this._rawAsyncValidators);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} newValue
-     * @return {?}
-     */
-    NgModel.prototype.viewToModelUpdate = function (newValue) {
-        this.viewModel = newValue;
-        this.update.emit(newValue);
-    };
-    /**
-     * @return {?}
-     */
-    NgModel.prototype._setUpControl = function () {
-        this._isStandalone() ? this._setUpStandalone() :
-            this.formDirective.addControl(this);
-        this._registered = true;
-    };
-    /**
-     * @return {?}
-     */
-    NgModel.prototype._isStandalone = function () {
-        return !this._parent || !!(this.options && this.options.standalone);
-    };
-    /**
-     * @return {?}
-     */
-    NgModel.prototype._setUpStandalone = function () {
-        setUpControl(this._control, this);
-        this._control.updateValueAndValidity({ emitEvent: false });
-    };
-    /**
-     * @return {?}
-     */
-    NgModel.prototype._checkForErrors = function () {
-        if (!this._isStandalone()) {
-            this._checkParentType();
-        }
-        this._checkName();
-    };
-    /**
-     * @return {?}
-     */
-    NgModel.prototype._checkParentType = function () {
-        if (!(this._parent instanceof NgModelGroup) &&
-            this._parent instanceof AbstractFormGroupDirective) {
-            TemplateDrivenErrors.formGroupNameException();
-        }
-        else if (!(this._parent instanceof NgModelGroup) && !(this._parent instanceof NgForm)) {
-            TemplateDrivenErrors.modelParentException();
-        }
-    };
-    /**
-     * @return {?}
-     */
-    NgModel.prototype._checkName = function () {
-        if (this.options && this.options.name)
-            this.name = this.options.name;
-        if (!this._isStandalone() && !this.name) {
-            TemplateDrivenErrors.missingNameException();
-        }
-    };
-    /**
-     * @param {?} value
-     * @return {?}
-     */
-    NgModel.prototype._updateValue = function (value) {
-        var _this = this;
-        resolvedPromise$1.then(function () { _this.control.setValue(value, { emitViewToModelChange: false }); });
-    };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    NgModel.prototype._updateDisabled = function (changes) {
-        var _this = this;
-        var /** @type {?} */ disabledValue = changes['isDisabled'].currentValue;
-        var /** @type {?} */ isDisabled = disabledValue === '' || (disabledValue && disabledValue !== 'false');
-        resolvedPromise$1.then(function () {
-            if (isDisabled && !_this.control.disabled) {
-                _this.control.disable();
-            }
-            else if (!isDisabled && _this.control.disabled) {
-                _this.control.enable();
-            }
-        });
-    };
-    return NgModel;
-}(NgControl));
-NgModel.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: '[ngModel]:not([formControlName]):not([formControl])',
-                providers: [formControlBinding],
-                exportAs: 'ngModel'
-            },] },
-];
-/**
- * @nocollapse
- */
-NgModel.ctorParameters = function () { return [
-    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
-]; };
-NgModel.propDecorators = {
-    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'isDisabled': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['disabled',] },],
-    'model': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModel',] },],
-    'options': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModelOptions',] },],
-    'update': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */], args: ['ngModelChange',] },],
-};
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var ReactiveErrors = (function () {
-    function ReactiveErrors() {
-    }
-    /**
-     * @return {?}
-     */
-    ReactiveErrors.controlParentException = function () {
-        throw new Error("formControlName must be used with a parent formGroup directive.  You'll want to add a formGroup\n       directive and pass it an existing FormGroup instance (you can create one in your class).\n\n      Example:\n\n      " + FormErrorExamples.formControlName);
-    };
-    /**
-     * @return {?}
-     */
-    ReactiveErrors.ngModelGroupException = function () {
-        throw new Error("formControlName cannot be used with an ngModelGroup parent. It is only compatible with parents\n       that also have a \"form\" prefix: formGroupName, formArrayName, or formGroup.\n\n       Option 1:  Update the parent to be formGroupName (reactive form strategy)\n\n        " + FormErrorExamples.formGroupName + "\n\n        Option 2: Use ngModel instead of formControlName (template-driven strategy)\n\n        " + FormErrorExamples.ngModelGroup);
-    };
-    /**
-     * @return {?}
-     */
-    ReactiveErrors.missingFormException = function () {
-        throw new Error("formGroup expects a FormGroup instance. Please pass one in.\n\n       Example:\n\n       " + FormErrorExamples.formControlName);
-    };
-    /**
-     * @return {?}
-     */
-    ReactiveErrors.groupParentException = function () {
-        throw new Error("formGroupName must be used with a parent formGroup directive.  You'll want to add a formGroup\n      directive and pass it an existing FormGroup instance (you can create one in your class).\n\n      Example:\n\n      " + FormErrorExamples.formGroupName);
-    };
-    /**
-     * @return {?}
-     */
-    ReactiveErrors.arrayParentException = function () {
-        throw new Error("formArrayName must be used with a parent formGroup directive.  You'll want to add a formGroup\n       directive and pass it an existing FormGroup instance (you can create one in your class).\n\n        Example:\n\n        " + FormErrorExamples.formArrayName);
-    };
-    /**
-     * @return {?}
-     */
-    ReactiveErrors.disabledAttrWarning = function () {
-        console.warn("\n      It looks like you're using the disabled attribute with a reactive form directive. If you set disabled to true\n      when you set up this control in your component class, the disabled attribute will actually be set in the DOM for\n      you. We recommend using this approach to avoid 'changed after checked' errors.\n       \n      Example: \n      form = new FormGroup({\n        first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),\n        last: new FormControl('Drew', Validators.required)\n      });\n    ");
-    };
-    return ReactiveErrors;
-}());
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var formControlBinding$1 = {
-    provide: NgControl,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormControlDirective; })
-};
-/**
- * \@whatItDoes Syncs a standalone {\@link FormControl} instance to a form control element.
- *
- * In other words, this directive ensures that any values written to the {\@link FormControl}
- * instance programmatically will be written to the DOM element (model -> view). Conversely,
- * any values written to the DOM element through user input will be reflected in the
- * {\@link FormControl} instance (view -> model).
- *
- * \@howToUse
- *
- * Use this directive if you'd like to create and manage a {\@link FormControl} instance directly.
- * Simply create a {\@link FormControl}, save it to your component class, and pass it into the
- * {\@link FormControlDirective}.
- *
- * This directive is designed to be used as a standalone control.  Unlike {\@link FormControlName},
- * it does not require that your {\@link FormControl} instance be part of any parent
- * {\@link FormGroup}, and it won't be registered to any {\@link FormGroupDirective} that
- * exists above it.
- *
- * **Get the value**: the `value` property is always synced and available on the
- * {\@link FormControl} instance. See a full list of available properties in
- * {\@link AbstractControl}.
- *
- * **Set the value**: You can pass in an initial value when instantiating the {\@link FormControl},
- * or you can set it programmatically later using {\@link AbstractControl#setValue} or
- * {\@link AbstractControl#patchValue}.
- *
- * **Listen to value**: If you want to listen to changes in the value of the control, you can
- * subscribe to the {\@link AbstractControl#valueChanges} event.  You can also listen to
- * {\@link AbstractControl#statusChanges} to be notified when the validation status is
- * re-calculated.
- *
- * ### Example
- *
- * {\@example forms/ts/simpleFormControl/simple_form_control_example.ts region='Component'}
- *
- * * **npm package**: `\@angular/forms`
- *
- * * **NgModule**: `ReactiveFormsModule`
- *
- *  \@stable
- */
-var FormControlDirective = (function (_super) {
-    __extends(FormControlDirective, _super);
-    /**
-     * @param {?} validators
-     * @param {?} asyncValidators
-     * @param {?} valueAccessors
-     */
-    function FormControlDirective(validators, asyncValidators, valueAccessors) {
-        var _this = _super.call(this) || this;
-        _this.update = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
-        _this._rawValidators = validators || [];
-        _this._rawAsyncValidators = asyncValidators || [];
-        _this.valueAccessor = selectValueAccessor(_this, valueAccessors);
-        return _this;
-    }
-    Object.defineProperty(FormControlDirective.prototype, "isDisabled", {
-        /**
-         * @param {?} isDisabled
-         * @return {?}
-         */
-        set: function (isDisabled) { ReactiveErrors.disabledAttrWarning(); },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    FormControlDirective.prototype.ngOnChanges = function (changes) {
-        if (this._isControlChanged(changes)) {
-            setUpControl(this.form, this);
-            if (this.control.disabled && ((this.valueAccessor)).setDisabledState) {
-                ((((this.valueAccessor)).setDisabledState))(true);
-            }
-            this.form.updateValueAndValidity({ emitEvent: false });
-        }
-        if (isPropertyUpdated(changes, this.viewModel)) {
-            this.form.setValue(this.model);
-            this.viewModel = this.model;
-        }
-    };
-    Object.defineProperty(FormControlDirective.prototype, "path", {
-        /**
-         * @return {?}
-         */
-        get: function () { return []; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormControlDirective.prototype, "validator", {
-        /**
-         * @return {?}
-         */
-        get: function () { return composeValidators(this._rawValidators); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormControlDirective.prototype, "asyncValidator", {
-        /**
-         * @return {?}
-         */
-        get: function () {
-            return composeAsyncValidators(this._rawAsyncValidators);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormControlDirective.prototype, "control", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.form; },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} newValue
-     * @return {?}
-     */
-    FormControlDirective.prototype.viewToModelUpdate = function (newValue) {
-        this.viewModel = newValue;
-        this.update.emit(newValue);
-    };
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    FormControlDirective.prototype._isControlChanged = function (changes) {
-        return changes.hasOwnProperty('form');
-    };
-    return FormControlDirective;
-}(NgControl));
-FormControlDirective.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formControl]', providers: [formControlBinding$1], exportAs: 'ngForm' },] },
-];
-/**
- * @nocollapse
- */
-FormControlDirective.ctorParameters = function () { return [
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
-]; };
-FormControlDirective.propDecorators = {
-    'form': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formControl',] },],
-    'model': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModel',] },],
-    'update': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */], args: ['ngModelChange',] },],
-    'isDisabled': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['disabled',] },],
-};
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var formDirectiveProvider$1 = {
-    provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormGroupDirective; })
-};
-/**
- * \@whatItDoes Binds an existing {\@link FormGroup} to a DOM element.
- *
- * \@howToUse
- *
- * This directive accepts an existing {\@link FormGroup} instance. It will then use this
- * {\@link FormGroup} instance to match any child {\@link FormControl}, {\@link FormGroup},
- * and {\@link FormArray} instances to child {\@link FormControlName}, {\@link FormGroupName},
- * and {\@link FormArrayName} directives.
- *
- * **Set value**: You can set the form's initial value when instantiating the
- * {\@link FormGroup}, or you can set it programmatically later using the {\@link FormGroup}'s
- * {\@link AbstractControl#setValue} or {\@link AbstractControl#patchValue} methods.
- *
- * **Listen to value**: If you want to listen to changes in the value of the form, you can subscribe
- * to the {\@link FormGroup}'s {\@link AbstractControl#valueChanges} event.  You can also listen to
- * its {\@link AbstractControl#statusChanges} event to be notified when the validation status is
- * re-calculated.
- *
- * Furthermore, you can listen to the directive's `ngSubmit` event to be notified when the user has
- * triggered a form submission. The `ngSubmit` event will be emitted with the original form
- * submission event.
- *
- * ### Example
- *
- * In this example, we create form controls for first name and last name.
- *
- * {\@example forms/ts/simpleFormGroup/simple_form_group_example.ts region='Component'}
- *
- * **npm package**: `\@angular/forms`
- *
- * **NgModule**: {\@link ReactiveFormsModule}
- *
- *  \@stable
- */
-var FormGroupDirective = (function (_super) {
-    __extends(FormGroupDirective, _super);
-    /**
-     * @param {?} _validators
-     * @param {?} _asyncValidators
-     */
-    function FormGroupDirective(_validators, _asyncValidators) {
-        var _this = _super.call(this) || this;
-        _this._validators = _validators;
-        _this._asyncValidators = _asyncValidators;
-        _this._submitted = false;
-        _this.directives = [];
-        _this.form = ((null));
-        _this.ngSubmit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
-        return _this;
-    }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    FormGroupDirective.prototype.ngOnChanges = function (changes) {
-        this._checkFormPresent();
-        if (changes.hasOwnProperty('form')) {
-            this._updateValidators();
-            this._updateDomValue();
-            this._updateRegistrations();
-        }
-    };
-    Object.defineProperty(FormGroupDirective.prototype, "submitted", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._submitted; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormGroupDirective.prototype, "formDirective", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormGroupDirective.prototype, "control", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this.form; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormGroupDirective.prototype, "path", {
-        /**
-         * @return {?}
-         */
-        get: function () { return []; },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    FormGroupDirective.prototype.addControl = function (dir) {
-        var /** @type {?} */ ctrl = this.form.get(dir.path);
-        setUpControl(ctrl, dir);
-        ctrl.updateValueAndValidity({ emitEvent: false });
-        this.directives.push(dir);
-        return ctrl;
-    };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    FormGroupDirective.prototype.getControl = function (dir) { return (this.form.get(dir.path)); };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    FormGroupDirective.prototype.removeControl = function (dir) { remove(this.directives, dir); };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    FormGroupDirective.prototype.addFormGroup = function (dir) {
-        var /** @type {?} */ ctrl = this.form.get(dir.path);
-        setUpFormContainer(ctrl, dir);
-        ctrl.updateValueAndValidity({ emitEvent: false });
-    };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    FormGroupDirective.prototype.removeFormGroup = function (dir) { };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    FormGroupDirective.prototype.getFormGroup = function (dir) { return (this.form.get(dir.path)); };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    FormGroupDirective.prototype.addFormArray = function (dir) {
-        var /** @type {?} */ ctrl = this.form.get(dir.path);
-        setUpFormContainer(ctrl, dir);
-        ctrl.updateValueAndValidity({ emitEvent: false });
-    };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    FormGroupDirective.prototype.removeFormArray = function (dir) { };
-    /**
-     * @param {?} dir
-     * @return {?}
-     */
-    FormGroupDirective.prototype.getFormArray = function (dir) { return (this.form.get(dir.path)); };
-    /**
-     * @param {?} dir
-     * @param {?} value
-     * @return {?}
-     */
-    FormGroupDirective.prototype.updateModel = function (dir, value) {
-        var /** @type {?} */ ctrl = (this.form.get(dir.path));
-        ctrl.setValue(value);
-    };
-    /**
-     * @param {?} $event
-     * @return {?}
-     */
-    FormGroupDirective.prototype.onSubmit = function ($event) {
-        this._submitted = true;
-        this.ngSubmit.emit($event);
-        return false;
-    };
-    /**
-     * @return {?}
-     */
-    FormGroupDirective.prototype.onReset = function () { this.resetForm(); };
-    /**
-     * @param {?=} value
-     * @return {?}
-     */
-    FormGroupDirective.prototype.resetForm = function (value) {
-        if (value === void 0) { value = undefined; }
-        this.form.reset(value);
-        this._submitted = false;
-    };
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormGroupDirective.prototype._updateDomValue = function () {
-        var _this = this;
-        this.directives.forEach(function (dir) {
-            var /** @type {?} */ newCtrl = _this.form.get(dir.path);
-            if (dir._control !== newCtrl) {
-                cleanUpControl(dir._control, dir);
-                if (newCtrl)
-                    setUpControl(newCtrl, dir);
-                dir._control = newCtrl;
-            }
-        });
-        this.form._updateTreeValidity({ emitEvent: false });
-    };
-    /**
-     * @return {?}
-     */
-    FormGroupDirective.prototype._updateRegistrations = function () {
-        var _this = this;
-        this.form._registerOnCollectionChange(function () { return _this._updateDomValue(); });
-        if (this._oldForm)
-            this._oldForm._registerOnCollectionChange(function () { });
-        this._oldForm = this.form;
-    };
-    /**
-     * @return {?}
-     */
-    FormGroupDirective.prototype._updateValidators = function () {
-        var /** @type {?} */ sync = composeValidators(this._validators);
-        this.form.validator = Validators.compose([/** @type {?} */ ((this.form.validator)), /** @type {?} */ ((sync))]);
-        var /** @type {?} */ async = composeAsyncValidators(this._asyncValidators);
-        this.form.asyncValidator = Validators.composeAsync([/** @type {?} */ ((this.form.asyncValidator)), /** @type {?} */ ((async))]);
-    };
-    /**
-     * @return {?}
-     */
-    FormGroupDirective.prototype._checkFormPresent = function () {
-        if (!this.form) {
-            ReactiveErrors.missingFormException();
-        }
-    };
-    return FormGroupDirective;
-}(ControlContainer));
-FormGroupDirective.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: '[formGroup]',
-                providers: [formDirectiveProvider$1],
-                host: { '(submit)': 'onSubmit($event)', '(reset)': 'onReset()' },
-                exportAs: 'ngForm'
-            },] },
-];
-/**
- * @nocollapse
- */
-FormGroupDirective.ctorParameters = function () { return [
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-]; };
-FormGroupDirective.propDecorators = {
-    'form': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formGroup',] },],
-    'ngSubmit': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */] },],
-};
-/**
- * @template T
- * @param {?} list
- * @param {?} el
- * @return {?}
- */
-function remove(list, el) {
-    var /** @type {?} */ index = list.indexOf(el);
-    if (index > -1) {
-        list.splice(index, 1);
-    }
-}
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var formGroupNameProvider = {
-    provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormGroupName; })
-};
-/**
- * \@whatItDoes Syncs a nested {\@link FormGroup} to a DOM element.
- *
- * \@howToUse
- *
- * This directive can only be used with a parent {\@link FormGroupDirective} (selector:
- * `[formGroup]`).
- *
- * It accepts the string name of the nested {\@link FormGroup} you want to link, and
- * will look for a {\@link FormGroup} registered with that name in the parent
- * {\@link FormGroup} instance you passed into {\@link FormGroupDirective}.
- *
- * Nested form groups can come in handy when you want to validate a sub-group of a
- * form separately from the rest or when you'd like to group the values of certain
- * controls into their own nested object.
- *
- * **Access the group**: You can access the associated {\@link FormGroup} using the
- * {\@link AbstractControl#get} method. Ex: `this.form.get('name')`.
- *
- * You can also access individual controls within the group using dot syntax.
- * Ex: `this.form.get('name.first')`
- *
- * **Get the value**: the `value` property is always synced and available on the
- * {\@link FormGroup}. See a full list of available properties in {\@link AbstractControl}.
- *
- * **Set the value**: You can set an initial value for each child control when instantiating
- * the {\@link FormGroup}, or you can set it programmatically later using
- * {\@link AbstractControl#setValue} or {\@link AbstractControl#patchValue}.
- *
- * **Listen to value**: If you want to listen to changes in the value of the group, you can
- * subscribe to the {\@link AbstractControl#valueChanges} event.  You can also listen to
- * {\@link AbstractControl#statusChanges} to be notified when the validation status is
- * re-calculated.
- *
- * ### Example
- *
- * {\@example forms/ts/nestedFormGroup/nested_form_group_example.ts region='Component'}
- *
- * * **npm package**: `\@angular/forms`
- *
- * * **NgModule**: `ReactiveFormsModule`
- *
- * \@stable
- */
-var FormGroupName = (function (_super) {
-    __extends(FormGroupName, _super);
-    /**
-     * @param {?} parent
-     * @param {?} validators
-     * @param {?} asyncValidators
-     */
-    function FormGroupName(parent, validators, asyncValidators) {
-        var _this = _super.call(this) || this;
-        _this._parent = parent;
-        _this._validators = validators;
-        _this._asyncValidators = asyncValidators;
-        return _this;
-    }
-    /**
-     * \@internal
-     * @return {?}
-     */
-    FormGroupName.prototype._checkParentType = function () {
-        if (_hasInvalidParent(this._parent)) {
-            ReactiveErrors.groupParentException();
-        }
-    };
-    return FormGroupName;
-}(AbstractFormGroupDirective));
-FormGroupName.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formGroupName]', providers: [formGroupNameProvider] },] },
-];
-/**
- * @nocollapse
- */
-FormGroupName.ctorParameters = function () { return [
-    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-]; };
-FormGroupName.propDecorators = {
-    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formGroupName',] },],
-};
-var formArrayNameProvider = {
-    provide: ControlContainer,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormArrayName; })
-};
-/**
- * \@whatItDoes Syncs a nested {\@link FormArray} to a DOM element.
- *
- * \@howToUse
- *
- * This directive is designed to be used with a parent {\@link FormGroupDirective} (selector:
- * `[formGroup]`).
- *
- * It accepts the string name of the nested {\@link FormArray} you want to link, and
- * will look for a {\@link FormArray} registered with that name in the parent
- * {\@link FormGroup} instance you passed into {\@link FormGroupDirective}.
- *
- * Nested form arrays can come in handy when you have a group of form controls but
- * you're not sure how many there will be. Form arrays allow you to create new
- * form controls dynamically.
- *
- * **Access the array**: You can access the associated {\@link FormArray} using the
- * {\@link AbstractControl#get} method on the parent {\@link FormGroup}.
- * Ex: `this.form.get('cities')`.
- *
- * **Get the value**: the `value` property is always synced and available on the
- * {\@link FormArray}. See a full list of available properties in {\@link AbstractControl}.
- *
- * **Set the value**: You can set an initial value for each child control when instantiating
- * the {\@link FormArray}, or you can set the value programmatically later using the
- * {\@link FormArray}'s {\@link AbstractControl#setValue} or {\@link AbstractControl#patchValue}
- * methods.
- *
- * **Listen to value**: If you want to listen to changes in the value of the array, you can
- * subscribe to the {\@link FormArray}'s {\@link AbstractControl#valueChanges} event.  You can also
- * listen to its {\@link AbstractControl#statusChanges} event to be notified when the validation
- * status is re-calculated.
- *
- * **Add new controls**: You can add new controls to the {\@link FormArray} dynamically by
- * calling its {\@link FormArray#push} method.
- *  Ex: `this.form.get('cities').push(new FormControl());`
- *
- * ### Example
- *
- * {\@example forms/ts/nestedFormArray/nested_form_array_example.ts region='Component'}
- *
- * * **npm package**: `\@angular/forms`
- *
- * * **NgModule**: `ReactiveFormsModule`
- *
- * \@stable
- */
-var FormArrayName = (function (_super) {
-    __extends(FormArrayName, _super);
-    /**
-     * @param {?} parent
-     * @param {?} validators
-     * @param {?} asyncValidators
-     */
-    function FormArrayName(parent, validators, asyncValidators) {
-        var _this = _super.call(this) || this;
-        _this._parent = parent;
-        _this._validators = validators;
-        _this._asyncValidators = asyncValidators;
-        return _this;
-    }
-    /**
-     * @return {?}
-     */
-    FormArrayName.prototype.ngOnInit = function () {
-        this._checkParentType(); /** @type {?} */
-        ((this.formDirective)).addFormArray(this);
-    };
-    /**
-     * @return {?}
-     */
-    FormArrayName.prototype.ngOnDestroy = function () {
-        if (this.formDirective) {
-            this.formDirective.removeFormArray(this);
-        }
-    };
-    Object.defineProperty(FormArrayName.prototype, "control", {
-        /**
-         * @return {?}
-         */
-        get: function () { return ((this.formDirective)).getFormArray(this); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormArrayName.prototype, "formDirective", {
-        /**
-         * @return {?}
-         */
-        get: function () {
-            return this._parent ? (this._parent.formDirective) : null;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormArrayName.prototype, "path", {
-        /**
-         * @return {?}
-         */
-        get: function () { return controlPath(this.name, this._parent); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormArrayName.prototype, "validator", {
-        /**
-         * @return {?}
-         */
-        get: function () { return composeValidators(this._validators); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormArrayName.prototype, "asyncValidator", {
-        /**
-         * @return {?}
-         */
-        get: function () {
-            return composeAsyncValidators(this._asyncValidators);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @return {?}
-     */
-    FormArrayName.prototype._checkParentType = function () {
-        if (_hasInvalidParent(this._parent)) {
-            ReactiveErrors.arrayParentException();
-        }
-    };
-    return FormArrayName;
-}(ControlContainer));
-FormArrayName.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formArrayName]', providers: [formArrayNameProvider] },] },
-];
-/**
- * @nocollapse
- */
-FormArrayName.ctorParameters = function () { return [
-    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-]; };
-FormArrayName.propDecorators = {
-    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formArrayName',] },],
-};
-/**
- * @param {?} parent
- * @return {?}
- */
-function _hasInvalidParent(parent) {
-    return !(parent instanceof FormGroupName) && !(parent instanceof FormGroupDirective) &&
-        !(parent instanceof FormArrayName);
-}
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var controlNameBinding = {
-    provide: NgControl,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return FormControlName; })
-};
-/**
- * \@whatItDoes Syncs a {\@link FormControl} in an existing {\@link FormGroup} to a form control
- * element by name.
- *
- * In other words, this directive ensures that any values written to the {\@link FormControl}
- * instance programmatically will be written to the DOM element (model -> view). Conversely,
- * any values written to the DOM element through user input will be reflected in the
- * {\@link FormControl} instance (view -> model).
- *
- * \@howToUse
- *
- * This directive is designed to be used with a parent {\@link FormGroupDirective} (selector:
- * `[formGroup]`).
- *
- * It accepts the string name of the {\@link FormControl} instance you want to
- * link, and will look for a {\@link FormControl} registered with that name in the
- * closest {\@link FormGroup} or {\@link FormArray} above it.
- *
- * **Access the control**: You can access the {\@link FormControl} associated with
- * this directive by using the {\@link AbstractControl#get} method.
- * Ex: `this.form.get('first');`
- *
- * **Get value**: the `value` property is always synced and available on the {\@link FormControl}.
- * See a full list of available properties in {\@link AbstractControl}.
- *
- *  **Set value**: You can set an initial value for the control when instantiating the
- *  {\@link FormControl}, or you can set it programmatically later using
- *  {\@link AbstractControl#setValue} or {\@link AbstractControl#patchValue}.
- *
- * **Listen to value**: If you want to listen to changes in the value of the control, you can
- * subscribe to the {\@link AbstractControl#valueChanges} event.  You can also listen to
- * {\@link AbstractControl#statusChanges} to be notified when the validation status is
- * re-calculated.
- *
- * ### Example
- *
- * In this example, we create form controls for first name and last name.
- *
- * {\@example forms/ts/simpleFormGroup/simple_form_group_example.ts region='Component'}
- *
- * To see `formControlName` examples with different form control types, see:
- *
- * * Radio buttons: {\@link RadioControlValueAccessor}
- * * Selects: {\@link SelectControlValueAccessor}
- *
- * **npm package**: `\@angular/forms`
- *
- * **NgModule**: {\@link ReactiveFormsModule}
- *
- *  \@stable
- */
-var FormControlName = (function (_super) {
-    __extends(FormControlName, _super);
-    /**
-     * @param {?} parent
-     * @param {?} validators
-     * @param {?} asyncValidators
-     * @param {?} valueAccessors
-     */
-    function FormControlName(parent, validators, asyncValidators, valueAccessors) {
-        var _this = _super.call(this) || this;
-        _this._added = false;
-        _this.update = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
-        _this._parent = parent;
-        _this._rawValidators = validators || [];
-        _this._rawAsyncValidators = asyncValidators || [];
-        _this.valueAccessor = selectValueAccessor(_this, valueAccessors);
-        return _this;
-    }
-    Object.defineProperty(FormControlName.prototype, "isDisabled", {
-        /**
-         * @param {?} isDisabled
-         * @return {?}
-         */
-        set: function (isDisabled) { ReactiveErrors.disabledAttrWarning(); },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    FormControlName.prototype.ngOnChanges = function (changes) {
-        if (!this._added)
-            this._setUpControl();
-        if (isPropertyUpdated(changes, this.viewModel)) {
-            this.viewModel = this.model;
-            this.formDirective.updateModel(this, this.model);
-        }
-    };
-    /**
-     * @return {?}
-     */
-    FormControlName.prototype.ngOnDestroy = function () {
-        if (this.formDirective) {
-            this.formDirective.removeControl(this);
-        }
-    };
-    /**
-     * @param {?} newValue
-     * @return {?}
-     */
-    FormControlName.prototype.viewToModelUpdate = function (newValue) {
-        this.viewModel = newValue;
-        this.update.emit(newValue);
-    };
-    Object.defineProperty(FormControlName.prototype, "path", {
-        /**
-         * @return {?}
-         */
-        get: function () { return controlPath(this.name, /** @type {?} */ ((this._parent))); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormControlName.prototype, "formDirective", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._parent ? this._parent.formDirective : null; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormControlName.prototype, "validator", {
-        /**
-         * @return {?}
-         */
-        get: function () { return composeValidators(this._rawValidators); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormControlName.prototype, "asyncValidator", {
-        /**
-         * @return {?}
-         */
-        get: function () {
-            return ((composeAsyncValidators(this._rawAsyncValidators)));
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(FormControlName.prototype, "control", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._control; },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @return {?}
-     */
-    FormControlName.prototype._checkParentType = function () {
-        if (!(this._parent instanceof FormGroupName) &&
-            this._parent instanceof AbstractFormGroupDirective) {
-            ReactiveErrors.ngModelGroupException();
-        }
-        else if (!(this._parent instanceof FormGroupName) && !(this._parent instanceof FormGroupDirective) &&
-            !(this._parent instanceof FormArrayName)) {
-            ReactiveErrors.controlParentException();
-        }
-    };
-    /**
-     * @return {?}
-     */
-    FormControlName.prototype._setUpControl = function () {
-        this._checkParentType();
-        this._control = this.formDirective.addControl(this);
-        if (this.control.disabled && ((this.valueAccessor)).setDisabledState) {
-            ((((this.valueAccessor)).setDisabledState))(true);
-        }
-        this._added = true;
-    };
-    return FormControlName;
-}(NgControl));
-FormControlName.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{ selector: '[formControlName]', providers: [controlNameBinding] },] },
-];
-/**
- * @nocollapse
- */
-FormControlName.ctorParameters = function () { return [
-    { type: ControlContainer, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Host */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* SkipSelf */] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_ASYNC_VALIDATORS,] },] },
-    { type: Array, decorators: [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Optional */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* Self */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Inject */], args: [NG_VALUE_ACCESSOR,] },] },
-]; };
-FormControlName.propDecorators = {
-    'name': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['formControlName',] },],
-    'model': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['ngModel',] },],
-    'update': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */], args: ['ngModelChange',] },],
-    'isDisabled': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */], args: ['disabled',] },],
-};
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var REQUIRED_VALIDATOR = {
-    provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return RequiredValidator; }),
-    multi: true
-};
-var CHECKBOX_REQUIRED_VALIDATOR = {
-    provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return CheckboxRequiredValidator; }),
-    multi: true
-};
-/**
- * A Directive that adds the `required` validator to any controls marked with the
- * `required` attribute, via the {\@link NG_VALIDATORS} binding.
- *
- * ### Example
- *
- * ```
- * <input name="fullName" ngModel required>
- * ```
- *
- * \@stable
- */
-var RequiredValidator = (function () {
-    function RequiredValidator() {
-    }
-    Object.defineProperty(RequiredValidator.prototype, "required", {
-        /**
-         * @return {?}
-         */
-        get: function () { return this._required; },
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        set: function (value) {
-            this._required = value != null && value !== false && "" + value !== 'false';
-            if (this._onChange)
-                this._onChange();
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} c
-     * @return {?}
-     */
-    RequiredValidator.prototype.validate = function (c) {
-        return this.required ? Validators.required(c) : null;
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    RequiredValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
-    return RequiredValidator;
-}());
-RequiredValidator.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: ':not([type=checkbox])[required][formControlName],:not([type=checkbox])[required][formControl],:not([type=checkbox])[required][ngModel]',
-                providers: [REQUIRED_VALIDATOR],
-                host: { '[attr.required]': 'required ? "" : null' }
-            },] },
-];
-/**
- * @nocollapse
- */
-RequiredValidator.ctorParameters = function () { return []; };
-RequiredValidator.propDecorators = {
-    'required': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-};
-/**
- * A Directive that adds the `required` validator to checkbox controls marked with the
- * `required` attribute, via the {\@link NG_VALIDATORS} binding.
- *
- * ### Example
- *
- * ```
- * <input type="checkbox" name="active" ngModel required>
- * ```
- *
- * \@experimental
- */
-var CheckboxRequiredValidator = (function (_super) {
-    __extends(CheckboxRequiredValidator, _super);
-    function CheckboxRequiredValidator() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    /**
-     * @param {?} c
-     * @return {?}
-     */
-    CheckboxRequiredValidator.prototype.validate = function (c) {
-        return this.required ? Validators.requiredTrue(c) : null;
-    };
-    return CheckboxRequiredValidator;
-}(RequiredValidator));
-CheckboxRequiredValidator.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'input[type=checkbox][required][formControlName],input[type=checkbox][required][formControl],input[type=checkbox][required][ngModel]',
-                providers: [CHECKBOX_REQUIRED_VALIDATOR],
-                host: { '[attr.required]': 'required ? "" : null' }
-            },] },
-];
-/**
- * @nocollapse
- */
-CheckboxRequiredValidator.ctorParameters = function () { return []; };
-/**
- * Provider which adds {@link EmailValidator} to {@link NG_VALIDATORS}.
- */
-var EMAIL_VALIDATOR = {
-    provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return EmailValidator; }),
-    multi: true
-};
-/**
- * A Directive that adds the `email` validator to controls marked with the
- * `email` attribute, via the {\@link NG_VALIDATORS} binding.
- *
- * ### Example
- *
- * ```
- * <input type="email" name="email" ngModel email>
- * <input type="email" name="email" ngModel email="true">
- * <input type="email" name="email" ngModel [email]="true">
- * ```
- *
- * \@experimental
- */
-var EmailValidator = (function () {
-    function EmailValidator() {
-    }
-    Object.defineProperty(EmailValidator.prototype, "email", {
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        set: function (value) {
-            this._enabled = value === '' || value === true || value === 'true';
-            if (this._onChange)
-                this._onChange();
-        },
-        enumerable: true,
-        configurable: true
-    });
-    /**
-     * @param {?} c
-     * @return {?}
-     */
-    EmailValidator.prototype.validate = function (c) {
-        return this._enabled ? Validators.email(c) : null;
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    EmailValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
-    return EmailValidator;
-}());
-EmailValidator.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: '[email][formControlName],[email][formControl],[email][ngModel]',
-                providers: [EMAIL_VALIDATOR]
-            },] },
-];
-/**
- * @nocollapse
- */
-EmailValidator.ctorParameters = function () { return []; };
-EmailValidator.propDecorators = {
-    'email': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-};
-/**
- * Provider which adds {@link MinLengthValidator} to {@link NG_VALIDATORS}.
- *
- * ## Example:
- *
- * {@example common/forms/ts/validators/validators.ts region='min'}
- */
-var MIN_LENGTH_VALIDATOR = {
-    provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return MinLengthValidator; }),
-    multi: true
-};
-/**
- * A directive which installs the {\@link MinLengthValidator} for any `formControlName`,
- * `formControl`, or control with `ngModel` that also has a `minlength` attribute.
- *
- * \@stable
- */
-var MinLengthValidator = (function () {
-    function MinLengthValidator() {
-    }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    MinLengthValidator.prototype.ngOnChanges = function (changes) {
-        if ('minlength' in changes) {
-            this._createValidator();
-            if (this._onChange)
-                this._onChange();
-        }
-    };
-    /**
-     * @param {?} c
-     * @return {?}
-     */
-    MinLengthValidator.prototype.validate = function (c) {
-        return this.minlength == null ? null : this._validator(c);
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    MinLengthValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
-    /**
-     * @return {?}
-     */
-    MinLengthValidator.prototype._createValidator = function () {
-        this._validator = Validators.minLength(parseInt(this.minlength, 10));
-    };
-    return MinLengthValidator;
-}());
-MinLengthValidator.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: '[minlength][formControlName],[minlength][formControl],[minlength][ngModel]',
-                providers: [MIN_LENGTH_VALIDATOR],
-                host: { '[attr.minlength]': 'minlength ? minlength : null' }
-            },] },
-];
-/**
- * @nocollapse
- */
-MinLengthValidator.ctorParameters = function () { return []; };
-MinLengthValidator.propDecorators = {
-    'minlength': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-};
-/**
- * Provider which adds {@link MaxLengthValidator} to {@link NG_VALIDATORS}.
- *
- * ## Example:
- *
- * {@example common/forms/ts/validators/validators.ts region='max'}
- */
-var MAX_LENGTH_VALIDATOR = {
-    provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return MaxLengthValidator; }),
-    multi: true
-};
-/**
- * A directive which installs the {\@link MaxLengthValidator} for any `formControlName,
- * `formControl`,
- * or control with `ngModel` that also has a `maxlength` attribute.
- *
- * \@stable
- */
-var MaxLengthValidator = (function () {
-    function MaxLengthValidator() {
-    }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    MaxLengthValidator.prototype.ngOnChanges = function (changes) {
-        if ('maxlength' in changes) {
-            this._createValidator();
-            if (this._onChange)
-                this._onChange();
-        }
-    };
-    /**
-     * @param {?} c
-     * @return {?}
-     */
-    MaxLengthValidator.prototype.validate = function (c) {
-        return this.maxlength != null ? this._validator(c) : null;
-    };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    MaxLengthValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
-    /**
-     * @return {?}
-     */
-    MaxLengthValidator.prototype._createValidator = function () {
-        this._validator = Validators.maxLength(parseInt(this.maxlength, 10));
-    };
-    return MaxLengthValidator;
-}());
-MaxLengthValidator.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: '[maxlength][formControlName],[maxlength][formControl],[maxlength][ngModel]',
-                providers: [MAX_LENGTH_VALIDATOR],
-                host: { '[attr.maxlength]': 'maxlength ? maxlength : null' }
-            },] },
-];
-/**
- * @nocollapse
- */
-MaxLengthValidator.ctorParameters = function () { return []; };
-MaxLengthValidator.propDecorators = {
-    'maxlength': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-};
-var PATTERN_VALIDATOR = {
-    provide: NG_VALIDATORS,
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* forwardRef */])(function () { return PatternValidator; }),
-    multi: true
-};
-/**
- * A Directive that adds the `pattern` validator to any controls marked with the
- * `pattern` attribute, via the {\@link NG_VALIDATORS} binding. Uses attribute value
- * as the regex to validate Control value against.  Follows pattern attribute
- * semantics; i.e. regex must match entire Control value.
- *
- * ### Example
- *
- * ```
- * <input [name]="fullName" pattern="[a-zA-Z ]*" ngModel>
- * ```
- * \@stable
- */
-var PatternValidator = (function () {
-    function PatternValidator() {
-    }
-    /**
-     * @param {?} changes
-     * @return {?}
-     */
-    PatternValidator.prototype.ngOnChanges = function (changes) {
-        if ('pattern' in changes) {
-            this._createValidator();
-            if (this._onChange)
-                this._onChange();
-        }
-    };
-    /**
-     * @param {?} c
-     * @return {?}
-     */
-    PatternValidator.prototype.validate = function (c) { return this._validator(c); };
-    /**
-     * @param {?} fn
-     * @return {?}
-     */
-    PatternValidator.prototype.registerOnValidatorChange = function (fn) { this._onChange = fn; };
-    /**
-     * @return {?}
-     */
-    PatternValidator.prototype._createValidator = function () { this._validator = Validators.pattern(this.pattern); };
-    return PatternValidator;
-}());
-PatternValidator.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: '[pattern][formControlName],[pattern][formControl],[pattern][ngModel]',
-                providers: [PATTERN_VALIDATOR],
-                host: { '[attr.pattern]': 'pattern ? pattern : null' }
-            },] },
-];
-/**
- * @nocollapse
- */
-PatternValidator.ctorParameters = function () { return []; };
-PatternValidator.propDecorators = {
-    'pattern': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-};
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * \@whatItDoes Creates an {\@link AbstractControl} from a user-specified configuration.
- *
- * It is essentially syntactic sugar that shortens the `new FormGroup()`,
- * `new FormControl()`, and `new FormArray()` boilerplate that can build up in larger
- * forms.
- *
- * \@howToUse
- *
- * To use, inject `FormBuilder` into your component class. You can then call its methods
- * directly.
- *
- * {\@example forms/ts/formBuilder/form_builder_example.ts region='Component'}
- *
- *  * **npm package**: `\@angular/forms`
- *
- *  * **NgModule**: {\@link ReactiveFormsModule}
- *
- * \@stable
- */
-var FormBuilder = (function () {
-    function FormBuilder() {
-    }
-    /**
-     * Construct a new {\@link FormGroup} with the given map of configuration.
-     * Valid keys for the `extra` parameter map are `validator` and `asyncValidator`.
-     *
-     * See the {\@link FormGroup} constructor for more details.
-     * @param {?} controlsConfig
-     * @param {?=} extra
-     * @return {?}
-     */
-    FormBuilder.prototype.group = function (controlsConfig, extra) {
-        if (extra === void 0) { extra = null; }
-        var /** @type {?} */ controls = this._reduceControls(controlsConfig);
-        var /** @type {?} */ validator = extra != null ? extra['validator'] : null;
-        var /** @type {?} */ asyncValidator = extra != null ? extra['asyncValidator'] : null;
-        return new FormGroup(controls, validator, asyncValidator);
-    };
-    /**
-     * Construct a new {\@link FormControl} with the given `formState`,`validator`, and
-     * `asyncValidator`.
-     *
-     * `formState` can either be a standalone value for the form control or an object
-     * that contains both a value and a disabled status.
-     *
-     * @param {?} formState
-     * @param {?=} validator
-     * @param {?=} asyncValidator
-     * @return {?}
-     */
-    FormBuilder.prototype.control = function (formState, validator, asyncValidator) {
-        return new FormControl(formState, validator, asyncValidator);
-    };
-    /**
-     * Construct a {\@link FormArray} from the given `controlsConfig` array of
-     * configuration, with the given optional `validator` and `asyncValidator`.
-     * @param {?} controlsConfig
-     * @param {?=} validator
-     * @param {?=} asyncValidator
-     * @return {?}
-     */
-    FormBuilder.prototype.array = function (controlsConfig, validator, asyncValidator) {
-        var _this = this;
-        var /** @type {?} */ controls = controlsConfig.map(function (c) { return _this._createControl(c); });
-        return new FormArray(controls, validator, asyncValidator);
-    };
-    /**
-     * \@internal
-     * @param {?} controlsConfig
-     * @return {?}
-     */
-    FormBuilder.prototype._reduceControls = function (controlsConfig) {
-        var _this = this;
-        var /** @type {?} */ controls = {};
-        Object.keys(controlsConfig).forEach(function (controlName) {
-            controls[controlName] = _this._createControl(controlsConfig[controlName]);
-        });
-        return controls;
-    };
-    /**
-     * \@internal
-     * @param {?} controlConfig
-     * @return {?}
-     */
-    FormBuilder.prototype._createControl = function (controlConfig) {
-        if (controlConfig instanceof FormControl || controlConfig instanceof FormGroup ||
-            controlConfig instanceof FormArray) {
-            return controlConfig;
-        }
-        else if (Array.isArray(controlConfig)) {
-            var /** @type {?} */ value = controlConfig[0];
-            var /** @type {?} */ validator = controlConfig.length > 1 ? controlConfig[1] : null;
-            var /** @type {?} */ asyncValidator = controlConfig.length > 2 ? controlConfig[2] : null;
-            return this.control(value, validator, asyncValidator);
-        }
-        else {
-            return this.control(controlConfig);
-        }
-    };
-    return FormBuilder;
-}());
-FormBuilder.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */] },
-];
-/**
- * @nocollapse
- */
-FormBuilder.ctorParameters = function () { return []; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of the common package.
- */
-/**
- * \@stable
- */
-var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Version */]('4.1.3');
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * \@whatItDoes Adds `novalidate` attribute to all forms by default.
- *
- * `novalidate` is used to disable browser's native form validation.
- *
- * If you want to use native validation with Angular forms, just add `ngNativeValidate` attribute:
- *
- * ```
- * <form ngNativeValidate></form>
- * ```
- *
- * \@experimental
- */
-var NgNoValidate = (function () {
-    function NgNoValidate() {
-    }
-    return NgNoValidate;
-}());
-NgNoValidate.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
-                selector: 'form:not([ngNoForm]):not([ngNativeValidate])',
-                host: { 'novalidate': '' },
-            },] },
-];
-/**
- * @nocollapse
- */
-NgNoValidate.ctorParameters = function () { return []; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var SHARED_FORM_DIRECTIVES = [
-    NgNoValidate,
-    NgSelectOption,
-    NgSelectMultipleOption,
-    DefaultValueAccessor,
-    NumberValueAccessor,
-    RangeValueAccessor,
-    CheckboxControlValueAccessor,
-    SelectControlValueAccessor,
-    SelectMultipleControlValueAccessor,
-    RadioControlValueAccessor,
-    NgControlStatus,
-    NgControlStatusGroup,
-    RequiredValidator,
-    MinLengthValidator,
-    MaxLengthValidator,
-    PatternValidator,
-    CheckboxRequiredValidator,
-    EmailValidator,
-];
-var TEMPLATE_DRIVEN_DIRECTIVES = [NgModel, NgModelGroup, NgForm];
-var REACTIVE_DRIVEN_DIRECTIVES = [FormControlDirective, FormGroupDirective, FormControlName, FormGroupName, FormArrayName];
-/**
- * Internal module used for sharing directives between FormsModule and ReactiveFormsModule
- */
-var InternalFormsSharedModule = (function () {
-    function InternalFormsSharedModule() {
-    }
-    return InternalFormsSharedModule;
-}());
-InternalFormsSharedModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */], args: [{
-                declarations: SHARED_FORM_DIRECTIVES,
-                exports: SHARED_FORM_DIRECTIVES,
-            },] },
-];
-/**
- * @nocollapse
- */
-InternalFormsSharedModule.ctorParameters = function () { return []; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * The ng module for forms.
- * \@stable
- */
-var FormsModule = (function () {
-    function FormsModule() {
-    }
-    return FormsModule;
-}());
-FormsModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */], args: [{
-                declarations: TEMPLATE_DRIVEN_DIRECTIVES,
-                providers: [RadioControlRegistry],
-                exports: [InternalFormsSharedModule, TEMPLATE_DRIVEN_DIRECTIVES]
-            },] },
-];
-/**
- * @nocollapse
- */
-FormsModule.ctorParameters = function () { return []; };
-/**
- * The ng module for reactive forms.
- * \@stable
- */
-var ReactiveFormsModule = (function () {
-    function ReactiveFormsModule() {
-    }
-    return ReactiveFormsModule;
-}());
-ReactiveFormsModule.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* NgModule */], args: [{
-                declarations: [REACTIVE_DRIVEN_DIRECTIVES],
-                providers: [FormBuilder, RadioControlRegistry],
-                exports: [InternalFormsSharedModule, REACTIVE_DRIVEN_DIRECTIVES]
-            },] },
-];
-/**
- * @nocollapse
- */
-ReactiveFormsModule.ctorParameters = function () { return []; };
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * This module is used for handling user input, by defining and building a {@link FormGroup} that
- * consists of {@link FormControl} objects, and mapping them onto the DOM. {@link FormControl}
- * objects can then be used to read information from the form DOM elements.
- *
- * Forms providers are not included in default providers; you must import these providers
- * explicitly.
- */
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * @module
- * @description
- * Entry point for all public APIs of the forms package.
- */
-// This file only reexports content of the `src` folder. Keep it that way.
-/**
- * Generated bundle index. Do not edit.
- */
-
-//# sourceMappingURL=forms.es5.js.map
-
-
-/***/ }),
 /* 182 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__(72);
 
 /**
  * Angular 2 decorators and services
@@ -67635,7 +67635,7 @@ AppComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
         selector: 'app',
         encapsulation: __WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* ViewEncapsulation */].None,
         styles: [
-            __webpack_require__(385)
+            __webpack_require__(389)
         ],
         template: "\n    <nav>\n      <a [routerLink]=\" ['./'] \"\n        routerLinkActive=\"active\" [routerLinkActiveOptions]= \"{exact: true}\">\n        Index\n      </a>\n      \n      <a [routerLink]=\" ['./bestellvorgang'] \"\n        routerLinkActive=\"active\" [routerLinkActiveOptions]= \"{exact: true}\">\n        D\u00F6ner Bestellen\n      </a>\n       <a [routerLink]=\" ['./bestellungen'] \"\n        routerLinkActive=\"active\" [routerLinkActiveOptions]= \"{exact: true}\">\n        Bestellungen\n      </a>\n      <a [routerLink]=\" ['./speisekarte'] \"\n        routerLinkActive=\"active\" [routerLinkActiveOptions]= \"{exact: true}\">\n        Speisekarte\n      </a>\n    </nav>\n\n    <main>\n      <router-outlet></router-outlet>\n    </main>\n\n\n    <footer>\n      <span>GOD D\u00F6ner - Sch\u00F6ner mit D\u00F6ner!</span>\n      \n    </footer>\n  "
     }),
@@ -67657,30 +67657,34 @@ AppComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bestellungService__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(181);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angularclass_hmr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__environment__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_routes__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__(182);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_resolver__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_service__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__home__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__bestellvorgang__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__no_content__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__home_x_large__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__styles_styles_scss__ = __webpack_require__(382);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__styles_styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__styles_styles_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__styles_headings_css__ = __webpack_require__(383);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__styles_headings_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18__styles_headings_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__bestell_uebersicht__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__speisekarte_speisekarte_component__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bestellvorgang_numberValidator_directive__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__validation_god_show_error_god_show_error_component__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__bestellungService__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angularclass_hmr__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angularclass_hmr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__angularclass_hmr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_router__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__environment__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_routes__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_resolver__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_service__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__home__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__bestellvorgang__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__no_content__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__home_x_large__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__styles_styles_scss__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__styles_styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19__styles_styles_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__styles_headings_css__ = __webpack_require__(387);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__styles_headings_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__styles_headings_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__bestell_uebersicht__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__speisekarte_speisekarte_component__ = __webpack_require__(108);
+
+
 
 
 
@@ -67707,8 +67711,8 @@ AppComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 
 
 // Application wide providers
-var APP_PROVIDERS = __WEBPACK_IMPORTED_MODULE_11__app_resolver__["a" /* APP_RESOLVER_PROVIDERS */].concat([
-    __WEBPACK_IMPORTED_MODULE_12__app_service__["a" /* AppState */]
+var APP_PROVIDERS = __WEBPACK_IMPORTED_MODULE_13__app_resolver__["a" /* APP_RESOLVER_PROVIDERS */].concat([
+    __WEBPACK_IMPORTED_MODULE_14__app_service__["a" /* AppState */]
 ]);
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -67748,15 +67752,15 @@ var AppModule = (function () {
         /**
          * Recreate root elements
          */
-        store.disposeOldHosts = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__["createNewHosts"])(cmpLocation);
+        store.disposeOldHosts = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angularclass_hmr__["createNewHosts"])(cmpLocation);
         /**
          * Save input values
          */
-        store.restoreInputValues = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__["createInputTransfer"])();
+        store.restoreInputValues = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angularclass_hmr__["createInputTransfer"])();
         /**
          * Remove styles
          */
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__angularclass_hmr__["removeNgStyles"])();
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angularclass_hmr__["removeNgStyles"])();
     };
     AppModule.prototype.hmrAfterDestroy = function (store) {
         /**
@@ -67768,37 +67772,39 @@ var AppModule = (function () {
     return AppModule;
 }());
 AppModule = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__angular_core__["y" /* NgModule */])({
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]],
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__angular_core__["y" /* NgModule */])({
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */]],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__bestellvorgang__["a" /* BestellvorgangComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__home__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__no_content__["a" /* NoContentComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__home_x_large__["a" /* XLargeDirective */],
-            __WEBPACK_IMPORTED_MODULE_19__bestell_uebersicht__["a" /* BestellUebersichtComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__speisekarte_speisekarte_component__["a" /* SpeisekarteComponent */]
+            __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__bestellvorgang__["a" /* BestellvorgangComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__home__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__no_content__["a" /* NoContentComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__home_x_large__["a" /* XLargeDirective */],
+            __WEBPACK_IMPORTED_MODULE_21__bestell_uebersicht__["a" /* BestellUebersichtComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__speisekarte_speisekarte_component__["a" /* SpeisekarteComponent */],
+            __WEBPACK_IMPORTED_MODULE_2__validation_god_show_error_god_show_error_component__["a" /* GodShowErrorComponent */],
+            __WEBPACK_IMPORTED_MODULE_1__bestellvorgang_numberValidator_directive__["a" /* NumberValidatorDirective */]
         ],
         /**
          * Import Angular's modules.
          */
         imports: [
-            __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_7__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_9__app_routes__["a" /* ROUTES */], { useHash: true, preloadingStrategy: __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* PreloadAllModules */] })
+            __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["b" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_6__angular_http__["a" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_9__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_11__app_routes__["a" /* ROUTES */], { useHash: true, preloadingStrategy: __WEBPACK_IMPORTED_MODULE_9__angular_router__["b" /* PreloadAllModules */] })
         ],
         /**
          * Expose our Services and Providers into Angular's dependency injection.
          */
         providers: [
-            __WEBPACK_IMPORTED_MODULE_1__bestellungService__["a" /* BestellungService */],
-            __WEBPACK_IMPORTED_MODULE_8__environment__["b" /* ENV_PROVIDERS */],
+            __WEBPACK_IMPORTED_MODULE_3__bestellungService__["a" /* BestellungService */],
+            __WEBPACK_IMPORTED_MODULE_10__environment__["b" /* ENV_PROVIDERS */],
             APP_PROVIDERS
         ]
     }),
-    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_core__["a" /* ApplicationRef */],
-        __WEBPACK_IMPORTED_MODULE_12__app_service__["a" /* AppState */]])
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__angular_core__["a" /* ApplicationRef */],
+        __WEBPACK_IMPORTED_MODULE_14__app_service__["a" /* AppState */]])
 ], AppModule);
 
 
@@ -67810,11 +67816,11 @@ AppModule = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 "use strict";
 /* unused harmony export DataResolver */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_RESOLVER_PROVIDERS; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(360);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
 
 
@@ -67846,11 +67852,11 @@ var APP_RESOLVER_PROVIDERS = [
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ROUTES; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__speisekarte_speisekarte_component__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bestell_uebersicht_bestell_uebersicht_component__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__bestellvorgang__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__no_content__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__speisekarte_speisekarte_component__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bestell_uebersicht_bestell_uebersicht_component__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__bestellvorgang__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__no_content__ = __webpack_require__(107);
 
 
 
@@ -67873,7 +67879,7 @@ var ROUTES = [
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bestell_uebersicht_component__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bestell_uebersicht_component__ = __webpack_require__(104);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__bestell_uebersicht_component__["a"]; });
 
 
@@ -67898,13 +67904,13 @@ var Bestellung = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestellvorgangComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_process__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_process__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_process___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_process__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bestellungService__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bestellungService__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__bestellung__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(71);
 
 
 
@@ -67956,7 +67962,7 @@ var BestellvorgangComponent = (function () {
          * remember that 'es6-promise-loader' is a promise
          */
         setTimeout(function () {
-            __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 390))
+            __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 395))
                 .then(function (json) {
                 console.log('async mockData', json);
                 _this.localState = json;
@@ -67971,8 +67977,8 @@ var BestellvorgangComponent = (function () {
 BestellvorgangComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__angular_core__["_10" /* Component */])({
         selector: 'bestellvorgang',
-        template: __webpack_require__(349),
-        styles: [__webpack_require__(387)]
+        template: __webpack_require__(352),
+        styles: [__webpack_require__(391)]
     }),
     __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_router__["d" /* ActivatedRoute */],
         __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* Router */],
@@ -67986,11 +67992,49 @@ BestellvorgangComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NumberValidatorDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(69);
+
+
+
+var NumberValidatorDirective = NumberValidatorDirective_1 = (function () {
+    function NumberValidatorDirective() {
+    }
+    NumberValidatorDirective.prototype.validate = function (control) {
+        console.log('ich validiere');
+        if (control.value || control.value === '' || control.value === NaN) {
+            return null;
+        }
+        return { 'notANumber': true };
+    };
+    return NumberValidatorDirective;
+}());
+NumberValidatorDirective = NumberValidatorDirective_1 = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* Directive */])({
+        selector: '[numberValidator]',
+        providers: [{
+                provide: __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* NG_VALIDATORS */],
+                useExisting: NumberValidatorDirective_1, multi: true
+            }]
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [])
+], NumberValidatorDirective);
+
+var NumberValidatorDirective_1;
+
+
+/***/ }),
+/* 190 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__title__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__title__ = __webpack_require__(191);
 
 
 
@@ -68037,11 +68081,11 @@ HomeComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
         /**
          * Our list of styles in our component. We may add more to compose many styles together.
          */
-        styles: [__webpack_require__(388)],
+        styles: [__webpack_require__(392)],
         /**
          * Every Angular template is first compiled by the browser before Angular runs it's compiler.
          */
-        template: __webpack_require__(350)
+        template: __webpack_require__(353)
     }),
     __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppState */],
         __WEBPACK_IMPORTED_MODULE_3__title__["a" /* Title */]])
@@ -68050,24 +68094,24 @@ HomeComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__title_service__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__title_service__ = __webpack_require__(192);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__title_service__["a"]; });
 
 
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Title; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(70);
 
 
 
@@ -68096,23 +68140,23 @@ Title = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__x_large_directive__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__x_large_directive__ = __webpack_require__(194);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__x_large_directive__["a"]; });
 
 
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return XLargeDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
 
 
 /**
@@ -68145,13 +68189,13 @@ XLargeDirective = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NoContentComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
 
 
 var NoContentComponent = (function () {
@@ -68169,15 +68213,102 @@ NoContentComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
 
 
 /***/ }),
-/* 195 */
+/* 196 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GodShowErrorComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(69);
+
+
+
+var GodShowErrorComponent = (function () {
+    function GodShowErrorComponent(ngForm, formGroup) {
+        this.ngForm = ngForm;
+        this.formGroup = formGroup;
+        this.displayName = '';
+    }
+    Object.defineProperty(GodShowErrorComponent.prototype, "errorMessages", {
+        get: function () {
+            var form;
+            if (this.ngForm) {
+                form = this.ngForm.form;
+            }
+            else {
+                form = this.formGroup.form;
+            }
+            var control = form.get(this.path);
+            var messages = [];
+            if (!control || !control.errors || !control.dirty) {
+                return null;
+            }
+            for (var code in control.errors) {
+                if (control.errors.hasOwnProperty(code)) {
+                    var error = control.errors[code];
+                    var message = '';
+                    var i18nKey = { value: error.requiredLength };
+                    switch (code) {
+                        case 'required':
+                            message = "Dies ist ein Pflichtfeld.";
+                            break;
+                        case 'minlength':
+                            message = "Minimal";
+                            break;
+                        case 'maxlength':
+                            message = "Maximal";
+                            break;
+                        case 'notANumber':
+                            message = name + " ist keine W\u00E4hrung";
+                            break;
+                        default:
+                            message = name + " ist nicht valide";
+                    }
+                    messages.push(message);
+                }
+            }
+            return messages;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return GodShowErrorComponent;
+}());
+__WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["N" /* Input */])('path'),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:type", Object)
+], GodShowErrorComponent.prototype, "path", void 0);
+__WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["N" /* Input */])('text'),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:type", Object)
+], GodShowErrorComponent.prototype, "displayName", void 0);
+GodShowErrorComponent = __WEBPACK_IMPORTED_MODULE_0_tslib__["a" /* __decorate */]([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_10" /* Component */])({
+        selector: 'god-show-error',
+        styles: [
+            __webpack_require__(394)
+        ],
+        template: __webpack_require__(355)
+    }),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["c" /* __param */](0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["l" /* Optional */])()),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["c" /* __param */](1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["l" /* Optional */])()),
+    __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __metadata */]("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* NgForm */],
+        __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormGroupDirective */]])
+], GodShowErrorComponent);
+
+
+
+/***/ }),
+/* 197 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["main"] = main;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_environment__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_environment__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app__ = __webpack_require__(160);
 /**
  * Angular bootstrapping
  */
@@ -68246,8 +68377,8 @@ function _domReadyHandler() {
 
 
 /***/ }),
-/* 196 */,
-/* 197 */
+/* 198 */,
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68318,7 +68449,7 @@ exports.createInputTransfer = createInputTransfer;
 //# sourceMappingURL=helpers.js.map
 
 /***/ }),
-/* 198 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68327,12 +68458,10 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 // Hot Module Replacement
-__export(__webpack_require__(197));
+__export(__webpack_require__(199));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 199 */,
-/* 200 */,
 /* 201 */,
 /* 202 */,
 /* 203 */,
@@ -68473,10 +68602,12 @@ __export(__webpack_require__(197));
 /* 338 */,
 /* 339 */,
 /* 340 */,
-/* 341 */
+/* 341 */,
+/* 342 */,
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(41)(undefined);
+exports = module.exports = __webpack_require__(33)(undefined);
 // imports
 
 
@@ -68487,10 +68618,10 @@ exports.push([module.i, "/* this file will be extracted to main dist folder and 
 
 
 /***/ }),
-/* 342 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(41)(undefined);
+exports = module.exports = __webpack_require__(33)(undefined);
 // imports
 
 
@@ -68501,10 +68632,10 @@ exports.push([module.i, "html, body{\n  height: 100%;\n  font-family: Arial, Hel
 
 
 /***/ }),
-/* 343 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(41)(undefined);
+exports = module.exports = __webpack_require__(33)(undefined);
 // imports
 
 
@@ -68515,24 +68646,24 @@ exports.push([module.i, ".selected {\n  background-color: #CFD8DC !important;\n 
 
 
 /***/ }),
-/* 344 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(41)(undefined);
+exports = module.exports = __webpack_require__(33)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "\t/*!\n\t * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)\n\t * Copyright 2011-2017 The Bootstrap Authors\n\t * Copyright 2011-2017 Twitter, Inc.\n\t * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n\t */\n\n\th1,\n\th2,\n\th3,\n\th4,\n\th5,\n\th6,\n\t.h1,\n\t.h2,\n\t.h3,\n\t.h4,\n\t.h5,\n\t.h6 {\n\t  margin-bottom: 0.5rem;\n\t  font-family: inherit;\n\t  font-weight: 500;\n\t  line-height: 1.1;\n\t  color: inherit;\n\t}\n\n\th1,\n\t.h1 {\n\t  font-size: 2.5rem;\n\t}\n\n\th2,\n\t.h2 {\n\t  font-size: 2rem;\n\t}\n\n\th3,\n\t.h3 {\n\t  font-size: 1.75rem;\n\t}\n\n\th4,\n\t.h4 {\n\t  font-size: 1.5rem;\n\t}\n\n\th5,\n\t.h5 {\n\t  font-size: 1.25rem;\n\t}\n\n\th6,\n\t.h6 {\n\t  font-size: 1rem;\n\t}\n\n\t.lead {\n\t  font-size: 1.25rem;\n\t  font-weight: 300;\n\t}\n\n\t.display-1 {\n\t  font-size: 6rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\t.display-2 {\n\t  font-size: 5.5rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\t.display-3 {\n\t  font-size: 4.5rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\t.display-4 {\n\t  font-size: 3.5rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\thr {\n\t  margin-top: 1rem;\n\t  margin-bottom: 1rem;\n\t  border: 0;\n\t  border-top: 1px solid rgba(0, 0, 0, 0.1);\n\t}\n\n\tsmall,\n\t.small {\n\t  font-size: 80%;\n\t  font-weight: normal;\n\t}\n\n\tmark,\n\t.mark {\n\t  padding: 0.2em;\n\t  background-color: #fcf8e3;\n\t}\n\n\t.list-unstyled {\n\t  padding-left: 0;\n\t  list-style: none;\n\t}\n\n\t.list-inline {\n\t  padding-left: 0;\n\t  list-style: none;\n\t}\n\n\t.list-inline-item {\n\t  display: inline-block;\n\t}\n\n\t.list-inline-item:not(:last-child) {\n\t  margin-right: 5px;\n\t}\n\n\t.initialism {\n\t  font-size: 90%;\n\t  text-transform: uppercase;\n\t}\n\n\t.blockquote {\n\t  padding: 0.5rem 1rem;\n\t  margin-bottom: 1rem;\n\t  font-size: 1.25rem;\n\t  border-left: 0.25rem solid #eceeef;\n\t}\n\n\t.blockquote-footer {\n\t  display: block;\n\t  font-size: 80%;\n\t  color: #636c72;\n\t}\n\n\t.blockquote-footer::before {\n\t  content: \"\\2014   \\A0\";\n\t}\n\n\t.blockquote-reverse {\n\t  padding-right: 1rem;\n\t  padding-left: 0;\n\t  text-align: right;\n\t  border-right: 0.25rem solid #eceeef;\n\t  border-left: 0;\n\t}\n\n\t.blockquote-reverse .blockquote-footer::before {\n\t  content: \"\";\n\t}\n\n\t.blockquote-reverse .blockquote-footer::after {\n\t  content: \"\\A0   \\2014\";\n\t}\n\n\t.img-fluid {\n\t  max-width: 100%;\n\t  height: auto;\n\t}\n\n\t.img-thumbnail {\n\t  padding: 0.25rem;\n\t  background-color: #fff;\n\t  border: 1px solid #ddd;\n\t  border-radius: 0.25rem;\n\t  transition: all 0.2s ease-in-out;\n\t  max-width: 100%;\n\t  height: auto;\n\t}\n\n\t.figure {\n\t  display: inline-block;\n\t}\n\n\t.figure-img {\n\t  margin-bottom: 0.5rem;\n\t  line-height: 1;\n\t}\n\n\t.figure-caption {\n\t  font-size: 90%;\n\t  color: #636c72;\n\t}\n\n\tcode,\n\tkbd,\n\tpre,\n\tsamp {\n\t  font-family: Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace;\n\t}\n\n\tcode {\n\t  padding: 0.2rem 0.4rem;\n\t  font-size: 90%;\n\t  color: #bd4147;\n\t  background-color: #f7f7f9;\n\t  border-radius: 0.25rem;\n\t}\n\n\ta>code {\n\t  padding: 0;\n\t  color: inherit;\n\t  background-color: inherit;\n\t}\n\n\tkbd {\n\t  padding: 0.2rem 0.4rem;\n\t  font-size: 90%;\n\t  color: #fff;\n\t  background-color: #292b2c;\n\t  border-radius: 0.2rem;\n\t}\n\n\tkbd kbd {\n\t  padding: 0;\n\t  font-size: 100%;\n\t  font-weight: bold;\n\t}\n\n\tpre {\n\t  display: block;\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t  font-size: 90%;\n\t  color: #292b2c;\n\t}\n\n\tpre code {\n\t  padding: 0;\n\t  font-size: inherit;\n\t  color: inherit;\n\t  background-color: transparent;\n\t  border-radius: 0;\n\t}\n\n\t.pre-scrollable {\n\t  max-height: 340px;\n\t  overflow-y: scroll;\n\t}\n\n\t.container {\n\t  position: relative;\n\t  margin-left: auto;\n\t  margin-right: auto;\n\t  padding-right: 15px;\n\t  padding-left: 15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .container {\n\t    width: 540px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .container {\n\t    width: 720px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .container {\n\t    width: 960px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .container {\n\t    width: 1140px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t.container-fluid {\n\t  position: relative;\n\t  margin-left: auto;\n\t  margin-right: auto;\n\t  padding-right: 15px;\n\t  padding-left: 15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t.row {\n\t  display: flex;\n\t  flex-wrap: wrap;\n\t  margin-right: -15px;\n\t  margin-left: -15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t.no-gutters {\n\t  margin-right: 0;\n\t  margin-left: 0;\n\t}\n\n\t.no-gutters>.col,\n\t.no-gutters>[class*=\"col-\"] {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.col-1,\n\t.col-2,\n\t.col-3,\n\t.col-4,\n\t.col-5,\n\t.col-6,\n\t.col-7,\n\t.col-8,\n\t.col-9,\n\t.col-10,\n\t.col-11,\n\t.col-12,\n\t.col,\n\t.col-sm-1,\n\t.col-sm-2,\n\t.col-sm-3,\n\t.col-sm-4,\n\t.col-sm-5,\n\t.col-sm-6,\n\t.col-sm-7,\n\t.col-sm-8,\n\t.col-sm-9,\n\t.col-sm-10,\n\t.col-sm-11,\n\t.col-sm-12,\n\t.col-sm,\n\t.col-md-1,\n\t.col-md-2,\n\t.col-md-3,\n\t.col-md-4,\n\t.col-md-5,\n\t.col-md-6,\n\t.col-md-7,\n\t.col-md-8,\n\t.col-md-9,\n\t.col-md-10,\n\t.col-md-11,\n\t.col-md-12,\n\t.col-md,\n\t.col-lg-1,\n\t.col-lg-2,\n\t.col-lg-3,\n\t.col-lg-4,\n\t.col-lg-5,\n\t.col-lg-6,\n\t.col-lg-7,\n\t.col-lg-8,\n\t.col-lg-9,\n\t.col-lg-10,\n\t.col-lg-11,\n\t.col-lg-12,\n\t.col-lg,\n\t.col-xl-1,\n\t.col-xl-2,\n\t.col-xl-3,\n\t.col-xl-4,\n\t.col-xl-5,\n\t.col-xl-6,\n\t.col-xl-7,\n\t.col-xl-8,\n\t.col-xl-9,\n\t.col-xl-10,\n\t.col-xl-11,\n\t.col-xl-12,\n\t.col-xl {\n\t  position: relative;\n\t  width: 100%;\n\t  min-height: 1px;\n\t  padding-right: 15px;\n\t  padding-left: 15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t.col {\n\t  flex-basis: 0;\n\t  flex-grow: 1;\n\t  max-width: 100%;\n\t}\n\n\t.col-auto {\n\t  flex: 0 0 auto;\n\t  width: auto;\n\t}\n\n\t.col-1 {\n\t  flex: 0 0 8.33333%;\n\t  max-width: 8.33333%;\n\t}\n\n\t.col-2 {\n\t  flex: 0 0 16.66667%;\n\t  max-width: 16.66667%;\n\t}\n\n\t.col-3 {\n\t  flex: 0 0 25%;\n\t  max-width: 25%;\n\t}\n\n\t.col-4 {\n\t  flex: 0 0 33.33333%;\n\t  max-width: 33.33333%;\n\t}\n\n\t.col-5 {\n\t  flex: 0 0 41.66667%;\n\t  max-width: 41.66667%;\n\t}\n\n\t.col-6 {\n\t  flex: 0 0 50%;\n\t  max-width: 50%;\n\t}\n\n\t.col-7 {\n\t  flex: 0 0 58.33333%;\n\t  max-width: 58.33333%;\n\t}\n\n\t.col-8 {\n\t  flex: 0 0 66.66667%;\n\t  max-width: 66.66667%;\n\t}\n\n\t.col-9 {\n\t  flex: 0 0 75%;\n\t  max-width: 75%;\n\t}\n\n\t.col-10 {\n\t  flex: 0 0 83.33333%;\n\t  max-width: 83.33333%;\n\t}\n\n\t.col-11 {\n\t  flex: 0 0 91.66667%;\n\t  max-width: 91.66667%;\n\t}\n\n\t.col-12 {\n\t  flex: 0 0 100%;\n\t  max-width: 100%;\n\t}\n\n\t.pull-0 {\n\t  right: auto;\n\t}\n\n\t.pull-1 {\n\t  right: 8.33333%;\n\t}\n\n\t.pull-2 {\n\t  right: 16.66667%;\n\t}\n\n\t.pull-3 {\n\t  right: 25%;\n\t}\n\n\t.pull-4 {\n\t  right: 33.33333%;\n\t}\n\n\t.pull-5 {\n\t  right: 41.66667%;\n\t}\n\n\t.pull-6 {\n\t  right: 50%;\n\t}\n\n\t.pull-7 {\n\t  right: 58.33333%;\n\t}\n\n\t.pull-8 {\n\t  right: 66.66667%;\n\t}\n\n\t.pull-9 {\n\t  right: 75%;\n\t}\n\n\t.pull-10 {\n\t  right: 83.33333%;\n\t}\n\n\t.pull-11 {\n\t  right: 91.66667%;\n\t}\n\n\t.pull-12 {\n\t  right: 100%;\n\t}\n\n\t.push-0 {\n\t  left: auto;\n\t}\n\n\t.push-1 {\n\t  left: 8.33333%;\n\t}\n\n\t.push-2 {\n\t  left: 16.66667%;\n\t}\n\n\t.push-3 {\n\t  left: 25%;\n\t}\n\n\t.push-4 {\n\t  left: 33.33333%;\n\t}\n\n\t.push-5 {\n\t  left: 41.66667%;\n\t}\n\n\t.push-6 {\n\t  left: 50%;\n\t}\n\n\t.push-7 {\n\t  left: 58.33333%;\n\t}\n\n\t.push-8 {\n\t  left: 66.66667%;\n\t}\n\n\t.push-9 {\n\t  left: 75%;\n\t}\n\n\t.push-10 {\n\t  left: 83.33333%;\n\t}\n\n\t.push-11 {\n\t  left: 91.66667%;\n\t}\n\n\t.push-12 {\n\t  left: 100%;\n\t}\n\n\t.offset-1 {\n\t  margin-left: 8.33333%;\n\t}\n\n\t.offset-2 {\n\t  margin-left: 16.66667%;\n\t}\n\n\t.offset-3 {\n\t  margin-left: 25%;\n\t}\n\n\t.offset-4 {\n\t  margin-left: 33.33333%;\n\t}\n\n\t.offset-5 {\n\t  margin-left: 41.66667%;\n\t}\n\n\t.offset-6 {\n\t  margin-left: 50%;\n\t}\n\n\t.offset-7 {\n\t  margin-left: 58.33333%;\n\t}\n\n\t.offset-8 {\n\t  margin-left: 66.66667%;\n\t}\n\n\t.offset-9 {\n\t  margin-left: 75%;\n\t}\n\n\t.offset-10 {\n\t  margin-left: 83.33333%;\n\t}\n\n\t.offset-11 {\n\t  margin-left: 91.66667%;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .col-sm {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-sm-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-sm-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-sm-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-sm-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-sm-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-sm-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-sm-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-sm-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-sm-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-sm-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-sm-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-sm-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-sm-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-sm-0 {\n\t    right: auto;\n\t  }\n\t  .pull-sm-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-sm-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-sm-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-sm-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-sm-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-sm-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-sm-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-sm-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-sm-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-sm-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-sm-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-sm-12 {\n\t    right: 100%;\n\t  }\n\t  .push-sm-0 {\n\t    left: auto;\n\t  }\n\t  .push-sm-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-sm-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-sm-3 {\n\t    left: 25%;\n\t  }\n\t  .push-sm-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-sm-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-sm-6 {\n\t    left: 50%;\n\t  }\n\t  .push-sm-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-sm-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-sm-9 {\n\t    left: 75%;\n\t  }\n\t  .push-sm-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-sm-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-sm-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-sm-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-sm-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-sm-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-sm-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-sm-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-sm-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-sm-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-sm-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-sm-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-sm-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-sm-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-sm-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .col-md {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-md-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-md-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-md-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-md-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-md-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-md-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-md-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-md-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-md-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-md-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-md-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-md-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-md-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-md-0 {\n\t    right: auto;\n\t  }\n\t  .pull-md-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-md-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-md-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-md-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-md-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-md-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-md-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-md-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-md-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-md-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-md-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-md-12 {\n\t    right: 100%;\n\t  }\n\t  .push-md-0 {\n\t    left: auto;\n\t  }\n\t  .push-md-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-md-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-md-3 {\n\t    left: 25%;\n\t  }\n\t  .push-md-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-md-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-md-6 {\n\t    left: 50%;\n\t  }\n\t  .push-md-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-md-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-md-9 {\n\t    left: 75%;\n\t  }\n\t  .push-md-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-md-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-md-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-md-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-md-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-md-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-md-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-md-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-md-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-md-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-md-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-md-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-md-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-md-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-md-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .col-lg {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-lg-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-lg-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-lg-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-lg-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-lg-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-lg-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-lg-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-lg-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-lg-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-lg-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-lg-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-lg-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-lg-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-lg-0 {\n\t    right: auto;\n\t  }\n\t  .pull-lg-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-lg-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-lg-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-lg-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-lg-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-lg-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-lg-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-lg-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-lg-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-lg-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-lg-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-lg-12 {\n\t    right: 100%;\n\t  }\n\t  .push-lg-0 {\n\t    left: auto;\n\t  }\n\t  .push-lg-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-lg-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-lg-3 {\n\t    left: 25%;\n\t  }\n\t  .push-lg-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-lg-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-lg-6 {\n\t    left: 50%;\n\t  }\n\t  .push-lg-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-lg-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-lg-9 {\n\t    left: 75%;\n\t  }\n\t  .push-lg-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-lg-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-lg-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-lg-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-lg-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-lg-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-lg-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-lg-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-lg-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-lg-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-lg-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-lg-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-lg-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-lg-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-lg-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .col-xl {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-xl-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-xl-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-xl-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-xl-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-xl-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-xl-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-xl-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-xl-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-xl-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-xl-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-xl-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-xl-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-xl-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-xl-0 {\n\t    right: auto;\n\t  }\n\t  .pull-xl-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-xl-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-xl-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-xl-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-xl-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-xl-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-xl-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-xl-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-xl-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-xl-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-xl-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-xl-12 {\n\t    right: 100%;\n\t  }\n\t  .push-xl-0 {\n\t    left: auto;\n\t  }\n\t  .push-xl-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-xl-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-xl-3 {\n\t    left: 25%;\n\t  }\n\t  .push-xl-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-xl-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-xl-6 {\n\t    left: 50%;\n\t  }\n\t  .push-xl-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-xl-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-xl-9 {\n\t    left: 75%;\n\t  }\n\t  .push-xl-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-xl-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-xl-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-xl-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-xl-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-xl-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-xl-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-xl-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-xl-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-xl-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-xl-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-xl-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-xl-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-xl-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-xl-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\t/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */\n\n\thtml {\n\t  font-family: sans-serif;\n\t  line-height: 1.15;\n\t  -ms-text-size-adjust: 100%;\n\t  -webkit-text-size-adjust: 100%;\n\t}\n\n\tbody {\n\t  margin: 0;\n\t}\n\n\tarticle,\n\taside,\n\tfooter,\n\theader,\n\tnav,\n\tsection {\n\t  display: block;\n\t}\n\n\th1 {\n\t  font-size: 2em;\n\t  margin: 0.67em 0;\n\t}\n\n\tfigcaption,\n\tfigure,\n\tmain {\n\t  display: block;\n\t}\n\n\tfigure {\n\t  margin: 1em 40px;\n\t}\n\n\thr {\n\t  box-sizing: content-box;\n\t  height: 0;\n\t  overflow: visible;\n\t}\n\n\tpre {\n\t  font-family: monospace, monospace;\n\t  font-size: 1em;\n\t}\n\n\ta {\n\t  background-color: transparent;\n\t  -webkit-text-decoration-skip: objects;\n\t}\n\n\ta:active,\n\ta:hover {\n\t  outline-width: 0;\n\t}\n\n\tabbr[title] {\n\t  border-bottom: none;\n\t  text-decoration: underline;\n\t  text-decoration: underline dotted;\n\t}\n\n\tb,\n\tstrong {\n\t  font-weight: inherit;\n\t}\n\n\tb,\n\tstrong {\n\t  font-weight: bolder;\n\t}\n\n\tcode,\n\tkbd,\n\tsamp {\n\t  font-family: monospace, monospace;\n\t  font-size: 1em;\n\t}\n\n\tdfn {\n\t  font-style: italic;\n\t}\n\n\tmark {\n\t  background-color: #ff0;\n\t  color: #000;\n\t}\n\n\tsmall {\n\t  font-size: 80%;\n\t}\n\n\tsub,\n\tsup {\n\t  font-size: 75%;\n\t  line-height: 0;\n\t  position: relative;\n\t  vertical-align: baseline;\n\t}\n\n\tsub {\n\t  bottom: -0.25em;\n\t}\n\n\tsup {\n\t  top: -0.5em;\n\t}\n\n\taudio,\n\tvideo {\n\t  display: inline-block;\n\t}\n\n\taudio:not([controls]) {\n\t  display: none;\n\t  height: 0;\n\t}\n\n\timg {\n\t  border-style: none;\n\t}\n\n\tsvg:not(:root) {\n\t  overflow: hidden;\n\t}\n\n\tbutton,\n\tinput,\n\toptgroup,\n\tselect,\n\ttextarea {\n\t  font-family: sans-serif;\n\t  font-size: 100%;\n\t  line-height: 1.15;\n\t  margin: 0;\n\t}\n\n\tbutton,\n\tinput {\n\t  overflow: visible;\n\t}\n\n\tbutton,\n\tselect {\n\t  text-transform: none;\n\t}\n\n\tbutton,\n\thtml [type=\"button\"],\n\t[type=\"reset\"],\n\t[type=\"submit\"] {\n\t  -webkit-appearance: button;\n\t}\n\n\tbutton::-moz-focus-inner,\n\t[type=\"button\"]::-moz-focus-inner,\n\t[type=\"reset\"]::-moz-focus-inner,\n\t[type=\"submit\"]::-moz-focus-inner {\n\t  border-style: none;\n\t  padding: 0;\n\t}\n\n\tbutton:-moz-focusring,\n\t[type=\"button\"]:-moz-focusring,\n\t[type=\"reset\"]:-moz-focusring,\n\t[type=\"submit\"]:-moz-focusring {\n\t  outline: 1px dotted ButtonText;\n\t}\n\n\tfieldset {\n\t  border: 1px solid #c0c0c0;\n\t  margin: 0 2px;\n\t  padding: 0.35em 0.625em 0.75em;\n\t}\n\n\tlegend {\n\t  box-sizing: border-box;\n\t  color: inherit;\n\t  display: table;\n\t  max-width: 100%;\n\t  padding: 0;\n\t  white-space: normal;\n\t}\n\n\tprogress {\n\t  display: inline-block;\n\t  vertical-align: baseline;\n\t}\n\n\ttextarea {\n\t  overflow: auto;\n\t}\n\n\t[type=\"checkbox\"],\n\t[type=\"radio\"] {\n\t  box-sizing: border-box;\n\t  padding: 0;\n\t}\n\n\t[type=\"number\"]::-webkit-inner-spin-button,\n\t[type=\"number\"]::-webkit-outer-spin-button {\n\t  height: auto;\n\t}\n\n\t[type=\"search\"] {\n\t  -webkit-appearance: textfield;\n\t  outline-offset: -2px;\n\t}\n\n\t[type=\"search\"]::-webkit-search-cancel-button,\n\t[type=\"search\"]::-webkit-search-decoration {\n\t  -webkit-appearance: none;\n\t}\n\n\t::-webkit-file-upload-button {\n\t  -webkit-appearance: button;\n\t  font: inherit;\n\t}\n\n\tdetails,\n\tmenu {\n\t  display: block;\n\t}\n\n\tsummary {\n\t  display: list-item;\n\t}\n\n\tcanvas {\n\t  display: inline-block;\n\t}\n\n\ttemplate {\n\t  display: none;\n\t}\n\n\t[hidden] {\n\t  display: none;\n\t}\n\n\t@media print {\n\t  *,\n\t  *::before,\n\t  *::after,\n\t  p::first-letter,\n\t  div::first-letter,\n\t  blockquote::first-letter,\n\t  li::first-letter,\n\t  p::first-line,\n\t  div::first-line,\n\t  blockquote::first-line,\n\t  li::first-line {\n\t    text-shadow: none !important;\n\t    box-shadow: none !important;\n\t  }\n\t  a,\n\t  a:visited {\n\t    text-decoration: underline;\n\t  }\n\t  abbr[title]::after {\n\t    content: \" (\" attr(title) \")\";\n\t  }\n\t  pre {\n\t    white-space: pre-wrap !important;\n\t  }\n\t  pre,\n\t  blockquote {\n\t    border: 1px solid #999;\n\t    page-break-inside: avoid;\n\t  }\n\t  thead {\n\t    display: table-header-group;\n\t  }\n\t  tr,\n\t  img {\n\t    page-break-inside: avoid;\n\t  }\n\t  p,\n\t  h2,\n\t  h3 {\n\t    orphans: 3;\n\t    widows: 3;\n\t  }\n\t  h2,\n\t  h3 {\n\t    page-break-after: avoid;\n\t  }\n\t  .navbar {\n\t    display: none;\n\t  }\n\t  .badge {\n\t    border: 1px solid #000;\n\t  }\n\t  .table {\n\t    border-collapse: collapse !important;\n\t  }\n\t  .table td,\n\t  .table th {\n\t    background-color: #fff !important;\n\t  }\n\t  .table-bordered th,\n\t  .table-bordered td {\n\t    border: 1px solid #ddd !important;\n\t  }\n\t}\n\n\thtml {\n\t  box-sizing: border-box;\n\t}\n\n\t*,\n\t*::before,\n\t*::after {\n\t  box-sizing: inherit;\n\t}\n\n\t@-ms-viewport {\n\t  width: device-width;\n\t}\n\n\thtml {\n\t  -ms-overflow-style: scrollbar;\n\t  -webkit-tap-highlight-color: transparent;\n\t}\n\n\tbody {\n\t  font-family: -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n\t  font-size: 1rem;\n\t  font-weight: normal;\n\t  line-height: 1.5;\n\t  color: #292b2c;\n\t  background-color: #fff;\n\t}\n\n\t[tabindex=\"-1\"]:focus {\n\t  outline: none !important;\n\t}\n\n\th1,\n\th2,\n\th3,\n\th4,\n\th5,\n\th6 {\n\t  margin-top: 0;\n\t  margin-bottom: .5rem;\n\t}\n\n\tp {\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t}\n\n\tabbr[title],\n\tabbr[data-original-title] {\n\t  cursor: help;\n\t}\n\n\taddress {\n\t  margin-bottom: 1rem;\n\t  font-style: normal;\n\t  line-height: inherit;\n\t}\n\n\tol,\n\tul,\n\tdl {\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t}\n\n\tol ol,\n\tul ul,\n\tol ul,\n\tul ol {\n\t  margin-bottom: 0;\n\t}\n\n\tdt {\n\t  font-weight: bold;\n\t}\n\n\tdd {\n\t  margin-bottom: .5rem;\n\t  margin-left: 0;\n\t}\n\n\tblockquote {\n\t  margin: 0 0 1rem;\n\t}\n\n\ta {\n\t  color: #0f8699;\n\t  text-decoration: none;\n\t}\n\n\ta:focus,\n\ta:hover {\n\t  color: #084953;\n\t  text-decoration: underline;\n\t}\n\n\ta:not([href]):not([tabindex]) {\n\t  color: inherit;\n\t  text-decoration: none;\n\t}\n\n\ta:not([href]):not([tabindex]):focus,\n\ta:not([href]):not([tabindex]):hover {\n\t  color: inherit;\n\t  text-decoration: none;\n\t}\n\n\ta:not([href]):not([tabindex]):focus {\n\t  outline: 0;\n\t}\n\n\tpre {\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t  overflow: auto;\n\t}\n\n\tfigure {\n\t  margin: 0 0 1rem;\n\t}\n\n\timg {\n\t  vertical-align: middle;\n\t}\n\n\t[role=\"button\"] {\n\t  cursor: pointer;\n\t}\n\n\ta,\n\tarea,\n\tbutton,\n\t[role=\"button\"],\n\tinput,\n\tlabel,\n\tselect,\n\tsummary,\n\ttextarea {\n\t  touch-action: manipulation;\n\t}\n\n\ttable {\n\t  border-collapse: collapse;\n\t  background-color: transparent;\n\t}\n\n\tcaption {\n\t  padding-top: 0.75rem;\n\t  padding-bottom: 0.75rem;\n\t  color: #636c72;\n\t  text-align: left;\n\t  caption-side: bottom;\n\t}\n\n\tth {\n\t  text-align: left;\n\t}\n\n\tlabel {\n\t  display: inline-block;\n\t  margin-bottom: .5rem;\n\t}\n\n\tbutton:focus {\n\t  outline: 1px dotted;\n\t  outline: 5px auto -webkit-focus-ring-color;\n\t}\n\n\tinput,\n\tbutton,\n\tselect,\n\ttextarea {\n\t  line-height: inherit;\n\t}\n\n\tinput[type=\"radio\"]:disabled,\n\tinput[type=\"checkbox\"]:disabled {\n\t  cursor: not-allowed;\n\t}\n\n\tinput[type=\"date\"],\n\tinput[type=\"time\"],\n\tinput[type=\"datetime-local\"],\n\tinput[type=\"month\"] {\n\t  -webkit-appearance: listbox;\n\t}\n\n\ttextarea {\n\t  resize: vertical;\n\t}\n\n\tfieldset {\n\t  min-width: 0;\n\t  padding: 0;\n\t  margin: 0;\n\t  border: 0;\n\t}\n\n\tlegend {\n\t  display: block;\n\t  width: 100%;\n\t  padding: 0;\n\t  margin-bottom: .5rem;\n\t  font-size: 1.5rem;\n\t  line-height: inherit;\n\t}\n\n\tinput[type=\"search\"] {\n\t  -webkit-appearance: none;\n\t}\n\n\toutput {\n\t  display: inline-block;\n\t}\n\n\t[hidden] {\n\t  display: none !important;\n\t}\n\n\t.table {\n\t  width: 100%;\n\t  max-width: 100%;\n\t  margin-bottom: 1rem;\n\t}\n\n\t.table th,\n\t.table td {\n\t  padding: 0.75rem;\n\t  vertical-align: top;\n\t  border-top: 1px solid #eceeef;\n\t}\n\n\t.table thead th {\n\t  vertical-align: bottom;\n\t  border-bottom: 2px solid #eceeef;\n\t}\n\n\t.table tbody+tbody {\n\t  border-top: 2px solid #eceeef;\n\t}\n\n\t.table .table {\n\t  background-color: #fff;\n\t}\n\n\t.table-sm th,\n\t.table-sm td {\n\t  padding: 0.3rem;\n\t}\n\n\t.table-bordered {\n\t  border: 1px solid #eceeef;\n\t}\n\n\t.table-bordered th,\n\t.table-bordered td {\n\t  border: 1px solid #eceeef;\n\t}\n\n\t.table-bordered thead th,\n\t.table-bordered thead td {\n\t  border-bottom-width: 2px;\n\t}\n\n\t.table-striped tbody tr:nth-of-type(odd) {\n\t  background-color: rgba(0, 0, 0, 0.05);\n\t}\n\n\t.table-hover tbody tr:hover {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-active,\n\t.table-active>th,\n\t.table-active>td {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-hover .table-active:hover {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-hover .table-active:hover>td,\n\t.table-hover .table-active:hover>th {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-success,\n\t.table-success>th,\n\t.table-success>td {\n\t  background-color: #dff0d8;\n\t}\n\n\t.table-hover .table-success:hover {\n\t  background-color: #d0e9c6;\n\t}\n\n\t.table-hover .table-success:hover>td,\n\t.table-hover .table-success:hover>th {\n\t  background-color: #d0e9c6;\n\t}\n\n\t.table-info,\n\t.table-info>th,\n\t.table-info>td {\n\t  background-color: #d9edf7;\n\t}\n\n\t.table-hover .table-info:hover {\n\t  background-color: #c4e3f3;\n\t}\n\n\t.table-hover .table-info:hover>td,\n\t.table-hover .table-info:hover>th {\n\t  background-color: #c4e3f3;\n\t}\n\n\t.table-warning,\n\t.table-warning>th,\n\t.table-warning>td {\n\t  background-color: #fcf8e3;\n\t}\n\n\t.table-hover .table-warning:hover {\n\t  background-color: #faf2cc;\n\t}\n\n\t.table-hover .table-warning:hover>td,\n\t.table-hover .table-warning:hover>th {\n\t  background-color: #faf2cc;\n\t}\n\n\t.table-danger,\n\t.table-danger>th,\n\t.table-danger>td {\n\t  background-color: #f2dede;\n\t}\n\n\t.table-hover .table-danger:hover {\n\t  background-color: #ebcccc;\n\t}\n\n\t.table-hover .table-danger:hover>td,\n\t.table-hover .table-danger:hover>th {\n\t  background-color: #ebcccc;\n\t}\n\n\t.thead-inverse th {\n\t  color: #fff;\n\t  background-color: #292b2c;\n\t}\n\n\t.thead-default th {\n\t  color: #464a4c;\n\t  background-color: #eceeef;\n\t}\n\n\t.table-inverse {\n\t  color: #fff;\n\t  background-color: #292b2c;\n\t}\n\n\t.table-inverse th,\n\t.table-inverse td,\n\t.table-inverse thead th {\n\t  border-color: #fff;\n\t}\n\n\t.table-inverse.table-bordered {\n\t  border: 0;\n\t}\n\n\t.table-responsive {\n\t  display: block;\n\t  width: 100%;\n\t  overflow-x: auto;\n\t  -ms-overflow-style: -ms-autohiding-scrollbar;\n\t}\n\n\t.table-responsive.table-bordered {\n\t  border: 0;\n\t}\n\n\t.form-control {\n\t  display: block;\n\t  width: 100%;\n\t  padding: 0.5rem 0.75rem;\n\t  font-size: 1rem;\n\t  line-height: 1.25;\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t  background-image: none;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n\t}\n\n\t.form-control::-ms-expand {\n\t  background-color: transparent;\n\t  border: 0;\n\t}\n\n\t.form-control:focus {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t  border-color: #3cd4ec;\n\t  outline: none;\n\t}\n\n\t.form-control::placeholder {\n\t  color: #636c72;\n\t  opacity: 1;\n\t}\n\n\t.form-control:disabled,\n\t.form-control[readonly] {\n\t  background-color: #eceeef;\n\t  opacity: 1;\n\t}\n\n\t.form-control:disabled {\n\t  cursor: not-allowed;\n\t}\n\n\tselect.form-control:not([size]):not([multiple]) {\n\t  height: calc(2.25rem + 2px);\n\t}\n\n\tselect.form-control:focus::-ms-value {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t}\n\n\t.form-control-file,\n\t.form-control-range {\n\t  display: block;\n\t}\n\n\t.col-form-label {\n\t  padding-top: calc(0.5rem - 1px * 2);\n\t  padding-bottom: calc(0.5rem - 1px * 2);\n\t  margin-bottom: 0;\n\t}\n\n\t.col-form-label-lg {\n\t  padding-top: calc(0.75rem - 1px * 2);\n\t  padding-bottom: calc(0.75rem - 1px * 2);\n\t  font-size: 1.25rem;\n\t}\n\n\t.col-form-label-sm {\n\t  padding-top: calc(0.25rem - 1px * 2);\n\t  padding-bottom: calc(0.25rem - 1px * 2);\n\t  font-size: 0.875rem;\n\t}\n\n\t.col-form-legend {\n\t  padding-top: 0.5rem;\n\t  padding-bottom: 0.5rem;\n\t  margin-bottom: 0;\n\t  font-size: 1rem;\n\t}\n\n\t.form-control-static {\n\t  padding-top: 0.5rem;\n\t  padding-bottom: 0.5rem;\n\t  margin-bottom: 0;\n\t  line-height: 1.25;\n\t  border: solid transparent;\n\t  border-width: 1px 0;\n\t}\n\n\t.form-control-static.form-control-sm,\n\t.input-group-sm>.form-control-static.form-control,\n\t.input-group-sm>.form-control-static.input-group-addon,\n\t.input-group-sm>.input-group-btn>.form-control-static.btn,\n\t.form-control-static.form-control-lg,\n\t.input-group-lg>.form-control-static.form-control,\n\t.input-group-lg>.form-control-static.input-group-addon,\n\t.input-group-lg>.input-group-btn>.form-control-static.btn {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.form-control-sm,\n\t.input-group-sm>.form-control,\n\t.input-group-sm>.input-group-addon,\n\t.input-group-sm>.input-group-btn>.btn {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t  border-radius: 0.2rem;\n\t}\n\n\tselect.form-control-sm:not([size]):not([multiple]),\n\t.input-group-sm>select.form-control:not([size]):not([multiple]),\n\t.input-group-sm>select.input-group-addon:not([size]):not([multiple]),\n\t.input-group-sm>.input-group-btn>select.btn:not([size]):not([multiple]) {\n\t  height: 1.8125rem;\n\t}\n\n\t.form-control-lg,\n\t.input-group-lg>.form-control,\n\t.input-group-lg>.input-group-addon,\n\t.input-group-lg>.input-group-btn>.btn {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t  border-radius: 0.3rem;\n\t}\n\n\tselect.form-control-lg:not([size]):not([multiple]),\n\t.input-group-lg>select.form-control:not([size]):not([multiple]),\n\t.input-group-lg>select.input-group-addon:not([size]):not([multiple]),\n\t.input-group-lg>.input-group-btn>select.btn:not([size]):not([multiple]) {\n\t  height: 3.16667rem;\n\t}\n\n\t.form-group {\n\t  margin-bottom: 1rem;\n\t}\n\n\t.form-text {\n\t  display: block;\n\t  margin-top: 0.25rem;\n\t}\n\n\t.form-check {\n\t  position: relative;\n\t  display: block;\n\t  margin-bottom: 0.5rem;\n\t}\n\n\t.form-check.disabled .form-check-label {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t}\n\n\t.form-check-label {\n\t  padding-left: 1.25rem;\n\t  margin-bottom: 0;\n\t  cursor: pointer;\n\t}\n\n\t.form-check-input {\n\t  position: absolute;\n\t  margin-top: 0.25rem;\n\t  margin-left: -1.25rem;\n\t}\n\n\t.form-check-input:only-child {\n\t  position: static;\n\t}\n\n\t.form-check-inline {\n\t  display: inline-block;\n\t}\n\n\t.form-check-inline .form-check-label {\n\t  vertical-align: middle;\n\t}\n\n\t.form-check-inline+.form-check-inline {\n\t  margin-left: 0.75rem;\n\t}\n\n\t.form-control-feedback {\n\t  margin-top: 0.25rem;\n\t}\n\n\t.form-control-success,\n\t.form-control-warning,\n\t.form-control-danger {\n\t  padding-right: 2.25rem;\n\t  background-repeat: no-repeat;\n\t  background-position: center right 0.5625rem;\n\t  background-size: 1.125rem 1.125rem;\n\t}\n\n\t.has-success .form-control-feedback,\n\t.has-success .form-control-label,\n\t.has-success .col-form-label,\n\t.has-success .form-check-label,\n\t.has-success .custom-control {\n\t  color: #5cb85c;\n\t}\n\n\t.has-success .form-control {\n\t  border-color: #5cb85c;\n\t}\n\n\t.has-success .input-group-addon {\n\t  color: #5cb85c;\n\t  border-color: #5cb85c;\n\t  background-color: #eaf6ea;\n\t}\n\n\t.has-success .form-control-success {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E\");\n\t}\n\n\t.has-warning .form-control-feedback,\n\t.has-warning .form-control-label,\n\t.has-warning .col-form-label,\n\t.has-warning .form-check-label,\n\t.has-warning .custom-control {\n\t  color: #f0ad4e;\n\t}\n\n\t.has-warning .form-control {\n\t  border-color: #f0ad4e;\n\t}\n\n\t.has-warning .input-group-addon {\n\t  color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t  background-color: white;\n\t}\n\n\t.has-warning .form-control-warning {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E\");\n\t}\n\n\t.has-danger .form-control-feedback,\n\t.has-danger .form-control-label,\n\t.has-danger .col-form-label,\n\t.has-danger .form-check-label,\n\t.has-danger .custom-control {\n\t  color: #d9534f;\n\t}\n\n\t.has-danger .form-control {\n\t  border-color: #d9534f;\n\t}\n\n\t.has-danger .input-group-addon {\n\t  color: #d9534f;\n\t  border-color: #d9534f;\n\t  background-color: #fdf7f7;\n\t}\n\n\t.has-danger .form-control-danger {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E\");\n\t}\n\n\t.form-inline {\n\t  display: flex;\n\t  flex-flow: row wrap;\n\t  align-items: center;\n\t}\n\n\t.form-inline .form-check {\n\t  width: 100%;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .form-inline label {\n\t    display: flex;\n\t    align-items: center;\n\t    justify-content: center;\n\t    margin-bottom: 0;\n\t  }\n\t  .form-inline .form-group {\n\t    display: flex;\n\t    flex: 0 0 auto;\n\t    flex-flow: row wrap;\n\t    align-items: center;\n\t    margin-bottom: 0;\n\t  }\n\t  .form-inline .form-control {\n\t    display: inline-block;\n\t    width: auto;\n\t    vertical-align: middle;\n\t  }\n\t  .form-inline .form-control-static {\n\t    display: inline-block;\n\t  }\n\t  .form-inline .input-group {\n\t    width: auto;\n\t  }\n\t  .form-inline .form-control-label {\n\t    margin-bottom: 0;\n\t    vertical-align: middle;\n\t  }\n\t  .form-inline .form-check {\n\t    display: flex;\n\t    align-items: center;\n\t    justify-content: center;\n\t    width: auto;\n\t    margin-top: 0;\n\t    margin-bottom: 0;\n\t  }\n\t  .form-inline .form-check-label {\n\t    padding-left: 0;\n\t  }\n\t  .form-inline .form-check-input {\n\t    position: relative;\n\t    margin-top: 0;\n\t    margin-right: 0.25rem;\n\t    margin-left: 0;\n\t  }\n\t  .form-inline .custom-control {\n\t    display: flex;\n\t    align-items: center;\n\t    justify-content: center;\n\t    padding-left: 0;\n\t  }\n\t  .form-inline .custom-control-indicator {\n\t    position: static;\n\t    display: inline-block;\n\t    margin-right: 0.25rem;\n\t    vertical-align: text-bottom;\n\t  }\n\t  .form-inline .has-feedback .form-control-feedback {\n\t    top: 0;\n\t  }\n\t}\n\n\t.btn {\n\t  display: inline-block;\n\t  font-weight: normal;\n\t  line-height: 1.25;\n\t  text-align: center;\n\t  white-space: nowrap;\n\t  vertical-align: middle;\n\t  user-select: none;\n\t  border: 1px solid transparent;\n\t  padding: 0.5rem 1rem;\n\t  font-size: 1rem;\n\t  border-radius: 0.25rem;\n\t  transition: all 0.2s ease-in-out;\n\t}\n\n\t.btn:focus,\n\t.btn:hover {\n\t  text-decoration: none;\n\t}\n\n\t.btn:focus,\n\t.btn.focus {\n\t  outline: 0;\n\t  box-shadow: 0 0 0 2px rgba(15, 134, 153, 0.25);\n\t}\n\n\t.btn.disabled,\n\t.btn:disabled {\n\t  cursor: not-allowed;\n\t  opacity: .65;\n\t}\n\n\t.btn:active,\n\t.btn.active {\n\t  background-image: none;\n\t}\n\n\ta.btn.disabled,\n\tfieldset[disabled] a.btn {\n\t  pointer-events: none;\n\t}\n\n\t.btn-primary {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-primary:hover {\n\t  color: #fff;\n\t  background-color: #0a5d6b;\n\t  border-color: #0a5561;\n\t}\n\n\t.btn-primary:focus,\n\t.btn-primary.focus {\n\t  box-shadow: 0 0 0 2px rgba(15, 134, 153, 0.5);\n\t}\n\n\t.btn-primary.disabled,\n\t.btn-primary:disabled {\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-primary:active,\n\t.btn-primary.active,\n\t.show>.btn-primary.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #0a5d6b;\n\t  background-image: none;\n\t  border-color: #0a5561;\n\t}\n\n\t.btn-secondary {\n\t  color: #292b2c;\n\t  background-color: #fff;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-secondary:hover {\n\t  color: #292b2c;\n\t  background-color: #e6e6e6;\n\t  border-color: #adadad;\n\t}\n\n\t.btn-secondary:focus,\n\t.btn-secondary.focus {\n\t  box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);\n\t}\n\n\t.btn-secondary.disabled,\n\t.btn-secondary:disabled {\n\t  background-color: #fff;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-secondary:active,\n\t.btn-secondary.active,\n\t.show>.btn-secondary.dropdown-toggle {\n\t  color: #292b2c;\n\t  background-color: #e6e6e6;\n\t  background-image: none;\n\t  border-color: #adadad;\n\t}\n\n\t.btn-info {\n\t  color: #fff;\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-info:hover {\n\t  color: #fff;\n\t  background-color: #31b0d5;\n\t  border-color: #2aabd2;\n\t}\n\n\t.btn-info:focus,\n\t.btn-info.focus {\n\t  box-shadow: 0 0 0 2px rgba(91, 192, 222, 0.5);\n\t}\n\n\t.btn-info.disabled,\n\t.btn-info:disabled {\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-info:active,\n\t.btn-info.active,\n\t.show>.btn-info.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #31b0d5;\n\t  background-image: none;\n\t  border-color: #2aabd2;\n\t}\n\n\t.btn-success {\n\t  color: #fff;\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-success:hover {\n\t  color: #fff;\n\t  background-color: #449d44;\n\t  border-color: #419641;\n\t}\n\n\t.btn-success:focus,\n\t.btn-success.focus {\n\t  box-shadow: 0 0 0 2px rgba(92, 184, 92, 0.5);\n\t}\n\n\t.btn-success.disabled,\n\t.btn-success:disabled {\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-success:active,\n\t.btn-success.active,\n\t.show>.btn-success.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #449d44;\n\t  background-image: none;\n\t  border-color: #419641;\n\t}\n\n\t.btn-warning {\n\t  color: #fff;\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-warning:hover {\n\t  color: #fff;\n\t  background-color: #ec971f;\n\t  border-color: #eb9316;\n\t}\n\n\t.btn-warning:focus,\n\t.btn-warning.focus {\n\t  box-shadow: 0 0 0 2px rgba(240, 173, 78, 0.5);\n\t}\n\n\t.btn-warning.disabled,\n\t.btn-warning:disabled {\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-warning:active,\n\t.btn-warning.active,\n\t.show>.btn-warning.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #ec971f;\n\t  background-image: none;\n\t  border-color: #eb9316;\n\t}\n\n\t.btn-danger {\n\t  color: #fff;\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-danger:hover {\n\t  color: #fff;\n\t  background-color: #c9302c;\n\t  border-color: #c12e2a;\n\t}\n\n\t.btn-danger:focus,\n\t.btn-danger.focus {\n\t  box-shadow: 0 0 0 2px rgba(217, 83, 79, 0.5);\n\t}\n\n\t.btn-danger.disabled,\n\t.btn-danger:disabled {\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-danger:active,\n\t.btn-danger.active,\n\t.show>.btn-danger.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #c9302c;\n\t  background-image: none;\n\t  border-color: #c12e2a;\n\t}\n\n\t.btn-outline-primary {\n\t  color: #0f8699;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-outline-primary:hover {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-outline-primary:focus,\n\t.btn-outline-primary.focus {\n\t  box-shadow: 0 0 0 2px rgba(15, 134, 153, 0.5);\n\t}\n\n\t.btn-outline-primary.disabled,\n\t.btn-outline-primary:disabled {\n\t  color: #0f8699;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-primary:active,\n\t.btn-outline-primary.active,\n\t.show>.btn-outline-primary.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-outline-secondary {\n\t  color: #ccc;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-outline-secondary:hover {\n\t  color: #fff;\n\t  background-color: #ccc;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-outline-secondary:focus,\n\t.btn-outline-secondary.focus {\n\t  box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);\n\t}\n\n\t.btn-outline-secondary.disabled,\n\t.btn-outline-secondary:disabled {\n\t  color: #ccc;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-secondary:active,\n\t.btn-outline-secondary.active,\n\t.show>.btn-outline-secondary.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #ccc;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-outline-info {\n\t  color: #5bc0de;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-outline-info:hover {\n\t  color: #fff;\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-outline-info:focus,\n\t.btn-outline-info.focus {\n\t  box-shadow: 0 0 0 2px rgba(91, 192, 222, 0.5);\n\t}\n\n\t.btn-outline-info.disabled,\n\t.btn-outline-info:disabled {\n\t  color: #5bc0de;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-info:active,\n\t.btn-outline-info.active,\n\t.show>.btn-outline-info.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-outline-success {\n\t  color: #5cb85c;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-outline-success:hover {\n\t  color: #fff;\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-outline-success:focus,\n\t.btn-outline-success.focus {\n\t  box-shadow: 0 0 0 2px rgba(92, 184, 92, 0.5);\n\t}\n\n\t.btn-outline-success.disabled,\n\t.btn-outline-success:disabled {\n\t  color: #5cb85c;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-success:active,\n\t.btn-outline-success.active,\n\t.show>.btn-outline-success.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-outline-warning {\n\t  color: #f0ad4e;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-outline-warning:hover {\n\t  color: #fff;\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-outline-warning:focus,\n\t.btn-outline-warning.focus {\n\t  box-shadow: 0 0 0 2px rgba(240, 173, 78, 0.5);\n\t}\n\n\t.btn-outline-warning.disabled,\n\t.btn-outline-warning:disabled {\n\t  color: #f0ad4e;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-warning:active,\n\t.btn-outline-warning.active,\n\t.show>.btn-outline-warning.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-outline-danger {\n\t  color: #d9534f;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-outline-danger:hover {\n\t  color: #fff;\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-outline-danger:focus,\n\t.btn-outline-danger.focus {\n\t  box-shadow: 0 0 0 2px rgba(217, 83, 79, 0.5);\n\t}\n\n\t.btn-outline-danger.disabled,\n\t.btn-outline-danger:disabled {\n\t  color: #d9534f;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-danger:active,\n\t.btn-outline-danger.active,\n\t.show>.btn-outline-danger.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-link {\n\t  font-weight: normal;\n\t  color: #0f8699;\n\t  border-radius: 0;\n\t}\n\n\t.btn-link,\n\t.btn-link:active,\n\t.btn-link.active,\n\t.btn-link:disabled {\n\t  background-color: transparent;\n\t}\n\n\t.btn-link,\n\t.btn-link:focus,\n\t.btn-link:active {\n\t  border-color: transparent;\n\t}\n\n\t.btn-link:hover {\n\t  border-color: transparent;\n\t}\n\n\t.btn-link:focus,\n\t.btn-link:hover {\n\t  color: #084953;\n\t  text-decoration: underline;\n\t  background-color: transparent;\n\t}\n\n\t.btn-link:disabled {\n\t  color: #636c72;\n\t}\n\n\t.btn-link:disabled:focus,\n\t.btn-link:disabled:hover {\n\t  text-decoration: none;\n\t}\n\n\t.btn-lg,\n\t.btn-group-lg>.btn {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t  border-radius: 0.3rem;\n\t}\n\n\t.btn-sm,\n\t.btn-group-sm>.btn {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t  border-radius: 0.2rem;\n\t}\n\n\t.btn-block {\n\t  display: block;\n\t  width: 100%;\n\t}\n\n\t.btn-block+.btn-block {\n\t  margin-top: 0.5rem;\n\t}\n\n\tinput[type=\"submit\"].btn-block,\n\tinput[type=\"reset\"].btn-block,\n\tinput[type=\"button\"].btn-block {\n\t  width: 100%;\n\t}\n\n\t.fade {\n\t  opacity: 0;\n\t  transition: opacity 0.15s linear;\n\t}\n\n\t.fade.show {\n\t  opacity: 1;\n\t}\n\n\t.collapse {\n\t  display: none;\n\t}\n\n\t.collapse.show {\n\t  display: block;\n\t}\n\n\ttr.collapse.show {\n\t  display: table-row;\n\t}\n\n\ttbody.collapse.show {\n\t  display: table-row-group;\n\t}\n\n\t.collapsing {\n\t  position: relative;\n\t  height: 0;\n\t  overflow: hidden;\n\t  transition: height 0.35s ease;\n\t}\n\n\t.dropup,\n\t.dropdown {\n\t  position: relative;\n\t}\n\n\t.dropdown-toggle::after {\n\t  display: inline-block;\n\t  width: 0;\n\t  height: 0;\n\t  margin-left: 0.3em;\n\t  vertical-align: middle;\n\t  content: \"\";\n\t  border-top: 0.3em solid;\n\t  border-right: 0.3em solid transparent;\n\t  border-left: 0.3em solid transparent;\n\t}\n\n\t.dropdown-toggle:focus {\n\t  outline: 0;\n\t}\n\n\t.dropup .dropdown-toggle::after {\n\t  border-top: 0;\n\t  border-bottom: 0.3em solid;\n\t}\n\n\t.dropdown-menu {\n\t  position: absolute;\n\t  top: 100%;\n\t  left: 0;\n\t  z-index: 1000;\n\t  display: none;\n\t  float: left;\n\t  min-width: 10rem;\n\t  padding: 0.5rem 0;\n\t  margin: 0.125rem 0 0;\n\t  font-size: 1rem;\n\t  color: #292b2c;\n\t  text-align: left;\n\t  list-style: none;\n\t  background-color: #fff;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.dropdown-divider {\n\t  height: 1px;\n\t  margin: 0.5rem 0;\n\t  overflow: hidden;\n\t  background-color: #eceeef;\n\t}\n\n\t.dropdown-item {\n\t  display: block;\n\t  width: 100%;\n\t  padding: 3px 1.5rem;\n\t  clear: both;\n\t  font-weight: normal;\n\t  color: #292b2c;\n\t  text-align: inherit;\n\t  white-space: nowrap;\n\t  background: none;\n\t  border: 0;\n\t}\n\n\t.dropdown-item:focus,\n\t.dropdown-item:hover {\n\t  color: #1d1e1f;\n\t  text-decoration: none;\n\t  background-color: #f7f7f9;\n\t}\n\n\t.dropdown-item.active,\n\t.dropdown-item:active {\n\t  color: #fff;\n\t  text-decoration: none;\n\t  background-color: #0f8699;\n\t}\n\n\t.dropdown-item.disabled,\n\t.dropdown-item:disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t  background-color: transparent;\n\t}\n\n\t.show>.dropdown-menu {\n\t  display: block;\n\t}\n\n\t.show>a {\n\t  outline: 0;\n\t}\n\n\t.dropdown-menu-right {\n\t  right: 0;\n\t  left: auto;\n\t}\n\n\t.dropdown-menu-left {\n\t  right: auto;\n\t  left: 0;\n\t}\n\n\t.dropdown-header {\n\t  display: block;\n\t  padding: 0.5rem 1.5rem;\n\t  margin-bottom: 0;\n\t  font-size: 0.875rem;\n\t  color: #636c72;\n\t  white-space: nowrap;\n\t}\n\n\t.dropdown-backdrop {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 990;\n\t}\n\n\t.dropup .dropdown-menu {\n\t  top: auto;\n\t  bottom: 100%;\n\t  margin-bottom: 0.125rem;\n\t}\n\n\t.btn-group,\n\t.btn-group-vertical {\n\t  position: relative;\n\t  display: inline-flex;\n\t  vertical-align: middle;\n\t}\n\n\t.btn-group>.btn,\n\t.btn-group-vertical>.btn {\n\t  position: relative;\n\t  flex: 0 1 auto;\n\t}\n\n\t.btn-group>.btn:hover,\n\t.btn-group-vertical>.btn:hover {\n\t  z-index: 2;\n\t}\n\n\t.btn-group>.btn:focus,\n\t.btn-group>.btn:active,\n\t.btn-group>.btn.active,\n\t.btn-group-vertical>.btn:focus,\n\t.btn-group-vertical>.btn:active,\n\t.btn-group-vertical>.btn.active {\n\t  z-index: 2;\n\t}\n\n\t.btn-group .btn+.btn,\n\t.btn-group .btn+.btn-group,\n\t.btn-group .btn-group+.btn,\n\t.btn-group .btn-group+.btn-group,\n\t.btn-group-vertical .btn+.btn,\n\t.btn-group-vertical .btn+.btn-group,\n\t.btn-group-vertical .btn-group+.btn,\n\t.btn-group-vertical .btn-group+.btn-group {\n\t  margin-left: -1px;\n\t}\n\n\t.btn-toolbar {\n\t  display: flex;\n\t  justify-content: flex-start;\n\t}\n\n\t.btn-toolbar .input-group {\n\t  width: auto;\n\t}\n\n\t.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group>.btn:first-child {\n\t  margin-left: 0;\n\t}\n\n\t.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {\n\t  border-bottom-right-radius: 0;\n\t  border-top-right-radius: 0;\n\t}\n\n\t.btn-group>.btn:last-child:not(:first-child),\n\t.btn-group>.dropdown-toggle:not(:first-child) {\n\t  border-bottom-left-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.btn-group>.btn-group {\n\t  float: left;\n\t}\n\n\t.btn-group>.btn-group:not(:first-child):not(:last-child)>.btn {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group>.btn-group:first-child:not(:last-child)>.btn:last-child,\n\t.btn-group>.btn-group:first-child:not(:last-child)>.dropdown-toggle {\n\t  border-bottom-right-radius: 0;\n\t  border-top-right-radius: 0;\n\t}\n\n\t.btn-group>.btn-group:last-child:not(:first-child)>.btn:first-child {\n\t  border-bottom-left-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.btn-group .dropdown-toggle:active,\n\t.btn-group.open .dropdown-toggle {\n\t  outline: 0;\n\t}\n\n\t.btn+.dropdown-toggle-split {\n\t  padding-right: 0.75rem;\n\t  padding-left: 0.75rem;\n\t}\n\n\t.btn+.dropdown-toggle-split::after {\n\t  margin-left: 0;\n\t}\n\n\t.btn-sm+.dropdown-toggle-split,\n\t.btn-group-sm>.btn+.dropdown-toggle-split {\n\t  padding-right: 0.375rem;\n\t  padding-left: 0.375rem;\n\t}\n\n\t.btn-lg+.dropdown-toggle-split,\n\t.btn-group-lg>.btn+.dropdown-toggle-split {\n\t  padding-right: 1.125rem;\n\t  padding-left: 1.125rem;\n\t}\n\n\t.btn-group-vertical {\n\t  display: inline-flex;\n\t  flex-direction: column;\n\t  align-items: flex-start;\n\t  justify-content: center;\n\t}\n\n\t.btn-group-vertical .btn,\n\t.btn-group-vertical .btn-group {\n\t  width: 100%;\n\t}\n\n\t.btn-group-vertical>.btn+.btn,\n\t.btn-group-vertical>.btn+.btn-group,\n\t.btn-group-vertical>.btn-group+.btn,\n\t.btn-group-vertical>.btn-group+.btn-group {\n\t  margin-top: -1px;\n\t  margin-left: 0;\n\t}\n\n\t.btn-group-vertical>.btn:not(:first-child):not(:last-child) {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn:first-child:not(:last-child) {\n\t  border-bottom-right-radius: 0;\n\t  border-bottom-left-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn:last-child:not(:first-child) {\n\t  border-top-right-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn-group:not(:first-child):not(:last-child)>.btn {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn-group:first-child:not(:last-child)>.btn:last-child,\n\t.btn-group-vertical>.btn-group:first-child:not(:last-child)>.dropdown-toggle {\n\t  border-bottom-right-radius: 0;\n\t  border-bottom-left-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn-group:last-child:not(:first-child)>.btn:first-child {\n\t  border-top-right-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t[data-toggle=\"buttons\"]>.btn input[type=\"radio\"],\n\t[data-toggle=\"buttons\"]>.btn input[type=\"checkbox\"],\n\t[data-toggle=\"buttons\"]>.btn-group>.btn input[type=\"radio\"],\n\t[data-toggle=\"buttons\"]>.btn-group>.btn input[type=\"checkbox\"] {\n\t  position: absolute;\n\t  clip: rect(0, 0, 0, 0);\n\t  pointer-events: none;\n\t}\n\n\t.input-group {\n\t  position: relative;\n\t  display: flex;\n\t  width: 100%;\n\t}\n\n\t.input-group .form-control {\n\t  position: relative;\n\t  z-index: 2;\n\t  flex: 1 1 auto;\n\t  width: 1%;\n\t  margin-bottom: 0;\n\t}\n\n\t.input-group .form-control:focus,\n\t.input-group .form-control:active,\n\t.input-group .form-control:hover {\n\t  z-index: 3;\n\t}\n\n\t.input-group-addon,\n\t.input-group-btn,\n\t.input-group .form-control {\n\t  display: flex;\n\t  flex-direction: column;\n\t  justify-content: center;\n\t}\n\n\t.input-group-addon:not(:first-child):not(:last-child),\n\t.input-group-btn:not(:first-child):not(:last-child),\n\t.input-group .form-control:not(:first-child):not(:last-child) {\n\t  border-radius: 0;\n\t}\n\n\t.input-group-addon,\n\t.input-group-btn {\n\t  white-space: nowrap;\n\t  vertical-align: middle;\n\t}\n\n\t.input-group-addon {\n\t  padding: 0.5rem 0.75rem;\n\t  margin-bottom: 0;\n\t  font-size: 1rem;\n\t  font-weight: normal;\n\t  line-height: 1.25;\n\t  color: #464a4c;\n\t  text-align: center;\n\t  background-color: #eceeef;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.input-group-addon.form-control-sm,\n\t.input-group-sm>.input-group-addon,\n\t.input-group-sm>.input-group-btn>.input-group-addon.btn {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t  border-radius: 0.2rem;\n\t}\n\n\t.input-group-addon.form-control-lg,\n\t.input-group-lg>.input-group-addon,\n\t.input-group-lg>.input-group-btn>.input-group-addon.btn {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t  border-radius: 0.3rem;\n\t}\n\n\t.input-group-addon input[type=\"radio\"],\n\t.input-group-addon input[type=\"checkbox\"] {\n\t  margin-top: 0;\n\t}\n\n\t.input-group .form-control:not(:last-child),\n\t.input-group-addon:not(:last-child),\n\t.input-group-btn:not(:last-child)>.btn,\n\t.input-group-btn:not(:last-child)>.btn-group>.btn,\n\t.input-group-btn:not(:last-child)>.dropdown-toggle,\n\t.input-group-btn:not(:first-child)>.btn:not(:last-child):not(.dropdown-toggle),\n\t.input-group-btn:not(:first-child)>.btn-group:not(:last-child)>.btn {\n\t  border-bottom-right-radius: 0;\n\t  border-top-right-radius: 0;\n\t}\n\n\t.input-group-addon:not(:last-child) {\n\t  border-right: 0;\n\t}\n\n\t.input-group .form-control:not(:first-child),\n\t.input-group-addon:not(:first-child),\n\t.input-group-btn:not(:first-child)>.btn,\n\t.input-group-btn:not(:first-child)>.btn-group>.btn,\n\t.input-group-btn:not(:first-child)>.dropdown-toggle,\n\t.input-group-btn:not(:last-child)>.btn:not(:first-child),\n\t.input-group-btn:not(:last-child)>.btn-group:not(:first-child)>.btn {\n\t  border-bottom-left-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.form-control+.input-group-addon:not(:first-child) {\n\t  border-left: 0;\n\t}\n\n\t.input-group-btn {\n\t  position: relative;\n\t  font-size: 0;\n\t  white-space: nowrap;\n\t}\n\n\t.input-group-btn>.btn {\n\t  position: relative;\n\t  flex: 1;\n\t}\n\n\t.input-group-btn>.btn+.btn {\n\t  margin-left: -1px;\n\t}\n\n\t.input-group-btn>.btn:focus,\n\t.input-group-btn>.btn:active,\n\t.input-group-btn>.btn:hover {\n\t  z-index: 3;\n\t}\n\n\t.input-group-btn:not(:last-child)>.btn,\n\t.input-group-btn:not(:last-child)>.btn-group {\n\t  margin-right: -1px;\n\t}\n\n\t.input-group-btn:not(:first-child)>.btn,\n\t.input-group-btn:not(:first-child)>.btn-group {\n\t  z-index: 2;\n\t  margin-left: -1px;\n\t}\n\n\t.input-group-btn:not(:first-child)>.btn:focus,\n\t.input-group-btn:not(:first-child)>.btn:active,\n\t.input-group-btn:not(:first-child)>.btn:hover,\n\t.input-group-btn:not(:first-child)>.btn-group:focus,\n\t.input-group-btn:not(:first-child)>.btn-group:active,\n\t.input-group-btn:not(:first-child)>.btn-group:hover {\n\t  z-index: 3;\n\t}\n\n\t.custom-control {\n\t  position: relative;\n\t  display: inline-flex;\n\t  min-height: 1.5rem;\n\t  padding-left: 1.5rem;\n\t  margin-right: 1rem;\n\t  cursor: pointer;\n\t}\n\n\t.custom-control-input {\n\t  position: absolute;\n\t  z-index: -1;\n\t  opacity: 0;\n\t}\n\n\t.custom-control-input:checked~.custom-control-indicator {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t}\n\n\t.custom-control-input:focus~.custom-control-indicator {\n\t  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #0f8699;\n\t}\n\n\t.custom-control-input:active~.custom-control-indicator {\n\t  color: #fff;\n\t  background-color: #6adef0;\n\t}\n\n\t.custom-control-input:disabled~.custom-control-indicator {\n\t  cursor: not-allowed;\n\t  background-color: #eceeef;\n\t}\n\n\t.custom-control-input:disabled~.custom-control-description {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t}\n\n\t.custom-control-indicator {\n\t  position: absolute;\n\t  top: 0.25rem;\n\t  left: 0;\n\t  display: block;\n\t  width: 1rem;\n\t  height: 1rem;\n\t  pointer-events: none;\n\t  user-select: none;\n\t  background-color: #ddd;\n\t  background-repeat: no-repeat;\n\t  background-position: center center;\n\t  background-size: 50% 50%;\n\t}\n\n\t.custom-checkbox .custom-control-indicator {\n\t  border-radius: 0.25rem;\n\t}\n\n\t.custom-checkbox .custom-control-input:checked~.custom-control-indicator {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E\");\n\t}\n\n\t.custom-checkbox .custom-control-input:indeterminate~.custom-control-indicator {\n\t  background-color: #0f8699;\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E\");\n\t}\n\n\t.custom-radio .custom-control-indicator {\n\t  border-radius: 50%;\n\t}\n\n\t.custom-radio .custom-control-input:checked~.custom-control-indicator {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E\");\n\t}\n\n\t.custom-controls-stacked {\n\t  display: flex;\n\t  flex-direction: column;\n\t}\n\n\t.custom-controls-stacked .custom-control {\n\t  margin-bottom: 0.25rem;\n\t}\n\n\t.custom-controls-stacked .custom-control+.custom-control {\n\t  margin-left: 0;\n\t}\n\n\t.custom-select {\n\t  display: inline-block;\n\t  max-width: 100%;\n\t  height: calc(2.25rem + 2px);\n\t  padding: 0.375rem 1.75rem 0.375rem 0.75rem;\n\t  line-height: 1.25;\n\t  color: #464a4c;\n\t  vertical-align: middle;\n\t  background: #fff url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E\") no-repeat right 0.75rem center;\n\t  background-size: 8px 10px;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t  -moz-appearance: none;\n\t  -webkit-appearance: none;\n\t}\n\n\t.custom-select:focus {\n\t  border-color: #3cd4ec;\n\t  outline: none;\n\t}\n\n\t.custom-select:focus::-ms-value {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t}\n\n\t.custom-select:disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t  background-color: #eceeef;\n\t}\n\n\t.custom-select::-ms-expand {\n\t  opacity: 0;\n\t}\n\n\t.custom-select-sm {\n\t  padding-top: 0.375rem;\n\t  padding-bottom: 0.375rem;\n\t  font-size: 75%;\n\t}\n\n\t.custom-file {\n\t  position: relative;\n\t  display: inline-block;\n\t  max-width: 100%;\n\t  height: 2.5rem;\n\t  margin-bottom: 0;\n\t  cursor: pointer;\n\t}\n\n\t.custom-file-input {\n\t  min-width: 14rem;\n\t  max-width: 100%;\n\t  height: 2.5rem;\n\t  margin: 0;\n\t  filter: alpha(opacity=0);\n\t  opacity: 0;\n\t}\n\n\t.custom-file-control {\n\t  position: absolute;\n\t  top: 0;\n\t  right: 0;\n\t  left: 0;\n\t  z-index: 5;\n\t  height: 2.5rem;\n\t  padding: 0.5rem 1rem;\n\t  line-height: 1.5;\n\t  color: #464a4c;\n\t  pointer-events: none;\n\t  user-select: none;\n\t  background-color: #fff;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.custom-file-control:lang(en)::after {\n\t  content: \"Choose file...\";\n\t}\n\n\t.custom-file-control::before {\n\t  position: absolute;\n\t  top: -1px;\n\t  right: -1px;\n\t  bottom: -1px;\n\t  z-index: 6;\n\t  display: block;\n\t  height: 2.5rem;\n\t  padding: 0.5rem 1rem;\n\t  line-height: 1.5;\n\t  color: #464a4c;\n\t  background-color: #eceeef;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0 0.25rem 0.25rem 0;\n\t}\n\n\t.custom-file-control:lang(en)::before {\n\t  content: \"Browse\";\n\t}\n\n\t.nav {\n\t  display: flex;\n\t  padding-left: 0;\n\t  margin-bottom: 0;\n\t  list-style: none;\n\t}\n\n\t.nav-link {\n\t  display: block;\n\t  padding: 0.5em 1em;\n\t}\n\n\t.nav-link:focus,\n\t.nav-link:hover {\n\t  text-decoration: none;\n\t}\n\n\t.nav-link.disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t}\n\n\t.nav-tabs {\n\t  border-bottom: 1px solid #ddd;\n\t}\n\n\t.nav-tabs .nav-item {\n\t  margin-bottom: -1px;\n\t}\n\n\t.nav-tabs .nav-link {\n\t  border: 1px solid transparent;\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.nav-tabs .nav-link:focus,\n\t.nav-tabs .nav-link:hover {\n\t  border-color: #eceeef #eceeef #ddd;\n\t}\n\n\t.nav-tabs .nav-link.disabled {\n\t  color: #636c72;\n\t  background-color: transparent;\n\t  border-color: transparent;\n\t}\n\n\t.nav-tabs .nav-link.active,\n\t.nav-tabs .nav-item.show .nav-link {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t  border-color: #ddd #ddd #fff;\n\t}\n\n\t.nav-tabs .dropdown-menu {\n\t  margin-top: -1px;\n\t  border-top-right-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.nav-pills .nav-link {\n\t  border-radius: 0.25rem;\n\t}\n\n\t.nav-pills .nav-link.active,\n\t.nav-pills .nav-item.show .nav-link {\n\t  color: #fff;\n\t  cursor: default;\n\t  background-color: #0f8699;\n\t}\n\n\t.nav-fill .nav-item {\n\t  flex: 1 1 auto;\n\t  text-align: center;\n\t}\n\n\t.nav-justified .nav-item {\n\t  flex: 1 1 100%;\n\t  text-align: center;\n\t}\n\n\t.tab-content>.tab-pane {\n\t  display: none;\n\t}\n\n\t.tab-content>.active {\n\t  display: block;\n\t}\n\n\t.navbar {\n\t  position: relative;\n\t  display: flex;\n\t  flex-direction: column;\n\t  padding: 0.5rem 1rem;\n\t}\n\n\t.navbar-brand {\n\t  display: inline-block;\n\t  padding-top: .25rem;\n\t  padding-bottom: .25rem;\n\t  margin-right: 1rem;\n\t  font-size: 1.25rem;\n\t  line-height: inherit;\n\t  white-space: nowrap;\n\t}\n\n\t.navbar-brand:focus,\n\t.navbar-brand:hover {\n\t  text-decoration: none;\n\t}\n\n\t.navbar-nav {\n\t  display: flex;\n\t  flex-direction: column;\n\t  padding-left: 0;\n\t  margin-bottom: 0;\n\t  list-style: none;\n\t}\n\n\t.navbar-nav .nav-link {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.navbar-text {\n\t  display: inline-block;\n\t  padding-top: .425rem;\n\t  padding-bottom: .425rem;\n\t}\n\n\t.navbar-toggler {\n\t  align-self: flex-start;\n\t  padding: 0.25rem 0.75rem;\n\t  font-size: 1.25rem;\n\t  line-height: 1;\n\t  background: transparent;\n\t  border: 1px solid transparent;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.navbar-toggler:focus,\n\t.navbar-toggler:hover {\n\t  text-decoration: none;\n\t}\n\n\t.navbar-toggler-icon {\n\t  display: inline-block;\n\t  width: 1.5em;\n\t  height: 1.5em;\n\t  vertical-align: middle;\n\t  content: \"\";\n\t  background: no-repeat center center;\n\t  background-size: 100% 100%;\n\t}\n\n\t.navbar-toggler-left {\n\t  position: absolute;\n\t  left: 1rem;\n\t}\n\n\t.navbar-toggler-right {\n\t  position: absolute;\n\t  right: 1rem;\n\t}\n\n\t@media (max-width: 575px) {\n\t  .navbar-toggleable .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .navbar-toggleable {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t@media (max-width: 767px) {\n\t  .navbar-toggleable-sm .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable-sm>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .navbar-toggleable-sm {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-sm .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable-sm .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable-sm>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-sm .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable-sm .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t@media (max-width: 991px) {\n\t  .navbar-toggleable-md .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable-md>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .navbar-toggleable-md {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-md .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable-md .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable-md>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-md .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable-md .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t@media (max-width: 1199px) {\n\t  .navbar-toggleable-lg .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable-lg>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .navbar-toggleable-lg {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-lg .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable-lg .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable-lg>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-lg .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable-lg .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t.navbar-toggleable-xl {\n\t  flex-direction: row;\n\t  flex-wrap: nowrap;\n\t  align-items: center;\n\t}\n\n\t.navbar-toggleable-xl .navbar-nav .dropdown-menu {\n\t  position: static;\n\t  float: none;\n\t}\n\n\t.navbar-toggleable-xl>.container {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.navbar-toggleable-xl .navbar-nav {\n\t  flex-direction: row;\n\t}\n\n\t.navbar-toggleable-xl .navbar-nav .nav-link {\n\t  padding-right: .5rem;\n\t  padding-left: .5rem;\n\t}\n\n\t.navbar-toggleable-xl>.container {\n\t  display: flex;\n\t  flex-wrap: nowrap;\n\t  align-items: center;\n\t}\n\n\t.navbar-toggleable-xl .navbar-collapse {\n\t  display: flex !important;\n\t  width: 100%;\n\t}\n\n\t.navbar-toggleable-xl .navbar-toggler {\n\t  display: none;\n\t}\n\n\t.navbar-light .navbar-brand,\n\t.navbar-light .navbar-toggler {\n\t  color: rgba(0, 0, 0, 0.9);\n\t}\n\n\t.navbar-light .navbar-brand:focus,\n\t.navbar-light .navbar-brand:hover,\n\t.navbar-light .navbar-toggler:focus,\n\t.navbar-light .navbar-toggler:hover {\n\t  color: rgba(0, 0, 0, 0.9);\n\t}\n\n\t.navbar-light .navbar-nav .nav-link {\n\t  color: rgba(0, 0, 0, 0.5);\n\t}\n\n\t.navbar-light .navbar-nav .nav-link:focus,\n\t.navbar-light .navbar-nav .nav-link:hover {\n\t  color: rgba(0, 0, 0, 0.7);\n\t}\n\n\t.navbar-light .navbar-nav .nav-link.disabled {\n\t  color: rgba(0, 0, 0, 0.3);\n\t}\n\n\t.navbar-light .navbar-nav .open>.nav-link,\n\t.navbar-light .navbar-nav .active>.nav-link,\n\t.navbar-light .navbar-nav .nav-link.open,\n\t.navbar-light .navbar-nav .nav-link.active {\n\t  color: rgba(0, 0, 0, 0.9);\n\t}\n\n\t.navbar-light .navbar-toggler {\n\t  border-color: rgba(0, 0, 0, 0.1);\n\t}\n\n\t.navbar-light .navbar-toggler-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n\t}\n\n\t.navbar-light .navbar-text {\n\t  color: rgba(0, 0, 0, 0.5);\n\t}\n\n\t.navbar-inverse .navbar-brand,\n\t.navbar-inverse .navbar-toggler {\n\t  color: white;\n\t}\n\n\t.navbar-inverse .navbar-brand:focus,\n\t.navbar-inverse .navbar-brand:hover,\n\t.navbar-inverse .navbar-toggler:focus,\n\t.navbar-inverse .navbar-toggler:hover {\n\t  color: white;\n\t}\n\n\t.navbar-inverse .navbar-nav .nav-link {\n\t  color: rgba(255, 255, 255, 0.5);\n\t}\n\n\t.navbar-inverse .navbar-nav .nav-link:focus,\n\t.navbar-inverse .navbar-nav .nav-link:hover {\n\t  color: rgba(255, 255, 255, 0.75);\n\t}\n\n\t.navbar-inverse .navbar-nav .nav-link.disabled {\n\t  color: rgba(255, 255, 255, 0.25);\n\t}\n\n\t.navbar-inverse .navbar-nav .open>.nav-link,\n\t.navbar-inverse .navbar-nav .active>.nav-link,\n\t.navbar-inverse .navbar-nav .nav-link.open,\n\t.navbar-inverse .navbar-nav .nav-link.active {\n\t  color: white;\n\t}\n\n\t.navbar-inverse .navbar-toggler {\n\t  border-color: rgba(255, 255, 255, 0.1);\n\t}\n\n\t.navbar-inverse .navbar-toggler-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n\t}\n\n\t.navbar-inverse .navbar-text {\n\t  color: rgba(255, 255, 255, 0.5);\n\t}\n\n\t.card {\n\t  position: relative;\n\t  display: flex;\n\t  flex-direction: column;\n\t  background-color: #fff;\n\t  border: 1px solid rgba(0, 0, 0, 0.125);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.card-block {\n\t  flex: 1 1 auto;\n\t  padding: 1.25rem;\n\t}\n\n\t.card-title {\n\t  margin-bottom: 0.75rem;\n\t}\n\n\t.card-subtitle {\n\t  margin-top: -0.375rem;\n\t  margin-bottom: 0;\n\t}\n\n\t.card-text:last-child {\n\t  margin-bottom: 0;\n\t}\n\n\t.card-link:hover {\n\t  text-decoration: none;\n\t}\n\n\t.card-link+.card-link {\n\t  margin-left: 1.25rem;\n\t}\n\n\t.card>.list-group:first-child .list-group-item:first-child {\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.card>.list-group:last-child .list-group-item:last-child {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-bottom-left-radius: 0.25rem;\n\t}\n\n\t.card-header {\n\t  padding: 0.75rem 1.25rem;\n\t  margin-bottom: 0;\n\t  background-color: #f7f7f9;\n\t  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n\t}\n\n\t.card-header:first-child {\n\t  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;\n\t}\n\n\t.card-footer {\n\t  padding: 0.75rem 1.25rem;\n\t  background-color: #f7f7f9;\n\t  border-top: 1px solid rgba(0, 0, 0, 0.125);\n\t}\n\n\t.card-footer:last-child {\n\t  border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);\n\t}\n\n\t.card-header-tabs {\n\t  margin-right: -0.625rem;\n\t  margin-bottom: -0.75rem;\n\t  margin-left: -0.625rem;\n\t  border-bottom: 0;\n\t}\n\n\t.card-header-pills {\n\t  margin-right: -0.625rem;\n\t  margin-left: -0.625rem;\n\t}\n\n\t.card-primary {\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.card-primary .card-header,\n\t.card-primary .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-success {\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.card-success .card-header,\n\t.card-success .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-info {\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.card-info .card-header,\n\t.card-info .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-warning {\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.card-warning .card-header,\n\t.card-warning .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-danger {\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.card-danger .card-header,\n\t.card-danger .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-outline-primary {\n\t  background-color: transparent;\n\t  border-color: #0f8699;\n\t}\n\n\t.card-outline-secondary {\n\t  background-color: transparent;\n\t  border-color: #ccc;\n\t}\n\n\t.card-outline-info {\n\t  background-color: transparent;\n\t  border-color: #5bc0de;\n\t}\n\n\t.card-outline-success {\n\t  background-color: transparent;\n\t  border-color: #5cb85c;\n\t}\n\n\t.card-outline-warning {\n\t  background-color: transparent;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.card-outline-danger {\n\t  background-color: transparent;\n\t  border-color: #d9534f;\n\t}\n\n\t.card-inverse {\n\t  color: rgba(255, 255, 255, 0.65);\n\t}\n\n\t.card-inverse .card-header,\n\t.card-inverse .card-footer {\n\t  background-color: transparent;\n\t  border-color: rgba(255, 255, 255, 0.2);\n\t}\n\n\t.card-inverse .card-header,\n\t.card-inverse .card-footer,\n\t.card-inverse .card-title,\n\t.card-inverse .card-blockquote {\n\t  color: #fff;\n\t}\n\n\t.card-inverse .card-link,\n\t.card-inverse .card-text,\n\t.card-inverse .card-subtitle,\n\t.card-inverse .card-blockquote .blockquote-footer {\n\t  color: rgba(255, 255, 255, 0.65);\n\t}\n\n\t.card-inverse .card-link:focus,\n\t.card-inverse .card-link:hover {\n\t  color: #fff;\n\t}\n\n\t.card-blockquote {\n\t  padding: 0;\n\t  margin-bottom: 0;\n\t  border-left: 0;\n\t}\n\n\t.card-img {\n\t  border-radius: calc(0.25rem - 1px);\n\t}\n\n\t.card-img-overlay {\n\t  position: absolute;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  padding: 1.25rem;\n\t}\n\n\t.card-img-top {\n\t  border-top-right-radius: calc(0.25rem - 1px);\n\t  border-top-left-radius: calc(0.25rem - 1px);\n\t}\n\n\t.card-img-bottom {\n\t  border-bottom-right-radius: calc(0.25rem - 1px);\n\t  border-bottom-left-radius: calc(0.25rem - 1px);\n\t}\n\n\t@media (min-width: 576px) {\n\t  .card-deck {\n\t    display: flex;\n\t    flex-flow: row wrap;\n\t  }\n\t  .card-deck .card {\n\t    display: flex;\n\t    flex: 1 0 0;\n\t    flex-direction: column;\n\t  }\n\t  .card-deck .card:not(:first-child) {\n\t    margin-left: 15px;\n\t  }\n\t  .card-deck .card:not(:last-child) {\n\t    margin-right: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .card-group {\n\t    display: flex;\n\t    flex-flow: row wrap;\n\t  }\n\t  .card-group .card {\n\t    flex: 1 0 0;\n\t  }\n\t  .card-group .card+.card {\n\t    margin-left: 0;\n\t    border-left: 0;\n\t  }\n\t  .card-group .card:first-child {\n\t    border-bottom-right-radius: 0;\n\t    border-top-right-radius: 0;\n\t  }\n\t  .card-group .card:first-child .card-img-top {\n\t    border-top-right-radius: 0;\n\t  }\n\t  .card-group .card:first-child .card-img-bottom {\n\t    border-bottom-right-radius: 0;\n\t  }\n\t  .card-group .card:last-child {\n\t    border-bottom-left-radius: 0;\n\t    border-top-left-radius: 0;\n\t  }\n\t  .card-group .card:last-child .card-img-top {\n\t    border-top-left-radius: 0;\n\t  }\n\t  .card-group .card:last-child .card-img-bottom {\n\t    border-bottom-left-radius: 0;\n\t  }\n\t  .card-group .card:not(:first-child):not(:last-child) {\n\t    border-radius: 0;\n\t  }\n\t  .card-group .card:not(:first-child):not(:last-child) .card-img-top,\n\t  .card-group .card:not(:first-child):not(:last-child) .card-img-bottom {\n\t    border-radius: 0;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .card-columns {\n\t    column-count: 3;\n\t    column-gap: 1.25rem;\n\t  }\n\t  .card-columns .card {\n\t    display: inline-block;\n\t    width: 100%;\n\t    margin-bottom: 0.75rem;\n\t  }\n\t}\n\n\t.breadcrumb {\n\t  padding: 0.75rem 1rem;\n\t  margin-bottom: 1rem;\n\t  list-style: none;\n\t  background-color: #eceeef;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.breadcrumb::after {\n\t  display: block;\n\t  content: \"\";\n\t  clear: both;\n\t}\n\n\t.breadcrumb-item {\n\t  float: left;\n\t}\n\n\t.breadcrumb-item+.breadcrumb-item::before {\n\t  display: inline-block;\n\t  padding-right: 0.5rem;\n\t  padding-left: 0.5rem;\n\t  color: #636c72;\n\t  content: \"/\";\n\t}\n\n\t.breadcrumb-item+.breadcrumb-item:hover::before {\n\t  text-decoration: underline;\n\t}\n\n\t.breadcrumb-item+.breadcrumb-item:hover::before {\n\t  text-decoration: none;\n\t}\n\n\t.breadcrumb-item.active {\n\t  color: #636c72;\n\t}\n\n\t.pagination {\n\t  display: flex;\n\t  padding-left: 0;\n\t  list-style: none;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.page-item:first-child .page-link {\n\t  margin-left: 0;\n\t  border-bottom-left-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.page-item:last-child .page-link {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-top-right-radius: 0.25rem;\n\t}\n\n\t.page-item.active .page-link {\n\t  z-index: 2;\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.page-item.disabled .page-link {\n\t  color: #636c72;\n\t  pointer-events: none;\n\t  cursor: not-allowed;\n\t  background-color: #fff;\n\t  border-color: #ddd;\n\t}\n\n\t.page-link {\n\t  position: relative;\n\t  display: block;\n\t  padding: 0.5rem 0.75rem;\n\t  margin-left: -1px;\n\t  line-height: 1.25;\n\t  color: #0f8699;\n\t  background-color: #fff;\n\t  border: 1px solid #ddd;\n\t}\n\n\t.page-link:focus,\n\t.page-link:hover {\n\t  color: #084953;\n\t  text-decoration: none;\n\t  background-color: #eceeef;\n\t  border-color: #ddd;\n\t}\n\n\t.pagination-lg .page-link {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t}\n\n\t.pagination-lg .page-item:first-child .page-link {\n\t  border-bottom-left-radius: 0.3rem;\n\t  border-top-left-radius: 0.3rem;\n\t}\n\n\t.pagination-lg .page-item:last-child .page-link {\n\t  border-bottom-right-radius: 0.3rem;\n\t  border-top-right-radius: 0.3rem;\n\t}\n\n\t.pagination-sm .page-link {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t}\n\n\t.pagination-sm .page-item:first-child .page-link {\n\t  border-bottom-left-radius: 0.2rem;\n\t  border-top-left-radius: 0.2rem;\n\t}\n\n\t.pagination-sm .page-item:last-child .page-link {\n\t  border-bottom-right-radius: 0.2rem;\n\t  border-top-right-radius: 0.2rem;\n\t}\n\n\t.badge {\n\t  display: inline-block;\n\t  padding: 0.25em 0.4em;\n\t  font-size: 75%;\n\t  font-weight: bold;\n\t  line-height: 1;\n\t  color: #fff;\n\t  text-align: center;\n\t  white-space: nowrap;\n\t  vertical-align: baseline;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.badge:empty {\n\t  display: none;\n\t}\n\n\t.btn .badge {\n\t  position: relative;\n\t  top: -1px;\n\t}\n\n\ta.badge:focus,\n\ta.badge:hover {\n\t  color: #fff;\n\t  text-decoration: none;\n\t  cursor: pointer;\n\t}\n\n\t.badge-pill {\n\t  padding-right: 0.6em;\n\t  padding-left: 0.6em;\n\t  border-radius: 10rem;\n\t}\n\n\t.badge-default {\n\t  background-color: #636c72;\n\t}\n\n\t.badge-default[href]:focus,\n\t.badge-default[href]:hover {\n\t  background-color: #4b5257;\n\t}\n\n\t.badge-primary {\n\t  background-color: #0f8699;\n\t}\n\n\t.badge-primary[href]:focus,\n\t.badge-primary[href]:hover {\n\t  background-color: #0a5d6b;\n\t}\n\n\t.badge-success {\n\t  background-color: #5cb85c;\n\t}\n\n\t.badge-success[href]:focus,\n\t.badge-success[href]:hover {\n\t  background-color: #449d44;\n\t}\n\n\t.badge-info {\n\t  background-color: #5bc0de;\n\t}\n\n\t.badge-info[href]:focus,\n\t.badge-info[href]:hover {\n\t  background-color: #31b0d5;\n\t}\n\n\t.badge-warning {\n\t  background-color: #f0ad4e;\n\t}\n\n\t.badge-warning[href]:focus,\n\t.badge-warning[href]:hover {\n\t  background-color: #ec971f;\n\t}\n\n\t.badge-danger {\n\t  background-color: #d9534f;\n\t}\n\n\t.badge-danger[href]:focus,\n\t.badge-danger[href]:hover {\n\t  background-color: #c9302c;\n\t}\n\n\t.jumbotron {\n\t  padding: 2rem 1rem;\n\t  margin-bottom: 2rem;\n\t  background-color: #eceeef;\n\t  border-radius: 0.3rem;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .jumbotron {\n\t    padding: 4rem 2rem;\n\t  }\n\t}\n\n\t.jumbotron-hr {\n\t  border-top-color: #d0d5d8;\n\t}\n\n\t.jumbotron-fluid {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t  border-radius: 0;\n\t}\n\n\t.alert {\n\t  padding: 0.75rem 1.25rem;\n\t  margin-bottom: 1rem;\n\t  border: 1px solid transparent;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.alert-heading {\n\t  color: inherit;\n\t}\n\n\t.alert-link {\n\t  font-weight: bold;\n\t}\n\n\t.alert-dismissible .close {\n\t  position: relative;\n\t  top: -0.75rem;\n\t  right: -1.25rem;\n\t  padding: 0.75rem 1.25rem;\n\t  color: inherit;\n\t}\n\n\t.alert-success {\n\t  background-color: #dff0d8;\n\t  border-color: #d0e9c6;\n\t  color: #3c763d;\n\t}\n\n\t.alert-success hr {\n\t  border-top-color: #c1e2b3;\n\t}\n\n\t.alert-success .alert-link {\n\t  color: #2b542c;\n\t}\n\n\t.alert-info {\n\t  background-color: #d9edf7;\n\t  border-color: #bcdff1;\n\t  color: #31708f;\n\t}\n\n\t.alert-info hr {\n\t  border-top-color: #a6d5ec;\n\t}\n\n\t.alert-info .alert-link {\n\t  color: #245269;\n\t}\n\n\t.alert-warning {\n\t  background-color: #fcf8e3;\n\t  border-color: #faf2cc;\n\t  color: #8a6d3b;\n\t}\n\n\t.alert-warning hr {\n\t  border-top-color: #f7ecb5;\n\t}\n\n\t.alert-warning .alert-link {\n\t  color: #66512c;\n\t}\n\n\t.alert-danger {\n\t  background-color: #f2dede;\n\t  border-color: #ebcccc;\n\t  color: #a94442;\n\t}\n\n\t.alert-danger hr {\n\t  border-top-color: #e4b9b9;\n\t}\n\n\t.alert-danger .alert-link {\n\t  color: #843534;\n\t}\n\n\t@keyframes progress-bar-stripes {\n\t  from {\n\t    background-position: 1rem 0;\n\t  }\n\t  to {\n\t    background-position: 0 0;\n\t  }\n\t}\n\n\t.progress {\n\t  display: flex;\n\t  overflow: hidden;\n\t  font-size: 0.75rem;\n\t  line-height: 1rem;\n\t  text-align: center;\n\t  background-color: #eceeef;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.progress-bar {\n\t  height: 1rem;\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t}\n\n\t.progress-bar-striped {\n\t  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n\t  background-size: 1rem 1rem;\n\t}\n\n\t.progress-bar-animated {\n\t  animation: progress-bar-stripes 1s linear infinite;\n\t}\n\n\t.media {\n\t  display: flex;\n\t  align-items: flex-start;\n\t}\n\n\t.media-body {\n\t  flex: 1;\n\t}\n\n\t.list-group {\n\t  display: flex;\n\t  flex-direction: column;\n\t  padding-left: 0;\n\t  margin-bottom: 0;\n\t}\n\n\t.list-group-item-action {\n\t  width: 100%;\n\t  color: #464a4c;\n\t  text-align: inherit;\n\t}\n\n\t.list-group-item-action .list-group-item-heading {\n\t  color: #292b2c;\n\t}\n\n\t.list-group-item-action:focus,\n\t.list-group-item-action:hover {\n\t  color: #464a4c;\n\t  text-decoration: none;\n\t  background-color: #f7f7f9;\n\t}\n\n\t.list-group-item-action:active {\n\t  color: #292b2c;\n\t  background-color: #eceeef;\n\t}\n\n\t.list-group-item {\n\t  position: relative;\n\t  display: flex;\n\t  flex-flow: row wrap;\n\t  align-items: center;\n\t  padding: 0.75rem 1.25rem;\n\t  margin-bottom: -1px;\n\t  background-color: #fff;\n\t  border: 1px solid rgba(0, 0, 0, 0.125);\n\t}\n\n\t.list-group-item:first-child {\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.list-group-item:last-child {\n\t  margin-bottom: 0;\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-bottom-left-radius: 0.25rem;\n\t}\n\n\t.list-group-item:focus,\n\t.list-group-item:hover {\n\t  text-decoration: none;\n\t}\n\n\t.list-group-item.disabled,\n\t.list-group-item:disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t  background-color: #fff;\n\t}\n\n\t.list-group-item.disabled .list-group-item-heading,\n\t.list-group-item:disabled .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\t.list-group-item.disabled .list-group-item-text,\n\t.list-group-item:disabled .list-group-item-text {\n\t  color: #636c72;\n\t}\n\n\t.list-group-item.active {\n\t  z-index: 2;\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.list-group-item.active .list-group-item-heading,\n\t.list-group-item.active .list-group-item-heading>small,\n\t.list-group-item.active .list-group-item-heading>.small {\n\t  color: inherit;\n\t}\n\n\t.list-group-item.active .list-group-item-text {\n\t  color: #b0edf7;\n\t}\n\n\t.list-group-flush .list-group-item {\n\t  border-right: 0;\n\t  border-left: 0;\n\t  border-radius: 0;\n\t}\n\n\t.list-group-flush:first-child .list-group-item:first-child {\n\t  border-top: 0;\n\t}\n\n\t.list-group-flush:last-child .list-group-item:last-child {\n\t  border-bottom: 0;\n\t}\n\n\t.list-group-item-success {\n\t  color: #3c763d;\n\t  background-color: #dff0d8;\n\t}\n\n\ta.list-group-item-success,\n\tbutton.list-group-item-success {\n\t  color: #3c763d;\n\t}\n\n\ta.list-group-item-success .list-group-item-heading,\n\tbutton.list-group-item-success .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-success:focus,\n\ta.list-group-item-success:hover,\n\tbutton.list-group-item-success:focus,\n\tbutton.list-group-item-success:hover {\n\t  color: #3c763d;\n\t  background-color: #d0e9c6;\n\t}\n\n\ta.list-group-item-success.active,\n\tbutton.list-group-item-success.active {\n\t  color: #fff;\n\t  background-color: #3c763d;\n\t  border-color: #3c763d;\n\t}\n\n\t.list-group-item-info {\n\t  color: #31708f;\n\t  background-color: #d9edf7;\n\t}\n\n\ta.list-group-item-info,\n\tbutton.list-group-item-info {\n\t  color: #31708f;\n\t}\n\n\ta.list-group-item-info .list-group-item-heading,\n\tbutton.list-group-item-info .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-info:focus,\n\ta.list-group-item-info:hover,\n\tbutton.list-group-item-info:focus,\n\tbutton.list-group-item-info:hover {\n\t  color: #31708f;\n\t  background-color: #c4e3f3;\n\t}\n\n\ta.list-group-item-info.active,\n\tbutton.list-group-item-info.active {\n\t  color: #fff;\n\t  background-color: #31708f;\n\t  border-color: #31708f;\n\t}\n\n\t.list-group-item-warning {\n\t  color: #8a6d3b;\n\t  background-color: #fcf8e3;\n\t}\n\n\ta.list-group-item-warning,\n\tbutton.list-group-item-warning {\n\t  color: #8a6d3b;\n\t}\n\n\ta.list-group-item-warning .list-group-item-heading,\n\tbutton.list-group-item-warning .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-warning:focus,\n\ta.list-group-item-warning:hover,\n\tbutton.list-group-item-warning:focus,\n\tbutton.list-group-item-warning:hover {\n\t  color: #8a6d3b;\n\t  background-color: #faf2cc;\n\t}\n\n\ta.list-group-item-warning.active,\n\tbutton.list-group-item-warning.active {\n\t  color: #fff;\n\t  background-color: #8a6d3b;\n\t  border-color: #8a6d3b;\n\t}\n\n\t.list-group-item-danger {\n\t  color: #a94442;\n\t  background-color: #f2dede;\n\t}\n\n\ta.list-group-item-danger,\n\tbutton.list-group-item-danger {\n\t  color: #a94442;\n\t}\n\n\ta.list-group-item-danger .list-group-item-heading,\n\tbutton.list-group-item-danger .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-danger:focus,\n\ta.list-group-item-danger:hover,\n\tbutton.list-group-item-danger:focus,\n\tbutton.list-group-item-danger:hover {\n\t  color: #a94442;\n\t  background-color: #ebcccc;\n\t}\n\n\ta.list-group-item-danger.active,\n\tbutton.list-group-item-danger.active {\n\t  color: #fff;\n\t  background-color: #a94442;\n\t  border-color: #a94442;\n\t}\n\n\t.embed-responsive {\n\t  position: relative;\n\t  display: block;\n\t  width: 100%;\n\t  padding: 0;\n\t  overflow: hidden;\n\t}\n\n\t.embed-responsive::before {\n\t  display: block;\n\t  content: \"\";\n\t}\n\n\t.embed-responsive .embed-responsive-item,\n\t.embed-responsive iframe,\n\t.embed-responsive embed,\n\t.embed-responsive object,\n\t.embed-responsive video {\n\t  position: absolute;\n\t  top: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  width: 100%;\n\t  height: 100%;\n\t  border: 0;\n\t}\n\n\t.embed-responsive-21by9::before {\n\t  padding-top: 42.85714%;\n\t}\n\n\t.embed-responsive-16by9::before {\n\t  padding-top: 56.25%;\n\t}\n\n\t.embed-responsive-4by3::before {\n\t  padding-top: 75%;\n\t}\n\n\t.embed-responsive-1by1::before {\n\t  padding-top: 100%;\n\t}\n\n\t.close {\n\t  float: right;\n\t  font-size: 1.5rem;\n\t  font-weight: bold;\n\t  line-height: 1;\n\t  color: #000;\n\t  text-shadow: 0 1px 0 #fff;\n\t  opacity: .5;\n\t}\n\n\t.close:focus,\n\t.close:hover {\n\t  color: #000;\n\t  text-decoration: none;\n\t  cursor: pointer;\n\t  opacity: .75;\n\t}\n\n\tbutton.close {\n\t  padding: 0;\n\t  cursor: pointer;\n\t  background: transparent;\n\t  border: 0;\n\t  -webkit-appearance: none;\n\t}\n\n\t.modal-open {\n\t  overflow: hidden;\n\t}\n\n\t.modal {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 1050;\n\t  display: none;\n\t  overflow: hidden;\n\t  outline: 0;\n\t}\n\n\t.modal.fade .modal-dialog {\n\t  transition: transform 0.3s ease-out;\n\t  transform: translate(0, -25%);\n\t}\n\n\t.modal.show .modal-dialog {\n\t  transform: translate(0, 0);\n\t}\n\n\t.modal-open .modal {\n\t  overflow-x: hidden;\n\t  overflow-y: auto;\n\t}\n\n\t.modal-dialog {\n\t  position: relative;\n\t  width: auto;\n\t  margin: 10px;\n\t}\n\n\t.modal-content {\n\t  position: relative;\n\t  display: flex;\n\t  flex-direction: column;\n\t  background-color: #fff;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.2);\n\t  border-radius: 0.3rem;\n\t  outline: 0;\n\t}\n\n\t.modal-backdrop {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 1040;\n\t  background-color: #000;\n\t}\n\n\t.modal-backdrop.fade {\n\t  opacity: 0;\n\t}\n\n\t.modal-backdrop.show {\n\t  opacity: 0.5;\n\t}\n\n\t.modal-header {\n\t  display: flex;\n\t  align-items: center;\n\t  justify-content: space-between;\n\t  padding: 15px;\n\t  border-bottom: 1px solid #eceeef;\n\t}\n\n\t.modal-title {\n\t  margin-bottom: 0;\n\t  line-height: 1.5;\n\t}\n\n\t.modal-body {\n\t  position: relative;\n\t  flex: 1 1 auto;\n\t  padding: 15px;\n\t}\n\n\t.modal-footer {\n\t  display: flex;\n\t  align-items: center;\n\t  justify-content: flex-end;\n\t  padding: 15px;\n\t  border-top: 1px solid #eceeef;\n\t}\n\n\t.modal-footer> :not(:first-child) {\n\t  margin-left: .25rem;\n\t}\n\n\t.modal-footer> :not(:last-child) {\n\t  margin-right: .25rem;\n\t}\n\n\t.modal-scrollbar-measure {\n\t  position: absolute;\n\t  top: -9999px;\n\t  width: 50px;\n\t  height: 50px;\n\t  overflow: scroll;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .modal-dialog {\n\t    max-width: 500px;\n\t    margin: 30px auto;\n\t  }\n\t  .modal-sm {\n\t    max-width: 300px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .modal-lg {\n\t    max-width: 800px;\n\t  }\n\t}\n\n\t.tooltip {\n\t  position: absolute;\n\t  z-index: 1070;\n\t  display: block;\n\t  font-family: -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n\t  font-style: normal;\n\t  font-weight: normal;\n\t  letter-spacing: normal;\n\t  line-break: auto;\n\t  line-height: 1.5;\n\t  text-align: left;\n\t  text-align: start;\n\t  text-decoration: none;\n\t  text-shadow: none;\n\t  text-transform: none;\n\t  white-space: normal;\n\t  word-break: normal;\n\t  word-spacing: normal;\n\t  font-size: 0.875rem;\n\t  word-wrap: break-word;\n\t  opacity: 0;\n\t}\n\n\t.tooltip.show {\n\t  opacity: 0.9;\n\t}\n\n\t.tooltip.tooltip-top,\n\t.tooltip.bs-tether-element-attached-bottom {\n\t  padding: 5px 0;\n\t  margin-top: -3px;\n\t}\n\n\t.tooltip.tooltip-top .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-bottom .tooltip-inner::before {\n\t  bottom: 0;\n\t  left: 50%;\n\t  margin-left: -5px;\n\t  content: \"\";\n\t  border-width: 5px 5px 0;\n\t  border-top-color: #000;\n\t}\n\n\t.tooltip.tooltip-right,\n\t.tooltip.bs-tether-element-attached-left {\n\t  padding: 0 5px;\n\t  margin-left: 3px;\n\t}\n\n\t.tooltip.tooltip-right .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-left .tooltip-inner::before {\n\t  top: 50%;\n\t  left: 0;\n\t  margin-top: -5px;\n\t  content: \"\";\n\t  border-width: 5px 5px 5px 0;\n\t  border-right-color: #000;\n\t}\n\n\t.tooltip.tooltip-bottom,\n\t.tooltip.bs-tether-element-attached-top {\n\t  padding: 5px 0;\n\t  margin-top: 3px;\n\t}\n\n\t.tooltip.tooltip-bottom .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-top .tooltip-inner::before {\n\t  top: 0;\n\t  left: 50%;\n\t  margin-left: -5px;\n\t  content: \"\";\n\t  border-width: 0 5px 5px;\n\t  border-bottom-color: #000;\n\t}\n\n\t.tooltip.tooltip-left,\n\t.tooltip.bs-tether-element-attached-right {\n\t  padding: 0 5px;\n\t  margin-left: -3px;\n\t}\n\n\t.tooltip.tooltip-left .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-right .tooltip-inner::before {\n\t  top: 50%;\n\t  right: 0;\n\t  margin-top: -5px;\n\t  content: \"\";\n\t  border-width: 5px 0 5px 5px;\n\t  border-left-color: #000;\n\t}\n\n\t.tooltip-inner {\n\t  max-width: 200px;\n\t  padding: 3px 8px;\n\t  color: #fff;\n\t  text-align: center;\n\t  background-color: #000;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.tooltip-inner::before {\n\t  position: absolute;\n\t  width: 0;\n\t  height: 0;\n\t  border-color: transparent;\n\t  border-style: solid;\n\t}\n\n\t.popover {\n\t  position: absolute;\n\t  top: 0;\n\t  left: 0;\n\t  z-index: 1060;\n\t  display: block;\n\t  max-width: 276px;\n\t  padding: 1px;\n\t  font-family: -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n\t  font-style: normal;\n\t  font-weight: normal;\n\t  letter-spacing: normal;\n\t  line-break: auto;\n\t  line-height: 1.5;\n\t  text-align: left;\n\t  text-align: start;\n\t  text-decoration: none;\n\t  text-shadow: none;\n\t  text-transform: none;\n\t  white-space: normal;\n\t  word-break: normal;\n\t  word-spacing: normal;\n\t  font-size: 0.875rem;\n\t  word-wrap: break-word;\n\t  background-color: #fff;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.2);\n\t  border-radius: 0.3rem;\n\t}\n\n\t.popover.popover-top,\n\t.popover.bs-tether-element-attached-bottom {\n\t  margin-top: -10px;\n\t}\n\n\t.popover.popover-top::before,\n\t.popover.popover-top::after,\n\t.popover.bs-tether-element-attached-bottom::before,\n\t.popover.bs-tether-element-attached-bottom::after {\n\t  left: 50%;\n\t  border-bottom-width: 0;\n\t}\n\n\t.popover.popover-top::before,\n\t.popover.bs-tether-element-attached-bottom::before {\n\t  bottom: -11px;\n\t  margin-left: -11px;\n\t  border-top-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-top::after,\n\t.popover.bs-tether-element-attached-bottom::after {\n\t  bottom: -10px;\n\t  margin-left: -10px;\n\t  border-top-color: #fff;\n\t}\n\n\t.popover.popover-right,\n\t.popover.bs-tether-element-attached-left {\n\t  margin-left: 10px;\n\t}\n\n\t.popover.popover-right::before,\n\t.popover.popover-right::after,\n\t.popover.bs-tether-element-attached-left::before,\n\t.popover.bs-tether-element-attached-left::after {\n\t  top: 50%;\n\t  border-left-width: 0;\n\t}\n\n\t.popover.popover-right::before,\n\t.popover.bs-tether-element-attached-left::before {\n\t  left: -11px;\n\t  margin-top: -11px;\n\t  border-right-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-right::after,\n\t.popover.bs-tether-element-attached-left::after {\n\t  left: -10px;\n\t  margin-top: -10px;\n\t  border-right-color: #fff;\n\t}\n\n\t.popover.popover-bottom,\n\t.popover.bs-tether-element-attached-top {\n\t  margin-top: 10px;\n\t}\n\n\t.popover.popover-bottom::before,\n\t.popover.popover-bottom::after,\n\t.popover.bs-tether-element-attached-top::before,\n\t.popover.bs-tether-element-attached-top::after {\n\t  left: 50%;\n\t  border-top-width: 0;\n\t}\n\n\t.popover.popover-bottom::before,\n\t.popover.bs-tether-element-attached-top::before {\n\t  top: -11px;\n\t  margin-left: -11px;\n\t  border-bottom-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-bottom::after,\n\t.popover.bs-tether-element-attached-top::after {\n\t  top: -10px;\n\t  margin-left: -10px;\n\t  border-bottom-color: #f7f7f7;\n\t}\n\n\t.popover.popover-bottom .popover-title::before,\n\t.popover.bs-tether-element-attached-top .popover-title::before {\n\t  position: absolute;\n\t  top: 0;\n\t  left: 50%;\n\t  display: block;\n\t  width: 20px;\n\t  margin-left: -10px;\n\t  content: \"\";\n\t  border-bottom: 1px solid #f7f7f7;\n\t}\n\n\t.popover.popover-left,\n\t.popover.bs-tether-element-attached-right {\n\t  margin-left: -10px;\n\t}\n\n\t.popover.popover-left::before,\n\t.popover.popover-left::after,\n\t.popover.bs-tether-element-attached-right::before,\n\t.popover.bs-tether-element-attached-right::after {\n\t  top: 50%;\n\t  border-right-width: 0;\n\t}\n\n\t.popover.popover-left::before,\n\t.popover.bs-tether-element-attached-right::before {\n\t  right: -11px;\n\t  margin-top: -11px;\n\t  border-left-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-left::after,\n\t.popover.bs-tether-element-attached-right::after {\n\t  right: -10px;\n\t  margin-top: -10px;\n\t  border-left-color: #fff;\n\t}\n\n\t.popover-title {\n\t  padding: 8px 14px;\n\t  margin-bottom: 0;\n\t  font-size: 1rem;\n\t  background-color: #f7f7f7;\n\t  border-bottom: 1px solid #ebebeb;\n\t  border-top-right-radius: calc(0.3rem - 1px);\n\t  border-top-left-radius: calc(0.3rem - 1px);\n\t}\n\n\t.popover-title:empty {\n\t  display: none;\n\t}\n\n\t.popover-content {\n\t  padding: 9px 14px;\n\t}\n\n\t.popover::before,\n\t.popover::after {\n\t  position: absolute;\n\t  display: block;\n\t  width: 0;\n\t  height: 0;\n\t  border-color: transparent;\n\t  border-style: solid;\n\t}\n\n\t.popover::before {\n\t  content: \"\";\n\t  border-width: 11px;\n\t}\n\n\t.popover::after {\n\t  content: \"\";\n\t  border-width: 10px;\n\t}\n\n\t.carousel {\n\t  position: relative;\n\t}\n\n\t.carousel-inner {\n\t  position: relative;\n\t  width: 100%;\n\t  overflow: hidden;\n\t}\n\n\t.carousel-item {\n\t  position: relative;\n\t  display: none;\n\t  width: 100%;\n\t}\n\n\t@media (-webkit-transform-3d) {\n\t  .carousel-item {\n\t    transition: transform 0.6s ease-in-out;\n\t    backface-visibility: hidden;\n\t    perspective: 1000px;\n\t  }\n\t}\n\n\t@supports (transform: translate3d(0,\n\t0,\n\t0)) {\n\t  .carousel-item {\n\t    transition: transform 0.6s ease-in-out;\n\t    backface-visibility: hidden;\n\t    perspective: 1000px;\n\t  }\n\t}\n\n\t.carousel-item.active,\n\t.carousel-item-next,\n\t.carousel-item-prev {\n\t  display: flex;\n\t}\n\n\t.carousel-item-next,\n\t.carousel-item-prev {\n\t  position: absolute;\n\t  top: 0;\n\t}\n\n\t@media (-webkit-transform-3d) {\n\t  .carousel-item-next.carousel-item-left,\n\t  .carousel-item-prev.carousel-item-right {\n\t    transform: translate3d(0, 0, 0);\n\t  }\n\t  .carousel-item-next,\n\t  .active.carousel-item-right {\n\t    transform: translate3d(100%, 0, 0);\n\t  }\n\t  .carousel-item-prev,\n\t  .active.carousel-item-left {\n\t    transform: translate3d(-100%, 0, 0);\n\t  }\n\t}\n\n\t@supports (transform: translate3d(0,\n\t0,\n\t0)) {\n\t  .carousel-item-next.carousel-item-left,\n\t  .carousel-item-prev.carousel-item-right {\n\t    transform: translate3d(0, 0, 0);\n\t  }\n\t  .carousel-item-next,\n\t  .active.carousel-item-right {\n\t    transform: translate3d(100%, 0, 0);\n\t  }\n\t  .carousel-item-prev,\n\t  .active.carousel-item-left {\n\t    transform: translate3d(-100%, 0, 0);\n\t  }\n\t}\n\n\t.carousel-control-prev,\n\t.carousel-control-next {\n\t  position: absolute;\n\t  top: 0;\n\t  bottom: 0;\n\t  display: flex;\n\t  align-items: center;\n\t  justify-content: center;\n\t  width: 15%;\n\t  color: #fff;\n\t  text-align: center;\n\t  opacity: 0.5;\n\t}\n\n\t.carousel-control-prev:focus,\n\t.carousel-control-prev:hover,\n\t.carousel-control-next:focus,\n\t.carousel-control-next:hover {\n\t  color: #fff;\n\t  text-decoration: none;\n\t  outline: 0;\n\t  opacity: .9;\n\t}\n\n\t.carousel-control-prev {\n\t  left: 0;\n\t}\n\n\t.carousel-control-next {\n\t  right: 0;\n\t}\n\n\t.carousel-control-prev-icon,\n\t.carousel-control-next-icon {\n\t  display: inline-block;\n\t  width: 20px;\n\t  height: 20px;\n\t  background: transparent no-repeat center center;\n\t  background-size: 100% 100%;\n\t}\n\n\t.carousel-control-prev-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M4 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E\");\n\t}\n\n\t.carousel-control-next-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E\");\n\t}\n\n\t.carousel-indicators {\n\t  position: absolute;\n\t  right: 0;\n\t  bottom: 10px;\n\t  left: 0;\n\t  z-index: 15;\n\t  display: flex;\n\t  justify-content: center;\n\t  padding-left: 0;\n\t  margin-right: 15%;\n\t  margin-left: 15%;\n\t  list-style: none;\n\t}\n\n\t.carousel-indicators li {\n\t  position: relative;\n\t  flex: 1 0 auto;\n\t  max-width: 30px;\n\t  height: 3px;\n\t  margin-right: 3px;\n\t  margin-left: 3px;\n\t  text-indent: -999px;\n\t  cursor: pointer;\n\t  background-color: rgba(255, 255, 255, 0.5);\n\t}\n\n\t.carousel-indicators li::before {\n\t  position: absolute;\n\t  top: -10px;\n\t  left: 0;\n\t  display: inline-block;\n\t  width: 100%;\n\t  height: 10px;\n\t  content: \"\";\n\t}\n\n\t.carousel-indicators li::after {\n\t  position: absolute;\n\t  bottom: -10px;\n\t  left: 0;\n\t  display: inline-block;\n\t  width: 100%;\n\t  height: 10px;\n\t  content: \"\";\n\t}\n\n\t.carousel-indicators .active {\n\t  background-color: #fff;\n\t}\n\n\t.carousel-caption {\n\t  position: absolute;\n\t  right: 15%;\n\t  bottom: 20px;\n\t  left: 15%;\n\t  z-index: 10;\n\t  padding-top: 20px;\n\t  padding-bottom: 20px;\n\t  color: #fff;\n\t  text-align: center;\n\t}\n\n\t.align-baseline {\n\t  vertical-align: baseline !important;\n\t}\n\n\t.align-top {\n\t  vertical-align: top !important;\n\t}\n\n\t.align-middle {\n\t  vertical-align: middle !important;\n\t}\n\n\t.align-bottom {\n\t  vertical-align: bottom !important;\n\t}\n\n\t.align-text-bottom {\n\t  vertical-align: text-bottom !important;\n\t}\n\n\t.align-text-top {\n\t  vertical-align: text-top !important;\n\t}\n\n\t.bg-faded {\n\t  background-color: #f7f7f7;\n\t}\n\n\t.bg-primary {\n\t  background-color: #0f8699 !important;\n\t}\n\n\ta.bg-primary:focus,\n\ta.bg-primary:hover {\n\t  background-color: #0a5d6b !important;\n\t}\n\n\t.bg-success {\n\t  background-color: #5cb85c !important;\n\t}\n\n\ta.bg-success:focus,\n\ta.bg-success:hover {\n\t  background-color: #449d44 !important;\n\t}\n\n\t.bg-info {\n\t  background-color: #5bc0de !important;\n\t}\n\n\ta.bg-info:focus,\n\ta.bg-info:hover {\n\t  background-color: #31b0d5 !important;\n\t}\n\n\t.bg-warning {\n\t  background-color: #f0ad4e !important;\n\t}\n\n\ta.bg-warning:focus,\n\ta.bg-warning:hover {\n\t  background-color: #ec971f !important;\n\t}\n\n\t.bg-danger {\n\t  background-color: #d9534f !important;\n\t}\n\n\ta.bg-danger:focus,\n\ta.bg-danger:hover {\n\t  background-color: #c9302c !important;\n\t}\n\n\t.bg-inverse {\n\t  background-color: #292b2c !important;\n\t}\n\n\ta.bg-inverse:focus,\n\ta.bg-inverse:hover {\n\t  background-color: #101112 !important;\n\t}\n\n\t.border-0 {\n\t  border: 0 !important;\n\t}\n\n\t.border-top-0 {\n\t  border-top: 0 !important;\n\t}\n\n\t.border-right-0 {\n\t  border-right: 0 !important;\n\t}\n\n\t.border-bottom-0 {\n\t  border-bottom: 0 !important;\n\t}\n\n\t.border-left-0 {\n\t  border-left: 0 !important;\n\t}\n\n\t.rounded {\n\t  border-radius: 0.25rem;\n\t}\n\n\t.rounded-top {\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.rounded-right {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-top-right-radius: 0.25rem;\n\t}\n\n\t.rounded-bottom {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-bottom-left-radius: 0.25rem;\n\t}\n\n\t.rounded-left {\n\t  border-bottom-left-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.rounded-circle {\n\t  border-radius: 50%;\n\t}\n\n\t.rounded-0 {\n\t  border-radius: 0;\n\t}\n\n\t.d-none {\n\t  display: none !important;\n\t}\n\n\t.d-inline {\n\t  display: inline !important;\n\t}\n\n\t.d-inline-block {\n\t  display: inline-block !important;\n\t}\n\n\t.d-block {\n\t  display: block !important;\n\t}\n\n\t.d-table {\n\t  display: table !important;\n\t}\n\n\t.d-table-cell {\n\t  display: table-cell !important;\n\t}\n\n\t.d-flex {\n\t  display: flex !important;\n\t}\n\n\t.d-inline-flex {\n\t  display: inline-flex !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .d-sm-none {\n\t    display: none !important;\n\t  }\n\t  .d-sm-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-sm-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-sm-block {\n\t    display: block !important;\n\t  }\n\t  .d-sm-table {\n\t    display: table !important;\n\t  }\n\t  .d-sm-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-sm-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-sm-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .d-md-none {\n\t    display: none !important;\n\t  }\n\t  .d-md-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-md-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-md-block {\n\t    display: block !important;\n\t  }\n\t  .d-md-table {\n\t    display: table !important;\n\t  }\n\t  .d-md-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-md-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-md-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .d-lg-none {\n\t    display: none !important;\n\t  }\n\t  .d-lg-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-lg-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-lg-block {\n\t    display: block !important;\n\t  }\n\t  .d-lg-table {\n\t    display: table !important;\n\t  }\n\t  .d-lg-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-lg-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-lg-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .d-xl-none {\n\t    display: none !important;\n\t  }\n\t  .d-xl-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-xl-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-xl-block {\n\t    display: block !important;\n\t  }\n\t  .d-xl-table {\n\t    display: table !important;\n\t  }\n\t  .d-xl-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-xl-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-xl-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t.flex-first {\n\t  order: -1;\n\t}\n\n\t.flex-last {\n\t  order: 1;\n\t}\n\n\t.flex-unordered {\n\t  order: 0;\n\t}\n\n\t.flex-row {\n\t  flex-direction: row !important;\n\t}\n\n\t.flex-column {\n\t  flex-direction: column !important;\n\t}\n\n\t.flex-row-reverse {\n\t  flex-direction: row-reverse !important;\n\t}\n\n\t.flex-column-reverse {\n\t  flex-direction: column-reverse !important;\n\t}\n\n\t.flex-wrap {\n\t  flex-wrap: wrap !important;\n\t}\n\n\t.flex-nowrap {\n\t  flex-wrap: nowrap !important;\n\t}\n\n\t.flex-wrap-reverse {\n\t  flex-wrap: wrap-reverse !important;\n\t}\n\n\t.justify-content-start {\n\t  justify-content: flex-start !important;\n\t}\n\n\t.justify-content-end {\n\t  justify-content: flex-end !important;\n\t}\n\n\t.justify-content-center {\n\t  justify-content: center !important;\n\t}\n\n\t.justify-content-between {\n\t  justify-content: space-between !important;\n\t}\n\n\t.justify-content-around {\n\t  justify-content: space-around !important;\n\t}\n\n\t.align-items-start {\n\t  align-items: flex-start !important;\n\t}\n\n\t.align-items-end {\n\t  align-items: flex-end !important;\n\t}\n\n\t.align-items-center {\n\t  align-items: center !important;\n\t}\n\n\t.align-items-baseline {\n\t  align-items: baseline !important;\n\t}\n\n\t.align-items-stretch {\n\t  align-items: stretch !important;\n\t}\n\n\t.align-content-start {\n\t  align-content: flex-start !important;\n\t}\n\n\t.align-content-end {\n\t  align-content: flex-end !important;\n\t}\n\n\t.align-content-center {\n\t  align-content: center !important;\n\t}\n\n\t.align-content-between {\n\t  align-content: space-between !important;\n\t}\n\n\t.align-content-around {\n\t  align-content: space-around !important;\n\t}\n\n\t.align-content-stretch {\n\t  align-content: stretch !important;\n\t}\n\n\t.align-self-auto {\n\t  align-self: auto !important;\n\t}\n\n\t.align-self-start {\n\t  align-self: flex-start !important;\n\t}\n\n\t.align-self-end {\n\t  align-self: flex-end !important;\n\t}\n\n\t.align-self-center {\n\t  align-self: center !important;\n\t}\n\n\t.align-self-baseline {\n\t  align-self: baseline !important;\n\t}\n\n\t.align-self-stretch {\n\t  align-self: stretch !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .flex-sm-first {\n\t    order: -1;\n\t  }\n\t  .flex-sm-last {\n\t    order: 1;\n\t  }\n\t  .flex-sm-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-sm-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-sm-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-sm-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-sm-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-sm-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-sm-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-sm-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-sm-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-sm-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-sm-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-sm-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-sm-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-sm-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-sm-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-sm-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-sm-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-sm-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-sm-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-sm-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-sm-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-sm-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-sm-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-sm-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-sm-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-sm-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-sm-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-sm-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-sm-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-sm-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .flex-md-first {\n\t    order: -1;\n\t  }\n\t  .flex-md-last {\n\t    order: 1;\n\t  }\n\t  .flex-md-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-md-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-md-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-md-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-md-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-md-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-md-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-md-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-md-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-md-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-md-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-md-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-md-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-md-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-md-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-md-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-md-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-md-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-md-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-md-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-md-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-md-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-md-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-md-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-md-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-md-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-md-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-md-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-md-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-md-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .flex-lg-first {\n\t    order: -1;\n\t  }\n\t  .flex-lg-last {\n\t    order: 1;\n\t  }\n\t  .flex-lg-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-lg-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-lg-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-lg-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-lg-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-lg-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-lg-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-lg-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-lg-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-lg-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-lg-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-lg-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-lg-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-lg-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-lg-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-lg-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-lg-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-lg-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-lg-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-lg-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-lg-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-lg-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-lg-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-lg-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-lg-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-lg-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-lg-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-lg-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-lg-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-lg-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .flex-xl-first {\n\t    order: -1;\n\t  }\n\t  .flex-xl-last {\n\t    order: 1;\n\t  }\n\t  .flex-xl-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-xl-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-xl-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-xl-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-xl-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-xl-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-xl-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-xl-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-xl-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-xl-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-xl-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-xl-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-xl-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-xl-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-xl-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-xl-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-xl-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-xl-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-xl-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-xl-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-xl-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-xl-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-xl-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-xl-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-xl-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-xl-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-xl-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-xl-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-xl-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-xl-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t.float-left {\n\t  float: left !important;\n\t}\n\n\t.float-right {\n\t  float: right !important;\n\t}\n\n\t.float-none {\n\t  float: none !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .float-sm-left {\n\t    float: left !important;\n\t  }\n\t  .float-sm-right {\n\t    float: right !important;\n\t  }\n\t  .float-sm-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .float-md-left {\n\t    float: left !important;\n\t  }\n\t  .float-md-right {\n\t    float: right !important;\n\t  }\n\t  .float-md-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .float-lg-left {\n\t    float: left !important;\n\t  }\n\t  .float-lg-right {\n\t    float: right !important;\n\t  }\n\t  .float-lg-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .float-xl-left {\n\t    float: left !important;\n\t  }\n\t  .float-xl-right {\n\t    float: right !important;\n\t  }\n\t  .float-xl-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t.fixed-top {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  left: 0;\n\t  z-index: 1030;\n\t}\n\n\t.fixed-bottom {\n\t  position: fixed;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 1030;\n\t}\n\n\t.sticky-top {\n\t  position: sticky;\n\t  top: 0;\n\t  z-index: 1030;\n\t}\n\n\t.sr-only {\n\t  position: absolute;\n\t  width: 1px;\n\t  height: 1px;\n\t  padding: 0;\n\t  margin: -1px;\n\t  overflow: hidden;\n\t  clip: rect(0, 0, 0, 0);\n\t  border: 0;\n\t}\n\n\t.sr-only-focusable:active,\n\t.sr-only-focusable:focus {\n\t  position: static;\n\t  width: auto;\n\t  height: auto;\n\t  margin: 0;\n\t  overflow: visible;\n\t  clip: auto;\n\t}\n\n\t.w-25 {\n\t  width: 25% !important;\n\t}\n\n\t.w-50 {\n\t  width: 50% !important;\n\t}\n\n\t.w-75 {\n\t  width: 75% !important;\n\t}\n\n\t.w-100 {\n\t  width: 100% !important;\n\t}\n\n\t.h-25 {\n\t  height: 25% !important;\n\t}\n\n\t.h-50 {\n\t  height: 50% !important;\n\t}\n\n\t.h-75 {\n\t  height: 75% !important;\n\t}\n\n\t.h-100 {\n\t  height: 100% !important;\n\t}\n\n\t.mw-100 {\n\t  max-width: 100% !important;\n\t}\n\n\t.mh-100 {\n\t  max-height: 100% !important;\n\t}\n\n\t.m-0 {\n\t  margin: 0 0 !important;\n\t}\n\n\t.mt-0 {\n\t  margin-top: 0 !important;\n\t}\n\n\t.mr-0 {\n\t  margin-right: 0 !important;\n\t}\n\n\t.mb-0 {\n\t  margin-bottom: 0 !important;\n\t}\n\n\t.ml-0 {\n\t  margin-left: 0 !important;\n\t}\n\n\t.mx-0 {\n\t  margin-right: 0 !important;\n\t  margin-left: 0 !important;\n\t}\n\n\t.my-0 {\n\t  margin-top: 0 !important;\n\t  margin-bottom: 0 !important;\n\t}\n\n\t.m-1 {\n\t  margin: 0.25rem 0.25rem !important;\n\t}\n\n\t.mt-1 {\n\t  margin-top: 0.25rem !important;\n\t}\n\n\t.mr-1 {\n\t  margin-right: 0.25rem !important;\n\t}\n\n\t.mb-1 {\n\t  margin-bottom: 0.25rem !important;\n\t}\n\n\t.ml-1 {\n\t  margin-left: 0.25rem !important;\n\t}\n\n\t.mx-1 {\n\t  margin-right: 0.25rem !important;\n\t  margin-left: 0.25rem !important;\n\t}\n\n\t.my-1 {\n\t  margin-top: 0.25rem !important;\n\t  margin-bottom: 0.25rem !important;\n\t}\n\n\t.m-2 {\n\t  margin: 0.5rem 0.5rem !important;\n\t}\n\n\t.mt-2 {\n\t  margin-top: 0.5rem !important;\n\t}\n\n\t.mr-2 {\n\t  margin-right: 0.5rem !important;\n\t}\n\n\t.mb-2 {\n\t  margin-bottom: 0.5rem !important;\n\t}\n\n\t.ml-2 {\n\t  margin-left: 0.5rem !important;\n\t}\n\n\t.mx-2 {\n\t  margin-right: 0.5rem !important;\n\t  margin-left: 0.5rem !important;\n\t}\n\n\t.my-2 {\n\t  margin-top: 0.5rem !important;\n\t  margin-bottom: 0.5rem !important;\n\t}\n\n\t.m-3 {\n\t  margin: 1rem 1rem !important;\n\t}\n\n\t.mt-3 {\n\t  margin-top: 1rem !important;\n\t}\n\n\t.mr-3 {\n\t  margin-right: 1rem !important;\n\t}\n\n\t.mb-3 {\n\t  margin-bottom: 1rem !important;\n\t}\n\n\t.ml-3 {\n\t  margin-left: 1rem !important;\n\t}\n\n\t.mx-3 {\n\t  margin-right: 1rem !important;\n\t  margin-left: 1rem !important;\n\t}\n\n\t.my-3 {\n\t  margin-top: 1rem !important;\n\t  margin-bottom: 1rem !important;\n\t}\n\n\t.m-4 {\n\t  margin: 1.5rem 1.5rem !important;\n\t}\n\n\t.mt-4 {\n\t  margin-top: 1.5rem !important;\n\t}\n\n\t.mr-4 {\n\t  margin-right: 1.5rem !important;\n\t}\n\n\t.mb-4 {\n\t  margin-bottom: 1.5rem !important;\n\t}\n\n\t.ml-4 {\n\t  margin-left: 1.5rem !important;\n\t}\n\n\t.mx-4 {\n\t  margin-right: 1.5rem !important;\n\t  margin-left: 1.5rem !important;\n\t}\n\n\t.my-4 {\n\t  margin-top: 1.5rem !important;\n\t  margin-bottom: 1.5rem !important;\n\t}\n\n\t.m-5 {\n\t  margin: 3rem 3rem !important;\n\t}\n\n\t.mt-5 {\n\t  margin-top: 3rem !important;\n\t}\n\n\t.mr-5 {\n\t  margin-right: 3rem !important;\n\t}\n\n\t.mb-5 {\n\t  margin-bottom: 3rem !important;\n\t}\n\n\t.ml-5 {\n\t  margin-left: 3rem !important;\n\t}\n\n\t.mx-5 {\n\t  margin-right: 3rem !important;\n\t  margin-left: 3rem !important;\n\t}\n\n\t.my-5 {\n\t  margin-top: 3rem !important;\n\t  margin-bottom: 3rem !important;\n\t}\n\n\t.p-0 {\n\t  padding: 0 0 !important;\n\t}\n\n\t.pt-0 {\n\t  padding-top: 0 !important;\n\t}\n\n\t.pr-0 {\n\t  padding-right: 0 !important;\n\t}\n\n\t.pb-0 {\n\t  padding-bottom: 0 !important;\n\t}\n\n\t.pl-0 {\n\t  padding-left: 0 !important;\n\t}\n\n\t.px-0 {\n\t  padding-right: 0 !important;\n\t  padding-left: 0 !important;\n\t}\n\n\t.py-0 {\n\t  padding-top: 0 !important;\n\t  padding-bottom: 0 !important;\n\t}\n\n\t.p-1 {\n\t  padding: 0.25rem 0.25rem !important;\n\t}\n\n\t.pt-1 {\n\t  padding-top: 0.25rem !important;\n\t}\n\n\t.pr-1 {\n\t  padding-right: 0.25rem !important;\n\t}\n\n\t.pb-1 {\n\t  padding-bottom: 0.25rem !important;\n\t}\n\n\t.pl-1 {\n\t  padding-left: 0.25rem !important;\n\t}\n\n\t.px-1 {\n\t  padding-right: 0.25rem !important;\n\t  padding-left: 0.25rem !important;\n\t}\n\n\t.py-1 {\n\t  padding-top: 0.25rem !important;\n\t  padding-bottom: 0.25rem !important;\n\t}\n\n\t.p-2 {\n\t  padding: 0.5rem 0.5rem !important;\n\t}\n\n\t.pt-2 {\n\t  padding-top: 0.5rem !important;\n\t}\n\n\t.pr-2 {\n\t  padding-right: 0.5rem !important;\n\t}\n\n\t.pb-2 {\n\t  padding-bottom: 0.5rem !important;\n\t}\n\n\t.pl-2 {\n\t  padding-left: 0.5rem !important;\n\t}\n\n\t.px-2 {\n\t  padding-right: 0.5rem !important;\n\t  padding-left: 0.5rem !important;\n\t}\n\n\t.py-2 {\n\t  padding-top: 0.5rem !important;\n\t  padding-bottom: 0.5rem !important;\n\t}\n\n\t.p-3 {\n\t  padding: 1rem 1rem !important;\n\t}\n\n\t.pt-3 {\n\t  padding-top: 1rem !important;\n\t}\n\n\t.pr-3 {\n\t  padding-right: 1rem !important;\n\t}\n\n\t.pb-3 {\n\t  padding-bottom: 1rem !important;\n\t}\n\n\t.pl-3 {\n\t  padding-left: 1rem !important;\n\t}\n\n\t.px-3 {\n\t  padding-right: 1rem !important;\n\t  padding-left: 1rem !important;\n\t}\n\n\t.py-3 {\n\t  padding-top: 1rem !important;\n\t  padding-bottom: 1rem !important;\n\t}\n\n\t.p-4 {\n\t  padding: 1.5rem 1.5rem !important;\n\t}\n\n\t.pt-4 {\n\t  padding-top: 1.5rem !important;\n\t}\n\n\t.pr-4 {\n\t  padding-right: 1.5rem !important;\n\t}\n\n\t.pb-4 {\n\t  padding-bottom: 1.5rem !important;\n\t}\n\n\t.pl-4 {\n\t  padding-left: 1.5rem !important;\n\t}\n\n\t.px-4 {\n\t  padding-right: 1.5rem !important;\n\t  padding-left: 1.5rem !important;\n\t}\n\n\t.py-4 {\n\t  padding-top: 1.5rem !important;\n\t  padding-bottom: 1.5rem !important;\n\t}\n\n\t.p-5 {\n\t  padding: 3rem 3rem !important;\n\t}\n\n\t.pt-5 {\n\t  padding-top: 3rem !important;\n\t}\n\n\t.pr-5 {\n\t  padding-right: 3rem !important;\n\t}\n\n\t.pb-5 {\n\t  padding-bottom: 3rem !important;\n\t}\n\n\t.pl-5 {\n\t  padding-left: 3rem !important;\n\t}\n\n\t.px-5 {\n\t  padding-right: 3rem !important;\n\t  padding-left: 3rem !important;\n\t}\n\n\t.py-5 {\n\t  padding-top: 3rem !important;\n\t  padding-bottom: 3rem !important;\n\t}\n\n\t.m-auto {\n\t  margin: auto !important;\n\t}\n\n\t.mt-auto {\n\t  margin-top: auto !important;\n\t}\n\n\t.mr-auto {\n\t  margin-right: auto !important;\n\t}\n\n\t.mb-auto {\n\t  margin-bottom: auto !important;\n\t}\n\n\t.ml-auto {\n\t  margin-left: auto !important;\n\t}\n\n\t.mx-auto {\n\t  margin-right: auto !important;\n\t  margin-left: auto !important;\n\t}\n\n\t.my-auto {\n\t  margin-top: auto !important;\n\t  margin-bottom: auto !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .m-sm-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-sm-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-sm-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-sm-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-sm-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-sm-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-sm-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-sm-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-sm-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-sm-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-sm-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-sm-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-sm-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-sm-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-sm-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-sm-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-sm-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-sm-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-sm-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-sm-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-sm-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-sm-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-sm-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-sm-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-sm-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-sm-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-sm-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-sm-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-sm-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-sm-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-sm-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-sm-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-sm-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-sm-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-sm-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-sm-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-sm-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-sm-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-sm-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-sm-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-sm-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-sm-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-sm-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-sm-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-sm-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-sm-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-sm-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-sm-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-sm-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-sm-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-sm-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-sm-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-sm-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-sm-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-sm-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-sm-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-sm-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-sm-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-sm-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-sm-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-sm-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-sm-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-sm-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-sm-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-sm-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-sm-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-sm-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-sm-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-sm-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-sm-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-sm-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-sm-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-sm-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-sm-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-sm-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-sm-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-sm-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-sm-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-sm-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-sm-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-sm-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-sm-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-sm-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-sm-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-sm-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-sm-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-sm-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-sm-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-sm-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-sm-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-sm-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .m-md-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-md-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-md-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-md-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-md-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-md-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-md-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-md-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-md-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-md-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-md-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-md-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-md-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-md-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-md-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-md-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-md-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-md-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-md-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-md-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-md-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-md-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-md-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-md-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-md-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-md-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-md-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-md-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-md-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-md-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-md-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-md-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-md-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-md-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-md-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-md-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-md-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-md-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-md-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-md-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-md-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-md-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-md-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-md-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-md-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-md-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-md-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-md-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-md-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-md-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-md-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-md-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-md-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-md-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-md-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-md-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-md-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-md-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-md-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-md-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-md-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-md-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-md-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-md-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-md-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-md-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-md-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-md-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-md-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-md-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-md-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-md-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-md-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-md-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-md-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-md-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-md-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-md-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-md-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-md-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-md-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-md-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-md-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-md-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-md-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-md-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-md-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-md-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-md-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-md-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-md-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .m-lg-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-lg-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-lg-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-lg-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-lg-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-lg-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-lg-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-lg-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-lg-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-lg-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-lg-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-lg-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-lg-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-lg-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-lg-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-lg-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-lg-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-lg-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-lg-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-lg-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-lg-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-lg-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-lg-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-lg-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-lg-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-lg-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-lg-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-lg-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-lg-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-lg-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-lg-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-lg-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-lg-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-lg-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-lg-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-lg-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-lg-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-lg-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-lg-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-lg-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-lg-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-lg-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-lg-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-lg-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-lg-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-lg-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-lg-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-lg-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-lg-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-lg-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-lg-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-lg-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-lg-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-lg-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-lg-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-lg-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-lg-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-lg-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-lg-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-lg-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-lg-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-lg-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-lg-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-lg-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-lg-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-lg-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-lg-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-lg-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-lg-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-lg-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-lg-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-lg-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-lg-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-lg-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-lg-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-lg-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-lg-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-lg-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-lg-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-lg-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-lg-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-lg-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-lg-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-lg-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-lg-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-lg-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-lg-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-lg-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-lg-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-lg-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-lg-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .m-xl-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-xl-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-xl-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-xl-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-xl-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-xl-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-xl-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-xl-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-xl-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-xl-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-xl-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-xl-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-xl-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-xl-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-xl-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-xl-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-xl-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-xl-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-xl-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-xl-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-xl-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-xl-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-xl-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-xl-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-xl-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-xl-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-xl-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-xl-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-xl-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-xl-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-xl-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-xl-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-xl-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-xl-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-xl-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-xl-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-xl-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-xl-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-xl-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-xl-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-xl-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-xl-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-xl-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-xl-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-xl-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-xl-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-xl-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-xl-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-xl-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-xl-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-xl-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-xl-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-xl-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-xl-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-xl-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-xl-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-xl-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-xl-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-xl-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-xl-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-xl-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-xl-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-xl-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-xl-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-xl-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-xl-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-xl-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-xl-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-xl-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-xl-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-xl-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-xl-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-xl-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-xl-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-xl-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-xl-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-xl-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-xl-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-xl-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-xl-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-xl-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-xl-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-xl-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-xl-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-xl-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-xl-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-xl-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-xl-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-xl-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-xl-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-xl-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t.text-justify {\n\t  text-align: justify !important;\n\t}\n\n\t.text-nowrap {\n\t  white-space: nowrap !important;\n\t}\n\n\t.text-truncate {\n\t  overflow: hidden;\n\t  text-overflow: ellipsis;\n\t  white-space: nowrap;\n\t}\n\n\t.text-left {\n\t  text-align: left !important;\n\t}\n\n\t.text-right {\n\t  text-align: right !important;\n\t}\n\n\t.text-center {\n\t  text-align: center !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .text-sm-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-sm-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-sm-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .text-md-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-md-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-md-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .text-lg-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-lg-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-lg-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .text-xl-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-xl-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-xl-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t.text-lowercase {\n\t  text-transform: lowercase !important;\n\t}\n\n\t.text-uppercase {\n\t  text-transform: uppercase !important;\n\t}\n\n\t.text-capitalize {\n\t  text-transform: capitalize !important;\n\t}\n\n\t.font-weight-normal {\n\t  font-weight: normal;\n\t}\n\n\t.font-weight-bold {\n\t  font-weight: bold;\n\t}\n\n\t.font-italic {\n\t  font-style: italic;\n\t}\n\n\t.text-white {\n\t  color: #fff !important;\n\t}\n\n\t.text-muted {\n\t  color: #636c72 !important;\n\t}\n\n\ta.text-muted:focus,\n\ta.text-muted:hover {\n\t  color: #4b5257 !important;\n\t}\n\n\t.text-primary {\n\t  color: #0f8699 !important;\n\t}\n\n\ta.text-primary:focus,\n\ta.text-primary:hover {\n\t  color: #0a5d6b !important;\n\t}\n\n\t.text-success {\n\t  color: #5cb85c !important;\n\t}\n\n\ta.text-success:focus,\n\ta.text-success:hover {\n\t  color: #449d44 !important;\n\t}\n\n\t.text-info {\n\t  color: #5bc0de !important;\n\t}\n\n\ta.text-info:focus,\n\ta.text-info:hover {\n\t  color: #31b0d5 !important;\n\t}\n\n\t.text-warning {\n\t  color: #f0ad4e !important;\n\t}\n\n\ta.text-warning:focus,\n\ta.text-warning:hover {\n\t  color: #ec971f !important;\n\t}\n\n\t.text-danger {\n\t  color: #d9534f !important;\n\t}\n\n\ta.text-danger:focus,\n\ta.text-danger:hover {\n\t  color: #c9302c !important;\n\t}\n\n\t.text-gray-dark {\n\t  color: #292b2c !important;\n\t}\n\n\ta.text-gray-dark:focus,\n\ta.text-gray-dark:hover {\n\t  color: #101112 !important;\n\t}\n\n\t.text-hide {\n\t  font: 0/0 a;\n\t  color: transparent;\n\t  text-shadow: none;\n\t  background-color: transparent;\n\t  border: 0;\n\t}\n\n\t.invisible {\n\t  visibility: hidden !important;\n\t}\n\n\t.hidden-xs-up {\n\t  display: none !important;\n\t}\n\n\t@media (max-width: 575px) {\n\t  .hidden-xs-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .hidden-sm-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (max-width: 767px) {\n\t  .hidden-sm-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .hidden-md-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (max-width: 991px) {\n\t  .hidden-md-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .hidden-lg-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (max-width: 1199px) {\n\t  .hidden-lg-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .hidden-xl-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t.hidden-xl-down {\n\t  display: none !important;\n\t}\n\n\t.visible-print-block {\n\t  display: none !important;\n\t}\n\n\t@media print {\n\t  .visible-print-block {\n\t    display: block !important;\n\t  }\n\t}\n\n\t.visible-print-inline {\n\t  display: none !important;\n\t}\n\n\t@media print {\n\t  .visible-print-inline {\n\t    display: inline !important;\n\t  }\n\t}\n\n\t.visible-print-inline-block {\n\t  display: none !important;\n\t}\n\n\t@media print {\n\t  .visible-print-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t}\n\n\t@media print {\n\t  .hidden-print {\n\t    display: none !important;\n\t  }\n\t}\n\n\tbody>* {\n\t  background-size: cover;\n\t  background-repeat: none;\n\t  background-position: center;\n\t}\n\n\t.cover .container,\n\t.cover .container-fluid {\n\t  min-height: 100% !important;\n\t  display: flex;\n\t  flex-direction: column;\n\t  justify-content: center;\n\t}\n", ""]);
+exports.push([module.i, "\t/*!\n\t * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)\n\t * Copyright 2011-2017 The Bootstrap Authors\n\t * Copyright 2011-2017 Twitter, Inc.\n\t * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n\t */\n\n\th1,\n\th2,\n\th3,\n\th4,\n\th5,\n\th6,\n\t.h1,\n\t.h2,\n\t.h3,\n\t.h4,\n\t.h5,\n\t.h6 {\n\t  margin-bottom: 0.5rem;\n\t  font-family: inherit;\n\t  font-weight: 500;\n\t  line-height: 1.1;\n\t  color: inherit;\n\t}\n\n\th1,\n\t.h1 {\n\t  font-size: 2.5rem;\n\t}\n\n\th2,\n\t.h2 {\n\t  font-size: 2rem;\n\t}\n\n\th3,\n\t.h3 {\n\t  font-size: 1.75rem;\n\t}\n\n\th4,\n\t.h4 {\n\t  font-size: 1.5rem;\n\t}\n\n\th5,\n\t.h5 {\n\t  font-size: 1.25rem;\n\t}\n\n\th6,\n\t.h6 {\n\t  font-size: 1rem;\n\t}\n\n\t.lead {\n\t  font-size: 1.25rem;\n\t  font-weight: 300;\n\t}\n\n\t.display-1 {\n\t  font-size: 6rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\t.display-2 {\n\t  font-size: 5.5rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\t.display-3 {\n\t  font-size: 4.5rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\t.display-4 {\n\t  font-size: 3.5rem;\n\t  font-weight: 300;\n\t  line-height: 1.1;\n\t}\n\n\thr {\n\t  margin-top: 1rem;\n\t  margin-bottom: 1rem;\n\t  border: 0;\n\t  border-top: 1px solid rgba(0, 0, 0, 0.1);\n\t}\n\n\tsmall,\n\t.small {\n\t  font-size: 80%;\n\t  font-weight: normal;\n\t}\n\n\tmark,\n\t.mark {\n\t  padding: 0.2em;\n\t  background-color: #fcf8e3;\n\t}\n\n\t.list-unstyled {\n\t  padding-left: 0;\n\t  list-style: none;\n\t}\n\n\t.list-inline {\n\t  padding-left: 0;\n\t  list-style: none;\n\t}\n\n\t.list-inline-item {\n\t  display: inline-block;\n\t}\n\n\t.list-inline-item:not(:last-child) {\n\t  margin-right: 5px;\n\t}\n\n\t.initialism {\n\t  font-size: 90%;\n\t  text-transform: uppercase;\n\t}\n\n\t.blockquote {\n\t  padding: 0.5rem 1rem;\n\t  margin-bottom: 1rem;\n\t  font-size: 1.25rem;\n\t  border-left: 0.25rem solid #eceeef;\n\t}\n\n\t.blockquote-footer {\n\t  display: block;\n\t  font-size: 80%;\n\t  color: #636c72;\n\t}\n\n\t.blockquote-footer::before {\n\t  content: \"\\2014   \\A0\";\n\t}\n\n\t.blockquote-reverse {\n\t  padding-right: 1rem;\n\t  padding-left: 0;\n\t  text-align: right;\n\t  border-right: 0.25rem solid #eceeef;\n\t  border-left: 0;\n\t}\n\n\t.blockquote-reverse .blockquote-footer::before {\n\t  content: \"\";\n\t}\n\n\t.blockquote-reverse .blockquote-footer::after {\n\t  content: \"\\A0   \\2014\";\n\t}\n\n\t.img-fluid {\n\t  max-width: 100%;\n\t  height: auto;\n\t}\n\n\t.img-thumbnail {\n\t  padding: 0.25rem;\n\t  background-color: #fff;\n\t  border: 1px solid #ddd;\n\t  border-radius: 0.25rem;\n\t  transition: all 0.2s ease-in-out;\n\t  max-width: 100%;\n\t  height: auto;\n\t}\n\n\t.figure {\n\t  display: inline-block;\n\t}\n\n\t.figure-img {\n\t  margin-bottom: 0.5rem;\n\t  line-height: 1;\n\t}\n\n\t.figure-caption {\n\t  font-size: 90%;\n\t  color: #636c72;\n\t}\n\n\tcode,\n\tkbd,\n\tpre,\n\tsamp {\n\t  font-family: Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace;\n\t}\n\n\tcode {\n\t  padding: 0.2rem 0.4rem;\n\t  font-size: 90%;\n\t  color: #bd4147;\n\t  background-color: #f7f7f9;\n\t  border-radius: 0.25rem;\n\t}\n\n\ta>code {\n\t  padding: 0;\n\t  color: inherit;\n\t  background-color: inherit;\n\t}\n\n\tkbd {\n\t  padding: 0.2rem 0.4rem;\n\t  font-size: 90%;\n\t  color: #fff;\n\t  background-color: #292b2c;\n\t  border-radius: 0.2rem;\n\t}\n\n\tkbd kbd {\n\t  padding: 0;\n\t  font-size: 100%;\n\t  font-weight: bold;\n\t}\n\n\tpre {\n\t  display: block;\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t  font-size: 90%;\n\t  color: #292b2c;\n\t}\n\n\tpre code {\n\t  padding: 0;\n\t  font-size: inherit;\n\t  color: inherit;\n\t  background-color: transparent;\n\t  border-radius: 0;\n\t}\n\n\t.pre-scrollable {\n\t  max-height: 340px;\n\t  overflow-y: scroll;\n\t}\n\n\t.container {\n\t  position: relative;\n\t  margin-left: auto;\n\t  margin-right: auto;\n\t  padding-right: 15px;\n\t  padding-left: 15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .container {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .container {\n\t    width: 540px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .container {\n\t    width: 720px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .container {\n\t    width: 960px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .container {\n\t    width: 1140px;\n\t    max-width: 100%;\n\t  }\n\t}\n\n\t.container-fluid {\n\t  position: relative;\n\t  margin-left: auto;\n\t  margin-right: auto;\n\t  padding-right: 15px;\n\t  padding-left: 15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .container-fluid {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t.row {\n\t  display: flex;\n\t  flex-wrap: wrap;\n\t  margin-right: -15px;\n\t  margin-left: -15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .row {\n\t    margin-right: -15px;\n\t    margin-left: -15px;\n\t  }\n\t}\n\n\t.no-gutters {\n\t  margin-right: 0;\n\t  margin-left: 0;\n\t}\n\n\t.no-gutters>.col,\n\t.no-gutters>[class*=\"col-\"] {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.col-1,\n\t.col-2,\n\t.col-3,\n\t.col-4,\n\t.col-5,\n\t.col-6,\n\t.col-7,\n\t.col-8,\n\t.col-9,\n\t.col-10,\n\t.col-11,\n\t.col-12,\n\t.col,\n\t.col-sm-1,\n\t.col-sm-2,\n\t.col-sm-3,\n\t.col-sm-4,\n\t.col-sm-5,\n\t.col-sm-6,\n\t.col-sm-7,\n\t.col-sm-8,\n\t.col-sm-9,\n\t.col-sm-10,\n\t.col-sm-11,\n\t.col-sm-12,\n\t.col-sm,\n\t.col-md-1,\n\t.col-md-2,\n\t.col-md-3,\n\t.col-md-4,\n\t.col-md-5,\n\t.col-md-6,\n\t.col-md-7,\n\t.col-md-8,\n\t.col-md-9,\n\t.col-md-10,\n\t.col-md-11,\n\t.col-md-12,\n\t.col-md,\n\t.col-lg-1,\n\t.col-lg-2,\n\t.col-lg-3,\n\t.col-lg-4,\n\t.col-lg-5,\n\t.col-lg-6,\n\t.col-lg-7,\n\t.col-lg-8,\n\t.col-lg-9,\n\t.col-lg-10,\n\t.col-lg-11,\n\t.col-lg-12,\n\t.col-lg,\n\t.col-xl-1,\n\t.col-xl-2,\n\t.col-xl-3,\n\t.col-xl-4,\n\t.col-xl-5,\n\t.col-xl-6,\n\t.col-xl-7,\n\t.col-xl-8,\n\t.col-xl-9,\n\t.col-xl-10,\n\t.col-xl-11,\n\t.col-xl-12,\n\t.col-xl {\n\t  position: relative;\n\t  width: 100%;\n\t  min-height: 1px;\n\t  padding-right: 15px;\n\t  padding-left: 15px;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .col-1,\n\t  .col-2,\n\t  .col-3,\n\t  .col-4,\n\t  .col-5,\n\t  .col-6,\n\t  .col-7,\n\t  .col-8,\n\t  .col-9,\n\t  .col-10,\n\t  .col-11,\n\t  .col-12,\n\t  .col,\n\t  .col-sm-1,\n\t  .col-sm-2,\n\t  .col-sm-3,\n\t  .col-sm-4,\n\t  .col-sm-5,\n\t  .col-sm-6,\n\t  .col-sm-7,\n\t  .col-sm-8,\n\t  .col-sm-9,\n\t  .col-sm-10,\n\t  .col-sm-11,\n\t  .col-sm-12,\n\t  .col-sm,\n\t  .col-md-1,\n\t  .col-md-2,\n\t  .col-md-3,\n\t  .col-md-4,\n\t  .col-md-5,\n\t  .col-md-6,\n\t  .col-md-7,\n\t  .col-md-8,\n\t  .col-md-9,\n\t  .col-md-10,\n\t  .col-md-11,\n\t  .col-md-12,\n\t  .col-md,\n\t  .col-lg-1,\n\t  .col-lg-2,\n\t  .col-lg-3,\n\t  .col-lg-4,\n\t  .col-lg-5,\n\t  .col-lg-6,\n\t  .col-lg-7,\n\t  .col-lg-8,\n\t  .col-lg-9,\n\t  .col-lg-10,\n\t  .col-lg-11,\n\t  .col-lg-12,\n\t  .col-lg,\n\t  .col-xl-1,\n\t  .col-xl-2,\n\t  .col-xl-3,\n\t  .col-xl-4,\n\t  .col-xl-5,\n\t  .col-xl-6,\n\t  .col-xl-7,\n\t  .col-xl-8,\n\t  .col-xl-9,\n\t  .col-xl-10,\n\t  .col-xl-11,\n\t  .col-xl-12,\n\t  .col-xl {\n\t    padding-right: 15px;\n\t    padding-left: 15px;\n\t  }\n\t}\n\n\t.col {\n\t  flex-basis: 0;\n\t  flex-grow: 1;\n\t  max-width: 100%;\n\t}\n\n\t.col-auto {\n\t  flex: 0 0 auto;\n\t  width: auto;\n\t}\n\n\t.col-1 {\n\t  flex: 0 0 8.33333%;\n\t  max-width: 8.33333%;\n\t}\n\n\t.col-2 {\n\t  flex: 0 0 16.66667%;\n\t  max-width: 16.66667%;\n\t}\n\n\t.col-3 {\n\t  flex: 0 0 25%;\n\t  max-width: 25%;\n\t}\n\n\t.col-4 {\n\t  flex: 0 0 33.33333%;\n\t  max-width: 33.33333%;\n\t}\n\n\t.col-5 {\n\t  flex: 0 0 41.66667%;\n\t  max-width: 41.66667%;\n\t}\n\n\t.col-6 {\n\t  flex: 0 0 50%;\n\t  max-width: 50%;\n\t}\n\n\t.col-7 {\n\t  flex: 0 0 58.33333%;\n\t  max-width: 58.33333%;\n\t}\n\n\t.col-8 {\n\t  flex: 0 0 66.66667%;\n\t  max-width: 66.66667%;\n\t}\n\n\t.col-9 {\n\t  flex: 0 0 75%;\n\t  max-width: 75%;\n\t}\n\n\t.col-10 {\n\t  flex: 0 0 83.33333%;\n\t  max-width: 83.33333%;\n\t}\n\n\t.col-11 {\n\t  flex: 0 0 91.66667%;\n\t  max-width: 91.66667%;\n\t}\n\n\t.col-12 {\n\t  flex: 0 0 100%;\n\t  max-width: 100%;\n\t}\n\n\t.pull-0 {\n\t  right: auto;\n\t}\n\n\t.pull-1 {\n\t  right: 8.33333%;\n\t}\n\n\t.pull-2 {\n\t  right: 16.66667%;\n\t}\n\n\t.pull-3 {\n\t  right: 25%;\n\t}\n\n\t.pull-4 {\n\t  right: 33.33333%;\n\t}\n\n\t.pull-5 {\n\t  right: 41.66667%;\n\t}\n\n\t.pull-6 {\n\t  right: 50%;\n\t}\n\n\t.pull-7 {\n\t  right: 58.33333%;\n\t}\n\n\t.pull-8 {\n\t  right: 66.66667%;\n\t}\n\n\t.pull-9 {\n\t  right: 75%;\n\t}\n\n\t.pull-10 {\n\t  right: 83.33333%;\n\t}\n\n\t.pull-11 {\n\t  right: 91.66667%;\n\t}\n\n\t.pull-12 {\n\t  right: 100%;\n\t}\n\n\t.push-0 {\n\t  left: auto;\n\t}\n\n\t.push-1 {\n\t  left: 8.33333%;\n\t}\n\n\t.push-2 {\n\t  left: 16.66667%;\n\t}\n\n\t.push-3 {\n\t  left: 25%;\n\t}\n\n\t.push-4 {\n\t  left: 33.33333%;\n\t}\n\n\t.push-5 {\n\t  left: 41.66667%;\n\t}\n\n\t.push-6 {\n\t  left: 50%;\n\t}\n\n\t.push-7 {\n\t  left: 58.33333%;\n\t}\n\n\t.push-8 {\n\t  left: 66.66667%;\n\t}\n\n\t.push-9 {\n\t  left: 75%;\n\t}\n\n\t.push-10 {\n\t  left: 83.33333%;\n\t}\n\n\t.push-11 {\n\t  left: 91.66667%;\n\t}\n\n\t.push-12 {\n\t  left: 100%;\n\t}\n\n\t.offset-1 {\n\t  margin-left: 8.33333%;\n\t}\n\n\t.offset-2 {\n\t  margin-left: 16.66667%;\n\t}\n\n\t.offset-3 {\n\t  margin-left: 25%;\n\t}\n\n\t.offset-4 {\n\t  margin-left: 33.33333%;\n\t}\n\n\t.offset-5 {\n\t  margin-left: 41.66667%;\n\t}\n\n\t.offset-6 {\n\t  margin-left: 50%;\n\t}\n\n\t.offset-7 {\n\t  margin-left: 58.33333%;\n\t}\n\n\t.offset-8 {\n\t  margin-left: 66.66667%;\n\t}\n\n\t.offset-9 {\n\t  margin-left: 75%;\n\t}\n\n\t.offset-10 {\n\t  margin-left: 83.33333%;\n\t}\n\n\t.offset-11 {\n\t  margin-left: 91.66667%;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .col-sm {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-sm-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-sm-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-sm-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-sm-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-sm-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-sm-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-sm-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-sm-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-sm-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-sm-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-sm-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-sm-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-sm-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-sm-0 {\n\t    right: auto;\n\t  }\n\t  .pull-sm-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-sm-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-sm-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-sm-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-sm-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-sm-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-sm-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-sm-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-sm-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-sm-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-sm-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-sm-12 {\n\t    right: 100%;\n\t  }\n\t  .push-sm-0 {\n\t    left: auto;\n\t  }\n\t  .push-sm-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-sm-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-sm-3 {\n\t    left: 25%;\n\t  }\n\t  .push-sm-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-sm-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-sm-6 {\n\t    left: 50%;\n\t  }\n\t  .push-sm-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-sm-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-sm-9 {\n\t    left: 75%;\n\t  }\n\t  .push-sm-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-sm-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-sm-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-sm-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-sm-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-sm-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-sm-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-sm-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-sm-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-sm-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-sm-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-sm-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-sm-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-sm-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-sm-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .col-md {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-md-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-md-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-md-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-md-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-md-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-md-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-md-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-md-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-md-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-md-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-md-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-md-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-md-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-md-0 {\n\t    right: auto;\n\t  }\n\t  .pull-md-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-md-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-md-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-md-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-md-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-md-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-md-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-md-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-md-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-md-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-md-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-md-12 {\n\t    right: 100%;\n\t  }\n\t  .push-md-0 {\n\t    left: auto;\n\t  }\n\t  .push-md-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-md-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-md-3 {\n\t    left: 25%;\n\t  }\n\t  .push-md-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-md-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-md-6 {\n\t    left: 50%;\n\t  }\n\t  .push-md-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-md-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-md-9 {\n\t    left: 75%;\n\t  }\n\t  .push-md-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-md-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-md-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-md-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-md-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-md-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-md-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-md-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-md-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-md-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-md-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-md-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-md-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-md-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-md-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .col-lg {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-lg-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-lg-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-lg-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-lg-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-lg-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-lg-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-lg-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-lg-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-lg-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-lg-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-lg-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-lg-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-lg-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-lg-0 {\n\t    right: auto;\n\t  }\n\t  .pull-lg-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-lg-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-lg-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-lg-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-lg-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-lg-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-lg-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-lg-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-lg-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-lg-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-lg-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-lg-12 {\n\t    right: 100%;\n\t  }\n\t  .push-lg-0 {\n\t    left: auto;\n\t  }\n\t  .push-lg-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-lg-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-lg-3 {\n\t    left: 25%;\n\t  }\n\t  .push-lg-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-lg-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-lg-6 {\n\t    left: 50%;\n\t  }\n\t  .push-lg-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-lg-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-lg-9 {\n\t    left: 75%;\n\t  }\n\t  .push-lg-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-lg-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-lg-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-lg-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-lg-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-lg-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-lg-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-lg-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-lg-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-lg-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-lg-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-lg-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-lg-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-lg-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-lg-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .col-xl {\n\t    flex-basis: 0;\n\t    flex-grow: 1;\n\t    max-width: 100%;\n\t  }\n\t  .col-xl-auto {\n\t    flex: 0 0 auto;\n\t    width: auto;\n\t  }\n\t  .col-xl-1 {\n\t    flex: 0 0 8.33333%;\n\t    max-width: 8.33333%;\n\t  }\n\t  .col-xl-2 {\n\t    flex: 0 0 16.66667%;\n\t    max-width: 16.66667%;\n\t  }\n\t  .col-xl-3 {\n\t    flex: 0 0 25%;\n\t    max-width: 25%;\n\t  }\n\t  .col-xl-4 {\n\t    flex: 0 0 33.33333%;\n\t    max-width: 33.33333%;\n\t  }\n\t  .col-xl-5 {\n\t    flex: 0 0 41.66667%;\n\t    max-width: 41.66667%;\n\t  }\n\t  .col-xl-6 {\n\t    flex: 0 0 50%;\n\t    max-width: 50%;\n\t  }\n\t  .col-xl-7 {\n\t    flex: 0 0 58.33333%;\n\t    max-width: 58.33333%;\n\t  }\n\t  .col-xl-8 {\n\t    flex: 0 0 66.66667%;\n\t    max-width: 66.66667%;\n\t  }\n\t  .col-xl-9 {\n\t    flex: 0 0 75%;\n\t    max-width: 75%;\n\t  }\n\t  .col-xl-10 {\n\t    flex: 0 0 83.33333%;\n\t    max-width: 83.33333%;\n\t  }\n\t  .col-xl-11 {\n\t    flex: 0 0 91.66667%;\n\t    max-width: 91.66667%;\n\t  }\n\t  .col-xl-12 {\n\t    flex: 0 0 100%;\n\t    max-width: 100%;\n\t  }\n\t  .pull-xl-0 {\n\t    right: auto;\n\t  }\n\t  .pull-xl-1 {\n\t    right: 8.33333%;\n\t  }\n\t  .pull-xl-2 {\n\t    right: 16.66667%;\n\t  }\n\t  .pull-xl-3 {\n\t    right: 25%;\n\t  }\n\t  .pull-xl-4 {\n\t    right: 33.33333%;\n\t  }\n\t  .pull-xl-5 {\n\t    right: 41.66667%;\n\t  }\n\t  .pull-xl-6 {\n\t    right: 50%;\n\t  }\n\t  .pull-xl-7 {\n\t    right: 58.33333%;\n\t  }\n\t  .pull-xl-8 {\n\t    right: 66.66667%;\n\t  }\n\t  .pull-xl-9 {\n\t    right: 75%;\n\t  }\n\t  .pull-xl-10 {\n\t    right: 83.33333%;\n\t  }\n\t  .pull-xl-11 {\n\t    right: 91.66667%;\n\t  }\n\t  .pull-xl-12 {\n\t    right: 100%;\n\t  }\n\t  .push-xl-0 {\n\t    left: auto;\n\t  }\n\t  .push-xl-1 {\n\t    left: 8.33333%;\n\t  }\n\t  .push-xl-2 {\n\t    left: 16.66667%;\n\t  }\n\t  .push-xl-3 {\n\t    left: 25%;\n\t  }\n\t  .push-xl-4 {\n\t    left: 33.33333%;\n\t  }\n\t  .push-xl-5 {\n\t    left: 41.66667%;\n\t  }\n\t  .push-xl-6 {\n\t    left: 50%;\n\t  }\n\t  .push-xl-7 {\n\t    left: 58.33333%;\n\t  }\n\t  .push-xl-8 {\n\t    left: 66.66667%;\n\t  }\n\t  .push-xl-9 {\n\t    left: 75%;\n\t  }\n\t  .push-xl-10 {\n\t    left: 83.33333%;\n\t  }\n\t  .push-xl-11 {\n\t    left: 91.66667%;\n\t  }\n\t  .push-xl-12 {\n\t    left: 100%;\n\t  }\n\t  .offset-xl-0 {\n\t    margin-left: 0%;\n\t  }\n\t  .offset-xl-1 {\n\t    margin-left: 8.33333%;\n\t  }\n\t  .offset-xl-2 {\n\t    margin-left: 16.66667%;\n\t  }\n\t  .offset-xl-3 {\n\t    margin-left: 25%;\n\t  }\n\t  .offset-xl-4 {\n\t    margin-left: 33.33333%;\n\t  }\n\t  .offset-xl-5 {\n\t    margin-left: 41.66667%;\n\t  }\n\t  .offset-xl-6 {\n\t    margin-left: 50%;\n\t  }\n\t  .offset-xl-7 {\n\t    margin-left: 58.33333%;\n\t  }\n\t  .offset-xl-8 {\n\t    margin-left: 66.66667%;\n\t  }\n\t  .offset-xl-9 {\n\t    margin-left: 75%;\n\t  }\n\t  .offset-xl-10 {\n\t    margin-left: 83.33333%;\n\t  }\n\t  .offset-xl-11 {\n\t    margin-left: 91.66667%;\n\t  }\n\t}\n\t/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */\n\n\thtml {\n\t  font-family: sans-serif;\n\t  line-height: 1.15;\n\t  -ms-text-size-adjust: 100%;\n\t  -webkit-text-size-adjust: 100%;\n\t}\n\n\tbody {\n\t  margin: 0;\n\t}\n\n\tarticle,\n\taside,\n\tfooter,\n\theader,\n\tnav,\n\tsection {\n\t  display: block;\n\t}\n\n\th1 {\n\t  font-size: 2em;\n\t  margin: 0.67em 0;\n\t}\n\n\tfigcaption,\n\tfigure,\n\tmain {\n\t  display: block;\n\t}\n\n\tfigure {\n\t  margin: 1em 40px;\n\t}\n\n\thr {\n\t  box-sizing: content-box;\n\t  height: 0;\n\t  overflow: visible;\n\t}\n\n\tpre {\n\t  font-family: monospace, monospace;\n\t  font-size: 1em;\n\t}\n\n\ta {\n\t  background-color: transparent;\n\t  -webkit-text-decoration-skip: objects;\n\t}\n\n\ta:active,\n\ta:hover {\n\t  outline-width: 0;\n\t}\n\n\tabbr[title] {\n\t  border-bottom: none;\n\t  text-decoration: underline;\n\t  text-decoration: underline dotted;\n\t}\n\n\tb,\n\tstrong {\n\t  font-weight: inherit;\n\t}\n\n\tb,\n\tstrong {\n\t  font-weight: bolder;\n\t}\n\n\tcode,\n\tkbd,\n\tsamp {\n\t  font-family: monospace, monospace;\n\t  font-size: 1em;\n\t}\n\n\tdfn {\n\t  font-style: italic;\n\t}\n\n\tmark {\n\t  background-color: #ff0;\n\t  color: #000;\n\t}\n\n\tsmall {\n\t  font-size: 80%;\n\t}\n\n\tsub,\n\tsup {\n\t  font-size: 75%;\n\t  line-height: 0;\n\t  position: relative;\n\t  vertical-align: baseline;\n\t}\n\n\tsub {\n\t  bottom: -0.25em;\n\t}\n\n\tsup {\n\t  top: -0.5em;\n\t}\n\n\taudio,\n\tvideo {\n\t  display: inline-block;\n\t}\n\n\taudio:not([controls]) {\n\t  display: none;\n\t  height: 0;\n\t}\n\n\timg {\n\t  border-style: none;\n\t}\n\n\tsvg:not(:root) {\n\t  overflow: hidden;\n\t}\n\n\tbutton,\n\tinput,\n\toptgroup,\n\tselect,\n\ttextarea {\n\t  font-family: sans-serif;\n\t  font-size: 100%;\n\t  line-height: 1.15;\n\t  margin: 0;\n\t}\n\n\tbutton,\n\tinput {\n\t  overflow: visible;\n\t}\n\n\tbutton,\n\tselect {\n\t  text-transform: none;\n\t}\n\n\tbutton,\n\thtml [type=\"button\"],\n\t[type=\"reset\"],\n\t[type=\"submit\"] {\n\t  -webkit-appearance: button;\n\t}\n\n\tbutton::-moz-focus-inner,\n\t[type=\"button\"]::-moz-focus-inner,\n\t[type=\"reset\"]::-moz-focus-inner,\n\t[type=\"submit\"]::-moz-focus-inner {\n\t  border-style: none;\n\t  padding: 0;\n\t}\n\n\tbutton:-moz-focusring,\n\t[type=\"button\"]:-moz-focusring,\n\t[type=\"reset\"]:-moz-focusring,\n\t[type=\"submit\"]:-moz-focusring {\n\t  outline: 1px dotted ButtonText;\n\t}\n\n\tfieldset {\n\t  border: 1px solid #c0c0c0;\n\t  margin: 0 2px;\n\t  padding: 0.35em 0.625em 0.75em;\n\t}\n\n\tlegend {\n\t  box-sizing: border-box;\n\t  color: inherit;\n\t  display: table;\n\t  max-width: 100%;\n\t  padding: 0;\n\t  white-space: normal;\n\t}\n\n\tprogress {\n\t  display: inline-block;\n\t  vertical-align: baseline;\n\t}\n\n\ttextarea {\n\t  overflow: auto;\n\t}\n\n\t[type=\"checkbox\"],\n\t[type=\"radio\"] {\n\t  box-sizing: border-box;\n\t  padding: 0;\n\t}\n\n\t[type=\"number\"]::-webkit-inner-spin-button,\n\t[type=\"number\"]::-webkit-outer-spin-button {\n\t  height: auto;\n\t}\n\n\t[type=\"search\"] {\n\t  -webkit-appearance: textfield;\n\t  outline-offset: -2px;\n\t}\n\n\t[type=\"search\"]::-webkit-search-cancel-button,\n\t[type=\"search\"]::-webkit-search-decoration {\n\t  -webkit-appearance: none;\n\t}\n\n\t::-webkit-file-upload-button {\n\t  -webkit-appearance: button;\n\t  font: inherit;\n\t}\n\n\tdetails,\n\tmenu {\n\t  display: block;\n\t}\n\n\tsummary {\n\t  display: list-item;\n\t}\n\n\tcanvas {\n\t  display: inline-block;\n\t}\n\n\ttemplate {\n\t  display: none;\n\t}\n\n\t[hidden] {\n\t  display: none;\n\t}\n\n\t@media print {\n\t  *,\n\t  *::before,\n\t  *::after,\n\t  p::first-letter,\n\t  div::first-letter,\n\t  blockquote::first-letter,\n\t  li::first-letter,\n\t  p::first-line,\n\t  div::first-line,\n\t  blockquote::first-line,\n\t  li::first-line {\n\t    text-shadow: none !important;\n\t    box-shadow: none !important;\n\t  }\n\t  a,\n\t  a:visited {\n\t    text-decoration: underline;\n\t  }\n\t  abbr[title]::after {\n\t    content: \" (\" attr(title) \")\";\n\t  }\n\t  pre {\n\t    white-space: pre-wrap !important;\n\t  }\n\t  pre,\n\t  blockquote {\n\t    border: 1px solid #999;\n\t    page-break-inside: avoid;\n\t  }\n\t  thead {\n\t    display: table-header-group;\n\t  }\n\t  tr,\n\t  img {\n\t    page-break-inside: avoid;\n\t  }\n\t  p,\n\t  h2,\n\t  h3 {\n\t    orphans: 3;\n\t    widows: 3;\n\t  }\n\t  h2,\n\t  h3 {\n\t    page-break-after: avoid;\n\t  }\n\t  .navbar {\n\t    display: none;\n\t  }\n\t  .badge {\n\t    border: 1px solid #000;\n\t  }\n\t  .table {\n\t    border-collapse: collapse !important;\n\t  }\n\t  .table td,\n\t  .table th {\n\t    background-color: #fff !important;\n\t  }\n\t  .table-bordered th,\n\t  .table-bordered td {\n\t    border: 1px solid #ddd !important;\n\t  }\n\t}\n\n\thtml {\n\t  box-sizing: border-box;\n\t}\n\n\t*,\n\t*::before,\n\t*::after {\n\t  box-sizing: inherit;\n\t}\n\n\t@-ms-viewport {\n\t  width: device-width;\n\t}\n\n\thtml {\n\t  -ms-overflow-style: scrollbar;\n\t  -webkit-tap-highlight-color: transparent;\n\t}\n\n\tbody {\n\t  font-family: -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n\t  font-size: 1rem;\n\t  font-weight: normal;\n\t  line-height: 1.5;\n\t  color: #292b2c;\n\t  background-color: #fff;\n\t}\n\n\t[tabindex=\"-1\"]:focus {\n\t  outline: none !important;\n\t}\n\n\th1,\n\th2,\n\th3,\n\th4,\n\th5,\n\th6 {\n\t  margin-top: 0;\n\t  margin-bottom: .5rem;\n\t}\n\n\tp {\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t}\n\n\tabbr[title],\n\tabbr[data-original-title] {\n\t  cursor: help;\n\t}\n\n\taddress {\n\t  margin-bottom: 1rem;\n\t  font-style: normal;\n\t  line-height: inherit;\n\t}\n\n\tol,\n\tul,\n\tdl {\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t}\n\n\tol ol,\n\tul ul,\n\tol ul,\n\tul ol {\n\t  margin-bottom: 0;\n\t}\n\n\tdt {\n\t  font-weight: bold;\n\t}\n\n\tdd {\n\t  margin-bottom: .5rem;\n\t  margin-left: 0;\n\t}\n\n\tblockquote {\n\t  margin: 0 0 1rem;\n\t}\n\n\ta {\n\t  color: #0f8699;\n\t  text-decoration: none;\n\t}\n\n\ta:focus,\n\ta:hover {\n\t  color: #084953;\n\t  text-decoration: underline;\n\t}\n\n\ta:not([href]):not([tabindex]) {\n\t  color: inherit;\n\t  text-decoration: none;\n\t}\n\n\ta:not([href]):not([tabindex]):focus,\n\ta:not([href]):not([tabindex]):hover {\n\t  color: inherit;\n\t  text-decoration: none;\n\t}\n\n\ta:not([href]):not([tabindex]):focus {\n\t  outline: 0;\n\t}\n\n\tpre {\n\t  margin-top: 0;\n\t  margin-bottom: 1rem;\n\t  overflow: auto;\n\t}\n\n\tfigure {\n\t  margin: 0 0 1rem;\n\t}\n\n\timg {\n\t  vertical-align: middle;\n\t}\n\n\t[role=\"button\"] {\n\t  cursor: pointer;\n\t}\n\n\ta,\n\tarea,\n\tbutton,\n\t[role=\"button\"],\n\tinput,\n\tlabel,\n\tselect,\n\tsummary,\n\ttextarea {\n\t  touch-action: manipulation;\n\t}\n\n\ttable {\n\t  border-collapse: collapse;\n\t  background-color: transparent;\n\t}\n\n\tcaption {\n\t  padding-top: 0.75rem;\n\t  padding-bottom: 0.75rem;\n\t  color: #636c72;\n\t  text-align: left;\n\t  caption-side: bottom;\n\t}\n\n\tth {\n\t  text-align: left;\n\t}\n\n\tlabel {\n\t  display: inline-block;\n\t  margin-bottom: .5rem;\n\t}\n\n\tbutton:focus {\n\t  outline: 1px dotted;\n\t  outline: 5px auto -webkit-focus-ring-color;\n\t}\n\n\tinput,\n\tbutton,\n\tselect,\n\ttextarea {\n\t  line-height: inherit;\n\t}\n\n\tinput[type=\"radio\"]:disabled,\n\tinput[type=\"checkbox\"]:disabled {\n\t  cursor: not-allowed;\n\t}\n\n\tinput[type=\"date\"],\n\tinput[type=\"time\"],\n\tinput[type=\"datetime-local\"],\n\tinput[type=\"month\"] {\n\t  -webkit-appearance: listbox;\n\t}\n\n\ttextarea {\n\t  resize: vertical;\n\t}\n\n\tfieldset {\n\t  min-width: 0;\n\t  padding: 0;\n\t  margin: 0;\n\t  border: 0;\n\t}\n\n\tlegend {\n\t  display: block;\n\t  width: 100%;\n\t  padding: 0;\n\t  margin-bottom: .5rem;\n\t  font-size: 1.5rem;\n\t  line-height: inherit;\n\t}\n\n\tinput[type=\"search\"] {\n\t  -webkit-appearance: none;\n\t}\n\n\toutput {\n\t  display: inline-block;\n\t}\n\n\t[hidden] {\n\t  display: none !important;\n\t}\n\n\t.table {\n\t  width: 100%;\n\t  max-width: 100%;\n\t  margin-bottom: 1rem;\n\t}\n\n\t.table th,\n\t.table td {\n\t  padding: 0.75rem;\n\t  vertical-align: top;\n\t  border-top: 1px solid #eceeef;\n\t}\n\n\t.table thead th {\n\t  vertical-align: bottom;\n\t  border-bottom: 2px solid #eceeef;\n\t}\n\n\t.table tbody+tbody {\n\t  border-top: 2px solid #eceeef;\n\t}\n\n\t.table .table {\n\t  background-color: #fff;\n\t}\n\n\t.table-sm th,\n\t.table-sm td {\n\t  padding: 0.3rem;\n\t}\n\n\t.table-bordered {\n\t  border: 1px solid #eceeef;\n\t}\n\n\t.table-bordered th,\n\t.table-bordered td {\n\t  border: 1px solid #eceeef;\n\t}\n\n\t.table-bordered thead th,\n\t.table-bordered thead td {\n\t  border-bottom-width: 2px;\n\t}\n\n\t.table-striped tbody tr:nth-of-type(odd) {\n\t  background-color: rgba(0, 0, 0, 0.05);\n\t}\n\n\t.table-hover tbody tr:hover {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-active,\n\t.table-active>th,\n\t.table-active>td {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-hover .table-active:hover {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-hover .table-active:hover>td,\n\t.table-hover .table-active:hover>th {\n\t  background-color: rgba(0, 0, 0, 0.075);\n\t}\n\n\t.table-success,\n\t.table-success>th,\n\t.table-success>td {\n\t  background-color: #dff0d8;\n\t}\n\n\t.table-hover .table-success:hover {\n\t  background-color: #d0e9c6;\n\t}\n\n\t.table-hover .table-success:hover>td,\n\t.table-hover .table-success:hover>th {\n\t  background-color: #d0e9c6;\n\t}\n\n\t.table-info,\n\t.table-info>th,\n\t.table-info>td {\n\t  background-color: #d9edf7;\n\t}\n\n\t.table-hover .table-info:hover {\n\t  background-color: #c4e3f3;\n\t}\n\n\t.table-hover .table-info:hover>td,\n\t.table-hover .table-info:hover>th {\n\t  background-color: #c4e3f3;\n\t}\n\n\t.table-warning,\n\t.table-warning>th,\n\t.table-warning>td {\n\t  background-color: #fcf8e3;\n\t}\n\n\t.table-hover .table-warning:hover {\n\t  background-color: #faf2cc;\n\t}\n\n\t.table-hover .table-warning:hover>td,\n\t.table-hover .table-warning:hover>th {\n\t  background-color: #faf2cc;\n\t}\n\n\t.table-danger,\n\t.table-danger>th,\n\t.table-danger>td {\n\t  background-color: #f2dede;\n\t}\n\n\t.table-hover .table-danger:hover {\n\t  background-color: #ebcccc;\n\t}\n\n\t.table-hover .table-danger:hover>td,\n\t.table-hover .table-danger:hover>th {\n\t  background-color: #ebcccc;\n\t}\n\n\t.thead-inverse th {\n\t  color: #fff;\n\t  background-color: #292b2c;\n\t}\n\n\t.thead-default th {\n\t  color: #464a4c;\n\t  background-color: #eceeef;\n\t}\n\n\t.table-inverse {\n\t  color: #fff;\n\t  background-color: #292b2c;\n\t}\n\n\t.table-inverse th,\n\t.table-inverse td,\n\t.table-inverse thead th {\n\t  border-color: #fff;\n\t}\n\n\t.table-inverse.table-bordered {\n\t  border: 0;\n\t}\n\n\t.table-responsive {\n\t  display: block;\n\t  width: 100%;\n\t  overflow-x: auto;\n\t  -ms-overflow-style: -ms-autohiding-scrollbar;\n\t}\n\n\t.table-responsive.table-bordered {\n\t  border: 0;\n\t}\n\n\t.form-control {\n\t  display: block;\n\t  width: 100%;\n\t  padding: 0.5rem 0.75rem;\n\t  font-size: 1rem;\n\t  line-height: 1.25;\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t  background-image: none;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n\t}\n\n\t.form-control::-ms-expand {\n\t  background-color: transparent;\n\t  border: 0;\n\t}\n\n\t.form-control:focus {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t  border-color: #3cd4ec;\n\t  outline: none;\n\t}\n\n\t.form-control::placeholder {\n\t  color: #636c72;\n\t  opacity: 1;\n\t}\n\n\t.form-control:disabled,\n\t.form-control[readonly] {\n\t  background-color: #eceeef;\n\t  opacity: 1;\n\t}\n\n\t.form-control:disabled {\n\t  cursor: not-allowed;\n\t}\n\n\tselect.form-control:not([size]):not([multiple]) {\n\t  height: calc(2.25rem + 2px);\n\t}\n\n\tselect.form-control:focus::-ms-value {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t}\n\n\t.form-control-file,\n\t.form-control-range {\n\t  display: block;\n\t}\n\n\t.col-form-label {\n\t  padding-top: calc(0.5rem - 1px * 2);\n\t  padding-bottom: calc(0.5rem - 1px * 2);\n\t  margin-bottom: 0;\n\t}\n\n\t.col-form-label-lg {\n\t  padding-top: calc(0.75rem - 1px * 2);\n\t  padding-bottom: calc(0.75rem - 1px * 2);\n\t  font-size: 1.25rem;\n\t}\n\n\t.col-form-label-sm {\n\t  padding-top: calc(0.25rem - 1px * 2);\n\t  padding-bottom: calc(0.25rem - 1px * 2);\n\t  font-size: 0.875rem;\n\t}\n\n\t.col-form-legend {\n\t  padding-top: 0.5rem;\n\t  padding-bottom: 0.5rem;\n\t  margin-bottom: 0;\n\t  font-size: 1rem;\n\t}\n\n\t.form-control-static {\n\t  padding-top: 0.5rem;\n\t  padding-bottom: 0.5rem;\n\t  margin-bottom: 0;\n\t  line-height: 1.25;\n\t  border: solid transparent;\n\t  border-width: 1px 0;\n\t}\n\n\t.form-control-static.form-control-sm,\n\t.input-group-sm>.form-control-static.form-control,\n\t.input-group-sm>.form-control-static.input-group-addon,\n\t.input-group-sm>.input-group-btn>.form-control-static.btn,\n\t.form-control-static.form-control-lg,\n\t.input-group-lg>.form-control-static.form-control,\n\t.input-group-lg>.form-control-static.input-group-addon,\n\t.input-group-lg>.input-group-btn>.form-control-static.btn {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.form-control-sm,\n\t.input-group-sm>.form-control,\n\t.input-group-sm>.input-group-addon,\n\t.input-group-sm>.input-group-btn>.btn {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t  border-radius: 0.2rem;\n\t}\n\n\tselect.form-control-sm:not([size]):not([multiple]),\n\t.input-group-sm>select.form-control:not([size]):not([multiple]),\n\t.input-group-sm>select.input-group-addon:not([size]):not([multiple]),\n\t.input-group-sm>.input-group-btn>select.btn:not([size]):not([multiple]) {\n\t  height: 1.8125rem;\n\t}\n\n\t.form-control-lg,\n\t.input-group-lg>.form-control,\n\t.input-group-lg>.input-group-addon,\n\t.input-group-lg>.input-group-btn>.btn {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t  border-radius: 0.3rem;\n\t}\n\n\tselect.form-control-lg:not([size]):not([multiple]),\n\t.input-group-lg>select.form-control:not([size]):not([multiple]),\n\t.input-group-lg>select.input-group-addon:not([size]):not([multiple]),\n\t.input-group-lg>.input-group-btn>select.btn:not([size]):not([multiple]) {\n\t  height: 3.16667rem;\n\t}\n\n\t.form-group {\n\t  margin-bottom: 1rem;\n\t}\n\n\t.form-text {\n\t  display: block;\n\t  margin-top: 0.25rem;\n\t}\n\n\t.form-check {\n\t  position: relative;\n\t  display: block;\n\t  margin-bottom: 0.5rem;\n\t}\n\n\t.form-check.disabled .form-check-label {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t}\n\n\t.form-check-label {\n\t  padding-left: 1.25rem;\n\t  margin-bottom: 0;\n\t  cursor: pointer;\n\t}\n\n\t.form-check-input {\n\t  position: absolute;\n\t  margin-top: 0.25rem;\n\t  margin-left: -1.25rem;\n\t}\n\n\t.form-check-input:only-child {\n\t  position: static;\n\t}\n\n\t.form-check-inline {\n\t  display: inline-block;\n\t}\n\n\t.form-check-inline .form-check-label {\n\t  vertical-align: middle;\n\t}\n\n\t.form-check-inline+.form-check-inline {\n\t  margin-left: 0.75rem;\n\t}\n\n\t.form-control-feedback {\n\t  margin-top: 0.25rem;\n\t}\n\n\t.form-control-success,\n\t.form-control-warning,\n\t.form-control-danger {\n\t  padding-right: 2.25rem;\n\t  background-repeat: no-repeat;\n\t  background-position: center right 0.5625rem;\n\t  background-size: 1.125rem 1.125rem;\n\t}\n\n\t.has-success .form-control-feedback,\n\t.has-success .form-control-label,\n\t.has-success .col-form-label,\n\t.has-success .form-check-label,\n\t.has-success .custom-control {\n\t  color: #5cb85c;\n\t}\n\n\t.has-success .form-control {\n\t  border-color: #5cb85c;\n\t}\n\n\t.has-success .input-group-addon {\n\t  color: #5cb85c;\n\t  border-color: #5cb85c;\n\t  background-color: #eaf6ea;\n\t}\n\n\t.has-success .form-control-success {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E\");\n\t}\n\n\t.has-warning .form-control-feedback,\n\t.has-warning .form-control-label,\n\t.has-warning .col-form-label,\n\t.has-warning .form-check-label,\n\t.has-warning .custom-control {\n\t  color: #f0ad4e;\n\t}\n\n\t.has-warning .form-control {\n\t  border-color: #f0ad4e;\n\t}\n\n\t.has-warning .input-group-addon {\n\t  color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t  background-color: white;\n\t}\n\n\t.has-warning .form-control-warning {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E\");\n\t}\n\n\t.has-danger .form-control-feedback,\n\t.has-danger .form-control-label,\n\t.has-danger .col-form-label,\n\t.has-danger .form-check-label,\n\t.has-danger .custom-control {\n\t  color: #d9534f;\n\t}\n\n\t.has-danger .form-control {\n\t  border-color: #d9534f;\n\t}\n\n\t.has-danger .input-group-addon {\n\t  color: #d9534f;\n\t  border-color: #d9534f;\n\t  background-color: #fdf7f7;\n\t}\n\n\t.has-danger .form-control-danger {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E\");\n\t}\n\n\t.form-inline {\n\t  display: flex;\n\t  flex-flow: row wrap;\n\t  align-items: center;\n\t}\n\n\t.form-inline .form-check {\n\t  width: 100%;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .form-inline label {\n\t    display: flex;\n\t    align-items: center;\n\t    justify-content: center;\n\t    margin-bottom: 0;\n\t  }\n\t  .form-inline .form-group {\n\t    display: flex;\n\t    flex: 0 0 auto;\n\t    flex-flow: row wrap;\n\t    align-items: center;\n\t    margin-bottom: 0;\n\t  }\n\t  .form-inline .form-control {\n\t    display: inline-block;\n\t    width: auto;\n\t    vertical-align: middle;\n\t  }\n\t  .form-inline .form-control-static {\n\t    display: inline-block;\n\t  }\n\t  .form-inline .input-group {\n\t    width: auto;\n\t  }\n\t  .form-inline .form-control-label {\n\t    margin-bottom: 0;\n\t    vertical-align: middle;\n\t  }\n\t  .form-inline .form-check {\n\t    display: flex;\n\t    align-items: center;\n\t    justify-content: center;\n\t    width: auto;\n\t    margin-top: 0;\n\t    margin-bottom: 0;\n\t  }\n\t  .form-inline .form-check-label {\n\t    padding-left: 0;\n\t  }\n\t  .form-inline .form-check-input {\n\t    position: relative;\n\t    margin-top: 0;\n\t    margin-right: 0.25rem;\n\t    margin-left: 0;\n\t  }\n\t  .form-inline .custom-control {\n\t    display: flex;\n\t    align-items: center;\n\t    justify-content: center;\n\t    padding-left: 0;\n\t  }\n\t  .form-inline .custom-control-indicator {\n\t    position: static;\n\t    display: inline-block;\n\t    margin-right: 0.25rem;\n\t    vertical-align: text-bottom;\n\t  }\n\t  .form-inline .has-feedback .form-control-feedback {\n\t    top: 0;\n\t  }\n\t}\n\n\t.btn {\n\t  display: inline-block;\n\t  font-weight: normal;\n\t  line-height: 1.25;\n\t  text-align: center;\n\t  white-space: nowrap;\n\t  vertical-align: middle;\n\t  user-select: none;\n\t  border: 1px solid transparent;\n\t  padding: 0.5rem 1rem;\n\t  font-size: 1rem;\n\t  border-radius: 0.25rem;\n\t  transition: all 0.2s ease-in-out;\n\t}\n\n\t.btn:focus,\n\t.btn:hover {\n\t  text-decoration: none;\n\t}\n\n\t.btn:focus,\n\t.btn.focus {\n\t  outline: 0;\n\t  box-shadow: 0 0 0 2px rgba(15, 134, 153, 0.25);\n\t}\n\n\t.btn.disabled,\n\t.btn:disabled {\n\t  cursor: not-allowed;\n\t  opacity: .65;\n\t}\n\n\t.btn:active,\n\t.btn.active {\n\t  background-image: none;\n\t}\n\n\ta.btn.disabled,\n\tfieldset[disabled] a.btn {\n\t  pointer-events: none;\n\t}\n\n\t.btn-primary {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-primary:hover {\n\t  color: #fff;\n\t  background-color: #0a5d6b;\n\t  border-color: #0a5561;\n\t}\n\n\t.btn-primary:focus,\n\t.btn-primary.focus {\n\t  box-shadow: 0 0 0 2px rgba(15, 134, 153, 0.5);\n\t}\n\n\t.btn-primary.disabled,\n\t.btn-primary:disabled {\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-primary:active,\n\t.btn-primary.active,\n\t.show>.btn-primary.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #0a5d6b;\n\t  background-image: none;\n\t  border-color: #0a5561;\n\t}\n\n\t.btn-secondary {\n\t  color: #292b2c;\n\t  background-color: #fff;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-secondary:hover {\n\t  color: #292b2c;\n\t  background-color: #e6e6e6;\n\t  border-color: #adadad;\n\t}\n\n\t.btn-secondary:focus,\n\t.btn-secondary.focus {\n\t  box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);\n\t}\n\n\t.btn-secondary.disabled,\n\t.btn-secondary:disabled {\n\t  background-color: #fff;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-secondary:active,\n\t.btn-secondary.active,\n\t.show>.btn-secondary.dropdown-toggle {\n\t  color: #292b2c;\n\t  background-color: #e6e6e6;\n\t  background-image: none;\n\t  border-color: #adadad;\n\t}\n\n\t.btn-info {\n\t  color: #fff;\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-info:hover {\n\t  color: #fff;\n\t  background-color: #31b0d5;\n\t  border-color: #2aabd2;\n\t}\n\n\t.btn-info:focus,\n\t.btn-info.focus {\n\t  box-shadow: 0 0 0 2px rgba(91, 192, 222, 0.5);\n\t}\n\n\t.btn-info.disabled,\n\t.btn-info:disabled {\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-info:active,\n\t.btn-info.active,\n\t.show>.btn-info.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #31b0d5;\n\t  background-image: none;\n\t  border-color: #2aabd2;\n\t}\n\n\t.btn-success {\n\t  color: #fff;\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-success:hover {\n\t  color: #fff;\n\t  background-color: #449d44;\n\t  border-color: #419641;\n\t}\n\n\t.btn-success:focus,\n\t.btn-success.focus {\n\t  box-shadow: 0 0 0 2px rgba(92, 184, 92, 0.5);\n\t}\n\n\t.btn-success.disabled,\n\t.btn-success:disabled {\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-success:active,\n\t.btn-success.active,\n\t.show>.btn-success.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #449d44;\n\t  background-image: none;\n\t  border-color: #419641;\n\t}\n\n\t.btn-warning {\n\t  color: #fff;\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-warning:hover {\n\t  color: #fff;\n\t  background-color: #ec971f;\n\t  border-color: #eb9316;\n\t}\n\n\t.btn-warning:focus,\n\t.btn-warning.focus {\n\t  box-shadow: 0 0 0 2px rgba(240, 173, 78, 0.5);\n\t}\n\n\t.btn-warning.disabled,\n\t.btn-warning:disabled {\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-warning:active,\n\t.btn-warning.active,\n\t.show>.btn-warning.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #ec971f;\n\t  background-image: none;\n\t  border-color: #eb9316;\n\t}\n\n\t.btn-danger {\n\t  color: #fff;\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-danger:hover {\n\t  color: #fff;\n\t  background-color: #c9302c;\n\t  border-color: #c12e2a;\n\t}\n\n\t.btn-danger:focus,\n\t.btn-danger.focus {\n\t  box-shadow: 0 0 0 2px rgba(217, 83, 79, 0.5);\n\t}\n\n\t.btn-danger.disabled,\n\t.btn-danger:disabled {\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-danger:active,\n\t.btn-danger.active,\n\t.show>.btn-danger.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #c9302c;\n\t  background-image: none;\n\t  border-color: #c12e2a;\n\t}\n\n\t.btn-outline-primary {\n\t  color: #0f8699;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-outline-primary:hover {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-outline-primary:focus,\n\t.btn-outline-primary.focus {\n\t  box-shadow: 0 0 0 2px rgba(15, 134, 153, 0.5);\n\t}\n\n\t.btn-outline-primary.disabled,\n\t.btn-outline-primary:disabled {\n\t  color: #0f8699;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-primary:active,\n\t.btn-outline-primary.active,\n\t.show>.btn-outline-primary.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.btn-outline-secondary {\n\t  color: #ccc;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-outline-secondary:hover {\n\t  color: #fff;\n\t  background-color: #ccc;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-outline-secondary:focus,\n\t.btn-outline-secondary.focus {\n\t  box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);\n\t}\n\n\t.btn-outline-secondary.disabled,\n\t.btn-outline-secondary:disabled {\n\t  color: #ccc;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-secondary:active,\n\t.btn-outline-secondary.active,\n\t.show>.btn-outline-secondary.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #ccc;\n\t  border-color: #ccc;\n\t}\n\n\t.btn-outline-info {\n\t  color: #5bc0de;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-outline-info:hover {\n\t  color: #fff;\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-outline-info:focus,\n\t.btn-outline-info.focus {\n\t  box-shadow: 0 0 0 2px rgba(91, 192, 222, 0.5);\n\t}\n\n\t.btn-outline-info.disabled,\n\t.btn-outline-info:disabled {\n\t  color: #5bc0de;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-info:active,\n\t.btn-outline-info.active,\n\t.show>.btn-outline-info.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.btn-outline-success {\n\t  color: #5cb85c;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-outline-success:hover {\n\t  color: #fff;\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-outline-success:focus,\n\t.btn-outline-success.focus {\n\t  box-shadow: 0 0 0 2px rgba(92, 184, 92, 0.5);\n\t}\n\n\t.btn-outline-success.disabled,\n\t.btn-outline-success:disabled {\n\t  color: #5cb85c;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-success:active,\n\t.btn-outline-success.active,\n\t.show>.btn-outline-success.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.btn-outline-warning {\n\t  color: #f0ad4e;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-outline-warning:hover {\n\t  color: #fff;\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-outline-warning:focus,\n\t.btn-outline-warning.focus {\n\t  box-shadow: 0 0 0 2px rgba(240, 173, 78, 0.5);\n\t}\n\n\t.btn-outline-warning.disabled,\n\t.btn-outline-warning:disabled {\n\t  color: #f0ad4e;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-warning:active,\n\t.btn-outline-warning.active,\n\t.show>.btn-outline-warning.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.btn-outline-danger {\n\t  color: #d9534f;\n\t  background-image: none;\n\t  background-color: transparent;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-outline-danger:hover {\n\t  color: #fff;\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-outline-danger:focus,\n\t.btn-outline-danger.focus {\n\t  box-shadow: 0 0 0 2px rgba(217, 83, 79, 0.5);\n\t}\n\n\t.btn-outline-danger.disabled,\n\t.btn-outline-danger:disabled {\n\t  color: #d9534f;\n\t  background-color: transparent;\n\t}\n\n\t.btn-outline-danger:active,\n\t.btn-outline-danger.active,\n\t.show>.btn-outline-danger.dropdown-toggle {\n\t  color: #fff;\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.btn-link {\n\t  font-weight: normal;\n\t  color: #0f8699;\n\t  border-radius: 0;\n\t}\n\n\t.btn-link,\n\t.btn-link:active,\n\t.btn-link.active,\n\t.btn-link:disabled {\n\t  background-color: transparent;\n\t}\n\n\t.btn-link,\n\t.btn-link:focus,\n\t.btn-link:active {\n\t  border-color: transparent;\n\t}\n\n\t.btn-link:hover {\n\t  border-color: transparent;\n\t}\n\n\t.btn-link:focus,\n\t.btn-link:hover {\n\t  color: #084953;\n\t  text-decoration: underline;\n\t  background-color: transparent;\n\t}\n\n\t.btn-link:disabled {\n\t  color: #636c72;\n\t}\n\n\t.btn-link:disabled:focus,\n\t.btn-link:disabled:hover {\n\t  text-decoration: none;\n\t}\n\n\t.btn-lg,\n\t.btn-group-lg>.btn {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t  border-radius: 0.3rem;\n\t}\n\n\t.btn-sm,\n\t.btn-group-sm>.btn {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t  border-radius: 0.2rem;\n\t}\n\n\t.btn-block {\n\t  display: block;\n\t  width: 100%;\n\t}\n\n\t.btn-block+.btn-block {\n\t  margin-top: 0.5rem;\n\t}\n\n\tinput[type=\"submit\"].btn-block,\n\tinput[type=\"reset\"].btn-block,\n\tinput[type=\"button\"].btn-block {\n\t  width: 100%;\n\t}\n\n\t.fade {\n\t  opacity: 0;\n\t  transition: opacity 0.15s linear;\n\t}\n\n\t.fade.show {\n\t  opacity: 1;\n\t}\n\n\t.collapse {\n\t  display: none;\n\t}\n\n\t.collapse.show {\n\t  display: block;\n\t}\n\n\ttr.collapse.show {\n\t  display: table-row;\n\t}\n\n\ttbody.collapse.show {\n\t  display: table-row-group;\n\t}\n\n\t.collapsing {\n\t  position: relative;\n\t  height: 0;\n\t  overflow: hidden;\n\t  transition: height 0.35s ease;\n\t}\n\n\t.dropup,\n\t.dropdown {\n\t  position: relative;\n\t}\n\n\t.dropdown-toggle::after {\n\t  display: inline-block;\n\t  width: 0;\n\t  height: 0;\n\t  margin-left: 0.3em;\n\t  vertical-align: middle;\n\t  content: \"\";\n\t  border-top: 0.3em solid;\n\t  border-right: 0.3em solid transparent;\n\t  border-left: 0.3em solid transparent;\n\t}\n\n\t.dropdown-toggle:focus {\n\t  outline: 0;\n\t}\n\n\t.dropup .dropdown-toggle::after {\n\t  border-top: 0;\n\t  border-bottom: 0.3em solid;\n\t}\n\n\t.dropdown-menu {\n\t  position: absolute;\n\t  top: 100%;\n\t  left: 0;\n\t  z-index: 1000;\n\t  display: none;\n\t  float: left;\n\t  min-width: 10rem;\n\t  padding: 0.5rem 0;\n\t  margin: 0.125rem 0 0;\n\t  font-size: 1rem;\n\t  color: #292b2c;\n\t  text-align: left;\n\t  list-style: none;\n\t  background-color: #fff;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.dropdown-divider {\n\t  height: 1px;\n\t  margin: 0.5rem 0;\n\t  overflow: hidden;\n\t  background-color: #eceeef;\n\t}\n\n\t.dropdown-item {\n\t  display: block;\n\t  width: 100%;\n\t  padding: 3px 1.5rem;\n\t  clear: both;\n\t  font-weight: normal;\n\t  color: #D1FF05;\n\t  text-align: inherit;\n\t  white-space: nowrap;\n\t  background: none;\n\t  border: 0;\n\t}\n\n\t.dropdown-item:focus,\n\t.dropdown-item:hover {\n\t  color: #1d1e1f;\n\t  text-decoration: none;\n\t  background-color: #f7f7f9;\n\t}\n\n\t.dropdown-item.active,\n\t.dropdown-item:active {\n\t  color: #fff;\n\t  text-decoration: none;\n\t  background-color: #0f8699;\n\t}\n\n\t.dropdown-item.disabled,\n\t.dropdown-item:disabled {\n\t  color: #727263;\n\t  cursor: not-allowed;\n\t  background-color: transparent;\n\t}\n\n\t.show>.dropdown-menu {\n\t  display: block;\n\t}\n\n\t.show>a {\n\t  outline: 0;\n\t}\n\n\t.dropdown-menu-right {\n\t  right: 0;\n\t  left: auto;\n\t}\n\n\t.dropdown-menu-left {\n\t  right: auto;\n\t  left: 0;\n\t}\n\n\t.dropdown-header {\n\t  display: block;\n\t  padding: 0.5rem 1.5rem;\n\t  margin-bottom: 0;\n\t  font-size: 0.875rem;\n\t  color: #636c72;\n\t  white-space: nowrap;\n\t}\n\n\t.dropdown-backdrop {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 990;\n\t}\n\n\t.dropup .dropdown-menu {\n\t  top: auto;\n\t  bottom: 100%;\n\t  margin-bottom: 0.125rem;\n\t}\n\n\t.btn-group,\n\t.btn-group-vertical {\n\t  position: relative;\n\t  display: inline-flex;\n\t  vertical-align: middle;\n\t}\n\n\t.btn-group>.btn,\n\t.btn-group-vertical>.btn {\n\t  position: relative;\n\t  flex: 0 1 auto;\n\t}\n\n\t.btn-group>.btn:hover,\n\t.btn-group-vertical>.btn:hover {\n\t  z-index: 2;\n\t}\n\n\t.btn-group>.btn:focus,\n\t.btn-group>.btn:active,\n\t.btn-group>.btn.active,\n\t.btn-group-vertical>.btn:focus,\n\t.btn-group-vertical>.btn:active,\n\t.btn-group-vertical>.btn.active {\n\t  z-index: 2;\n\t}\n\n\t.btn-group .btn+.btn,\n\t.btn-group .btn+.btn-group,\n\t.btn-group .btn-group+.btn,\n\t.btn-group .btn-group+.btn-group,\n\t.btn-group-vertical .btn+.btn,\n\t.btn-group-vertical .btn+.btn-group,\n\t.btn-group-vertical .btn-group+.btn,\n\t.btn-group-vertical .btn-group+.btn-group {\n\t  margin-left: -1px;\n\t}\n\n\t.btn-toolbar {\n\t  display: flex;\n\t  justify-content: flex-start;\n\t}\n\n\t.btn-toolbar .input-group {\n\t  width: auto;\n\t}\n\n\t.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group>.btn:first-child {\n\t  margin-left: 0;\n\t}\n\n\t.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {\n\t  border-bottom-right-radius: 0;\n\t  border-top-right-radius: 0;\n\t}\n\n\t.btn-group>.btn:last-child:not(:first-child),\n\t.btn-group>.dropdown-toggle:not(:first-child) {\n\t  border-bottom-left-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.btn-group>.btn-group {\n\t  float: left;\n\t}\n\n\t.btn-group>.btn-group:not(:first-child):not(:last-child)>.btn {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group>.btn-group:first-child:not(:last-child)>.btn:last-child,\n\t.btn-group>.btn-group:first-child:not(:last-child)>.dropdown-toggle {\n\t  border-bottom-right-radius: 0;\n\t  border-top-right-radius: 0;\n\t}\n\n\t.btn-group>.btn-group:last-child:not(:first-child)>.btn:first-child {\n\t  border-bottom-left-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.btn-group .dropdown-toggle:active,\n\t.btn-group.open .dropdown-toggle {\n\t  outline: 0;\n\t}\n\n\t.btn+.dropdown-toggle-split {\n\t  padding-right: 0.75rem;\n\t  padding-left: 0.75rem;\n\t}\n\n\t.btn+.dropdown-toggle-split::after {\n\t  margin-left: 0;\n\t}\n\n\t.btn-sm+.dropdown-toggle-split,\n\t.btn-group-sm>.btn+.dropdown-toggle-split {\n\t  padding-right: 0.375rem;\n\t  padding-left: 0.375rem;\n\t}\n\n\t.btn-lg+.dropdown-toggle-split,\n\t.btn-group-lg>.btn+.dropdown-toggle-split {\n\t  padding-right: 1.125rem;\n\t  padding-left: 1.125rem;\n\t}\n\n\t.btn-group-vertical {\n\t  display: inline-flex;\n\t  flex-direction: column;\n\t  align-items: flex-start;\n\t  justify-content: center;\n\t}\n\n\t.btn-group-vertical .btn,\n\t.btn-group-vertical .btn-group {\n\t  width: 100%;\n\t}\n\n\t.btn-group-vertical>.btn+.btn,\n\t.btn-group-vertical>.btn+.btn-group,\n\t.btn-group-vertical>.btn-group+.btn,\n\t.btn-group-vertical>.btn-group+.btn-group {\n\t  margin-top: -1px;\n\t  margin-left: 0;\n\t}\n\n\t.btn-group-vertical>.btn:not(:first-child):not(:last-child) {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn:first-child:not(:last-child) {\n\t  border-bottom-right-radius: 0;\n\t  border-bottom-left-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn:last-child:not(:first-child) {\n\t  border-top-right-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn-group:not(:first-child):not(:last-child)>.btn {\n\t  border-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn-group:first-child:not(:last-child)>.btn:last-child,\n\t.btn-group-vertical>.btn-group:first-child:not(:last-child)>.dropdown-toggle {\n\t  border-bottom-right-radius: 0;\n\t  border-bottom-left-radius: 0;\n\t}\n\n\t.btn-group-vertical>.btn-group:last-child:not(:first-child)>.btn:first-child {\n\t  border-top-right-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t[data-toggle=\"buttons\"]>.btn input[type=\"radio\"],\n\t[data-toggle=\"buttons\"]>.btn input[type=\"checkbox\"],\n\t[data-toggle=\"buttons\"]>.btn-group>.btn input[type=\"radio\"],\n\t[data-toggle=\"buttons\"]>.btn-group>.btn input[type=\"checkbox\"] {\n\t  position: absolute;\n\t  clip: rect(0, 0, 0, 0);\n\t  pointer-events: none;\n\t}\n\n\t.input-group {\n\t  position: relative;\n\t  display: flex;\n\t  width: 100%;\n\t}\n\n\t.input-group .form-control {\n\t  position: relative;\n\t  z-index: 2;\n\t  flex: 1 1 auto;\n\t  width: 1%;\n\t  margin-bottom: 0;\n\t}\n\n\t.input-group .form-control:focus,\n\t.input-group .form-control:active,\n\t.input-group .form-control:hover {\n\t  z-index: 3;\n\t}\n\n\t.input-group-addon,\n\t.input-group-btn,\n\t.input-group .form-control {\n\t  display: flex;\n\t  flex-direction: column;\n\t  justify-content: center;\n\t}\n\n\t.input-group-addon:not(:first-child):not(:last-child),\n\t.input-group-btn:not(:first-child):not(:last-child),\n\t.input-group .form-control:not(:first-child):not(:last-child) {\n\t  border-radius: 0;\n\t}\n\n\t.input-group-addon,\n\t.input-group-btn {\n\t  white-space: nowrap;\n\t  vertical-align: middle;\n\t}\n\n\t.input-group-addon {\n\t  padding: 0.5rem 0.75rem;\n\t  margin-bottom: 0;\n\t  font-size: 1rem;\n\t  font-weight: normal;\n\t  line-height: 1.25;\n\t  color: #464a4c;\n\t  text-align: center;\n\t  background-color: #eceeef;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.input-group-addon.form-control-sm,\n\t.input-group-sm>.input-group-addon,\n\t.input-group-sm>.input-group-btn>.input-group-addon.btn {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t  border-radius: 0.2rem;\n\t}\n\n\t.input-group-addon.form-control-lg,\n\t.input-group-lg>.input-group-addon,\n\t.input-group-lg>.input-group-btn>.input-group-addon.btn {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t  border-radius: 0.3rem;\n\t}\n\n\t.input-group-addon input[type=\"radio\"],\n\t.input-group-addon input[type=\"checkbox\"] {\n\t  margin-top: 0;\n\t}\n\n\t.input-group .form-control:not(:last-child),\n\t.input-group-addon:not(:last-child),\n\t.input-group-btn:not(:last-child)>.btn,\n\t.input-group-btn:not(:last-child)>.btn-group>.btn,\n\t.input-group-btn:not(:last-child)>.dropdown-toggle,\n\t.input-group-btn:not(:first-child)>.btn:not(:last-child):not(.dropdown-toggle),\n\t.input-group-btn:not(:first-child)>.btn-group:not(:last-child)>.btn {\n\t  border-bottom-right-radius: 0;\n\t  border-top-right-radius: 0;\n\t}\n\n\t.input-group-addon:not(:last-child) {\n\t  border-right: 0;\n\t}\n\n\t.input-group .form-control:not(:first-child),\n\t.input-group-addon:not(:first-child),\n\t.input-group-btn:not(:first-child)>.btn,\n\t.input-group-btn:not(:first-child)>.btn-group>.btn,\n\t.input-group-btn:not(:first-child)>.dropdown-toggle,\n\t.input-group-btn:not(:last-child)>.btn:not(:first-child),\n\t.input-group-btn:not(:last-child)>.btn-group:not(:first-child)>.btn {\n\t  border-bottom-left-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.form-control+.input-group-addon:not(:first-child) {\n\t  border-left: 0;\n\t}\n\n\t.input-group-btn {\n\t  position: relative;\n\t  font-size: 0;\n\t  white-space: nowrap;\n\t}\n\n\t.input-group-btn>.btn {\n\t  position: relative;\n\t  flex: 1;\n\t}\n\n\t.input-group-btn>.btn+.btn {\n\t  margin-left: -1px;\n\t}\n\n\t.input-group-btn>.btn:focus,\n\t.input-group-btn>.btn:active,\n\t.input-group-btn>.btn:hover {\n\t  z-index: 3;\n\t}\n\n\t.input-group-btn:not(:last-child)>.btn,\n\t.input-group-btn:not(:last-child)>.btn-group {\n\t  margin-right: -1px;\n\t}\n\n\t.input-group-btn:not(:first-child)>.btn,\n\t.input-group-btn:not(:first-child)>.btn-group {\n\t  z-index: 2;\n\t  margin-left: -1px;\n\t}\n\n\t.input-group-btn:not(:first-child)>.btn:focus,\n\t.input-group-btn:not(:first-child)>.btn:active,\n\t.input-group-btn:not(:first-child)>.btn:hover,\n\t.input-group-btn:not(:first-child)>.btn-group:focus,\n\t.input-group-btn:not(:first-child)>.btn-group:active,\n\t.input-group-btn:not(:first-child)>.btn-group:hover {\n\t  z-index: 3;\n\t}\n\n\t.custom-control {\n\t  position: relative;\n\t  display: inline-flex;\n\t  min-height: 1.5rem;\n\t  padding-left: 1.5rem;\n\t  margin-right: 1rem;\n\t  cursor: pointer;\n\t}\n\n\t.custom-control-input {\n\t  position: absolute;\n\t  z-index: -1;\n\t  opacity: 0;\n\t}\n\n\t.custom-control-input:checked~.custom-control-indicator {\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t}\n\n\t.custom-control-input:focus~.custom-control-indicator {\n\t  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #0f8699;\n\t}\n\n\t.custom-control-input:active~.custom-control-indicator {\n\t  color: #fff;\n\t  background-color: #6adef0;\n\t}\n\n\t.custom-control-input:disabled~.custom-control-indicator {\n\t  cursor: not-allowed;\n\t  background-color: #eceeef;\n\t}\n\n\t.custom-control-input:disabled~.custom-control-description {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t}\n\n\t.custom-control-indicator {\n\t  position: absolute;\n\t  top: 0.25rem;\n\t  left: 0;\n\t  display: block;\n\t  width: 1rem;\n\t  height: 1rem;\n\t  pointer-events: none;\n\t  user-select: none;\n\t  background-color: #ddd;\n\t  background-repeat: no-repeat;\n\t  background-position: center center;\n\t  background-size: 50% 50%;\n\t}\n\n\t.custom-checkbox .custom-control-indicator {\n\t  border-radius: 0.25rem;\n\t}\n\n\t.custom-checkbox .custom-control-input:checked~.custom-control-indicator {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E\");\n\t}\n\n\t.custom-checkbox .custom-control-input:indeterminate~.custom-control-indicator {\n\t  background-color: #0f8699;\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E\");\n\t}\n\n\t.custom-radio .custom-control-indicator {\n\t  border-radius: 50%;\n\t}\n\n\t.custom-radio .custom-control-input:checked~.custom-control-indicator {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E\");\n\t}\n\n\t.custom-controls-stacked {\n\t  display: flex;\n\t  flex-direction: column;\n\t}\n\n\t.custom-controls-stacked .custom-control {\n\t  margin-bottom: 0.25rem;\n\t}\n\n\t.custom-controls-stacked .custom-control+.custom-control {\n\t  margin-left: 0;\n\t}\n\n\t.custom-select {\n\t  display: inline-block;\n\t  max-width: 100%;\n\t  height: calc(2.25rem + 2px);\n\t  padding: 0.375rem 1.75rem 0.375rem 0.75rem;\n\t  line-height: 1.25;\n\t  color: #464a4c;\n\t  vertical-align: middle;\n\t  background: #fff url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E\") no-repeat right 0.75rem center;\n\t  background-size: 8px 10px;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t  -moz-appearance: none;\n\t  -webkit-appearance: none;\n\t}\n\n\t.custom-select:focus {\n\t  border-color: #3cd4ec;\n\t  outline: none;\n\t}\n\n\t.custom-select:focus::-ms-value {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t}\n\n\t.custom-select:disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t  background-color: #eceeef;\n\t}\n\n\t.custom-select::-ms-expand {\n\t  opacity: 0;\n\t}\n\n\t.custom-select-sm {\n\t  padding-top: 0.375rem;\n\t  padding-bottom: 0.375rem;\n\t  font-size: 75%;\n\t}\n\n\t.custom-file {\n\t  position: relative;\n\t  display: inline-block;\n\t  max-width: 100%;\n\t  height: 2.5rem;\n\t  margin-bottom: 0;\n\t  cursor: pointer;\n\t}\n\n\t.custom-file-input {\n\t  min-width: 14rem;\n\t  max-width: 100%;\n\t  height: 2.5rem;\n\t  margin: 0;\n\t  filter: alpha(opacity=0);\n\t  opacity: 0;\n\t}\n\n\t.custom-file-control {\n\t  position: absolute;\n\t  top: 0;\n\t  right: 0;\n\t  left: 0;\n\t  z-index: 5;\n\t  height: 2.5rem;\n\t  padding: 0.5rem 1rem;\n\t  line-height: 1.5;\n\t  color: #464a4c;\n\t  pointer-events: none;\n\t  user-select: none;\n\t  background-color: #fff;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.custom-file-control:lang(en)::after {\n\t  content: \"Choose file...\";\n\t}\n\n\t.custom-file-control::before {\n\t  position: absolute;\n\t  top: -1px;\n\t  right: -1px;\n\t  bottom: -1px;\n\t  z-index: 6;\n\t  display: block;\n\t  height: 2.5rem;\n\t  padding: 0.5rem 1rem;\n\t  line-height: 1.5;\n\t  color: #464a4c;\n\t  background-color: #eceeef;\n\t  border: 1px solid rgba(0, 0, 0, 0.15);\n\t  border-radius: 0 0.25rem 0.25rem 0;\n\t}\n\n\t.custom-file-control:lang(en)::before {\n\t  content: \"Browse\";\n\t}\n\n\t.nav {\n\t  display: flex;\n\t  padding-left: 0;\n\t  margin-bottom: 0;\n\t  list-style: none;\n\t}\n\n\t.nav-link {\n\t  display: block;\n\t  padding: 0.5em 1em;\n\t}\n\n\t.nav-link:focus,\n\t.nav-link:hover {\n\t  text-decoration: none;\n\t}\n\n\t.nav-link.disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t}\n\n\t.nav-tabs {\n\t  border-bottom: 1px solid #ddd;\n\t}\n\n\t.nav-tabs .nav-item {\n\t  margin-bottom: -1px;\n\t}\n\n\t.nav-tabs .nav-link {\n\t  border: 1px solid transparent;\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.nav-tabs .nav-link:focus,\n\t.nav-tabs .nav-link:hover {\n\t  border-color: #eceeef #eceeef #ddd;\n\t}\n\n\t.nav-tabs .nav-link.disabled {\n\t  color: #636c72;\n\t  background-color: transparent;\n\t  border-color: transparent;\n\t}\n\n\t.nav-tabs .nav-link.active,\n\t.nav-tabs .nav-item.show .nav-link {\n\t  color: #464a4c;\n\t  background-color: #fff;\n\t  border-color: #ddd #ddd #fff;\n\t}\n\n\t.nav-tabs .dropdown-menu {\n\t  margin-top: -1px;\n\t  border-top-right-radius: 0;\n\t  border-top-left-radius: 0;\n\t}\n\n\t.nav-pills .nav-link {\n\t  border-radius: 0.25rem;\n\t}\n\n\t.nav-pills .nav-link.active,\n\t.nav-pills .nav-item.show .nav-link {\n\t  color: #fff;\n\t  cursor: default;\n\t  background-color: #0f8699;\n\t}\n\n\t.nav-fill .nav-item {\n\t  flex: 1 1 auto;\n\t  text-align: center;\n\t}\n\n\t.nav-justified .nav-item {\n\t  flex: 1 1 100%;\n\t  text-align: center;\n\t}\n\n\t.tab-content>.tab-pane {\n\t  display: none;\n\t}\n\n\t.tab-content>.active {\n\t  display: block;\n\t}\n\n\t.navbar {\n\t  position: relative;\n\t  display: flex;\n\t  flex-direction: column;\n\t  padding: 0.5rem 1rem;\n\t}\n\n\t.navbar-brand {\n\t  display: inline-block;\n\t  padding-top: .25rem;\n\t  padding-bottom: .25rem;\n\t  margin-right: 1rem;\n\t  font-size: 1.25rem;\n\t  line-height: inherit;\n\t  white-space: nowrap;\n\t}\n\n\t.navbar-brand:focus,\n\t.navbar-brand:hover {\n\t  text-decoration: none;\n\t}\n\n\t.navbar-nav {\n\t  display: flex;\n\t  flex-direction: column;\n\t  padding-left: 0;\n\t  margin-bottom: 0;\n\t  list-style: none;\n\t}\n\n\t.navbar-nav .nav-link {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.navbar-text {\n\t  display: inline-block;\n\t  padding-top: .425rem;\n\t  padding-bottom: .425rem;\n\t}\n\n\t.navbar-toggler {\n\t  align-self: flex-start;\n\t  padding: 0.25rem 0.75rem;\n\t  font-size: 1.25rem;\n\t  line-height: 1;\n\t  background: transparent;\n\t  border: 1px solid transparent;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.navbar-toggler:focus,\n\t.navbar-toggler:hover {\n\t  text-decoration: none;\n\t}\n\n\t.navbar-toggler-icon {\n\t  display: inline-block;\n\t  width: 1.5em;\n\t  height: 1.5em;\n\t  vertical-align: middle;\n\t  content: \"\";\n\t  background: no-repeat center center;\n\t  background-size: 100% 100%;\n\t}\n\n\t.navbar-toggler-left {\n\t  position: absolute;\n\t  left: 1rem;\n\t}\n\n\t.navbar-toggler-right {\n\t  position: absolute;\n\t  right: 1rem;\n\t}\n\n\t@media (max-width: 575px) {\n\t  .navbar-toggleable .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .navbar-toggleable {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t@media (max-width: 767px) {\n\t  .navbar-toggleable-sm .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable-sm>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .navbar-toggleable-sm {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-sm .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable-sm .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable-sm>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-sm .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable-sm .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t@media (max-width: 991px) {\n\t  .navbar-toggleable-md .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable-md>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .navbar-toggleable-md {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-md .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable-md .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable-md>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-md .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable-md .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t@media (max-width: 1199px) {\n\t  .navbar-toggleable-lg .navbar-nav .dropdown-menu {\n\t    position: static;\n\t    float: none;\n\t  }\n\t  .navbar-toggleable-lg>.container {\n\t    padding-right: 0;\n\t    padding-left: 0;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .navbar-toggleable-lg {\n\t    flex-direction: row;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-lg .navbar-nav {\n\t    flex-direction: row;\n\t  }\n\t  .navbar-toggleable-lg .navbar-nav .nav-link {\n\t    padding-right: .5rem;\n\t    padding-left: .5rem;\n\t  }\n\t  .navbar-toggleable-lg>.container {\n\t    display: flex;\n\t    flex-wrap: nowrap;\n\t    align-items: center;\n\t  }\n\t  .navbar-toggleable-lg .navbar-collapse {\n\t    display: flex !important;\n\t    width: 100%;\n\t  }\n\t  .navbar-toggleable-lg .navbar-toggler {\n\t    display: none;\n\t  }\n\t}\n\n\t.navbar-toggleable-xl {\n\t  flex-direction: row;\n\t  flex-wrap: nowrap;\n\t  align-items: center;\n\t}\n\n\t.navbar-toggleable-xl .navbar-nav .dropdown-menu {\n\t  position: static;\n\t  float: none;\n\t}\n\n\t.navbar-toggleable-xl>.container {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t}\n\n\t.navbar-toggleable-xl .navbar-nav {\n\t  flex-direction: row;\n\t}\n\n\t.navbar-toggleable-xl .navbar-nav .nav-link {\n\t  padding-right: .5rem;\n\t  padding-left: .5rem;\n\t}\n\n\t.navbar-toggleable-xl>.container {\n\t  display: flex;\n\t  flex-wrap: nowrap;\n\t  align-items: center;\n\t}\n\n\t.navbar-toggleable-xl .navbar-collapse {\n\t  display: flex !important;\n\t  width: 100%;\n\t}\n\n\t.navbar-toggleable-xl .navbar-toggler {\n\t  display: none;\n\t}\n\n\t.navbar-light .navbar-brand,\n\t.navbar-light .navbar-toggler {\n\t  color: rgba(0, 0, 0, 0.9);\n\t}\n\n\t.navbar-light .navbar-brand:focus,\n\t.navbar-light .navbar-brand:hover,\n\t.navbar-light .navbar-toggler:focus,\n\t.navbar-light .navbar-toggler:hover {\n\t  color: rgba(0, 0, 0, 0.9);\n\t}\n\n\t.navbar-light .navbar-nav .nav-link {\n\t  color: rgba(0, 0, 0, 0.5);\n\t}\n\n\t.navbar-light .navbar-nav .nav-link:focus,\n\t.navbar-light .navbar-nav .nav-link:hover {\n\t  color: rgba(0, 0, 0, 0.7);\n\t}\n\n\t.navbar-light .navbar-nav .nav-link.disabled {\n\t  color: rgba(0, 0, 0, 0.3);\n\t}\n\n\t.navbar-light .navbar-nav .open>.nav-link,\n\t.navbar-light .navbar-nav .active>.nav-link,\n\t.navbar-light .navbar-nav .nav-link.open,\n\t.navbar-light .navbar-nav .nav-link.active {\n\t  color: rgba(0, 0, 0, 0.9);\n\t}\n\n\t.navbar-light .navbar-toggler {\n\t  border-color: rgba(0, 0, 0, 0.1);\n\t}\n\n\t.navbar-light .navbar-toggler-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n\t}\n\n\t.navbar-light .navbar-text {\n\t  color: rgba(0, 0, 0, 0.5);\n\t}\n\n\t.navbar-inverse .navbar-brand,\n\t.navbar-inverse .navbar-toggler {\n\t  color: white;\n\t}\n\n\t.navbar-inverse .navbar-brand:focus,\n\t.navbar-inverse .navbar-brand:hover,\n\t.navbar-inverse .navbar-toggler:focus,\n\t.navbar-inverse .navbar-toggler:hover {\n\t  color: white;\n\t}\n\n\t.navbar-inverse .navbar-nav .nav-link {\n\t  color: rgba(255, 255, 255, 0.5);\n\t}\n\n\t.navbar-inverse .navbar-nav .nav-link:focus,\n\t.navbar-inverse .navbar-nav .nav-link:hover {\n\t  color: rgba(255, 255, 255, 0.75);\n\t}\n\n\t.navbar-inverse .navbar-nav .nav-link.disabled {\n\t  color: rgba(255, 255, 255, 0.25);\n\t}\n\n\t.navbar-inverse .navbar-nav .open>.nav-link,\n\t.navbar-inverse .navbar-nav .active>.nav-link,\n\t.navbar-inverse .navbar-nav .nav-link.open,\n\t.navbar-inverse .navbar-nav .nav-link.active {\n\t  color: white;\n\t}\n\n\t.navbar-inverse .navbar-toggler {\n\t  border-color: rgba(255, 255, 255, 0.1);\n\t}\n\n\t.navbar-inverse .navbar-toggler-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E\");\n\t}\n\n\t.navbar-inverse .navbar-text {\n\t  color: rgba(255, 255, 255, 0.5);\n\t}\n\n\t.card {\n\t  position: relative;\n\t  display: flex;\n\t  flex-direction: column;\n\t  background-color: #fff;\n\t  border: 1px solid rgba(0, 0, 0, 0.125);\n\t  border-radius: 0.25rem;\n\t}\n\n\t.card-block {\n\t  flex: 1 1 auto;\n\t  padding: 1.25rem;\n\t}\n\n\t.card-title {\n\t  margin-bottom: 0.75rem;\n\t}\n\n\t.card-subtitle {\n\t  margin-top: -0.375rem;\n\t  margin-bottom: 0;\n\t}\n\n\t.card-text:last-child {\n\t  margin-bottom: 0;\n\t}\n\n\t.card-link:hover {\n\t  text-decoration: none;\n\t}\n\n\t.card-link+.card-link {\n\t  margin-left: 1.25rem;\n\t}\n\n\t.card>.list-group:first-child .list-group-item:first-child {\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.card>.list-group:last-child .list-group-item:last-child {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-bottom-left-radius: 0.25rem;\n\t}\n\n\t.card-header {\n\t  padding: 0.75rem 1.25rem;\n\t  margin-bottom: 0;\n\t  background-color: #f7f7f9;\n\t  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n\t}\n\n\t.card-header:first-child {\n\t  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;\n\t}\n\n\t.card-footer {\n\t  padding: 0.75rem 1.25rem;\n\t  background-color: #f7f7f9;\n\t  border-top: 1px solid rgba(0, 0, 0, 0.125);\n\t}\n\n\t.card-footer:last-child {\n\t  border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);\n\t}\n\n\t.card-header-tabs {\n\t  margin-right: -0.625rem;\n\t  margin-bottom: -0.75rem;\n\t  margin-left: -0.625rem;\n\t  border-bottom: 0;\n\t}\n\n\t.card-header-pills {\n\t  margin-right: -0.625rem;\n\t  margin-left: -0.625rem;\n\t}\n\n\t.card-primary {\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.card-primary .card-header,\n\t.card-primary .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-success {\n\t  background-color: #5cb85c;\n\t  border-color: #5cb85c;\n\t}\n\n\t.card-success .card-header,\n\t.card-success .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-info {\n\t  background-color: #5bc0de;\n\t  border-color: #5bc0de;\n\t}\n\n\t.card-info .card-header,\n\t.card-info .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-warning {\n\t  background-color: #f0ad4e;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.card-warning .card-header,\n\t.card-warning .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-danger {\n\t  background-color: #d9534f;\n\t  border-color: #d9534f;\n\t}\n\n\t.card-danger .card-header,\n\t.card-danger .card-footer {\n\t  background-color: transparent;\n\t}\n\n\t.card-outline-primary {\n\t  background-color: transparent;\n\t  border-color: #0f8699;\n\t}\n\n\t.card-outline-secondary {\n\t  background-color: transparent;\n\t  border-color: #ccc;\n\t}\n\n\t.card-outline-info {\n\t  background-color: transparent;\n\t  border-color: #5bc0de;\n\t}\n\n\t.card-outline-success {\n\t  background-color: transparent;\n\t  border-color: #5cb85c;\n\t}\n\n\t.card-outline-warning {\n\t  background-color: transparent;\n\t  border-color: #f0ad4e;\n\t}\n\n\t.card-outline-danger {\n\t  background-color: transparent;\n\t  border-color: #d9534f;\n\t}\n\n\t.card-inverse {\n\t  color: rgba(255, 255, 255, 0.65);\n\t}\n\n\t.card-inverse .card-header,\n\t.card-inverse .card-footer {\n\t  background-color: transparent;\n\t  border-color: rgba(255, 255, 255, 0.2);\n\t}\n\n\t.card-inverse .card-header,\n\t.card-inverse .card-footer,\n\t.card-inverse .card-title,\n\t.card-inverse .card-blockquote {\n\t  color: #fff;\n\t}\n\n\t.card-inverse .card-link,\n\t.card-inverse .card-text,\n\t.card-inverse .card-subtitle,\n\t.card-inverse .card-blockquote .blockquote-footer {\n\t  color: rgba(255, 255, 255, 0.65);\n\t}\n\n\t.card-inverse .card-link:focus,\n\t.card-inverse .card-link:hover {\n\t  color: #fff;\n\t}\n\n\t.card-blockquote {\n\t  padding: 0;\n\t  margin-bottom: 0;\n\t  border-left: 0;\n\t}\n\n\t.card-img {\n\t  border-radius: calc(0.25rem - 1px);\n\t}\n\n\t.card-img-overlay {\n\t  position: absolute;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  padding: 1.25rem;\n\t}\n\n\t.card-img-top {\n\t  border-top-right-radius: calc(0.25rem - 1px);\n\t  border-top-left-radius: calc(0.25rem - 1px);\n\t}\n\n\t.card-img-bottom {\n\t  border-bottom-right-radius: calc(0.25rem - 1px);\n\t  border-bottom-left-radius: calc(0.25rem - 1px);\n\t}\n\n\t@media (min-width: 576px) {\n\t  .card-deck {\n\t    display: flex;\n\t    flex-flow: row wrap;\n\t  }\n\t  .card-deck .card {\n\t    display: flex;\n\t    flex: 1 0 0;\n\t    flex-direction: column;\n\t  }\n\t  .card-deck .card:not(:first-child) {\n\t    margin-left: 15px;\n\t  }\n\t  .card-deck .card:not(:last-child) {\n\t    margin-right: 15px;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .card-group {\n\t    display: flex;\n\t    flex-flow: row wrap;\n\t  }\n\t  .card-group .card {\n\t    flex: 1 0 0;\n\t  }\n\t  .card-group .card+.card {\n\t    margin-left: 0;\n\t    border-left: 0;\n\t  }\n\t  .card-group .card:first-child {\n\t    border-bottom-right-radius: 0;\n\t    border-top-right-radius: 0;\n\t  }\n\t  .card-group .card:first-child .card-img-top {\n\t    border-top-right-radius: 0;\n\t  }\n\t  .card-group .card:first-child .card-img-bottom {\n\t    border-bottom-right-radius: 0;\n\t  }\n\t  .card-group .card:last-child {\n\t    border-bottom-left-radius: 0;\n\t    border-top-left-radius: 0;\n\t  }\n\t  .card-group .card:last-child .card-img-top {\n\t    border-top-left-radius: 0;\n\t  }\n\t  .card-group .card:last-child .card-img-bottom {\n\t    border-bottom-left-radius: 0;\n\t  }\n\t  .card-group .card:not(:first-child):not(:last-child) {\n\t    border-radius: 0;\n\t  }\n\t  .card-group .card:not(:first-child):not(:last-child) .card-img-top,\n\t  .card-group .card:not(:first-child):not(:last-child) .card-img-bottom {\n\t    border-radius: 0;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .card-columns {\n\t    column-count: 3;\n\t    column-gap: 1.25rem;\n\t  }\n\t  .card-columns .card {\n\t    display: inline-block;\n\t    width: 100%;\n\t    margin-bottom: 0.75rem;\n\t  }\n\t}\n\n\t.breadcrumb {\n\t  padding: 0.75rem 1rem;\n\t  margin-bottom: 1rem;\n\t  list-style: none;\n\t  background-color: #eceeef;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.breadcrumb::after {\n\t  display: block;\n\t  content: \"\";\n\t  clear: both;\n\t}\n\n\t.breadcrumb-item {\n\t  float: left;\n\t}\n\n\t.breadcrumb-item+.breadcrumb-item::before {\n\t  display: inline-block;\n\t  padding-right: 0.5rem;\n\t  padding-left: 0.5rem;\n\t  color: #636c72;\n\t  content: \"/\";\n\t}\n\n\t.breadcrumb-item+.breadcrumb-item:hover::before {\n\t  text-decoration: underline;\n\t}\n\n\t.breadcrumb-item+.breadcrumb-item:hover::before {\n\t  text-decoration: none;\n\t}\n\n\t.breadcrumb-item.active {\n\t  color: #636c72;\n\t}\n\n\t.pagination {\n\t  display: flex;\n\t  padding-left: 0;\n\t  list-style: none;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.page-item:first-child .page-link {\n\t  margin-left: 0;\n\t  border-bottom-left-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.page-item:last-child .page-link {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-top-right-radius: 0.25rem;\n\t}\n\n\t.page-item.active .page-link {\n\t  z-index: 2;\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.page-item.disabled .page-link {\n\t  color: #636c72;\n\t  pointer-events: none;\n\t  cursor: not-allowed;\n\t  background-color: #fff;\n\t  border-color: #ddd;\n\t}\n\n\t.page-link {\n\t  position: relative;\n\t  display: block;\n\t  padding: 0.5rem 0.75rem;\n\t  margin-left: -1px;\n\t  line-height: 1.25;\n\t  color: #0f8699;\n\t  background-color: #fff;\n\t  border: 1px solid #ddd;\n\t}\n\n\t.page-link:focus,\n\t.page-link:hover {\n\t  color: #084953;\n\t  text-decoration: none;\n\t  background-color: #eceeef;\n\t  border-color: #ddd;\n\t}\n\n\t.pagination-lg .page-link {\n\t  padding: 0.75rem 1.5rem;\n\t  font-size: 1.25rem;\n\t}\n\n\t.pagination-lg .page-item:first-child .page-link {\n\t  border-bottom-left-radius: 0.3rem;\n\t  border-top-left-radius: 0.3rem;\n\t}\n\n\t.pagination-lg .page-item:last-child .page-link {\n\t  border-bottom-right-radius: 0.3rem;\n\t  border-top-right-radius: 0.3rem;\n\t}\n\n\t.pagination-sm .page-link {\n\t  padding: 0.25rem 0.5rem;\n\t  font-size: 0.875rem;\n\t}\n\n\t.pagination-sm .page-item:first-child .page-link {\n\t  border-bottom-left-radius: 0.2rem;\n\t  border-top-left-radius: 0.2rem;\n\t}\n\n\t.pagination-sm .page-item:last-child .page-link {\n\t  border-bottom-right-radius: 0.2rem;\n\t  border-top-right-radius: 0.2rem;\n\t}\n\n\t.badge {\n\t  display: inline-block;\n\t  padding: 0.25em 0.4em;\n\t  font-size: 75%;\n\t  font-weight: bold;\n\t  line-height: 1;\n\t  color: #fff;\n\t  text-align: center;\n\t  white-space: nowrap;\n\t  vertical-align: baseline;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.badge:empty {\n\t  display: none;\n\t}\n\n\t.btn .badge {\n\t  position: relative;\n\t  top: -1px;\n\t}\n\n\ta.badge:focus,\n\ta.badge:hover {\n\t  color: #fff;\n\t  text-decoration: none;\n\t  cursor: pointer;\n\t}\n\n\t.badge-pill {\n\t  padding-right: 0.6em;\n\t  padding-left: 0.6em;\n\t  border-radius: 10rem;\n\t}\n\n\t.badge-default {\n\t  background-color: #636c72;\n\t}\n\n\t.badge-default[href]:focus,\n\t.badge-default[href]:hover {\n\t  background-color: #4b5257;\n\t}\n\n\t.badge-primary {\n\t  background-color: #0f8699;\n\t}\n\n\t.badge-primary[href]:focus,\n\t.badge-primary[href]:hover {\n\t  background-color: #0a5d6b;\n\t}\n\n\t.badge-success {\n\t  background-color: #5cb85c;\n\t}\n\n\t.badge-success[href]:focus,\n\t.badge-success[href]:hover {\n\t  background-color: #449d44;\n\t}\n\n\t.badge-info {\n\t  background-color: #5bc0de;\n\t}\n\n\t.badge-info[href]:focus,\n\t.badge-info[href]:hover {\n\t  background-color: #31b0d5;\n\t}\n\n\t.badge-warning {\n\t  background-color: #f0ad4e;\n\t}\n\n\t.badge-warning[href]:focus,\n\t.badge-warning[href]:hover {\n\t  background-color: #ec971f;\n\t}\n\n\t.badge-danger {\n\t  background-color: #d9534f;\n\t}\n\n\t.badge-danger[href]:focus,\n\t.badge-danger[href]:hover {\n\t  background-color: #c9302c;\n\t}\n\n\t.jumbotron {\n\t  padding: 2rem 1rem;\n\t  margin-bottom: 2rem;\n\t  background-color: #eceeef;\n\t  border-radius: 0.3rem;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .jumbotron {\n\t    padding: 4rem 2rem;\n\t  }\n\t}\n\n\t.jumbotron-hr {\n\t  border-top-color: #d0d5d8;\n\t}\n\n\t.jumbotron-fluid {\n\t  padding-right: 0;\n\t  padding-left: 0;\n\t  border-radius: 0;\n\t}\n\n\t.alert {\n\t  padding: 0.75rem 1.25rem;\n\t  margin-bottom: 1rem;\n\t  border: 1px solid transparent;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.alert-heading {\n\t  color: inherit;\n\t}\n\n\t.alert-link {\n\t  font-weight: bold;\n\t}\n\n\t.alert-dismissible .close {\n\t  position: relative;\n\t  top: -0.75rem;\n\t  right: -1.25rem;\n\t  padding: 0.75rem 1.25rem;\n\t  color: inherit;\n\t}\n\n\t.alert-success {\n\t  background-color: #dff0d8;\n\t  border-color: #d0e9c6;\n\t  color: #3c763d;\n\t}\n\n\t.alert-success hr {\n\t  border-top-color: #c1e2b3;\n\t}\n\n\t.alert-success .alert-link {\n\t  color: #2b542c;\n\t}\n\n\t.alert-info {\n\t  background-color: #d9edf7;\n\t  border-color: #bcdff1;\n\t  color: #31708f;\n\t}\n\n\t.alert-info hr {\n\t  border-top-color: #a6d5ec;\n\t}\n\n\t.alert-info .alert-link {\n\t  color: #245269;\n\t}\n\n\t.alert-warning {\n\t  background-color: #fcf8e3;\n\t  border-color: #faf2cc;\n\t  color: #8a6d3b;\n\t}\n\n\t.alert-warning hr {\n\t  border-top-color: #f7ecb5;\n\t}\n\n\t.alert-warning .alert-link {\n\t  color: #66512c;\n\t}\n\n\t.alert-danger {\n\t  background-color: #f2dede;\n\t  border-color: #ebcccc;\n\t  color: #a94442;\n\t}\n\n\t.alert-danger hr {\n\t  border-top-color: #e4b9b9;\n\t}\n\n\t.alert-danger .alert-link {\n\t  color: #843534;\n\t}\n\n\t@keyframes progress-bar-stripes {\n\t  from {\n\t    background-position: 1rem 0;\n\t  }\n\t  to {\n\t    background-position: 0 0;\n\t  }\n\t}\n\n\t.progress {\n\t  display: flex;\n\t  overflow: hidden;\n\t  font-size: 0.75rem;\n\t  line-height: 1rem;\n\t  text-align: center;\n\t  background-color: #eceeef;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.progress-bar {\n\t  height: 1rem;\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t}\n\n\t.progress-bar-striped {\n\t  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n\t  background-size: 1rem 1rem;\n\t}\n\n\t.progress-bar-animated {\n\t  animation: progress-bar-stripes 1s linear infinite;\n\t}\n\n\t.media {\n\t  display: flex;\n\t  align-items: flex-start;\n\t}\n\n\t.media-body {\n\t  flex: 1;\n\t}\n\n\t.list-group {\n\t  display: flex;\n\t  flex-direction: column;\n\t  padding-left: 0;\n\t  margin-bottom: 0;\n\t}\n\n\t.list-group-item-action {\n\t  width: 100%;\n\t  color: #464a4c;\n\t  text-align: inherit;\n\t}\n\n\t.list-group-item-action .list-group-item-heading {\n\t  color: #292b2c;\n\t}\n\n\t.list-group-item-action:focus,\n\t.list-group-item-action:hover {\n\t  color: #464a4c;\n\t  text-decoration: none;\n\t  background-color: #f7f7f9;\n\t}\n\n\t.list-group-item-action:active {\n\t  color: #292b2c;\n\t  background-color: #eceeef;\n\t}\n\n\t.list-group-item {\n\t  position: relative;\n\t  display: flex;\n\t  flex-flow: row wrap;\n\t  align-items: center;\n\t  padding: 0.75rem 1.25rem;\n\t  margin-bottom: -1px;\n\t  background-color: #fff;\n\t  border: 1px solid rgba(0, 0, 0, 0.125);\n\t}\n\n\t.list-group-item:first-child {\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.list-group-item:last-child {\n\t  margin-bottom: 0;\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-bottom-left-radius: 0.25rem;\n\t}\n\n\t.list-group-item:focus,\n\t.list-group-item:hover {\n\t  text-decoration: none;\n\t}\n\n\t.list-group-item.disabled,\n\t.list-group-item:disabled {\n\t  color: #636c72;\n\t  cursor: not-allowed;\n\t  background-color: #fff;\n\t}\n\n\t.list-group-item.disabled .list-group-item-heading,\n\t.list-group-item:disabled .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\t.list-group-item.disabled .list-group-item-text,\n\t.list-group-item:disabled .list-group-item-text {\n\t  color: #636c72;\n\t}\n\n\t.list-group-item.active {\n\t  z-index: 2;\n\t  color: #fff;\n\t  background-color: #0f8699;\n\t  border-color: #0f8699;\n\t}\n\n\t.list-group-item.active .list-group-item-heading,\n\t.list-group-item.active .list-group-item-heading>small,\n\t.list-group-item.active .list-group-item-heading>.small {\n\t  color: inherit;\n\t}\n\n\t.list-group-item.active .list-group-item-text {\n\t  color: #b0edf7;\n\t}\n\n\t.list-group-flush .list-group-item {\n\t  border-right: 0;\n\t  border-left: 0;\n\t  border-radius: 0;\n\t}\n\n\t.list-group-flush:first-child .list-group-item:first-child {\n\t  border-top: 0;\n\t}\n\n\t.list-group-flush:last-child .list-group-item:last-child {\n\t  border-bottom: 0;\n\t}\n\n\t.list-group-item-success {\n\t  color: #3c763d;\n\t  background-color: #dff0d8;\n\t}\n\n\ta.list-group-item-success,\n\tbutton.list-group-item-success {\n\t  color: #3c763d;\n\t}\n\n\ta.list-group-item-success .list-group-item-heading,\n\tbutton.list-group-item-success .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-success:focus,\n\ta.list-group-item-success:hover,\n\tbutton.list-group-item-success:focus,\n\tbutton.list-group-item-success:hover {\n\t  color: #3c763d;\n\t  background-color: #d0e9c6;\n\t}\n\n\ta.list-group-item-success.active,\n\tbutton.list-group-item-success.active {\n\t  color: #fff;\n\t  background-color: #3c763d;\n\t  border-color: #3c763d;\n\t}\n\n\t.list-group-item-info {\n\t  color: #31708f;\n\t  background-color: #d9edf7;\n\t}\n\n\ta.list-group-item-info,\n\tbutton.list-group-item-info {\n\t  color: #31708f;\n\t}\n\n\ta.list-group-item-info .list-group-item-heading,\n\tbutton.list-group-item-info .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-info:focus,\n\ta.list-group-item-info:hover,\n\tbutton.list-group-item-info:focus,\n\tbutton.list-group-item-info:hover {\n\t  color: #31708f;\n\t  background-color: #c4e3f3;\n\t}\n\n\ta.list-group-item-info.active,\n\tbutton.list-group-item-info.active {\n\t  color: #fff;\n\t  background-color: #31708f;\n\t  border-color: #31708f;\n\t}\n\n\t.list-group-item-warning {\n\t  color: #8a6d3b;\n\t  background-color: #fcf8e3;\n\t}\n\n\ta.list-group-item-warning,\n\tbutton.list-group-item-warning {\n\t  color: #8a6d3b;\n\t}\n\n\ta.list-group-item-warning .list-group-item-heading,\n\tbutton.list-group-item-warning .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-warning:focus,\n\ta.list-group-item-warning:hover,\n\tbutton.list-group-item-warning:focus,\n\tbutton.list-group-item-warning:hover {\n\t  color: #8a6d3b;\n\t  background-color: #faf2cc;\n\t}\n\n\ta.list-group-item-warning.active,\n\tbutton.list-group-item-warning.active {\n\t  color: #fff;\n\t  background-color: #8a6d3b;\n\t  border-color: #8a6d3b;\n\t}\n\n\t.list-group-item-danger {\n\t  color: #a94442;\n\t  background-color: #f2dede;\n\t}\n\n\ta.list-group-item-danger,\n\tbutton.list-group-item-danger {\n\t  color: #a94442;\n\t}\n\n\ta.list-group-item-danger .list-group-item-heading,\n\tbutton.list-group-item-danger .list-group-item-heading {\n\t  color: inherit;\n\t}\n\n\ta.list-group-item-danger:focus,\n\ta.list-group-item-danger:hover,\n\tbutton.list-group-item-danger:focus,\n\tbutton.list-group-item-danger:hover {\n\t  color: #a94442;\n\t  background-color: #ebcccc;\n\t}\n\n\ta.list-group-item-danger.active,\n\tbutton.list-group-item-danger.active {\n\t  color: #fff;\n\t  background-color: #a94442;\n\t  border-color: #a94442;\n\t}\n\n\t.embed-responsive {\n\t  position: relative;\n\t  display: block;\n\t  width: 100%;\n\t  padding: 0;\n\t  overflow: hidden;\n\t}\n\n\t.embed-responsive::before {\n\t  display: block;\n\t  content: \"\";\n\t}\n\n\t.embed-responsive .embed-responsive-item,\n\t.embed-responsive iframe,\n\t.embed-responsive embed,\n\t.embed-responsive object,\n\t.embed-responsive video {\n\t  position: absolute;\n\t  top: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  width: 100%;\n\t  height: 100%;\n\t  border: 0;\n\t}\n\n\t.embed-responsive-21by9::before {\n\t  padding-top: 42.85714%;\n\t}\n\n\t.embed-responsive-16by9::before {\n\t  padding-top: 56.25%;\n\t}\n\n\t.embed-responsive-4by3::before {\n\t  padding-top: 75%;\n\t}\n\n\t.embed-responsive-1by1::before {\n\t  padding-top: 100%;\n\t}\n\n\t.close {\n\t  float: right;\n\t  font-size: 1.5rem;\n\t  font-weight: bold;\n\t  line-height: 1;\n\t  color: #000;\n\t  text-shadow: 0 1px 0 #fff;\n\t  opacity: .5;\n\t}\n\n\t.close:focus,\n\t.close:hover {\n\t  color: #000;\n\t  text-decoration: none;\n\t  cursor: pointer;\n\t  opacity: .75;\n\t}\n\n\tbutton.close {\n\t  padding: 0;\n\t  cursor: pointer;\n\t  background: transparent;\n\t  border: 0;\n\t  -webkit-appearance: none;\n\t}\n\n\t.modal-open {\n\t  overflow: hidden;\n\t}\n\n\t.modal {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 1050;\n\t  display: none;\n\t  overflow: hidden;\n\t  outline: 0;\n\t}\n\n\t.modal.fade .modal-dialog {\n\t  transition: transform 0.3s ease-out;\n\t  transform: translate(0, -25%);\n\t}\n\n\t.modal.show .modal-dialog {\n\t  transform: translate(0, 0);\n\t}\n\n\t.modal-open .modal {\n\t  overflow-x: hidden;\n\t  overflow-y: auto;\n\t}\n\n\t.modal-dialog {\n\t  position: relative;\n\t  width: auto;\n\t  margin: 10px;\n\t}\n\n\t.modal-content {\n\t  position: relative;\n\t  display: flex;\n\t  flex-direction: column;\n\t  background-color: #fff;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.2);\n\t  border-radius: 0.3rem;\n\t  outline: 0;\n\t}\n\n\t.modal-backdrop {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 1040;\n\t  background-color: #000;\n\t}\n\n\t.modal-backdrop.fade {\n\t  opacity: 0;\n\t}\n\n\t.modal-backdrop.show {\n\t  opacity: 0.5;\n\t}\n\n\t.modal-header {\n\t  display: flex;\n\t  align-items: center;\n\t  justify-content: space-between;\n\t  padding: 15px;\n\t  border-bottom: 1px solid #eceeef;\n\t}\n\n\t.modal-title {\n\t  margin-bottom: 0;\n\t  line-height: 1.5;\n\t}\n\n\t.modal-body {\n\t  position: relative;\n\t  flex: 1 1 auto;\n\t  padding: 15px;\n\t}\n\n\t.modal-footer {\n\t  display: flex;\n\t  align-items: center;\n\t  justify-content: flex-end;\n\t  padding: 15px;\n\t  border-top: 1px solid #eceeef;\n\t}\n\n\t.modal-footer> :not(:first-child) {\n\t  margin-left: .25rem;\n\t}\n\n\t.modal-footer> :not(:last-child) {\n\t  margin-right: .25rem;\n\t}\n\n\t.modal-scrollbar-measure {\n\t  position: absolute;\n\t  top: -9999px;\n\t  width: 50px;\n\t  height: 50px;\n\t  overflow: scroll;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .modal-dialog {\n\t    max-width: 500px;\n\t    margin: 30px auto;\n\t  }\n\t  .modal-sm {\n\t    max-width: 300px;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .modal-lg {\n\t    max-width: 800px;\n\t  }\n\t}\n\n\t.tooltip {\n\t  position: absolute;\n\t  z-index: 1070;\n\t  display: block;\n\t  font-family: -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n\t  font-style: normal;\n\t  font-weight: normal;\n\t  letter-spacing: normal;\n\t  line-break: auto;\n\t  line-height: 1.5;\n\t  text-align: left;\n\t  text-align: start;\n\t  text-decoration: none;\n\t  text-shadow: none;\n\t  text-transform: none;\n\t  white-space: normal;\n\t  word-break: normal;\n\t  word-spacing: normal;\n\t  font-size: 0.875rem;\n\t  word-wrap: break-word;\n\t  opacity: 0;\n\t}\n\n\t.tooltip.show {\n\t  opacity: 0.9;\n\t}\n\n\t.tooltip.tooltip-top,\n\t.tooltip.bs-tether-element-attached-bottom {\n\t  padding: 5px 0;\n\t  margin-top: -3px;\n\t}\n\n\t.tooltip.tooltip-top .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-bottom .tooltip-inner::before {\n\t  bottom: 0;\n\t  left: 50%;\n\t  margin-left: -5px;\n\t  content: \"\";\n\t  border-width: 5px 5px 0;\n\t  border-top-color: #000;\n\t}\n\n\t.tooltip.tooltip-right,\n\t.tooltip.bs-tether-element-attached-left {\n\t  padding: 0 5px;\n\t  margin-left: 3px;\n\t}\n\n\t.tooltip.tooltip-right .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-left .tooltip-inner::before {\n\t  top: 50%;\n\t  left: 0;\n\t  margin-top: -5px;\n\t  content: \"\";\n\t  border-width: 5px 5px 5px 0;\n\t  border-right-color: #000;\n\t}\n\n\t.tooltip.tooltip-bottom,\n\t.tooltip.bs-tether-element-attached-top {\n\t  padding: 5px 0;\n\t  margin-top: 3px;\n\t}\n\n\t.tooltip.tooltip-bottom .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-top .tooltip-inner::before {\n\t  top: 0;\n\t  left: 50%;\n\t  margin-left: -5px;\n\t  content: \"\";\n\t  border-width: 0 5px 5px;\n\t  border-bottom-color: #000;\n\t}\n\n\t.tooltip.tooltip-left,\n\t.tooltip.bs-tether-element-attached-right {\n\t  padding: 0 5px;\n\t  margin-left: -3px;\n\t}\n\n\t.tooltip.tooltip-left .tooltip-inner::before,\n\t.tooltip.bs-tether-element-attached-right .tooltip-inner::before {\n\t  top: 50%;\n\t  right: 0;\n\t  margin-top: -5px;\n\t  content: \"\";\n\t  border-width: 5px 0 5px 5px;\n\t  border-left-color: #000;\n\t}\n\n\t.tooltip-inner {\n\t  max-width: 200px;\n\t  padding: 3px 8px;\n\t  color: #fff;\n\t  text-align: center;\n\t  background-color: #000;\n\t  border-radius: 0.25rem;\n\t}\n\n\t.tooltip-inner::before {\n\t  position: absolute;\n\t  width: 0;\n\t  height: 0;\n\t  border-color: transparent;\n\t  border-style: solid;\n\t}\n\n\t.popover {\n\t  position: absolute;\n\t  top: 0;\n\t  left: 0;\n\t  z-index: 1060;\n\t  display: block;\n\t  max-width: 276px;\n\t  padding: 1px;\n\t  font-family: -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n\t  font-style: normal;\n\t  font-weight: normal;\n\t  letter-spacing: normal;\n\t  line-break: auto;\n\t  line-height: 1.5;\n\t  text-align: left;\n\t  text-align: start;\n\t  text-decoration: none;\n\t  text-shadow: none;\n\t  text-transform: none;\n\t  white-space: normal;\n\t  word-break: normal;\n\t  word-spacing: normal;\n\t  font-size: 0.875rem;\n\t  word-wrap: break-word;\n\t  background-color: #fff;\n\t  background-clip: padding-box;\n\t  border: 1px solid rgba(0, 0, 0, 0.2);\n\t  border-radius: 0.3rem;\n\t}\n\n\t.popover.popover-top,\n\t.popover.bs-tether-element-attached-bottom {\n\t  margin-top: -10px;\n\t}\n\n\t.popover.popover-top::before,\n\t.popover.popover-top::after,\n\t.popover.bs-tether-element-attached-bottom::before,\n\t.popover.bs-tether-element-attached-bottom::after {\n\t  left: 50%;\n\t  border-bottom-width: 0;\n\t}\n\n\t.popover.popover-top::before,\n\t.popover.bs-tether-element-attached-bottom::before {\n\t  bottom: -11px;\n\t  margin-left: -11px;\n\t  border-top-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-top::after,\n\t.popover.bs-tether-element-attached-bottom::after {\n\t  bottom: -10px;\n\t  margin-left: -10px;\n\t  border-top-color: #fff;\n\t}\n\n\t.popover.popover-right,\n\t.popover.bs-tether-element-attached-left {\n\t  margin-left: 10px;\n\t}\n\n\t.popover.popover-right::before,\n\t.popover.popover-right::after,\n\t.popover.bs-tether-element-attached-left::before,\n\t.popover.bs-tether-element-attached-left::after {\n\t  top: 50%;\n\t  border-left-width: 0;\n\t}\n\n\t.popover.popover-right::before,\n\t.popover.bs-tether-element-attached-left::before {\n\t  left: -11px;\n\t  margin-top: -11px;\n\t  border-right-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-right::after,\n\t.popover.bs-tether-element-attached-left::after {\n\t  left: -10px;\n\t  margin-top: -10px;\n\t  border-right-color: #fff;\n\t}\n\n\t.popover.popover-bottom,\n\t.popover.bs-tether-element-attached-top {\n\t  margin-top: 10px;\n\t}\n\n\t.popover.popover-bottom::before,\n\t.popover.popover-bottom::after,\n\t.popover.bs-tether-element-attached-top::before,\n\t.popover.bs-tether-element-attached-top::after {\n\t  left: 50%;\n\t  border-top-width: 0;\n\t}\n\n\t.popover.popover-bottom::before,\n\t.popover.bs-tether-element-attached-top::before {\n\t  top: -11px;\n\t  margin-left: -11px;\n\t  border-bottom-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-bottom::after,\n\t.popover.bs-tether-element-attached-top::after {\n\t  top: -10px;\n\t  margin-left: -10px;\n\t  border-bottom-color: #f7f7f7;\n\t}\n\n\t.popover.popover-bottom .popover-title::before,\n\t.popover.bs-tether-element-attached-top .popover-title::before {\n\t  position: absolute;\n\t  top: 0;\n\t  left: 50%;\n\t  display: block;\n\t  width: 20px;\n\t  margin-left: -10px;\n\t  content: \"\";\n\t  border-bottom: 1px solid #f7f7f7;\n\t}\n\n\t.popover.popover-left,\n\t.popover.bs-tether-element-attached-right {\n\t  margin-left: -10px;\n\t}\n\n\t.popover.popover-left::before,\n\t.popover.popover-left::after,\n\t.popover.bs-tether-element-attached-right::before,\n\t.popover.bs-tether-element-attached-right::after {\n\t  top: 50%;\n\t  border-right-width: 0;\n\t}\n\n\t.popover.popover-left::before,\n\t.popover.bs-tether-element-attached-right::before {\n\t  right: -11px;\n\t  margin-top: -11px;\n\t  border-left-color: rgba(0, 0, 0, 0.25);\n\t}\n\n\t.popover.popover-left::after,\n\t.popover.bs-tether-element-attached-right::after {\n\t  right: -10px;\n\t  margin-top: -10px;\n\t  border-left-color: #fff;\n\t}\n\n\t.popover-title {\n\t  padding: 8px 14px;\n\t  margin-bottom: 0;\n\t  font-size: 1rem;\n\t  background-color: #f7f7f7;\n\t  border-bottom: 1px solid #ebebeb;\n\t  border-top-right-radius: calc(0.3rem - 1px);\n\t  border-top-left-radius: calc(0.3rem - 1px);\n\t}\n\n\t.popover-title:empty {\n\t  display: none;\n\t}\n\n\t.popover-content {\n\t  padding: 9px 14px;\n\t}\n\n\t.popover::before,\n\t.popover::after {\n\t  position: absolute;\n\t  display: block;\n\t  width: 0;\n\t  height: 0;\n\t  border-color: transparent;\n\t  border-style: solid;\n\t}\n\n\t.popover::before {\n\t  content: \"\";\n\t  border-width: 11px;\n\t}\n\n\t.popover::after {\n\t  content: \"\";\n\t  border-width: 10px;\n\t}\n\n\t.carousel {\n\t  position: relative;\n\t}\n\n\t.carousel-inner {\n\t  position: relative;\n\t  width: 100%;\n\t  overflow: hidden;\n\t}\n\n\t.carousel-item {\n\t  position: relative;\n\t  display: none;\n\t  width: 100%;\n\t}\n\n\t@media (-webkit-transform-3d) {\n\t  .carousel-item {\n\t    transition: transform 0.6s ease-in-out;\n\t    backface-visibility: hidden;\n\t    perspective: 1000px;\n\t  }\n\t}\n\n\t@supports (transform: translate3d(0,\n\t0,\n\t0)) {\n\t  .carousel-item {\n\t    transition: transform 0.6s ease-in-out;\n\t    backface-visibility: hidden;\n\t    perspective: 1000px;\n\t  }\n\t}\n\n\t.carousel-item.active,\n\t.carousel-item-next,\n\t.carousel-item-prev {\n\t  display: flex;\n\t}\n\n\t.carousel-item-next,\n\t.carousel-item-prev {\n\t  position: absolute;\n\t  top: 0;\n\t}\n\n\t@media (-webkit-transform-3d) {\n\t  .carousel-item-next.carousel-item-left,\n\t  .carousel-item-prev.carousel-item-right {\n\t    transform: translate3d(0, 0, 0);\n\t  }\n\t  .carousel-item-next,\n\t  .active.carousel-item-right {\n\t    transform: translate3d(100%, 0, 0);\n\t  }\n\t  .carousel-item-prev,\n\t  .active.carousel-item-left {\n\t    transform: translate3d(-100%, 0, 0);\n\t  }\n\t}\n\n\t@supports (transform: translate3d(0,\n\t0,\n\t0)) {\n\t  .carousel-item-next.carousel-item-left,\n\t  .carousel-item-prev.carousel-item-right {\n\t    transform: translate3d(0, 0, 0);\n\t  }\n\t  .carousel-item-next,\n\t  .active.carousel-item-right {\n\t    transform: translate3d(100%, 0, 0);\n\t  }\n\t  .carousel-item-prev,\n\t  .active.carousel-item-left {\n\t    transform: translate3d(-100%, 0, 0);\n\t  }\n\t}\n\n\t.carousel-control-prev,\n\t.carousel-control-next {\n\t  position: absolute;\n\t  top: 0;\n\t  bottom: 0;\n\t  display: flex;\n\t  align-items: center;\n\t  justify-content: center;\n\t  width: 15%;\n\t  color: #fff;\n\t  text-align: center;\n\t  opacity: 0.5;\n\t}\n\n\t.carousel-control-prev:focus,\n\t.carousel-control-prev:hover,\n\t.carousel-control-next:focus,\n\t.carousel-control-next:hover {\n\t  color: #fff;\n\t  text-decoration: none;\n\t  outline: 0;\n\t  opacity: .9;\n\t}\n\n\t.carousel-control-prev {\n\t  left: 0;\n\t}\n\n\t.carousel-control-next {\n\t  right: 0;\n\t}\n\n\t.carousel-control-prev-icon,\n\t.carousel-control-next-icon {\n\t  display: inline-block;\n\t  width: 20px;\n\t  height: 20px;\n\t  background: transparent no-repeat center center;\n\t  background-size: 100% 100%;\n\t}\n\n\t.carousel-control-prev-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M4 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E\");\n\t}\n\n\t.carousel-control-next-icon {\n\t  background-image: url(\"data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E\");\n\t}\n\n\t.carousel-indicators {\n\t  position: absolute;\n\t  right: 0;\n\t  bottom: 10px;\n\t  left: 0;\n\t  z-index: 15;\n\t  display: flex;\n\t  justify-content: center;\n\t  padding-left: 0;\n\t  margin-right: 15%;\n\t  margin-left: 15%;\n\t  list-style: none;\n\t}\n\n\t.carousel-indicators li {\n\t  position: relative;\n\t  flex: 1 0 auto;\n\t  max-width: 30px;\n\t  height: 3px;\n\t  margin-right: 3px;\n\t  margin-left: 3px;\n\t  text-indent: -999px;\n\t  cursor: pointer;\n\t  background-color: rgba(255, 255, 255, 0.5);\n\t}\n\n\t.carousel-indicators li::before {\n\t  position: absolute;\n\t  top: -10px;\n\t  left: 0;\n\t  display: inline-block;\n\t  width: 100%;\n\t  height: 10px;\n\t  content: \"\";\n\t}\n\n\t.carousel-indicators li::after {\n\t  position: absolute;\n\t  bottom: -10px;\n\t  left: 0;\n\t  display: inline-block;\n\t  width: 100%;\n\t  height: 10px;\n\t  content: \"\";\n\t}\n\n\t.carousel-indicators .active {\n\t  background-color: #fff;\n\t}\n\n\t.carousel-caption {\n\t  position: absolute;\n\t  right: 15%;\n\t  bottom: 20px;\n\t  left: 15%;\n\t  z-index: 10;\n\t  padding-top: 20px;\n\t  padding-bottom: 20px;\n\t  color: #fff;\n\t  text-align: center;\n\t}\n\n\t.align-baseline {\n\t  vertical-align: baseline !important;\n\t}\n\n\t.align-top {\n\t  vertical-align: top !important;\n\t}\n\n\t.align-middle {\n\t  vertical-align: middle !important;\n\t}\n\n\t.align-bottom {\n\t  vertical-align: bottom !important;\n\t}\n\n\t.align-text-bottom {\n\t  vertical-align: text-bottom !important;\n\t}\n\n\t.align-text-top {\n\t  vertical-align: text-top !important;\n\t}\n\n\t.bg-faded {\n\t  background-color: #f7f7f7;\n\t}\n\n\t.bg-primary {\n\t  background-color: #0f8699 !important;\n\t}\n\n\ta.bg-primary:focus,\n\ta.bg-primary:hover {\n\t  background-color: #0a5d6b !important;\n\t}\n\n\t.bg-success {\n\t  background-color: #5cb85c !important;\n\t}\n\n\ta.bg-success:focus,\n\ta.bg-success:hover {\n\t  background-color: #449d44 !important;\n\t}\n\n\t.bg-info {\n\t  background-color: #5bc0de !important;\n\t}\n\n\ta.bg-info:focus,\n\ta.bg-info:hover {\n\t  background-color: #31b0d5 !important;\n\t}\n\n\t.bg-warning {\n\t  background-color: #f0ad4e !important;\n\t}\n\n\ta.bg-warning:focus,\n\ta.bg-warning:hover {\n\t  background-color: #ec971f !important;\n\t}\n\n\t.bg-danger {\n\t  background-color: #d9534f !important;\n\t}\n\n\ta.bg-danger:focus,\n\ta.bg-danger:hover {\n\t  background-color: #c9302c !important;\n\t}\n\n\t.bg-inverse {\n\t  background-color: #292b2c !important;\n\t}\n\n\ta.bg-inverse:focus,\n\ta.bg-inverse:hover {\n\t  background-color: #101112 !important;\n\t}\n\n\t.border-0 {\n\t  border: 0 !important;\n\t}\n\n\t.border-top-0 {\n\t  border-top: 0 !important;\n\t}\n\n\t.border-right-0 {\n\t  border-right: 0 !important;\n\t}\n\n\t.border-bottom-0 {\n\t  border-bottom: 0 !important;\n\t}\n\n\t.border-left-0 {\n\t  border-left: 0 !important;\n\t}\n\n\t.rounded {\n\t  border-radius: 0.25rem;\n\t}\n\n\t.rounded-top {\n\t  border-top-right-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.rounded-right {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-top-right-radius: 0.25rem;\n\t}\n\n\t.rounded-bottom {\n\t  border-bottom-right-radius: 0.25rem;\n\t  border-bottom-left-radius: 0.25rem;\n\t}\n\n\t.rounded-left {\n\t  border-bottom-left-radius: 0.25rem;\n\t  border-top-left-radius: 0.25rem;\n\t}\n\n\t.rounded-circle {\n\t  border-radius: 50%;\n\t}\n\n\t.rounded-0 {\n\t  border-radius: 0;\n\t}\n\n\t.d-none {\n\t  display: none !important;\n\t}\n\n\t.d-inline {\n\t  display: inline !important;\n\t}\n\n\t.d-inline-block {\n\t  display: inline-block !important;\n\t}\n\n\t.d-block {\n\t  display: block !important;\n\t}\n\n\t.d-table {\n\t  display: table !important;\n\t}\n\n\t.d-table-cell {\n\t  display: table-cell !important;\n\t}\n\n\t.d-flex {\n\t  display: flex !important;\n\t}\n\n\t.d-inline-flex {\n\t  display: inline-flex !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .d-sm-none {\n\t    display: none !important;\n\t  }\n\t  .d-sm-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-sm-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-sm-block {\n\t    display: block !important;\n\t  }\n\t  .d-sm-table {\n\t    display: table !important;\n\t  }\n\t  .d-sm-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-sm-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-sm-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .d-md-none {\n\t    display: none !important;\n\t  }\n\t  .d-md-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-md-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-md-block {\n\t    display: block !important;\n\t  }\n\t  .d-md-table {\n\t    display: table !important;\n\t  }\n\t  .d-md-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-md-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-md-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .d-lg-none {\n\t    display: none !important;\n\t  }\n\t  .d-lg-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-lg-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-lg-block {\n\t    display: block !important;\n\t  }\n\t  .d-lg-table {\n\t    display: table !important;\n\t  }\n\t  .d-lg-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-lg-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-lg-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .d-xl-none {\n\t    display: none !important;\n\t  }\n\t  .d-xl-inline {\n\t    display: inline !important;\n\t  }\n\t  .d-xl-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t  .d-xl-block {\n\t    display: block !important;\n\t  }\n\t  .d-xl-table {\n\t    display: table !important;\n\t  }\n\t  .d-xl-table-cell {\n\t    display: table-cell !important;\n\t  }\n\t  .d-xl-flex {\n\t    display: flex !important;\n\t  }\n\t  .d-xl-inline-flex {\n\t    display: inline-flex !important;\n\t  }\n\t}\n\n\t.flex-first {\n\t  order: -1;\n\t}\n\n\t.flex-last {\n\t  order: 1;\n\t}\n\n\t.flex-unordered {\n\t  order: 0;\n\t}\n\n\t.flex-row {\n\t  flex-direction: row !important;\n\t}\n\n\t.flex-column {\n\t  flex-direction: column !important;\n\t}\n\n\t.flex-row-reverse {\n\t  flex-direction: row-reverse !important;\n\t}\n\n\t.flex-column-reverse {\n\t  flex-direction: column-reverse !important;\n\t}\n\n\t.flex-wrap {\n\t  flex-wrap: wrap !important;\n\t}\n\n\t.flex-nowrap {\n\t  flex-wrap: nowrap !important;\n\t}\n\n\t.flex-wrap-reverse {\n\t  flex-wrap: wrap-reverse !important;\n\t}\n\n\t.justify-content-start {\n\t  justify-content: flex-start !important;\n\t}\n\n\t.justify-content-end {\n\t  justify-content: flex-end !important;\n\t}\n\n\t.justify-content-center {\n\t  justify-content: center !important;\n\t}\n\n\t.justify-content-between {\n\t  justify-content: space-between !important;\n\t}\n\n\t.justify-content-around {\n\t  justify-content: space-around !important;\n\t}\n\n\t.align-items-start {\n\t  align-items: flex-start !important;\n\t}\n\n\t.align-items-end {\n\t  align-items: flex-end !important;\n\t}\n\n\t.align-items-center {\n\t  align-items: center !important;\n\t}\n\n\t.align-items-baseline {\n\t  align-items: baseline !important;\n\t}\n\n\t.align-items-stretch {\n\t  align-items: stretch !important;\n\t}\n\n\t.align-content-start {\n\t  align-content: flex-start !important;\n\t}\n\n\t.align-content-end {\n\t  align-content: flex-end !important;\n\t}\n\n\t.align-content-center {\n\t  align-content: center !important;\n\t}\n\n\t.align-content-between {\n\t  align-content: space-between !important;\n\t}\n\n\t.align-content-around {\n\t  align-content: space-around !important;\n\t}\n\n\t.align-content-stretch {\n\t  align-content: stretch !important;\n\t}\n\n\t.align-self-auto {\n\t  align-self: auto !important;\n\t}\n\n\t.align-self-start {\n\t  align-self: flex-start !important;\n\t}\n\n\t.align-self-end {\n\t  align-self: flex-end !important;\n\t}\n\n\t.align-self-center {\n\t  align-self: center !important;\n\t}\n\n\t.align-self-baseline {\n\t  align-self: baseline !important;\n\t}\n\n\t.align-self-stretch {\n\t  align-self: stretch !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .flex-sm-first {\n\t    order: -1;\n\t  }\n\t  .flex-sm-last {\n\t    order: 1;\n\t  }\n\t  .flex-sm-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-sm-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-sm-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-sm-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-sm-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-sm-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-sm-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-sm-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-sm-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-sm-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-sm-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-sm-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-sm-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-sm-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-sm-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-sm-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-sm-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-sm-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-sm-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-sm-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-sm-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-sm-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-sm-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-sm-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-sm-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-sm-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-sm-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-sm-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-sm-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-sm-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .flex-md-first {\n\t    order: -1;\n\t  }\n\t  .flex-md-last {\n\t    order: 1;\n\t  }\n\t  .flex-md-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-md-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-md-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-md-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-md-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-md-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-md-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-md-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-md-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-md-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-md-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-md-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-md-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-md-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-md-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-md-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-md-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-md-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-md-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-md-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-md-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-md-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-md-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-md-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-md-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-md-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-md-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-md-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-md-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-md-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .flex-lg-first {\n\t    order: -1;\n\t  }\n\t  .flex-lg-last {\n\t    order: 1;\n\t  }\n\t  .flex-lg-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-lg-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-lg-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-lg-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-lg-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-lg-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-lg-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-lg-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-lg-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-lg-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-lg-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-lg-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-lg-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-lg-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-lg-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-lg-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-lg-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-lg-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-lg-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-lg-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-lg-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-lg-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-lg-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-lg-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-lg-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-lg-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-lg-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-lg-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-lg-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-lg-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .flex-xl-first {\n\t    order: -1;\n\t  }\n\t  .flex-xl-last {\n\t    order: 1;\n\t  }\n\t  .flex-xl-unordered {\n\t    order: 0;\n\t  }\n\t  .flex-xl-row {\n\t    flex-direction: row !important;\n\t  }\n\t  .flex-xl-column {\n\t    flex-direction: column !important;\n\t  }\n\t  .flex-xl-row-reverse {\n\t    flex-direction: row-reverse !important;\n\t  }\n\t  .flex-xl-column-reverse {\n\t    flex-direction: column-reverse !important;\n\t  }\n\t  .flex-xl-wrap {\n\t    flex-wrap: wrap !important;\n\t  }\n\t  .flex-xl-nowrap {\n\t    flex-wrap: nowrap !important;\n\t  }\n\t  .flex-xl-wrap-reverse {\n\t    flex-wrap: wrap-reverse !important;\n\t  }\n\t  .justify-content-xl-start {\n\t    justify-content: flex-start !important;\n\t  }\n\t  .justify-content-xl-end {\n\t    justify-content: flex-end !important;\n\t  }\n\t  .justify-content-xl-center {\n\t    justify-content: center !important;\n\t  }\n\t  .justify-content-xl-between {\n\t    justify-content: space-between !important;\n\t  }\n\t  .justify-content-xl-around {\n\t    justify-content: space-around !important;\n\t  }\n\t  .align-items-xl-start {\n\t    align-items: flex-start !important;\n\t  }\n\t  .align-items-xl-end {\n\t    align-items: flex-end !important;\n\t  }\n\t  .align-items-xl-center {\n\t    align-items: center !important;\n\t  }\n\t  .align-items-xl-baseline {\n\t    align-items: baseline !important;\n\t  }\n\t  .align-items-xl-stretch {\n\t    align-items: stretch !important;\n\t  }\n\t  .align-content-xl-start {\n\t    align-content: flex-start !important;\n\t  }\n\t  .align-content-xl-end {\n\t    align-content: flex-end !important;\n\t  }\n\t  .align-content-xl-center {\n\t    align-content: center !important;\n\t  }\n\t  .align-content-xl-between {\n\t    align-content: space-between !important;\n\t  }\n\t  .align-content-xl-around {\n\t    align-content: space-around !important;\n\t  }\n\t  .align-content-xl-stretch {\n\t    align-content: stretch !important;\n\t  }\n\t  .align-self-xl-auto {\n\t    align-self: auto !important;\n\t  }\n\t  .align-self-xl-start {\n\t    align-self: flex-start !important;\n\t  }\n\t  .align-self-xl-end {\n\t    align-self: flex-end !important;\n\t  }\n\t  .align-self-xl-center {\n\t    align-self: center !important;\n\t  }\n\t  .align-self-xl-baseline {\n\t    align-self: baseline !important;\n\t  }\n\t  .align-self-xl-stretch {\n\t    align-self: stretch !important;\n\t  }\n\t}\n\n\t.float-left {\n\t  float: left !important;\n\t}\n\n\t.float-right {\n\t  float: right !important;\n\t}\n\n\t.float-none {\n\t  float: none !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .float-sm-left {\n\t    float: left !important;\n\t  }\n\t  .float-sm-right {\n\t    float: right !important;\n\t  }\n\t  .float-sm-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .float-md-left {\n\t    float: left !important;\n\t  }\n\t  .float-md-right {\n\t    float: right !important;\n\t  }\n\t  .float-md-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .float-lg-left {\n\t    float: left !important;\n\t  }\n\t  .float-lg-right {\n\t    float: right !important;\n\t  }\n\t  .float-lg-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .float-xl-left {\n\t    float: left !important;\n\t  }\n\t  .float-xl-right {\n\t    float: right !important;\n\t  }\n\t  .float-xl-none {\n\t    float: none !important;\n\t  }\n\t}\n\n\t.fixed-top {\n\t  position: fixed;\n\t  top: 0;\n\t  right: 0;\n\t  left: 0;\n\t  z-index: 1030;\n\t}\n\n\t.fixed-bottom {\n\t  position: fixed;\n\t  right: 0;\n\t  bottom: 0;\n\t  left: 0;\n\t  z-index: 1030;\n\t}\n\n\t.sticky-top {\n\t  position: sticky;\n\t  top: 0;\n\t  z-index: 1030;\n\t}\n\n\t.sr-only {\n\t  position: absolute;\n\t  width: 1px;\n\t  height: 1px;\n\t  padding: 0;\n\t  margin: -1px;\n\t  overflow: hidden;\n\t  clip: rect(0, 0, 0, 0);\n\t  border: 0;\n\t}\n\n\t.sr-only-focusable:active,\n\t.sr-only-focusable:focus {\n\t  position: static;\n\t  width: auto;\n\t  height: auto;\n\t  margin: 0;\n\t  overflow: visible;\n\t  clip: auto;\n\t}\n\n\t.w-25 {\n\t  width: 25% !important;\n\t}\n\n\t.w-50 {\n\t  width: 50% !important;\n\t}\n\n\t.w-75 {\n\t  width: 75% !important;\n\t}\n\n\t.w-100 {\n\t  width: 100% !important;\n\t}\n\n\t.h-25 {\n\t  height: 25% !important;\n\t}\n\n\t.h-50 {\n\t  height: 50% !important;\n\t}\n\n\t.h-75 {\n\t  height: 75% !important;\n\t}\n\n\t.h-100 {\n\t  height: 100% !important;\n\t}\n\n\t.mw-100 {\n\t  max-width: 100% !important;\n\t}\n\n\t.mh-100 {\n\t  max-height: 100% !important;\n\t}\n\n\t.m-0 {\n\t  margin: 0 0 !important;\n\t}\n\n\t.mt-0 {\n\t  margin-top: 0 !important;\n\t}\n\n\t.mr-0 {\n\t  margin-right: 0 !important;\n\t}\n\n\t.mb-0 {\n\t  margin-bottom: 0 !important;\n\t}\n\n\t.ml-0 {\n\t  margin-left: 0 !important;\n\t}\n\n\t.mx-0 {\n\t  margin-right: 0 !important;\n\t  margin-left: 0 !important;\n\t}\n\n\t.my-0 {\n\t  margin-top: 0 !important;\n\t  margin-bottom: 0 !important;\n\t}\n\n\t.m-1 {\n\t  margin: 0.25rem 0.25rem !important;\n\t}\n\n\t.mt-1 {\n\t  margin-top: 0.25rem !important;\n\t}\n\n\t.mr-1 {\n\t  margin-right: 0.25rem !important;\n\t}\n\n\t.mb-1 {\n\t  margin-bottom: 0.25rem !important;\n\t}\n\n\t.ml-1 {\n\t  margin-left: 0.25rem !important;\n\t}\n\n\t.mx-1 {\n\t  margin-right: 0.25rem !important;\n\t  margin-left: 0.25rem !important;\n\t}\n\n\t.my-1 {\n\t  margin-top: 0.25rem !important;\n\t  margin-bottom: 0.25rem !important;\n\t}\n\n\t.m-2 {\n\t  margin: 0.5rem 0.5rem !important;\n\t}\n\n\t.mt-2 {\n\t  margin-top: 0.5rem !important;\n\t}\n\n\t.mr-2 {\n\t  margin-right: 0.5rem !important;\n\t}\n\n\t.mb-2 {\n\t  margin-bottom: 0.5rem !important;\n\t}\n\n\t.ml-2 {\n\t  margin-left: 0.5rem !important;\n\t}\n\n\t.mx-2 {\n\t  margin-right: 0.5rem !important;\n\t  margin-left: 0.5rem !important;\n\t}\n\n\t.my-2 {\n\t  margin-top: 0.5rem !important;\n\t  margin-bottom: 0.5rem !important;\n\t}\n\n\t.m-3 {\n\t  margin: 1rem 1rem !important;\n\t}\n\n\t.mt-3 {\n\t  margin-top: 1rem !important;\n\t}\n\n\t.mr-3 {\n\t  margin-right: 1rem !important;\n\t}\n\n\t.mb-3 {\n\t  margin-bottom: 1rem !important;\n\t}\n\n\t.ml-3 {\n\t  margin-left: 1rem !important;\n\t}\n\n\t.mx-3 {\n\t  margin-right: 1rem !important;\n\t  margin-left: 1rem !important;\n\t}\n\n\t.my-3 {\n\t  margin-top: 1rem !important;\n\t  margin-bottom: 1rem !important;\n\t}\n\n\t.m-4 {\n\t  margin: 1.5rem 1.5rem !important;\n\t}\n\n\t.mt-4 {\n\t  margin-top: 1.5rem !important;\n\t}\n\n\t.mr-4 {\n\t  margin-right: 1.5rem !important;\n\t}\n\n\t.mb-4 {\n\t  margin-bottom: 1.5rem !important;\n\t}\n\n\t.ml-4 {\n\t  margin-left: 1.5rem !important;\n\t}\n\n\t.mx-4 {\n\t  margin-right: 1.5rem !important;\n\t  margin-left: 1.5rem !important;\n\t}\n\n\t.my-4 {\n\t  margin-top: 1.5rem !important;\n\t  margin-bottom: 1.5rem !important;\n\t}\n\n\t.m-5 {\n\t  margin: 3rem 3rem !important;\n\t}\n\n\t.mt-5 {\n\t  margin-top: 3rem !important;\n\t}\n\n\t.mr-5 {\n\t  margin-right: 3rem !important;\n\t}\n\n\t.mb-5 {\n\t  margin-bottom: 3rem !important;\n\t}\n\n\t.ml-5 {\n\t  margin-left: 3rem !important;\n\t}\n\n\t.mx-5 {\n\t  margin-right: 3rem !important;\n\t  margin-left: 3rem !important;\n\t}\n\n\t.my-5 {\n\t  margin-top: 3rem !important;\n\t  margin-bottom: 3rem !important;\n\t}\n\n\t.p-0 {\n\t  padding: 0 0 !important;\n\t}\n\n\t.pt-0 {\n\t  padding-top: 0 !important;\n\t}\n\n\t.pr-0 {\n\t  padding-right: 0 !important;\n\t}\n\n\t.pb-0 {\n\t  padding-bottom: 0 !important;\n\t}\n\n\t.pl-0 {\n\t  padding-left: 0 !important;\n\t}\n\n\t.px-0 {\n\t  padding-right: 0 !important;\n\t  padding-left: 0 !important;\n\t}\n\n\t.py-0 {\n\t  padding-top: 0 !important;\n\t  padding-bottom: 0 !important;\n\t}\n\n\t.p-1 {\n\t  padding: 0.25rem 0.25rem !important;\n\t}\n\n\t.pt-1 {\n\t  padding-top: 0.25rem !important;\n\t}\n\n\t.pr-1 {\n\t  padding-right: 0.25rem !important;\n\t}\n\n\t.pb-1 {\n\t  padding-bottom: 0.25rem !important;\n\t}\n\n\t.pl-1 {\n\t  padding-left: 0.25rem !important;\n\t}\n\n\t.px-1 {\n\t  padding-right: 0.25rem !important;\n\t  padding-left: 0.25rem !important;\n\t}\n\n\t.py-1 {\n\t  padding-top: 0.25rem !important;\n\t  padding-bottom: 0.25rem !important;\n\t}\n\n\t.p-2 {\n\t  padding: 0.5rem 0.5rem !important;\n\t}\n\n\t.pt-2 {\n\t  padding-top: 0.5rem !important;\n\t}\n\n\t.pr-2 {\n\t  padding-right: 0.5rem !important;\n\t}\n\n\t.pb-2 {\n\t  padding-bottom: 0.5rem !important;\n\t}\n\n\t.pl-2 {\n\t  padding-left: 0.5rem !important;\n\t}\n\n\t.px-2 {\n\t  padding-right: 0.5rem !important;\n\t  padding-left: 0.5rem !important;\n\t}\n\n\t.py-2 {\n\t  padding-top: 0.5rem !important;\n\t  padding-bottom: 0.5rem !important;\n\t}\n\n\t.p-3 {\n\t  padding: 1rem 1rem !important;\n\t}\n\n\t.pt-3 {\n\t  padding-top: 1rem !important;\n\t}\n\n\t.pr-3 {\n\t  padding-right: 1rem !important;\n\t}\n\n\t.pb-3 {\n\t  padding-bottom: 1rem !important;\n\t}\n\n\t.pl-3 {\n\t  padding-left: 1rem !important;\n\t}\n\n\t.px-3 {\n\t  padding-right: 1rem !important;\n\t  padding-left: 1rem !important;\n\t}\n\n\t.py-3 {\n\t  padding-top: 1rem !important;\n\t  padding-bottom: 1rem !important;\n\t}\n\n\t.p-4 {\n\t  padding: 1.5rem 1.5rem !important;\n\t}\n\n\t.pt-4 {\n\t  padding-top: 1.5rem !important;\n\t}\n\n\t.pr-4 {\n\t  padding-right: 1.5rem !important;\n\t}\n\n\t.pb-4 {\n\t  padding-bottom: 1.5rem !important;\n\t}\n\n\t.pl-4 {\n\t  padding-left: 1.5rem !important;\n\t}\n\n\t.px-4 {\n\t  padding-right: 1.5rem !important;\n\t  padding-left: 1.5rem !important;\n\t}\n\n\t.py-4 {\n\t  padding-top: 1.5rem !important;\n\t  padding-bottom: 1.5rem !important;\n\t}\n\n\t.p-5 {\n\t  padding: 3rem 3rem !important;\n\t}\n\n\t.pt-5 {\n\t  padding-top: 3rem !important;\n\t}\n\n\t.pr-5 {\n\t  padding-right: 3rem !important;\n\t}\n\n\t.pb-5 {\n\t  padding-bottom: 3rem !important;\n\t}\n\n\t.pl-5 {\n\t  padding-left: 3rem !important;\n\t}\n\n\t.px-5 {\n\t  padding-right: 3rem !important;\n\t  padding-left: 3rem !important;\n\t}\n\n\t.py-5 {\n\t  padding-top: 3rem !important;\n\t  padding-bottom: 3rem !important;\n\t}\n\n\t.m-auto {\n\t  margin: auto !important;\n\t}\n\n\t.mt-auto {\n\t  margin-top: auto !important;\n\t}\n\n\t.mr-auto {\n\t  margin-right: auto !important;\n\t}\n\n\t.mb-auto {\n\t  margin-bottom: auto !important;\n\t}\n\n\t.ml-auto {\n\t  margin-left: auto !important;\n\t}\n\n\t.mx-auto {\n\t  margin-right: auto !important;\n\t  margin-left: auto !important;\n\t}\n\n\t.my-auto {\n\t  margin-top: auto !important;\n\t  margin-bottom: auto !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .m-sm-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-sm-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-sm-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-sm-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-sm-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-sm-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-sm-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-sm-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-sm-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-sm-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-sm-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-sm-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-sm-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-sm-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-sm-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-sm-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-sm-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-sm-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-sm-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-sm-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-sm-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-sm-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-sm-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-sm-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-sm-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-sm-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-sm-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-sm-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-sm-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-sm-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-sm-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-sm-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-sm-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-sm-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-sm-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-sm-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-sm-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-sm-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-sm-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-sm-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-sm-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-sm-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-sm-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-sm-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-sm-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-sm-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-sm-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-sm-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-sm-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-sm-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-sm-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-sm-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-sm-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-sm-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-sm-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-sm-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-sm-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-sm-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-sm-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-sm-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-sm-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-sm-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-sm-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-sm-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-sm-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-sm-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-sm-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-sm-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-sm-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-sm-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-sm-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-sm-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-sm-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-sm-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-sm-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-sm-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-sm-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-sm-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-sm-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-sm-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-sm-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-sm-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-sm-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-sm-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-sm-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-sm-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-sm-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-sm-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-sm-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-sm-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-sm-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .m-md-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-md-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-md-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-md-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-md-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-md-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-md-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-md-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-md-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-md-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-md-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-md-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-md-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-md-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-md-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-md-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-md-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-md-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-md-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-md-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-md-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-md-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-md-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-md-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-md-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-md-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-md-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-md-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-md-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-md-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-md-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-md-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-md-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-md-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-md-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-md-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-md-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-md-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-md-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-md-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-md-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-md-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-md-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-md-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-md-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-md-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-md-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-md-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-md-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-md-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-md-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-md-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-md-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-md-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-md-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-md-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-md-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-md-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-md-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-md-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-md-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-md-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-md-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-md-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-md-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-md-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-md-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-md-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-md-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-md-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-md-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-md-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-md-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-md-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-md-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-md-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-md-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-md-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-md-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-md-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-md-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-md-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-md-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-md-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-md-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-md-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-md-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-md-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-md-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-md-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-md-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .m-lg-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-lg-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-lg-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-lg-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-lg-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-lg-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-lg-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-lg-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-lg-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-lg-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-lg-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-lg-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-lg-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-lg-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-lg-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-lg-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-lg-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-lg-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-lg-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-lg-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-lg-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-lg-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-lg-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-lg-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-lg-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-lg-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-lg-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-lg-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-lg-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-lg-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-lg-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-lg-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-lg-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-lg-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-lg-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-lg-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-lg-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-lg-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-lg-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-lg-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-lg-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-lg-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-lg-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-lg-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-lg-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-lg-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-lg-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-lg-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-lg-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-lg-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-lg-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-lg-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-lg-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-lg-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-lg-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-lg-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-lg-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-lg-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-lg-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-lg-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-lg-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-lg-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-lg-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-lg-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-lg-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-lg-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-lg-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-lg-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-lg-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-lg-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-lg-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-lg-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-lg-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-lg-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-lg-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-lg-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-lg-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-lg-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-lg-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-lg-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-lg-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-lg-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-lg-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-lg-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-lg-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-lg-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-lg-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-lg-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-lg-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-lg-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-lg-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .m-xl-0 {\n\t    margin: 0 0 !important;\n\t  }\n\t  .mt-xl-0 {\n\t    margin-top: 0 !important;\n\t  }\n\t  .mr-xl-0 {\n\t    margin-right: 0 !important;\n\t  }\n\t  .mb-xl-0 {\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .ml-xl-0 {\n\t    margin-left: 0 !important;\n\t  }\n\t  .mx-xl-0 {\n\t    margin-right: 0 !important;\n\t    margin-left: 0 !important;\n\t  }\n\t  .my-xl-0 {\n\t    margin-top: 0 !important;\n\t    margin-bottom: 0 !important;\n\t  }\n\t  .m-xl-1 {\n\t    margin: 0.25rem 0.25rem !important;\n\t  }\n\t  .mt-xl-1 {\n\t    margin-top: 0.25rem !important;\n\t  }\n\t  .mr-xl-1 {\n\t    margin-right: 0.25rem !important;\n\t  }\n\t  .mb-xl-1 {\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .ml-xl-1 {\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .mx-xl-1 {\n\t    margin-right: 0.25rem !important;\n\t    margin-left: 0.25rem !important;\n\t  }\n\t  .my-xl-1 {\n\t    margin-top: 0.25rem !important;\n\t    margin-bottom: 0.25rem !important;\n\t  }\n\t  .m-xl-2 {\n\t    margin: 0.5rem 0.5rem !important;\n\t  }\n\t  .mt-xl-2 {\n\t    margin-top: 0.5rem !important;\n\t  }\n\t  .mr-xl-2 {\n\t    margin-right: 0.5rem !important;\n\t  }\n\t  .mb-xl-2 {\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .ml-xl-2 {\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .mx-xl-2 {\n\t    margin-right: 0.5rem !important;\n\t    margin-left: 0.5rem !important;\n\t  }\n\t  .my-xl-2 {\n\t    margin-top: 0.5rem !important;\n\t    margin-bottom: 0.5rem !important;\n\t  }\n\t  .m-xl-3 {\n\t    margin: 1rem 1rem !important;\n\t  }\n\t  .mt-xl-3 {\n\t    margin-top: 1rem !important;\n\t  }\n\t  .mr-xl-3 {\n\t    margin-right: 1rem !important;\n\t  }\n\t  .mb-xl-3 {\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .ml-xl-3 {\n\t    margin-left: 1rem !important;\n\t  }\n\t  .mx-xl-3 {\n\t    margin-right: 1rem !important;\n\t    margin-left: 1rem !important;\n\t  }\n\t  .my-xl-3 {\n\t    margin-top: 1rem !important;\n\t    margin-bottom: 1rem !important;\n\t  }\n\t  .m-xl-4 {\n\t    margin: 1.5rem 1.5rem !important;\n\t  }\n\t  .mt-xl-4 {\n\t    margin-top: 1.5rem !important;\n\t  }\n\t  .mr-xl-4 {\n\t    margin-right: 1.5rem !important;\n\t  }\n\t  .mb-xl-4 {\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .ml-xl-4 {\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .mx-xl-4 {\n\t    margin-right: 1.5rem !important;\n\t    margin-left: 1.5rem !important;\n\t  }\n\t  .my-xl-4 {\n\t    margin-top: 1.5rem !important;\n\t    margin-bottom: 1.5rem !important;\n\t  }\n\t  .m-xl-5 {\n\t    margin: 3rem 3rem !important;\n\t  }\n\t  .mt-xl-5 {\n\t    margin-top: 3rem !important;\n\t  }\n\t  .mr-xl-5 {\n\t    margin-right: 3rem !important;\n\t  }\n\t  .mb-xl-5 {\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .ml-xl-5 {\n\t    margin-left: 3rem !important;\n\t  }\n\t  .mx-xl-5 {\n\t    margin-right: 3rem !important;\n\t    margin-left: 3rem !important;\n\t  }\n\t  .my-xl-5 {\n\t    margin-top: 3rem !important;\n\t    margin-bottom: 3rem !important;\n\t  }\n\t  .p-xl-0 {\n\t    padding: 0 0 !important;\n\t  }\n\t  .pt-xl-0 {\n\t    padding-top: 0 !important;\n\t  }\n\t  .pr-xl-0 {\n\t    padding-right: 0 !important;\n\t  }\n\t  .pb-xl-0 {\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .pl-xl-0 {\n\t    padding-left: 0 !important;\n\t  }\n\t  .px-xl-0 {\n\t    padding-right: 0 !important;\n\t    padding-left: 0 !important;\n\t  }\n\t  .py-xl-0 {\n\t    padding-top: 0 !important;\n\t    padding-bottom: 0 !important;\n\t  }\n\t  .p-xl-1 {\n\t    padding: 0.25rem 0.25rem !important;\n\t  }\n\t  .pt-xl-1 {\n\t    padding-top: 0.25rem !important;\n\t  }\n\t  .pr-xl-1 {\n\t    padding-right: 0.25rem !important;\n\t  }\n\t  .pb-xl-1 {\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .pl-xl-1 {\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .px-xl-1 {\n\t    padding-right: 0.25rem !important;\n\t    padding-left: 0.25rem !important;\n\t  }\n\t  .py-xl-1 {\n\t    padding-top: 0.25rem !important;\n\t    padding-bottom: 0.25rem !important;\n\t  }\n\t  .p-xl-2 {\n\t    padding: 0.5rem 0.5rem !important;\n\t  }\n\t  .pt-xl-2 {\n\t    padding-top: 0.5rem !important;\n\t  }\n\t  .pr-xl-2 {\n\t    padding-right: 0.5rem !important;\n\t  }\n\t  .pb-xl-2 {\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .pl-xl-2 {\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .px-xl-2 {\n\t    padding-right: 0.5rem !important;\n\t    padding-left: 0.5rem !important;\n\t  }\n\t  .py-xl-2 {\n\t    padding-top: 0.5rem !important;\n\t    padding-bottom: 0.5rem !important;\n\t  }\n\t  .p-xl-3 {\n\t    padding: 1rem 1rem !important;\n\t  }\n\t  .pt-xl-3 {\n\t    padding-top: 1rem !important;\n\t  }\n\t  .pr-xl-3 {\n\t    padding-right: 1rem !important;\n\t  }\n\t  .pb-xl-3 {\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .pl-xl-3 {\n\t    padding-left: 1rem !important;\n\t  }\n\t  .px-xl-3 {\n\t    padding-right: 1rem !important;\n\t    padding-left: 1rem !important;\n\t  }\n\t  .py-xl-3 {\n\t    padding-top: 1rem !important;\n\t    padding-bottom: 1rem !important;\n\t  }\n\t  .p-xl-4 {\n\t    padding: 1.5rem 1.5rem !important;\n\t  }\n\t  .pt-xl-4 {\n\t    padding-top: 1.5rem !important;\n\t  }\n\t  .pr-xl-4 {\n\t    padding-right: 1.5rem !important;\n\t  }\n\t  .pb-xl-4 {\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .pl-xl-4 {\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .px-xl-4 {\n\t    padding-right: 1.5rem !important;\n\t    padding-left: 1.5rem !important;\n\t  }\n\t  .py-xl-4 {\n\t    padding-top: 1.5rem !important;\n\t    padding-bottom: 1.5rem !important;\n\t  }\n\t  .p-xl-5 {\n\t    padding: 3rem 3rem !important;\n\t  }\n\t  .pt-xl-5 {\n\t    padding-top: 3rem !important;\n\t  }\n\t  .pr-xl-5 {\n\t    padding-right: 3rem !important;\n\t  }\n\t  .pb-xl-5 {\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .pl-xl-5 {\n\t    padding-left: 3rem !important;\n\t  }\n\t  .px-xl-5 {\n\t    padding-right: 3rem !important;\n\t    padding-left: 3rem !important;\n\t  }\n\t  .py-xl-5 {\n\t    padding-top: 3rem !important;\n\t    padding-bottom: 3rem !important;\n\t  }\n\t  .m-xl-auto {\n\t    margin: auto !important;\n\t  }\n\t  .mt-xl-auto {\n\t    margin-top: auto !important;\n\t  }\n\t  .mr-xl-auto {\n\t    margin-right: auto !important;\n\t  }\n\t  .mb-xl-auto {\n\t    margin-bottom: auto !important;\n\t  }\n\t  .ml-xl-auto {\n\t    margin-left: auto !important;\n\t  }\n\t  .mx-xl-auto {\n\t    margin-right: auto !important;\n\t    margin-left: auto !important;\n\t  }\n\t  .my-xl-auto {\n\t    margin-top: auto !important;\n\t    margin-bottom: auto !important;\n\t  }\n\t}\n\n\t.text-justify {\n\t  text-align: justify !important;\n\t}\n\n\t.text-nowrap {\n\t  white-space: nowrap !important;\n\t}\n\n\t.text-truncate {\n\t  overflow: hidden;\n\t  text-overflow: ellipsis;\n\t  white-space: nowrap;\n\t}\n\n\t.text-left {\n\t  text-align: left !important;\n\t}\n\n\t.text-right {\n\t  text-align: right !important;\n\t}\n\n\t.text-center {\n\t  text-align: center !important;\n\t}\n\n\t@media (min-width: 576px) {\n\t  .text-sm-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-sm-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-sm-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .text-md-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-md-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-md-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .text-lg-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-lg-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-lg-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .text-xl-left {\n\t    text-align: left !important;\n\t  }\n\t  .text-xl-right {\n\t    text-align: right !important;\n\t  }\n\t  .text-xl-center {\n\t    text-align: center !important;\n\t  }\n\t}\n\n\t.text-lowercase {\n\t  text-transform: lowercase !important;\n\t}\n\n\t.text-uppercase {\n\t  text-transform: uppercase !important;\n\t}\n\n\t.text-capitalize {\n\t  text-transform: capitalize !important;\n\t}\n\n\t.font-weight-normal {\n\t  font-weight: normal;\n\t}\n\n\t.font-weight-bold {\n\t  font-weight: bold;\n\t}\n\n\t.font-italic {\n\t  font-style: italic;\n\t}\n\n\t.text-white {\n\t  color: #fff !important;\n\t}\n\n\t.text-muted {\n\t  color: #636c72 !important;\n\t}\n\n\ta.text-muted:focus,\n\ta.text-muted:hover {\n\t  color: #4b5257 !important;\n\t}\n\n\t.text-primary {\n\t  color: #0f8699 !important;\n\t}\n\n\ta.text-primary:focus,\n\ta.text-primary:hover {\n\t  color: #0a5d6b !important;\n\t}\n\n\t.text-success {\n\t  color: #5cb85c !important;\n\t}\n\n\ta.text-success:focus,\n\ta.text-success:hover {\n\t  color: #449d44 !important;\n\t}\n\n\t.text-info {\n\t  color: #5bc0de !important;\n\t}\n\n\ta.text-info:focus,\n\ta.text-info:hover {\n\t  color: #31b0d5 !important;\n\t}\n\n\t.text-warning {\n\t  color: #f0ad4e !important;\n\t}\n\n\ta.text-warning:focus,\n\ta.text-warning:hover {\n\t  color: #ec971f !important;\n\t}\n\n\t.text-danger {\n\t  color: #d9534f !important;\n\t}\n\n\ta.text-danger:focus,\n\ta.text-danger:hover {\n\t  color: #c9302c !important;\n\t}\n\n\t.text-gray-dark {\n\t  color: #292b2c !important;\n\t}\n\n\ta.text-gray-dark:focus,\n\ta.text-gray-dark:hover {\n\t  color: #101112 !important;\n\t}\n\n\t.text-hide {\n\t  font: 0/0 a;\n\t  color: transparent;\n\t  text-shadow: none;\n\t  background-color: transparent;\n\t  border: 0;\n\t}\n\n\t.invisible {\n\t  visibility: hidden !important;\n\t}\n\n\t.hidden-xs-up {\n\t  display: none !important;\n\t}\n\n\t@media (max-width: 575px) {\n\t  .hidden-xs-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 576px) {\n\t  .hidden-sm-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (max-width: 767px) {\n\t  .hidden-sm-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 768px) {\n\t  .hidden-md-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (max-width: 991px) {\n\t  .hidden-md-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 992px) {\n\t  .hidden-lg-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (max-width: 1199px) {\n\t  .hidden-lg-down {\n\t    display: none !important;\n\t  }\n\t}\n\n\t@media (min-width: 1200px) {\n\t  .hidden-xl-up {\n\t    display: none !important;\n\t  }\n\t}\n\n\t.hidden-xl-down {\n\t  display: none !important;\n\t}\n\n\t.visible-print-block {\n\t  display: none !important;\n\t}\n\n\t@media print {\n\t  .visible-print-block {\n\t    display: block !important;\n\t  }\n\t}\n\n\t.visible-print-inline {\n\t  display: none !important;\n\t}\n\n\t@media print {\n\t  .visible-print-inline {\n\t    display: inline !important;\n\t  }\n\t}\n\n\t.visible-print-inline-block {\n\t  display: none !important;\n\t}\n\n\t@media print {\n\t  .visible-print-inline-block {\n\t    display: inline-block !important;\n\t  }\n\t}\n\n\t@media print {\n\t  .hidden-print {\n\t    display: none !important;\n\t  }\n\t}\n\n\tbody>* {\n\t  background-size: cover;\n\t  background-repeat: none;\n\t  background-position: center;\n\t}\n\n\t.cover .container,\n\t.cover .container-fluid {\n\t  min-height: 100% !important;\n\t  display: flex;\n\t  flex-direction: column;\n\t  justify-content: center;\n\t}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 345 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(41)(undefined);
+exports = module.exports = __webpack_require__(33)(undefined);
 // imports
 
 
@@ -68543,10 +68674,10 @@ exports.push([module.i, "/*styles for home content only*/", ""]);
 
 
 /***/ }),
-/* 346 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(41)(undefined);
+exports = module.exports = __webpack_require__(33)(undefined);
 // imports
 
 
@@ -68557,10 +68688,24 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 347 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(41)(undefined);
+exports = module.exports = __webpack_require__(33)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 350 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(33)(undefined);
 // imports
 
 
@@ -68571,31 +68716,37 @@ exports.push([module.i, "h1 {\n  color: #00BCD4;\n}", ""]);
 
 
 /***/ }),
-/* 348 */
+/* 351 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Heutige Bestellungen</h1>\n<ul class=\"bestellungen\">\n  <li *ngFor=\"let bestellung of bestellungen ; let idx=index\" [class.selected]=\"bestellung === selectedBestellung\" (click)=\"onSelect(bestellung)\">\n    <span>{{idx+1}}</span>\n    <span class=\"price\">{{bestellung.price}}</span>\n    <span><input [(ngModel)]=\"bestellung.price\" type=\"number\" /></span>\n    <span class=\"badge\">Bestellung: {{bestellung.name}}</span>\n    <span>{{bestellung.bestellung}}</span>\n    <span>{{bestellung.extras}}</span>\n    <span>Fleisch: {{bestellung.fleisch}}</span>\n    <span>{{bestellung.sauce}}</span>\n    <span>Telefon: {{bestellung.telefonnummer}}</span>\n\n\n  </li>\n</ul>\n<input type=\"text\" value='{{ getTotal() }}' />\n"
+module.exports = "<h1>Heutige Bestellungen</h1>\n<ul class=\"bestellungen\">\n  <li *ngFor=\"let bestellung of bestellungen ; let idx=index\" [class.selected]=\"bestellung === selectedBestellung\" (click)=\"onSelect(bestellung)\">\n    <span>{{idx+1}}</span>\n    <span class=\"price\">{{bestellung.price}}</span>\n    <span><input [(ngModel)]=\"bestellung.price\" type=\"number\" /></span>\n    <span class=\"badge\">Bestellung: {{bestellung.name}}</span>\n    <span>{{bestellung.bestellung}}</span>\n    <span>{{bestellung.extras}}</span>\n    <span>Fleisch: {{bestellung.fleisch}}</span>\n    <span>{{bestellung.sauce}}</span>\n    <span>Telefon: {{bestellung.telefonnummer}}</span>\n    <span>     bezahlt: </span>\n    <span> <input id=\"bestellung.bezahlt.haken\" \n    type=\"checkbox\" \n    ifcon\n    (click)=\"update(bestellung);\"   [(ngModel)]=\"bestellung.bezahlt\" />                </span>\n\n    <!-- <button class=\"delete\" (click)=\"delete(bestellung); $event.stopPropagation()\">Löschen</button> -->\n\n  </li>\n</ul>\n<input type=\"text\" value='{{ getTotal() }}' />\n"
 
 /***/ }),
-/* 349 */
+/* 352 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"py-5 bg-faded\" style=\"border-bottom: 3px solid #0f8699\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8\">\n        <h1 class=\"text-primary text-center py-5\">GOD DÖNER BESTELLUNG</h1>\n        <p class=\"lead text-center\">Hier könnt Ihr euren Döner bestellen. Einfach Name, Nummer und Extras</p>\n      </div>\n      <div class=\"col-md-4\">\n        <img class=\"center-block img-fluid d-block float-right\" [src]=\"doenerLogo\">\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"py-5\" style=\"border-bottom: 3px solid #0f8699\">\n  <div class=\"container\">\n    <form #contactForm=\"ngForm\" novalidate>\n      <!-- <form action=\"/saveMe\" method=\"post\" enctype='application/json'> -->\n      <div class=\"row\">\n        <div class=\"col-md-4\">\n\n          <div class=\"form-group\">\n            <label>Name (Pflicht)</label> <input [(ngModel)]=\"bestellung.name\" type=\"text\" class=\"form-control\" min=\"3\" max=\"20\"\n              required=\"required\" placeholder=\"*Namen eingeben\" name=\"name\" id=\"name\">\n          </div>\n\n          <div class=\"form-group\">\n            <label>Bestellung (Pflicht)</label> <input [(ngModel)]=\"bestellung.bestellung\" type=\"text\" class=\"form-control\"\n              min=\"2\" max=\"40\" required=\"required\" placeholder=\"Bestellnummer oder Bezeichnung\" name=\"bestellung\" id=\"bestellung\">\n          </div>\n\n          <div class=\"form-group\">\n            <label>Preis (Pflicht)</label> <input [(ngModel)]=\"bestellung.price\" type=\"number\" class=\"form-control\" required=\"required\"\n              placeholder=\"Bitte Preis eintragen\" name=\"price\" id=\"price\">\n          </div>\n\n          <div class=\"form-group\">\n            <label>Email zur Benachrichtigung</label> <input [(ngModel)]=\"bestellung.email\" type=\"text\" class=\"form-control\"\n              placeholder=\"Emailbenachrichtigung, noch ohne Funktion\" name=\"email\" id=\"email\">\n          </div>\n\n\n        </div>\n        <div class=\"col-md-8\">\n          <div class=\"row\">\n            <div class=\"col-md-6 col-sm-6 col-6\">\n              <div class=\"form-group\">\n                <label for=\"telefonnummer\">Telefon (optional)</label> <input [(ngModel)]=\"bestellung.telefonnummer\" type=\"text\"\n                  class=\"form-control\" placeholder=\"Durchwahl\" name=\"telefonnummer\" id=\"telefonnummer\">\n              </div>\n            </div>\n\n            <div class=\"col-md-6 col-sm-6 col-6\">\n              <div class=\"form-group\">\n                <label for=\"fleisch\">Fleischauswahl: (Pflicht)</label>\n                <select id=\"fleisch\" name=\"fleisch\" class=\"btn btn-primary dropdown-toggle form-control\" [(ngModel)]=\"bestellung.fleisch\"\n                  required=\"required\">\n\t\t\t\t\t\t\t\t\t\t<option value=\"\" disabled=\"disabled\" selected=\"selected\"\n\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary dropdown-toggle \" id=\"fleischId\"\n\t\t\t\t\t\t\t\t\t\t\tlabel=\"Fleisch\"></option>\n\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Kalb</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Hähnchen</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">kein Fleisch</option>\n\t\t\t\t\t\t\t\t\t</select>\n              </div>\n            </div>\n\n            <div class=\"col-md-6 col-sm-6 col-6\">\n              <div class=\"form-group\">\n                <label>Extras</label> <input [(ngModel)]=\"bestellung.extras\" type=\"text\" class=\"form-control\" placeholder=\"extra Wünsche\"\n                  name=\"extras\" id=\"extras\">\n              </div>\n            </div>\n            <div class=\"col-md-6 col-sm-6 col-6\">\n              <div class=\"form-group\">\n                <label for=\"mySelect\">Soßenauswahl: (Pflicht)</label>\n                <select id=\"mySelect\" name=\"sauce\" class=\"btn btn-primary dropdown-toggle form-control\" [(ngModel)]=\"bestellung.sauce\">\n\t\t\t\t\t\t\t\t\t\t<option value=\"\" disabled=\"disabled\" selected=\"selected\" \n\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary dropdown-toggle\" id=\"optId\"\n\t\t\t\t\t\t\t\t\t\t\tlabel=\"Soßeauswahl\"></option>\n\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Alles</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">ohne Sauce</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Scharf</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Knoblauch</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Kräuter</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Alles ohne Knoblauch</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Alles ohne scharf</option>\n\t\t\t\t\t\t\t\t\t</select>\n              </div>\n            </div>\n          </div>\n        </div>\n\n      </div>\n      <button [disabled]=\"!contactForm.form.valid\" (click)=\"saveBestellung(bestellung)\" type=\"submit\" class=\"btn btn-primary\" formenctype='application/json'>verbindlich\n          Abschicken</button>\n    </form>\n  </div>\n</div>\n<div class=\"py-5 section text-center\">\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-md-12\">\n\n\n        <p class=\"lead\"></p>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"bg-faded py-0 text-center\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-6 p-5\">\n        <h1 class=\"m-y-2 m-y-lg  pi-item text-center\">Adar Imbiss</h1>\n        <h3 class=\"m-y-2 m-y-lg  pi-item text-center\">Südländische Spezialitäten\n        </h3>\n        <p class=\"text-center\">\n          Welfenplatz. 2 | 38126 Braunschweig&nbsp;<br>http://adar-imbiss.webnode.com\n        </p>\n        <div class=\"my-2 m-y-lg row text-center\">\n          <div class=\"col-4\">\n            <a></a>\n          </div>\n          <div class=\"col-4\"></div>\n          <div class=\"col-4\">\n            <a></a>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"py-5 bg-faded\" style=\"border-bottom: 3px solid #0f8699\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-8\">\n        <h1 class=\"text-primary text-center py-5\">GOD DÖNER BESTELLUNG</h1>\n        <p class=\"lead text-center\">Hier könnt Ihr euren Döner bestellen. Einfach Name, Nummer und Extras</p>\n      </div>\n      <div class=\"col-md-4\">\n        <img class=\"center-block img-fluid d-block float-right\" [src]=\"doenerLogo\">\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"py-5\" style=\"border-bottom: 3px solid #0f8699\">\n  <div class=\"container\">\n    <form #contactForm=\"ngForm\" novalidate>\n      <!-- <form action=\"/saveMe\" method=\"post\" enctype='application/json'> -->\n      <div class=\"row\">\n        <div ngModelGroup=\"doenerapp\">\n          <div class=\"col-md-4\">\n\n            <div class=\"form-group\">\n              <label>Name (Pflicht)</label> <input [(ngModel)]=\"bestellung.name\" type=\"text\" class=\"form-control\" min=\"3\"\n                max=\"20\" required=\"required\" placeholder=\"*Namen eingeben\" name=\"doenerusername\" id=\"name\">\n              <god-show-error path=\"doenerapp.doenerusername\"></god-show-error>\n            </div>\n\n            <div class=\"form-group\">\n              <label>Bestellung (Pflicht)</label> <input [(ngModel)]=\"bestellung.bestellung\" type=\"text\" class=\"form-control\"\n                min=\"2\" max=\"40\" required=\"required\" placeholder=\"Bestellnummer oder Bezeichnung\" name=\"bestellung\" id=\"bestellung\">\n            </div>\n\n            <div class=\"form-group\">\n              <label>Preis (Pflicht)</label> <input [(ngModel)]=\"bestellung.price\" type=\"number\" class=\"form-control\" required=\"required\"\n                placeholder=\"Bitte Preis eintragen\" name=\"price\" id=\"price\" numberValidator>\n              <god-show-error path=\"doenerapp.price\"></god-show-error>\n            </div>\n\n            <div class=\"form-group\">\n              <label>Email zur Benachrichtigung</label> <input [(ngModel)]=\"bestellung.email\" type=\"text\" class=\"form-control\"\n                placeholder=\"Emailbenachrichtigung, noch ohne Funktion\" name=\"email\" id=\"email\">\n            </div>\n\n\n          </div>\n          <div class=\"col-md-8\">\n            <div class=\"row\">\n              <div class=\"col-md-6 col-sm-6 col-6\">\n                <div class=\"form-group\">\n                  <label for=\"telefonnummer\">Telefon (optional)</label> <input [(ngModel)]=\"bestellung.telefonnummer\" type=\"text\"\n                    class=\"form-control\" placeholder=\"Durchwahl\" name=\"telefonnummer\" id=\"telefonnummer\">\n                </div>\n              </div>\n\n              <div class=\"col-md-6 col-sm-6 col-6\">\n                <div class=\"form-group\">\n                  <label for=\"fleisch\">Fleischauswahl: (Pflicht)</label>\n                  <select id=\"fleisch\" name=\"fleisch\" class=\"btn btn-primary dropdown-toggle form-control\" [(ngModel)]=\"bestellung.fleisch\"\n                    required=\"required\">\n\t\t\t\t\t\t\t\t\t\t<option value=\"\" disabled=\"disabled\" selected=\"selected\"\n\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary dropdown-toggle \" id=\"fleischId\"\n\t\t\t\t\t\t\t\t\t\t\tlabel=\"Fleisch\"></option>\n\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Kalb</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Hähnchen</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">kein Fleisch</option>\n\t\t\t\t\t\t\t\t\t</select>\n                </div>\n              </div>\n\n              <div class=\"col-md-6 col-sm-6 col-6\">\n                <div class=\"form-group\">\n                  <label>Extras</label> <input [(ngModel)]=\"bestellung.extras\" type=\"text\" class=\"form-control\" placeholder=\"extra Wünsche\"\n                    name=\"extras\" id=\"extras\">\n                </div>\n              </div>\n              <div class=\"col-md-6 col-sm-6 col-6\">\n                <div class=\"form-group\">\n                  <label for=\"mySelect\">Soßenauswahl: (Pflicht)</label>\n                  <select id=\"mySelect\" name=\"sauce\" class=\"btn btn-primary dropdown-toggle form-control\" [(ngModel)]=\"bestellung.sauce\">\n\t\t\t\t\t\t\t\t\t\t<option value=\"\" disabled=\"disabled\" selected=\"selected\" \n\t\t\t\t\t\t\t\t\t\t\tclass=\"btn btn-primary dropdown-toggle\" id=\"optId\"\n\t\t\t\t\t\t\t\t\t\t\tlabel=\"Soßeauswahl\"></option>\n\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Alles</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">ohne Sauce</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Scharf</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Knoblauch</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Kräuter</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Alles ohne Knoblauch</option>\n\t\t\t\t\t\t\t\t\t\t<option class=\"dropdown-item\">Alles ohne scharf</option>\n\t\t\t\t\t\t\t\t\t</select>\n                </div>\n              </div>\n            </div>\n          </div>\n\n        </div>\n      </div>\n      <button [disabled]=\"!contactForm.form.valid\" (click)=\"saveBestellung(bestellung)\" type=\"submit\" class=\"btn btn-primary\" formenctype='application/json'>verbindlich\n          Abschicken</button>\n    </form>\n  </div>\n</div>\n<div class=\"py-5 section text-center\">\n  <div class=\"container\">\n    <div class=\"row\">\n\n      <div class=\"col-md-12\">\n\n\n        <p class=\"lead\"></p>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"bg-faded py-0 text-center\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-6 p-5\">\n        <h1 class=\"m-y-2 m-y-lg  pi-item text-center\">Adar Imbiss</h1>\n        <h3 class=\"m-y-2 m-y-lg  pi-item text-center\">Südländische Spezialitäten\n        </h3>\n        <p class=\"text-center\">\n          Welfenplatz. 2 | 38126 Braunschweig&nbsp;<br>http://adar-imbiss.webnode.com\n        </p>\n        <div class=\"my-2 m-y-lg row text-center\">\n          <div class=\"col-4\">\n            <a></a>\n          </div>\n          <div class=\"col-4\"></div>\n          <div class=\"col-4\">\n            <a></a>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
-/* 350 */
+/* 353 */
 /***/ (function(module, exports) {
 
 module.exports = "<div>\n  <h1 x-large class=\"sample-content\">Herzlich Willkommen zur GOD Döner App</h1>\n\n\n</div>\n"
 
 /***/ }),
-/* 351 */
+/* 354 */
 /***/ (function(module, exports) {
 
 module.exports = "<img class=\"center-block img-fluid d-block float-right\" [src]=\"hinten\">\n<img class=\"center-block img-fluid d-block float-right\" [src]=\"vorn\">\n"
 
 /***/ }),
-/* 352 */
+/* 355 */
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"errorMessages\" class=\"alert alert-danger\">\r\n  <div *ngFor=\"let errorMessage of errorMessages\">\r\n    <label>{{errorMessage}}</label>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68606,7 +68757,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subject_1 = __webpack_require__(52);
-var ObjectUnsubscribedError_1 = __webpack_require__(150);
+var ObjectUnsubscribedError_1 = __webpack_require__(151);
 /**
  * @class BehaviorSubject<T>
  */
@@ -68650,7 +68801,7 @@ exports.BehaviorSubject = BehaviorSubject;
 //# sourceMappingURL=BehaviorSubject.js.map
 
 /***/ }),
-/* 353 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68660,7 +68811,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(17);
+var Subscriber_1 = __webpack_require__(18);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -68692,7 +68843,7 @@ exports.InnerSubscriber = InnerSubscriber;
 //# sourceMappingURL=InnerSubscriber.js.map
 
 /***/ }),
-/* 354 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68825,7 +68976,7 @@ exports.Notification = Notification;
 //# sourceMappingURL=Notification.js.map
 
 /***/ }),
-/* 355 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68871,29 +69022,29 @@ exports.SubjectSubscription = SubjectSubscription;
 //# sourceMappingURL=SubjectSubscription.js.map
 
 /***/ }),
-/* 356 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Observable_1 = __webpack_require__(9);
-var of_1 = __webpack_require__(147);
+var of_1 = __webpack_require__(148);
 Observable_1.Observable.of = of_1.of;
 //# sourceMappingURL=of.js.map
 
 /***/ }),
-/* 357 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Observable_1 = __webpack_require__(9);
-var toPromise_1 = __webpack_require__(378);
+var toPromise_1 = __webpack_require__(382);
 Observable_1.Observable.prototype.toPromise = toPromise_1.toPromise;
 //# sourceMappingURL=toPromise.js.map
 
 /***/ }),
-/* 358 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68904,8 +69055,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(9);
-var ScalarObservable_1 = __webpack_require__(145);
-var EmptyObservable_1 = __webpack_require__(96);
+var ScalarObservable_1 = __webpack_require__(146);
+var EmptyObservable_1 = __webpack_require__(97);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -68969,7 +69120,7 @@ exports.ArrayLikeObservable = ArrayLikeObservable;
 //# sourceMappingURL=ArrayLikeObservable.js.map
 
 /***/ }),
-/* 359 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68981,7 +69132,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Subject_1 = __webpack_require__(52);
 var Observable_1 = __webpack_require__(9);
-var Subscriber_1 = __webpack_require__(17);
+var Subscriber_1 = __webpack_require__(18);
 var Subscription_1 = __webpack_require__(64);
 /**
  * @class ConnectableObservable<T>
@@ -69137,7 +69288,7 @@ var RefCountSubscriber = (function (_super) {
 //# sourceMappingURL=ConnectableObservable.js.map
 
 /***/ }),
-/* 360 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69148,7 +69299,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(9);
-var EmptyObservable_1 = __webpack_require__(96);
+var EmptyObservable_1 = __webpack_require__(97);
 var isArray_1 = __webpack_require__(65);
 var subscribeToResult_1 = __webpack_require__(66);
 var OuterSubscriber_1 = __webpack_require__(63);
@@ -69255,7 +69406,7 @@ var ForkJoinSubscriber = (function (_super) {
 //# sourceMappingURL=ForkJoinObservable.js.map
 
 /***/ }),
-/* 361 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69266,15 +69417,15 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var isArray_1 = __webpack_require__(65);
-var isPromise_1 = __webpack_require__(154);
-var PromiseObservable_1 = __webpack_require__(144);
-var IteratorObservable_1 = __webpack_require__(362);
-var ArrayObservable_1 = __webpack_require__(95);
-var ArrayLikeObservable_1 = __webpack_require__(358);
-var iterator_1 = __webpack_require__(98);
+var isPromise_1 = __webpack_require__(155);
+var PromiseObservable_1 = __webpack_require__(145);
+var IteratorObservable_1 = __webpack_require__(366);
+var ArrayObservable_1 = __webpack_require__(96);
+var ArrayLikeObservable_1 = __webpack_require__(362);
+var iterator_1 = __webpack_require__(99);
 var Observable_1 = __webpack_require__(9);
-var observeOn_1 = __webpack_require__(375);
-var observable_1 = __webpack_require__(99);
+var observeOn_1 = __webpack_require__(379);
+var observable_1 = __webpack_require__(100);
 var isArrayLike = (function (x) { return x && typeof x.length === 'number'; });
 /**
  * We need this JSDoc comment for affecting ESDoc.
@@ -69383,7 +69534,7 @@ exports.FromObservable = FromObservable;
 //# sourceMappingURL=FromObservable.js.map
 
 /***/ }),
-/* 362 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69393,9 +69544,9 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var root_1 = __webpack_require__(33);
+var root_1 = __webpack_require__(34);
 var Observable_1 = __webpack_require__(9);
-var iterator_1 = __webpack_require__(98);
+var iterator_1 = __webpack_require__(99);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -69552,37 +69703,37 @@ function sign(value) {
 //# sourceMappingURL=IteratorObservable.js.map
 
 /***/ }),
-/* 363 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ForkJoinObservable_1 = __webpack_require__(360);
+var ForkJoinObservable_1 = __webpack_require__(364);
 exports.forkJoin = ForkJoinObservable_1.ForkJoinObservable.create;
 //# sourceMappingURL=forkJoin.js.map
 
 /***/ }),
-/* 364 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var FromObservable_1 = __webpack_require__(361);
+var FromObservable_1 = __webpack_require__(365);
 exports.from = FromObservable_1.FromObservable.create;
 //# sourceMappingURL=from.js.map
 
 /***/ }),
-/* 365 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var merge_1 = __webpack_require__(373);
+var merge_1 = __webpack_require__(377);
 exports.merge = merge_1.mergeStatic;
 //# sourceMappingURL=merge.js.map
 
 /***/ }),
-/* 366 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69654,12 +69805,12 @@ var CatchSubscriber = (function (_super) {
 //# sourceMappingURL=catch.js.map
 
 /***/ }),
-/* 367 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var mergeAll_1 = __webpack_require__(97);
+var mergeAll_1 = __webpack_require__(98);
 /* tslint:disable:max-line-length */
 /**
  * Converts a higher-order Observable into a first-order Observable by
@@ -69716,12 +69867,12 @@ exports.concatAll = concatAll;
 //# sourceMappingURL=concatAll.js.map
 
 /***/ }),
-/* 368 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var mergeMap_1 = __webpack_require__(149);
+var mergeMap_1 = __webpack_require__(150);
 /* tslint:disable:max-line-length */
 /**
  * Projects each source value to an Observable which is merged in the output
@@ -69792,7 +69943,7 @@ exports.concatMap = concatMap;
 //# sourceMappingURL=concatMap.js.map
 
 /***/ }),
-/* 369 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69802,7 +69953,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(17);
+var Subscriber_1 = __webpack_require__(18);
 /**
  * Returns an Observable that emits whether or not every item of the source satisfies the condition specified.
  *
@@ -69872,7 +70023,7 @@ var EverySubscriber = (function (_super) {
 //# sourceMappingURL=every.js.map
 
 /***/ }),
-/* 370 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69882,7 +70033,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(17);
+var Subscriber_1 = __webpack_require__(18);
 /* tslint:disable:max-line-length */
 /**
  * Filter items emitted by the source Observable by only emitting those that
@@ -69971,7 +70122,7 @@ var FilterSubscriber = (function (_super) {
 //# sourceMappingURL=filter.js.map
 
 /***/ }),
-/* 371 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69981,8 +70132,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(17);
-var EmptyError_1 = __webpack_require__(101);
+var Subscriber_1 = __webpack_require__(18);
+var EmptyError_1 = __webpack_require__(102);
 /**
  * Emits only the first value (or the first value that meets some condition)
  * emitted by the source Observable.
@@ -70129,7 +70280,7 @@ var FirstSubscriber = (function (_super) {
 //# sourceMappingURL=first.js.map
 
 /***/ }),
-/* 372 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70139,8 +70290,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(17);
-var EmptyError_1 = __webpack_require__(101);
+var Subscriber_1 = __webpack_require__(18);
+var EmptyError_1 = __webpack_require__(102);
 /* tslint:disable:max-line-length */
 /**
  * Returns an Observable that emits only the last item emitted by the source Observable.
@@ -70254,14 +70405,14 @@ var LastSubscriber = (function (_super) {
 //# sourceMappingURL=last.js.map
 
 /***/ }),
-/* 373 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ArrayObservable_1 = __webpack_require__(95);
-var mergeAll_1 = __webpack_require__(97);
-var isScheduler_1 = __webpack_require__(155);
+var ArrayObservable_1 = __webpack_require__(96);
+var mergeAll_1 = __webpack_require__(98);
+var isScheduler_1 = __webpack_require__(156);
 /* tslint:disable:max-line-length */
 /**
  * Creates an output Observable which concurrently emits all values from every
@@ -70404,12 +70555,12 @@ exports.mergeStatic = mergeStatic;
 //# sourceMappingURL=merge.js.map
 
 /***/ }),
-/* 374 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ConnectableObservable_1 = __webpack_require__(359);
+var ConnectableObservable_1 = __webpack_require__(363);
 /* tslint:disable:max-line-length */
 /**
  * Returns an Observable that emits the results of invoking a specified selector on items
@@ -70467,7 +70618,7 @@ exports.MulticastOperator = MulticastOperator;
 //# sourceMappingURL=multicast.js.map
 
 /***/ }),
-/* 375 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70477,8 +70628,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(17);
-var Notification_1 = __webpack_require__(354);
+var Subscriber_1 = __webpack_require__(18);
+var Notification_1 = __webpack_require__(358);
 /**
  * @see {@link Notification}
  *
@@ -70552,7 +70703,7 @@ exports.ObserveOnMessage = ObserveOnMessage;
 //# sourceMappingURL=observeOn.js.map
 
 /***/ }),
-/* 376 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70562,7 +70713,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(17);
+var Subscriber_1 = __webpack_require__(18);
 /* tslint:disable:max-line-length */
 /**
  * Applies an accumulator function over the source Observable, and returns the
@@ -70681,12 +70832,12 @@ exports.ReduceSubscriber = ReduceSubscriber;
 //# sourceMappingURL=reduce.js.map
 
 /***/ }),
-/* 377 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var multicast_1 = __webpack_require__(374);
+var multicast_1 = __webpack_require__(378);
 var Subject_1 = __webpack_require__(52);
 function shareSubjectFactory() {
     return new Subject_1.Subject();
@@ -70711,12 +70862,12 @@ exports.share = share;
 //# sourceMappingURL=share.js.map
 
 /***/ }),
-/* 378 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var root_1 = __webpack_require__(33);
+var root_1 = __webpack_require__(34);
 /* tslint:disable:max-line-length */
 /**
  * @param PromiseCtor
@@ -70746,7 +70897,7 @@ exports.toPromise = toPromise;
 //# sourceMappingURL=toPromise.js.map
 
 /***/ }),
-/* 379 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70777,14 +70928,14 @@ exports.UnsubscriptionError = UnsubscriptionError;
 //# sourceMappingURL=UnsubscriptionError.js.map
 
 /***/ }),
-/* 380 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var Subscriber_1 = __webpack_require__(17);
-var rxSubscriber_1 = __webpack_require__(100);
-var Observer_1 = __webpack_require__(143);
+var Subscriber_1 = __webpack_require__(18);
+var rxSubscriber_1 = __webpack_require__(101);
+var Observer_1 = __webpack_require__(144);
 function toSubscriber(nextOrObserver, error, complete) {
     if (nextOrObserver) {
         if (nextOrObserver instanceof Subscriber_1.Subscriber) {
@@ -70803,12 +70954,12 @@ exports.toSubscriber = toSubscriber;
 //# sourceMappingURL=toSubscriber.js.map
 
 /***/ }),
-/* 381 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var errorObject_1 = __webpack_require__(151);
+var errorObject_1 = __webpack_require__(152);
 var tryCatchTarget;
 function tryCatcher() {
     try {
@@ -70828,13 +70979,13 @@ exports.tryCatch = tryCatch;
 //# sourceMappingURL=tryCatch.js.map
 
 /***/ }),
-/* 382 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(341);
+var content = __webpack_require__(343);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -70842,7 +70993,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(156)(content, options);
+var update = __webpack_require__(157)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -70859,13 +71010,13 @@ if(false) {
 }
 
 /***/ }),
-/* 383 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(347);
+var content = __webpack_require__(350);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -70873,7 +71024,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(156)(content, options);
+var update = __webpack_require__(157)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -70890,7 +71041,7 @@ if(false) {
 }
 
 /***/ }),
-/* 384 */
+/* 388 */
 /***/ (function(module, exports) {
 
 
@@ -70985,35 +71136,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 385 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-        var result = __webpack_require__(342);
-
-        if (typeof result === "string") {
-            module.exports = result;
-        } else {
-            module.exports = result.toString();
-        }
-    
-
-/***/ }),
-/* 386 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-        var result = __webpack_require__(343);
-
-        if (typeof result === "string") {
-            module.exports = result;
-        } else {
-            module.exports = result.toString();
-        }
-    
-
-/***/ }),
-/* 387 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -71027,7 +71150,7 @@ module.exports = function (css) {
     
 
 /***/ }),
-/* 388 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -71041,11 +71164,53 @@ module.exports = function (css) {
     
 
 /***/ }),
-/* 389 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
         var result = __webpack_require__(346);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+/* 392 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(347);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+/* 393 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(348);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+/* 394 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(349);
 
         if (typeof result === "string") {
             module.exports = result;

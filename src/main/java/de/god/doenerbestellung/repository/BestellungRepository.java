@@ -16,6 +16,7 @@ public interface BestellungRepository extends PagingAndSortingRepository<Bestell
 	 * @param bestelldatum
 	 * @return kann leer sein
 	 */
-	List<Bestellung> findByBestelldatum(@Param("bestelldatum") String bestelldatum);
+
+	List<Bestellung> findByBestelldatumOrderByBestellung(@Param("bestelldatum") String bestelldatum);
 
 }

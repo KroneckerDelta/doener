@@ -50,7 +50,7 @@ public class BestellungController {
 
 		String dateAsString = Heute.get();
 
-		return repositoy.findByBestelldatum(dateAsString);
+		return repositoy.findByBestelldatumOrderByBestellung(dateAsString);
 
 	}
 
@@ -76,14 +76,14 @@ public class BestellungController {
 
 		String dateAsString = Heute.get();
 
-		return repositoy.findByBestelldatum(dateAsString);
+		return repositoy.findByBestelldatumOrderByBestellung(dateAsString);
 
 	}
 
 	@RequestMapping(value = "/api/emailSenden", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
 	public String emailVersenden() {
 		List<String> alleMails = new ArrayList<>();
-		List<Bestellung> heutigeBestellungen = repositoy.findByBestelldatum(Heute.get());
+		List<Bestellung> heutigeBestellungen = repositoy.findByBestelldatumOrderByBestellung(Heute.get());
 		for (Bestellung bestellung : heutigeBestellungen) {
 			String email = bestellung.getEmail();
 			alleMails.add(email);
@@ -101,7 +101,7 @@ public class BestellungController {
 	public List<Bestellung> heutigeBestellungen(@RequestBody String containsDate) {
 		String dateAsString = containsDate.substring(containsDate.indexOf("=") + 1, containsDate.length());
 
-		return repositoy.findByBestelldatum(dateAsString);
+		return repositoy.findByBestelldatumOrderByBestellung(dateAsString);
 
 	}
 
