@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.god.doener</groupId>
+    <groupId>de.god.codecamp.doener</groupId>
     <artifactId>god-doener</artifactId>
     <version>0.1.0</version>
  	<packaging>jar</packaging>
