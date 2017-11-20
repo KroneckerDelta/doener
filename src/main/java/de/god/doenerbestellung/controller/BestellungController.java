@@ -18,6 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import de.god.doenerbestellung.domain.Bestellung;
 import de.god.doenerbestellung.repository.BestellungRepository;
 
+/**
+ * Controller for Bestellungen
+ * 
+ * @author tmichael
+ *
+ */
 @RestController()
 public class BestellungController {
 
