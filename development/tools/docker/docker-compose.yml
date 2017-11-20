@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+  doener_app:
+    image: daily.entwicklung.god.de:5000/doener/develop/doener_app:latest
+    build: 
+        context: doener_app
+        dockerfile: Dockerfile
+    expose:
+        - "55555"
+    healthcheck:
+        test: 'nc -z localhost 5555'
+        interval: 1s
+        retries: 120
+    restart: always
+  doener_db:
+    image: daily.entwicklung.god.de:5000/doener/develop/doener_db:latest
+    build: 
+        context: doener_db
+        dockerfile: Dockerfile
+
