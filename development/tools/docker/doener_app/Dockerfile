@@ -1,4 +1,4 @@
-FROM reposrv02nexus3.entwicklung.god.de:5000/stretch-god:latest
+FROM reposrv02nexus3.entwicklung.god.de:5000/debian/stretch/ansible-and-godrepo
 RUN apt-get update
 RUN apt-get install -y oracle-java8-jdk
 # Install dependencies 
