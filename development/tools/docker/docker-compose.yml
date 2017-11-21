@@ -22,4 +22,4 @@ services:
 
 secrets:
   application.yml:
-    file: ./secrets/secrets/application.yml
+    file: ./secrets/application.yml
