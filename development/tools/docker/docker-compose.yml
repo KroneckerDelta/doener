@@ -20,6 +20,6 @@ services:
         context: doener_db
         dockerfile: Dockerfile
 
-#secrets:
-#  application.yml:
-#    file: ./secrets/secrets/application.yml
+secrets:
+  application.yml:
+    file: ./secrets/secrets/application.yml
