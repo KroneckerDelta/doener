@@ -22,21 +22,56 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 public class GodDoenerApplication {
 
-	public static void main(String[] args) {
-		System.out.println("");
-		System.out.println("");
-		System.out.println("Starting App:");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("██████╗  ██████╗ ███████╗███╗   ██╗███████╗██████╗      █████╗ ██████╗ ██████╗ ");
-		System.out.println("██╔══██╗██╔═══██╗██╔════╝████╗  ██║██╔════╝██╔══██╗    ██╔══██╗██╔══██╗██╔══██╗");
-		System.out.println("██║  ██║██║   ██║█████╗  ██╔██╗ ██║█████╗  ██████╔╝    ███████║██████╔╝██████╔╝");
-		System.out.println("██║  ██║██║   ██║██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗    ██╔══██║██╔═══╝ ██╔═══╝ ");
-		System.out.println("██████╔╝╚██████╔╝███████╗██║ ╚████║███████╗██║  ██║    ██║  ██║██║     ██║     ");
-		System.out.println("╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝     ╚═╝     ");
-		System.out.println("");
-		System.out.println("");
+	public static void main(String[] args) throws InterruptedException {
+		for (int i = 0; i < 5; i++) {
+			System.out.println(""); // ANSI Shadow
+			System.out.println("");
+			System.out.println("Starting App:");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("██████╗  ██████╗ ███████╗███╗   ██╗███████╗██████╗      █████╗ ██████╗ ██████╗ ");
+			System.out.println("██╔══██╗██╔═══██╗██╔════╝████╗  ██║██╔════╝██╔══██╗    ██╔══██╗██╔══██╗██╔══██╗");
+			System.out.println("██║  ██║██║   ██║█████╗  ██╔██╗ ██║█████╗  ██████╔╝    ███████║██████╔╝██████╔╝");
+			System.out.println("██║  ██║██║   ██║██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗    ██╔══██║██╔═══╝ ██╔═══╝ ");
+			System.out.println("██████╔╝╚██████╔╝███████╗██║ ╚████║███████╗██║  ██║    ██║  ██║██║     ██║     ");
+			System.out.println("╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝     ╚═╝     ");
+			System.out.println("");
+			System.out.println("");
+			try {
+				SpringApplication.run(GodDoenerApplication.class, args);
+				System.out.println("                                                                                   ");
+				System.out.println("██████╗  ██████╗ ███████╗███╗   ██╗███████╗██████╗     ██████╗ ██╗   ██╗███╗   ██╗");
+				System.out.println("██╔══██╗██╔═══██╗██╔════╝████╗  ██║██╔════╝██╔══██╗    ██╔══██╗██║   ██║████╗  ██║");
+				System.out.println("██║  ██║██║   ██║█████╗  ██╔██╗ ██║█████╗  ██████╔╝    ██████╔╝██║   ██║██╔██╗ ██║");
+				System.out.println("██║  ██║██║   ██║██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗    ██╔══██╗██║   ██║██║╚██╗██║");
+				System.out.println("██████╔╝╚██████╔╝███████╗██║ ╚████║███████╗██║  ██║    ██║  ██║╚██████╔╝██║ ╚████║");
+				System.out.println("╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝");
+				System.out.println("                                                                                   ");
+				break;
 
-		SpringApplication.run(GodDoenerApplication.class, args);
+			} catch (Exception e) {
+
+				System.out.println("                                                                                   ");
+				System.out.println("████████╗██████╗ ██╗   ██╗     █████╗  ██████╗  █████╗ ██╗███╗   ██╗");
+				System.out.println("╚══██╔══╝██╔══██╗╚██╗ ██╔╝    ██╔══██╗██╔════╝ ██╔══██╗██║████╗  ██║");
+				System.out.println("   ██║   ██████╔╝ ╚████╔╝     ███████║██║  ███╗███████║██║██╔██╗ ██║");
+				System.out.println("   ██║   ██╔══██╗  ╚██╔╝      ██╔══██║██║   ██║██╔══██║██║██║╚██╗██║");
+				System.out.println("   ██║   ██║  ██║   ██║       ██║  ██║╚██████╔╝██║  ██║██║██║ ╚████║");
+				System.out.println("   ╚═╝   ╚═╝  ╚═╝   ╚═╝       ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝");
+				System.out.println("                                                                     ");
+
+				Thread.sleep(2500l);
+			}
+
+			System.out.println("                                                                                   ");
+			System.out.println("███████╗███╗   ██╗██████╗ ███████╗██████╗ ");
+			System.out.println("██╔════╝████╗  ██║██╔══██╗██╔════╝██╔══██╗");
+			System.out.println("█████╗  ██╔██╗ ██║██║  ██║█████╗  ██║  ██║");
+			System.out.println("██╔══╝  ██║╚██╗██║██║  ██║██╔══╝  ██║  ██║");
+			System.out.println("███████╗██║ ╚████║██████╔╝███████╗██████╔╝");
+			System.out.println("╚══════╝╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═════╝ ");
+			System.out.println("                                           ");
+		}
+
 	}
 }
