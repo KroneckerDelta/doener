@@ -1,10 +1,10 @@
 FROM reposrv02nexus3.entwicklung.god.de:5000/debian/stretch/ansible-and-godrepo 
 #transport via env to ansible
-ARG MYDATABASE=mydb
+ARG MYDATABASE=god_doener
 ENV MYDATABASE=$MYDATABASE
-ARG MYSQLUSER=mysqluser
+ARG MYSQLUSER=schoener
 ENV MYSQLUSER=$MYSQLUSER
-ARG MYSQLUSERPWD=mypwd
+ARG MYSQLUSERPWD=schoener
 ENV MYSQLUSERPWD=$MYSQLUSERPWD
 ###############################
 COPY ansible/ /media/ansible

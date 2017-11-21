@@ -24,6 +24,11 @@
        password: "{{ MYSQLUSERPWD }}"
        priv: "{{ MYDATABASE }}.*:ALL"
        state: present
+    - name: Restore database
+      mysql_db:
+       name: "{{ MYDATABASE }}" 
+       state: import
+       target: initdump.dmp
     - name: enable network
       lineinfile:
             destfile: /etc/mysql/mariadb.conf.d/50-server.cnf

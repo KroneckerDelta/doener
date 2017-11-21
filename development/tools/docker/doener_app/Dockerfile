@@ -5,6 +5,6 @@ RUN apt-get install -y oracle-java8-jdk
 # Install dependencies 
 COPY god-doener-0.1.0.jar /usr/share/doener/
 #no npm app...
-#CMD ["/usr/bin/java", "-jar", "/usr/share/doener/god-doener-0.1.0.jar"]
+CMD ["/usr/bin/java", "-jar", "/usr/share/doener/god-doener-0.1.0.jar"]
 EXPOSE 8080
-CMD ["/bin/sleep", "999"]
+#CMD ["/bin/sleep", "999"]

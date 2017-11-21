@@ -10,7 +10,7 @@ services:
     expose:
         - "55555"
     healthcheck:
-        test: 'nc -z localhost 5555'
+        test: 'nc -z localhost 8080'
         interval: 1s
         retries: 120
     restart: always
