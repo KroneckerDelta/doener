@@ -1,0 +1,11 @@
+---
+applications:
+- name: god-doener
+  memory: 512M
+  health-check-type: port
+  stack: cflinuxfs2
+  instances: 2
+  services:
+  - god_doener
+  buildpack: java_buildpack
+  domain: local.pcfdev.io
