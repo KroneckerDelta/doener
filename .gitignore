@@ -50,3 +50,4 @@ target/
 coverage/
 node_modules/
 node/
+/bin/
