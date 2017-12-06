@@ -15,6 +15,7 @@ public class Bestellung {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
+	private String alias;
 	private String bestellung;
 	@Column(nullable = true)
 	private String telefonnummer;
@@ -119,6 +120,14 @@ public class Bestellung {
 
 	public void setPrice(String price) {
 		this.price = price;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 
 }
