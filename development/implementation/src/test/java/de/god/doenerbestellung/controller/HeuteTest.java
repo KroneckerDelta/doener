@@ -21,7 +21,12 @@ public class HeuteTest {
 		String today = Heute.get();
 		GregorianCalendar cal = new GregorianCalendar();
 		int day = cal.get(Calendar.DAY_OF_MONTH);
-		assertTrue(today.startsWith(String.valueOf(day)));
+		String expected = "";
+		if (day < 10) {
+			expected += "0";
+		}
+		expected += day;
+		assertTrue(today.startsWith(expected));
 	}
 
 	@Test
