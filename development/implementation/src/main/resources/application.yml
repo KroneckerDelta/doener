@@ -9,6 +9,6 @@ spring:
     hibernate.ddl-auto: update
     show_sql: true
 server:
-  port: 10001
+  port: 9998
    
   
