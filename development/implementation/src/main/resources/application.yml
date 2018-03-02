@@ -2,7 +2,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost/god_doener
+    url: jdbc:mysql://doener_db/god_doener
     username: schoener
     password: schoener
   jpa:

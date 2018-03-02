@@ -1,25 +1,35 @@
 version: '3.2'
 services:
+  doener_db:
+    image: daily.entwicklung.god.de:5000/doener/develop/doener_db:latest
+    networks:
+        - internal
+    build: 
+        context: doener_db
+        dockerfile: Dockerfile
   doener_app:
     image: daily.entwicklung.god.de:5000/doener/develop/doener_app:latest
+    networks:
+        - proxy
+        - internal
     build: 
         context: doener_app
         dockerfile: Dockerfile
     secrets:
         - application.yml 
-    expose:
-        - "55555"
+    ports:
+        - "8080:8080"
     healthcheck:
-        test: 'nc -z localhost 5555'
-        interval: 1s
-        retries: 120
+        test: ["CMD","nc", "-z", "localhost", "8080"]
+        interval: 20s
+        timeout: 10s
+        retries: 10
     restart: always
-  doener_db:
-    image: daily.entwicklung.god.de:5000/doener/develop/doener_db:latest
-    build: 
-        context: doener_db
-        dockerfile: Dockerfile
+secrets:
+  application.yml:
+    file: ./secrets/application.yml
 
-#secrets:
-#  application.yml:
-#    file: ./secrets/secrets/application.yml
+networks:
+  internal:
+  proxy:
+
