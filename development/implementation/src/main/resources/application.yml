@@ -23,8 +23,7 @@ spring:
   jpa:
     hibernate.ddl-auto: update
     show_sql: true    
-  main:
-    banner-mode: off 
+
 server:
   port: 9998
   
