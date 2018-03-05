@@ -10,7 +10,7 @@ godJavaPipeline {
     mailRecipients = ['thomas.michael@god.de']
     projectName = 'doenerapp' // naming convention for tags / branches
     //gav should be de.god.codecamp.doener
-    metricFoundingFailedCount = '25' // threshold for metrics to fail a build
+    metricFoundingFailedCount = '217' // threshold for metrics to fail a build
     metricFoundingUnstableCount = '15' // threshold for metrics to mark a build unstable
     additionalMvnOpts = '-Dmaven.deploy.skip=true'
     testbed_rampup_timeout = 18 // in seconds
