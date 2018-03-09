@@ -20,7 +20,7 @@ services:
     secrets:
         - application.yml 
     ports:
-        - "8080:8080"
+        - "9998:8080"
     healthcheck:
         test: ["CMD","nc", "-z", "localhost", "8080"]
         interval: 20s
