@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 //@Library('god-jenkins-lib@god-jenkins-lib-1.3.3') _
-@Library('god-jenkins-lib@god-jenkins-lib-1.0.x') _
+@Library('god-jenkins-lib@for-god-jenkins-lib-consumer') _
 godJavaPipeline {
     artifactTypes = ['war']
     globalTimeout = 60
