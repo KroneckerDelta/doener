@@ -2,7 +2,7 @@
 //@Library('god-jenkins-lib@god-jenkins-lib-1.3.3') _
 @Library('god-jenkins-lib@for-god-jenkins-lib-consumer') _
 godJavaPipeline {
-    artifactTypes = ['jar']
+    artifactTypes = ['jar','war']
     globalTimeout = 60
     jdkVendor = 'oracle'
     jdkVersion = '1.8'
