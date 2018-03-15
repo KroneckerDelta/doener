@@ -22,9 +22,8 @@ services:
     ports:
         - "9998:8080"
     healthcheck:
-        test: ["CMD","nc", "-z", "localhost", "8080"]
-        interval: 20s
-        timeout: 10s
+        test: 'nc -z localhost 8080'
+        interval: 5s
         retries: 10
     restart: always
 secrets:
