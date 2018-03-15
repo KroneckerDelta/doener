@@ -21,10 +21,10 @@ services:
         - application.yml 
     ports:
         - "9998:8080"
-    healthcheck:
-        test: 'nc -z localhost 8080'
-        interval: 5s
-        retries: 10
+#    healthcheck:
+#        test: 'nc -z localhost 8080'
+#        interval: 5s
+#        retries: 10
     restart: always
 secrets:
   application.yml:
