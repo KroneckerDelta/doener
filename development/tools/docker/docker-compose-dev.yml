@@ -1,13 +1,8 @@
 version: '3.2'
 services:
-   
-  doener_app:
+  reposerver:
+    ports:
+    - "9999:80"
+  doenerapp:
     ports:
         - "9998:8080"
-secrets:
-  doener_secret:
-    file: ./secrets/application.yml
-    
-networks:
-  internal:
-  proxy:    
