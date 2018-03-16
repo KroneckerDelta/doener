@@ -1,6 +1,6 @@
 version: '3.2'
 services:
-  doenerdb:
+  doener_db:
     image: daily.entwicklung.god.de:5000/doener/develop/doenerdb:latest
     build: 
         context: doenerdb
