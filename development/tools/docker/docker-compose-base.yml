@@ -26,9 +26,8 @@ services:
 #        interval: 5s
 #        retries: 10
     restart: always
+  reposerver:
+    image: ${DOCKER_REPO_URL}/godmbh/reposerver
 
-
-networks:
-  internal:
 
 
