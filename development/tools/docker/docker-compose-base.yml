@@ -2,6 +2,8 @@ version: '3.2'
 services:
   doener_db:
     image: daily.entwicklung.god.de:5000/doener/develop/doener_db:latest
+    networks:
+        - internal
     build: 
         context: doener_db
         dockerfile: Dockerfile
@@ -9,6 +11,9 @@ services:
     environment:
         SPRING_PROFILES_ACTIVE: 'production'  
     image: daily.entwicklung.god.de:5000/doener/develop/doenerapp:latest
+    networks:
+        - proxy
+        - internal    
     build: 
         context: doenerapp
         dockerfile: Dockerfile
