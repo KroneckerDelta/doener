@@ -25,11 +25,11 @@ services:
         dockerfile: Dockerfile
     secrets:
         - application.yml 
-    healthcheck:
-        test: ["CMD","nc", "-z", "localhost", "8080"]
-        interval: 20s
-        timeout: 10s
-        retries: 10
+#    healthcheck:
+#        test: ["CMD","nc", "-z", "localhost", "8080"]
+#        interval: 20s
+#        timeout: 10s
+#        retries: 10
     restart: always
 networks:
   internal:
