@@ -1,0 +1,6 @@
+version: '3.2'
+services:
+   
+  doener_app:
+    ports:
+        - "9998:8080"
