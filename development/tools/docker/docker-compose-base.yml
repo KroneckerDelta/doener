@@ -23,4 +23,6 @@ services:
     restart: always
   reposerver:
     image: ${DOCKER_REPO_URL}/godmbh/reposerver
-
+secrets:
+  doener_secret:
+    file: secrets/application.yml
