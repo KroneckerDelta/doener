@@ -4,3 +4,6 @@ services:
   doener_app:
     ports:
         - "9998:8080"
+secrets:
+  doener_secret:
+    file: ./secrets/application.yml

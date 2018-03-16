@@ -26,9 +26,7 @@ services:
 #        interval: 5s
 #        retries: 10
     restart: always
-secrets:
-  doener_secret:
-    file: ./secrets/application.yml
+
 
 #networks:
 #  internal:
