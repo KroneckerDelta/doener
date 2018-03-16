@@ -7,3 +7,7 @@ services:
 secrets:
   doener_secret:
     file: ./secrets/application.yml
+    
+networks:
+  internal:
+  proxy:    
