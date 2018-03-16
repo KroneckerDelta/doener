@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   doenerdb:
-    image: daily.entwicklung.god.de:5000/doener/develop/doener_db:latest
+    image: daily.entwicklung.god.de:5000/doener/develop/doenerdb:latest
     networks:
         - internal
     build: 
@@ -9,13 +9,13 @@ services:
         dockerfile: Dockerfile
 
   doenerapp:
-    image: daily.entwicklung.god.de:5000/doener/develop/doener_app:latest
+    image: daily.entwicklung.god.de:5000/doener/develop/doenerapp:latest
     labels:
 #      - "traefik.domain=docker.localhost"
       - traefik.backend=doenerapp
       - traefik.port=8080
       - traefik.docker.network=traefik_default
-      #- "traefik.frontend.rule=Host:doener_app.docker.localhost"
+      #- "traefik.frontend.rule=Host:doenerapp.docker.localhost"
       - traefik.frontend.rule=Host:doener.entwicklung.god.de
     networks:
         - proxy

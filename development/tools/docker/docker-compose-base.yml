@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   doenerdb:
-    image: daily.entwicklung.god.de:5000/doener/develop/doener_db:latest
+    image: daily.entwicklung.god.de:5000/doener/develop/doenerdb:latest
     build: 
         context: doenerdb
         dockerfile: Dockerfile
