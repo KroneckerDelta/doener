@@ -29,5 +29,7 @@ services:
   reposerver:
     image: ${DOCKER_REPO_URL}/godmbh/reposerver
 
-
+networks:
+  internal:
+  proxy:  
 
