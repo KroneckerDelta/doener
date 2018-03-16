@@ -18,7 +18,7 @@ services:
         context: doener_app
         dockerfile: Dockerfile
     secrets:
-        - application.yml 
+        - doener_secret
     ports:
         - "9998:8080"
 #    healthcheck:
@@ -27,10 +27,10 @@ services:
 #        retries: 10
     restart: always
 secrets:
-  application.yml:
+  doener_secret:
     file: ./secrets/application.yml
 
-networks:
-  internal:
-  proxy:
+#networks:
+#  internal:
+#  proxy:
 
