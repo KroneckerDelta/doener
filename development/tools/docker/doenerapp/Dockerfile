@@ -3,6 +3,11 @@ RUN echo 'Acquire::http::Proxy "http://proxy.god.de:3142/";'> /etc/apt/apt.conf.
 RUN apt-get update
 RUN apt-get install -y oracle-java8-jdk
 RUN apt-get install -y netcat
+RUN apt-get install -y curl
+RUN apt-get install -y lsof
+RUN apt-get install -y procps
+RUN unset http_proxy
+
 # Install dependencies 
 COPY god-doener*.jar /usr/share/doener/god-doener.jar
 #no npm app...
