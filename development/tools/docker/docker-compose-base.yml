@@ -21,11 +21,14 @@ services:
         - doener_secret
     ports:
         - "9998:8080"
-    healthcheck:
-      test: 'curl --fail localhost:8080'
-      interval: 5s
-      retries: 5
+#    healthcheck:
+#      test: 'curl --fail localhost:8080'
+#      interval: 5s
+#      retries: 5
     restart: always
+    healthcheck:
+        test: ' exit 0 '
+    
   reposerver:
     image: ${DOCKER_REPO_URL}/godmbh/reposerver
 secrets:
