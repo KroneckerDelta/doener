@@ -9,7 +9,7 @@ services:
         dockerfile: Dockerfile
 
   doenerapp:
-    image: daily.entwicklung.god.de:5000/doener/develop/doener_app:latest
+    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doener_app:latest
     labels:
 #      - "traefik.domain=docker.localhost"
       - traefik.backend=doenerapp

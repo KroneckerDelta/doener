@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   doener_db:
-    image: daily.entwicklung.god.de:5000/doener/develop/doener_db:latest
+    image: ${DOCKER_REPO_URL}/doener/develop/doener_db:latest
     networks:
         - internal
     build: 
@@ -10,7 +10,7 @@ services:
   doenerapp:
     environment:
         SPRING_PROFILES_ACTIVE: 'production'  
-    image: daily.entwicklung.god.de:5000/doener/develop/doener_app:latest
+    image: ${DOCKER_REPO_URL}/doener/develop/doener_app:latest
     networks:
         - proxy
         - internal    
