@@ -1,12 +1,12 @@
 version: '3.2'
 services:
   doener_db:
-    image: daily.entwicklung.god.de:5000/doener/develop/doener_db:latest
+    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doener_db:latest
     networks:
         - internal
-    build: 
-        context: doener_db
-        dockerfile: Dockerfile
+#    build: 
+#        context: doener_db
+#        dockerfile: Dockerfile
 
   doenerapp:
     image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doener_app:latest
@@ -20,9 +20,9 @@ services:
     networks:
         - proxy
         - internal
-    build: 
-        context: doenerapp
-        dockerfile: Dockerfile
+#    build: 
+#        context: doenerapp
+#        dockerfile: Dockerfile
     secrets:
         - application.yml 
 #    healthcheck:
