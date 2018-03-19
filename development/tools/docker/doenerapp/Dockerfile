@@ -10,8 +10,8 @@ FROM $DOCKER_REPO_URL/god/websphere-liberty-vw:2.1
 # RUN apt-get install -y less
 # RUN apt-get install -y lsof
 # RUN apt-get install -y procps
-RUN yum -y update
-# RUN yum install -y netcat
+#RUN yum -y update
+RUN yum install -y nc
 RUN yum install -y curl
 RUN yum install -y less
 RUN yum install -y lsof
