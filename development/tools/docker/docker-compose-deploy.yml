@@ -1,14 +1,18 @@
 version: '3.2'
 services:
   doener_db:
+    links:
+      - "reposerver:repsrv"
     image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doener_db:latest
     networks:
         - internal
-#    build: 
-#        context: doener_db
-#        dockerfile: Dockerfile
+    build: 
+        context: doener_db
+        dockerfile: Dockerfile
 
   doenerapp:
+    links:
+      - "reposerver:repsrv"
     image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doener_app:latest
     labels:
 #      - "traefik.domain=docker.localhost"
@@ -20,9 +24,9 @@ services:
     networks:
         - proxy
         - internal
-#    build: 
-#        context: doenerapp
-#        dockerfile: Dockerfile
+    build: 
+        context: doenerapp
+        dockerfile: Dockerfile
     secrets:
         - application.yml 
 #    healthcheck:
