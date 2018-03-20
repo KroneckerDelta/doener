@@ -37,6 +37,8 @@ services:
     healthcheck:
         test: ' exit 0 '
     restart: always
+  reposerver:
+    image: ${DOCKER_REPO_URL}/godmbh/reposerver    
 networks:
   internal:
     external: false
@@ -46,3 +48,4 @@ networks:
 secrets:
   doenersecret:
     file: secrets/application.yml
+    
