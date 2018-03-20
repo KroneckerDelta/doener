@@ -15,5 +15,5 @@ godJavaPipeline {
     metricFoundingUnstableCount = '1115' // threshold for metrics to mark a build unstable
     additionalMvnOpts = '-Dmaven.deploy.skip=true'
     testbed_rampup_timeout = 180 // in seconds
-    ignoreBranchNamingConvention = true	
+    publish_to_daily_sys = true  
 }
