@@ -2,8 +2,6 @@ version: '3.2'
 services:
   doenerdb:
     image: ${DOCKER_REPO_URL}/doener/develop/doenerdb:latest
-    networks:
-        - internal
     build: 
         context: doenerdb
         dockerfile: Dockerfile
@@ -11,9 +9,6 @@ services:
     environment:
         SPRING_PROFILES_ACTIVE: 'production'  
     image: ${DOCKER_REPO_URL}/doener/develop/doenerapp:latest
-    networks:
-        - proxy
-        - internal    
     build: 
         context: doenerapp
         dockerfile: Dockerfile
