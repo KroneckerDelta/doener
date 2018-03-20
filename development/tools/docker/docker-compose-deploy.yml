@@ -13,7 +13,7 @@ services:
   doenerapp:
     links:
       - "reposerver:repsrv"
-    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doener_app:latest
+    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerapp:latest
     labels:
 #      - "traefik.domain=docker.localhost"
       - traefik.backend=doenerapp
