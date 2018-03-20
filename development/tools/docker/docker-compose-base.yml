@@ -1,14 +1,14 @@
 version: '3.2'
 services:
   doenerdb:
-    image: ${DOCKER_REPO_URL}/doener/develop/doener_db:latest
+    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerdb:latest
     build: 
         context: doenerdb
         dockerfile: Dockerfile
   doenerapp:
     environment:
         SPRING_PROFILES_ACTIVE: 'production'  
-    image: ${DOCKER_REPO_URL}/doener/develop/doener_app:latest
+    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerapp:latest
     build: 
         context: doenerapp
         dockerfile: Dockerfile
