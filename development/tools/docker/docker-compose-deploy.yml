@@ -28,7 +28,7 @@ services:
         context: doenerapp
         dockerfile: Dockerfile
     secrets:
-        - application.yml 
+        - doenersecret 
 #    healthcheck:
 #        test: ["CMD","nc", "-z", "localhost", "8080"]
 #        interval: 20s
@@ -43,3 +43,6 @@ networks:
   proxy: 
     external:
         name: proxy_traefik_default
+secrets:
+  doenersecret:
+    file: secrets/application.yml
