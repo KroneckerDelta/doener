@@ -2,6 +2,7 @@ package de.god.doenerbestellung;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @ComponentScan
 @Configuration
-@EnableAutoConfiguration
+@EnableAutoConfiguration(exclude = { FlywayAutoConfiguration.class })
 public class GodDoenerApplication {
 
 	public static void main(String[] args) throws InterruptedException {

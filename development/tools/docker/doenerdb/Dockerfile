@@ -8,6 +8,7 @@ ARG MYSQLUSERPWD=schoener
 ENV MYSQLUSERPWD=$MYSQLUSERPWD
 ###############################
 COPY ansible/ /media/ansible
+RUN echo runinng
 RUN ansible-playbook -i "local," /media/ansible/mariadb.yml --connection=local
 EXPOSE 3306
 CMD ["/usr/bin/mysqld_safe"]

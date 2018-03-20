@@ -4,11 +4,13 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.stereotype.Component;
 
 import de.god.util.flyway.FlywayMigrateService;
 import de.god.util.flyway.exception.FlywayMigrationConfigurationNotExistingException;
 import de.god.util.flyway.provider.property.JNDIPropertyProvider;
 
+@Component
 public class DatabaseMigration implements StartupProcess {
 
 	@Autowired
@@ -21,6 +23,14 @@ public class DatabaseMigration implements StartupProcess {
 	}
 
 	public FlywayMigrateService instance() {
+		System.out.println("############################");
+		System.out.println("############################");
+		System.out.println("############################");
+		System.out.println("     F L Y W A Y     ");
+		System.out.println("############################");
+		System.out.println("############################");
+		System.out.println("############################");
+
 		try {
 			return new FlywayMigrateService(properties -> dataSource, new JNDIPropertyProvider());
 		} catch (FlywayMigrationConfigurationNotExistingException e) {

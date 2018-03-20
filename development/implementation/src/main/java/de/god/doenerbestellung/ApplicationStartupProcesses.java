@@ -18,6 +18,14 @@ public class ApplicationStartupProcesses implements ApplicationListener<Applicat
 
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+		System.out.println("############################");
+		System.out.println("############################");
+		System.out.println("############################");
+		System.out.println("     F L Y W A Y    ApplicationStartupProcesses ");
+		System.out.println("############################");
+		System.out.println("############################");
+		System.out.println("############################");
+
 		startupProcesses.forEach(process -> process.execute(applicationReadyEvent));
 	}
 }

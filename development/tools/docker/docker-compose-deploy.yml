@@ -1,13 +1,13 @@
 version: '3.2'
 services:
-  doener_db:
+  doenerdb:
     links:
       - "reposerver:repsrv"
-    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doener_db:latest
+    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerdb:latest
     networks:
         - internal
     build: 
-        context: doener_db
+        context: doenerdb
         dockerfile: Dockerfile
 
   doenerapp:

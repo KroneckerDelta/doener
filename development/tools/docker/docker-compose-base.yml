@@ -1,11 +1,11 @@
 version: '3.2'
 services:
-  doener_db:
-    image: ${DOCKER_REPO_URL}/doener/develop/doener_db:latest
+  doenerdb:
+    image: ${DOCKER_REPO_URL}/doener/develop/doenerdb:latest
     networks:
         - internal
     build: 
-        context: doener_db
+        context: doenerdb
         dockerfile: Dockerfile
   doenerapp:
     environment:
@@ -18,7 +18,7 @@ services:
         context: doenerapp
         dockerfile: Dockerfile
     secrets:
-        - doener_secret
+        - doenersecret
     ports:
         - "9998:8080"
     healthcheck:
@@ -32,5 +32,5 @@ services:
   reposerver:
     image: ${DOCKER_REPO_URL}/godmbh/reposerver
 secrets:
-  doener_secret:
+  doenersecret:
     file: secrets/application.yml

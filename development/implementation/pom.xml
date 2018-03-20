@@ -67,7 +67,6 @@
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
-				<version>3.2.1</version>
 				<configuration>
 					<url>
 						jdbc:mysql://localhost/god_doener</url>
