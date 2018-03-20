@@ -3,7 +3,8 @@
 @Library('god-jenkins-lib@develop') _
 godJavaPipeline {
     artifactTypes = ['jar']
-    publishDockerImages = true	
+    publishDockerImages = true
+    ignoreBranchNamingConvention = true	
     globalTimeout = 60
     jdkVendor = 'oracle'
     jdkVersion = '1.8'
