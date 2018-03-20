@@ -4,7 +4,6 @@
 godJavaPipeline {
     artifactTypes = ['jar']
     publishDockerImages = true
-    ignoreBranchNamingConvention = true	
     globalTimeout = 60
     jdkVendor = 'oracle'
     jdkVersion = '1.8'
@@ -16,4 +15,5 @@ godJavaPipeline {
     metricFoundingUnstableCount = '1115' // threshold for metrics to mark a build unstable
     additionalMvnOpts = '-Dmaven.deploy.skip=true'
     testbed_rampup_timeout = 180 // in seconds
+    ignoreBranchNamingConvention = true	
 }
