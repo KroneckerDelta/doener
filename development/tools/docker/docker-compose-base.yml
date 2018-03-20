@@ -17,12 +17,9 @@ services:
     ports:
         - "9998:8080"
     healthcheck:
-      test: 'curl --fail localhost:8080'
+      test: 'curl http://127.0.0.1:8080/'
       interval: 5s
-      retries: 5
-    restart: always
-    healthcheck:
-        test: ' exit 0 '
+      retries: 50
     
   reposerver:
     image: ${DOCKER_REPO_URL}/godmbh/reposerver
