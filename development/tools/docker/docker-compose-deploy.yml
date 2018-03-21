@@ -45,5 +45,7 @@ networks:
   proxy: 
     external:
         name: proxy_traefik_default
-
+secrets:
+  doenersecret:
+    file: secrets/application.yml
     
