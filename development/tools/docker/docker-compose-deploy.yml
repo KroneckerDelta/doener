@@ -3,7 +3,7 @@ services:
   doenerdb:
     links:
       - "reposerver:repsrv"
-    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerdb:${DOCKER_IMAGE_VERSION}
+    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doener_db:${DOCKER_IMAGE_VERSION}
     networks:
         - internal
     build: 
@@ -19,14 +19,14 @@ services:
           - node.labels.registry==true
     links:
       - "reposerver:repsrv"
-    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerapp:${DOCKER_IMAGE_VERSION}
+    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doener_app:${DOCKER_IMAGE_VERSION}
     labels:
 #      - "traefik.domain=docker.localhost"
-      - traefik.backend=doenerapp${DOCKER_IMAGE_VERSION}
+      - traefik.backend=doener_app${DOCKER_IMAGE_VERSION}
       - traefik.port=8080
       - traefik.docker.network=proxy_traefik_default
       #- "traefik.frontend.rule=Host:doenerapp.docker.localhost"
-      - traefik.frontend.rule=Host:doener-latest-doenerapp.entwicklung.god.de
+      - traefik.frontend.rule=Host:doener.entwicklung.god.de
     networks:
         - proxy
         - internal
