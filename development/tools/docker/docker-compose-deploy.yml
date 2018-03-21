@@ -11,6 +11,8 @@ services:
         dockerfile: Dockerfile
 
   doenerapp:
+    deploy:
+      replicas: 1
     links:
       - "reposerver:repsrv"
     image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerapp:latest
