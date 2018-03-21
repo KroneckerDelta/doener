@@ -11,6 +11,8 @@ services:
         dockerfile: Dockerfile
 
   doenerapp:
+    environment:
+        SPRING_PROFILES_ACTIVE: 'production' 
     deploy:
       replicas: 1
       placement:
@@ -30,9 +32,9 @@ services:
     networks:
         - proxy
         - internal
-    build: 
-        context: doenerapp
-        dockerfile: Dockerfile
+#    build: 
+#        context: doenerapp
+#        dockerfile: Dockerfile
     healthcheck:
         test: ["CMD","nc", "-z", "localhost", "8080"]
         interval: 20s
