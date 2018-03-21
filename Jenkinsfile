@@ -13,7 +13,7 @@ godJavaPipeline {
     //gav should be de.god.codecamp.doener
     metricFoundingFailedCount = '1217' // threshold for metrics to fail a build
     metricFoundingUnstableCount = '1115' // threshold for metrics to mark a build unstable
-    additionalMvnOpts = '-Dmaven.deploy.skip=true'
+    additionalMvnOpts = ''
     testbed_rampup_timeout = 180 // in seconds
     publish_to_daily_sys = true  
 }
