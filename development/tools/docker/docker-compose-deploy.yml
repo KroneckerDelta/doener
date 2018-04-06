@@ -5,7 +5,7 @@ services:
     labels:
       - traefik.backend=doenerdb${DOCKER_IMAGE_VERSION}  
     networks:
-        - internal
+        - proxy
     build: 
         context: doenerdb
         dockerfile: Dockerfile
@@ -19,37 +19,37 @@ services:
         constraints:
           - node.role == manager
           - node.labels.registry==true
-    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerapp:${DOCKER_IMAGE_VERSION}
+    image: registry:2
+    ports:
+      - "5000:5000"
     labels:
       - traefik.backend=doenerapp:${DOCKER_IMAGE_VERSION}
-      - traefik.port=8080
+      - traefik.port=5000
       - traefik.docker.network=proxy_traefik_default
       - traefik.frontend.rule=Host:doener.entwicklung.god.de
     networks:
         - proxy
-        - internal
+
 #    build: 
 #        context: doenerapp
 #        dockerfile: Dockerfile
-    healthcheck:
-        test: ["CMD","nc", "-z", "localhost", "8080"]
-        interval: 20s
-        timeout: 10s
-        retries: 10
+#    healthcheck:
+#        test: ["CMD","nc", "-z", "localhost", "8080"]
+#        interval: 20s
+#        timeout: 10s
+#        retries: 10
     depends_on:
       - doenerdb
         
 #    healthcheck:
 #        test: ' exit 0 '
     restart: always
-  reposerver:
-    image: ${DOCKER_REPO_URL}/godmbh/reposerver    
+  
 networks:
   internal:
     external: false
   proxy: 
-    external:
-        name: proxy_traefik_default
+
 secrets:
   doenersecret:
     file: secrets/application.yml
