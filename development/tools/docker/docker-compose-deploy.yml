@@ -5,7 +5,7 @@ services:
     labels:
       - traefik.backend=doenerdb${DOCKER_IMAGE_VERSION}  
     networks:
-        - proxy
+        - internal
     build: 
         context: doenerdb
         dockerfile: Dockerfile
