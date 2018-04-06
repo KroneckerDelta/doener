@@ -34,6 +34,9 @@ services:
         interval: 20s
         timeout: 10s
         retries: 10
+    depends_on:
+      - doenerdb
+        
 #    healthcheck:
 #        test: ' exit 0 '
     restart: always
