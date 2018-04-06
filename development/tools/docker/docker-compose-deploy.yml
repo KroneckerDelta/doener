@@ -19,17 +19,15 @@ services:
         constraints:
           - node.role == manager
           - node.labels.registry==true
-    image: registry:2
-    ports:
-      - "5000:5000"
+    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerapp:${DOCKER_IMAGE_VERSION}
     labels:
       - traefik.backend=doenerapp:${DOCKER_IMAGE_VERSION}
-      - traefik.port=5000
+      - traefik.port=8080
       - traefik.docker.network=proxy_traefik_default
       - traefik.frontend.rule=Host:doener.entwicklung.god.de
     networks:
         - proxy
-
+        - internal
 #    build: 
 #        context: doenerapp
 #        dockerfile: Dockerfile
