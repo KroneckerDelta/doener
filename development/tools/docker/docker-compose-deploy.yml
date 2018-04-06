@@ -2,6 +2,8 @@ version: '3.2'
 services:
   doenerdb:
     image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerdb:${DOCKER_IMAGE_VERSION}
+    labels:
+      - traefik.backend=doenerdb${DOCKER_IMAGE_VERSION}  
     networks:
         - internal
     build: 
