@@ -1,9 +1,9 @@
 version: '3.2'
 services:
   doenerdb:
-    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerdb:${DOCKER_IMAGE_VERSION}
+    image: reposrv02nexus3.entwicklung.god.de:5000/private/doener/doenerdb:latest
     labels:
-      - traefik.backend=doenerdb:thomas${DOCKER_IMAGE_VERSION}  
+      - traefik.backend=doenerdb:latest 
     networks:
         - internal
     build: 
@@ -19,9 +19,9 @@ services:
         constraints:
           - node.role == manager
           - node.labels.registry==true
-    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerapp:${DOCKER_IMAGE_VERSION}
+    image: reposrv02nexus3.entwicklung.god.de:5000/private/doener/doenerapp:latest
     labels:
-      - traefik.backend=doenerapp${DOCKER_IMAGE_VERSION}
+      - traefik.backend=doenerapp:latest
       - traefik.port=8080
       - traefik.docker.network=proxy_traefik_default
       - traefik.frontend.rule=Host:doener.entwicklung.god.de
