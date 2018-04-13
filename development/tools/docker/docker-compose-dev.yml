@@ -6,6 +6,3 @@ services:
   doenerapp:
     ports:
     - "9998:8080"
-  doenerdb:
-    ports:
-    - "3306:3306"
