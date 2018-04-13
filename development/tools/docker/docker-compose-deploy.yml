@@ -38,10 +38,8 @@ services:
     healthcheck:
       test: 'curl http://127.0.0.1:8080/'
       interval: 5s
-      retries: 50
+      retries: 5
 
-
-  
 networks:
   internal:
     external: false
