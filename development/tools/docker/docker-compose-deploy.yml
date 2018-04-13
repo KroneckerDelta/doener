@@ -9,7 +9,8 @@ services:
     build: 
         context: doenerdb
         dockerfile: Dockerfile
-
+    healthcheck:
+        test: ' exit 0 '
   doenerapp:
     environment:
         SPRING_PROFILES_ACTIVE: 'production' 
@@ -31,8 +32,8 @@ services:
     depends_on:
       - doenerdb
         
-#    healthcheck:
-#        test: ' exit 0 '
+    healthcheck:
+        test: ' exit 0 '
 
   
 networks:
