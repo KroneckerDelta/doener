@@ -10,7 +10,7 @@ services:
         context: doenerdb
         dockerfile: Dockerfile
     healthcheck:
-        test: "/usr/bin/mysql --user=schoener --password=schoener --execute \"SHOW DATABASES;\""
+        test: /usr/bin/mysql --user=schoener --password=schoener --execute 'SHOW DATABASES;'
         interval: 3s
         timeout: 1s
         retries: 5
