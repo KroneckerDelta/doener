@@ -8,7 +8,6 @@ spring:
     password: schoener
   jpa:
     hibernate.ddl-auto: update
-    show_sql: true
  
 ---
 
@@ -21,8 +20,5 @@ spring:
     password: schoener
   jpa:
     hibernate.ddl-auto: update
-    show_sql: true    
 
-server:
-  port: 9998
   

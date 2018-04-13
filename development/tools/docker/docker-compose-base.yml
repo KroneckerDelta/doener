@@ -14,12 +14,6 @@ services:
         dockerfile: Dockerfile
     secrets:
         - doenersecret
-    ports:
-        - "9998:8080"
-    healthcheck:
-      test: 'curl http://127.0.0.1:8080/'
-      interval: 5s
-      retries: 50
     depends_on:
       - doenerdb
   reposerver:

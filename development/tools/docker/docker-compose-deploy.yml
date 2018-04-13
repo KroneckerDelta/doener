@@ -3,7 +3,7 @@ services:
   doenerdb:
     image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerdb:${DOCKER_IMAGE_VERSION}
     labels:
-      - traefik.backend=doenerdb:thomas${DOCKER_IMAGE_VERSION}  
+      - traefik.backend=doenerdb:${DOCKER_IMAGE_VERSION}  
     networks:
         - internal
     build: 
@@ -28,20 +28,12 @@ services:
     networks:
         - proxy
         - internal
-#    build: 
-#        context: doenerapp
-#        dockerfile: Dockerfile
-#    healthcheck:
-#        test: ["CMD","nc", "-z", "localhost", "8080"]
-#        interval: 20s
-#        timeout: 10s
-#        retries: 10
     depends_on:
       - doenerdb
         
 #    healthcheck:
 #        test: ' exit 0 '
-    restart: always
+
   
 networks:
   internal:
