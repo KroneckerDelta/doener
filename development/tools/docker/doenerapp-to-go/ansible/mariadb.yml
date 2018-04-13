@@ -1,0 +1,46 @@
+---
+- hosts: local
+  vars:
+     MYDATABASE: "{{ lookup('env', 'MYDATABASE') }}" 
+     MYSQLUSER: "{{ lookup('env', 'MYSQLUSER') }}" 
+     MYSQLUSERPWD: "{{ lookup('env', 'MYSQLUSERPWD') }}" 
+  tasks:
+    - name: Install MySQL ( MariaDB )
+      apt: package={{ item }} state=installed force=yes update_cache=yes cache_valid_time=3600
+      when: ansible_os_family == 'Debian'
+      with_items:
+        - mysql-server
+        - python-mysqldb
+        - curl
+        - lsof
+        - procps
+        - gzip
+        - openjdk-8-jre-headless  
+    - name: start db
+      shell: /etc/init.d/mysql start
+    - name: Create a new database
+      mysql_db:
+        name: "{{ MYDATABASE }}"
+        state: present
+    - name: Create database user
+      mysql_user:
+       host: "%"
+       user: "{{ MYSQLUSER }}"
+       password: "{{ MYSQLUSERPWD }}"
+       priv: "{{ MYDATABASE }}.*:ALL"
+       state: present
+    - name: Restore database
+      mysql_db:
+       name: "{{ MYDATABASE }}" 
+       state: import
+       target: initdump.dmp
+    - name: enable network
+      lineinfile:
+            destfile: /etc/mysql/mariadb.conf.d/50-server.cnf
+            regexp: '^bind-address.*127\.0\.0\.1'
+            line: 'bind-address		= 0.0.0.0'
+            backup: no
+
+
+
+
