@@ -13,12 +13,12 @@ services:
         test: /usr/bin/mysql --user=schoener --password=schoener --execute 'SHOW DATABASES;'
         interval: 3s
         timeout: 1s
-        retries: 5
+        retries: 50
   doenerapp:
     environment:
         SPRING_PROFILES_ACTIVE: 'production' 
     deploy:
-      replicas: 1
+      replicas: 3
       placement:
         constraints:
           - node.role == manager
@@ -38,7 +38,7 @@ services:
     healthcheck:
       test: 'curl http://127.0.0.1:8080/'
       interval: 5s
-      retries: 5
+      retries: 50
 
 networks:
   internal:
