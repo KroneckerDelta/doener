@@ -18,7 +18,12 @@ services:
     environment:
         SPRING_PROFILES_ACTIVE: 'production' 
     deploy:
-      replicas: 3
+      replicas: 1
+      resources:
+        limits:
+          memory: 500M
+        reservations:
+          memory: 200M
       placement:
         constraints:
           - node.role == manager
