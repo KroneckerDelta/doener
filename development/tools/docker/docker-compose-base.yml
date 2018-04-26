@@ -25,7 +25,8 @@ services:
       test: 'curl http://127.0.0.1:8080/'
       interval: 5s
       retries: 50      
-
+  reposerver:
+    image: ${DOCKER_REPO_URL}/godmbh/reposerver
 #  doenerapp-to-go:
 #    image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerapp-to-go:${DOCKER_IMAGE_VERSION}
 #    build: 
