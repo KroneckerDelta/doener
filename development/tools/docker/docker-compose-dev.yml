@@ -1,8 +1,5 @@
 version: '3.2'
 services:
-  reposerver:
-    ports:
-    - "9999:80"
   doenerapp:
     ports:
     - "9998:8080"
