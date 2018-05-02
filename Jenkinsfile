@@ -7,7 +7,8 @@ godJavaPipeline {
     globalTimeout = 60
     jdkVendor = 'oracle'
     jdkVersion = '1.8'
-    mvnVersion = '3'
+    //mvnVersion = '3'
+    mvnVersion = 'jk-slave-lin-04'
     mailRecipients = ['thomas.michael@god.de']
     projectName = 'doenerapp' // naming convention for tags / branches
     //gav should be de.god.codecamp.doener
