@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 //@Library('god-jenkins-lib@god-jenkins-lib-1.3.3') _
-@Library('god-jenkins-lib@develop') _
+@Library('god-jenkins-lib@nextgen') _
 godJavaPipeline {
     artifactTypes = ['jar']
     publishDockerImages = true
