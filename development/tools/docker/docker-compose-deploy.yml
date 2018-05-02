@@ -23,10 +23,10 @@ services:
           - node.labels.registry==true
     image: ${DOCKER_DAILY_REPO_URL}/${DOCKER_NAMESPACE}/${DOCKER_PROJECTNAME}/doenerapp:${DOCKER_IMAGE_VERSION}
     labels:
-      - traefik.backend=doenerapp${DOCKER_IMAGE_VERSION}
-      - traefik.port=8080
-      - traefik.docker.network=proxy_traefik_default
-      - traefik.frontend.rule=Host:doener.entwicklung.god.de
+      traefik.backend: doenerapp${DOCKER_IMAGE_VERSION}
+      traefik.port: '8080'
+      traefik.docker.network: proxy_traefik_default
+      traefik.frontend.rule: Host:doener.entwicklung.god.de
     networks:
         - proxy
         - internal
