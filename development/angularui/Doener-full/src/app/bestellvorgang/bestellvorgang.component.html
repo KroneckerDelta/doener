@@ -1,0 +1,162 @@
+<div class="py-5 bg-faded" style="border-bottom: 3px solid #0f8699">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1 class="text-primary text-center py-5">GOD DÖNER BESTELLUNG</h1>
+        <p class="lead text-center">Hier könnt Ihr euren Döner bestellen. Einfach Name, Nummer und Extras</p>
+      </div>
+      <div class="col-md-4">
+        <img class="center-block img-fluid d-block float-right" [src]="doenerLogo">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-5" style="border-bottom: 3px solid #0f8699">
+  <div class="container">
+    <form #contactForm="ngForm" novalidate>
+      <!-- <form action="/saveMe" method="post" enctype='application/json'> -->
+      <div class="row">
+        <div ngModelGroup="doenerapp">
+          <div class="col-md-4">
+
+            <div class="form-group">
+              <label>Name (Pflicht)</label>
+              <input [(ngModel)]="bestellung.name" type="text" class="form-control" min="3" max="20" required="required" placeholder="*Namen eingeben"
+                name="doenerusername" id="name">
+              <god-show-error path="doenerapp.doenerusername"></god-show-error>
+            </div>
+            <div class="form-group">
+              <label>Alias (Optional)</label>
+              <input [(ngModel)]="bestellung.alias" type="text" class="form-control" min="3" max="20" placeholder="Um die Bestellung zu identifizieren"
+                name="aliasname" id="alias">
+              <god-show-error path="doenerapp.aliasname"></god-show-error>
+            </div>
+            <div class="form-group">
+
+              <label>Bestellung (Pflicht)</label>
+              <select id="bestellung" name="bestellung" class="btn btn-primary dropdown-toggle form-control" [(ngModel)]="bestellung.bestellung"
+                required="required">
+                <option value="" disabled="disabled" selected="selected" class="btn btn-primary dropdown-toggle " id="bestellungId" label="Auswahl"></option>
+
+                <option class="dropdown-item">Döner</option>
+                <option class="dropdown-item">Döner - Calzone</option>
+                <option class="dropdown-item">Dönerbox</option>
+                <option class="dropdown-item">Lahmacun 20</option>
+                <option class="dropdown-item">Dürüm 21</option>
+                <option class="dropdown-item">Pide</option>
+                <option class="dropdown-item">Pizza</option>
+                <option class="dropdown-item">Pizza - Calzone 62</option>
+                <option class="dropdown-item">Sonstiges, bitte Extrafeld nutzen</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Preis (Pflicht)</label>
+              <input [(ngModel)]="bestellung.price" type="number" class="form-control" required="required" placeholder="Bitte Preis eintragen"
+                name="price" id="price" numberValidator>
+              <god-show-error path="doenerapp.price"></god-show-error>
+            </div>
+
+            <div class="form-group">
+              <label>Email zur Benachrichtigung</label>
+              <input [(ngModel)]="bestellung.email" type="text" class="form-control" placeholder="Emailbenachrichtigung, noch ohne Funktion"
+                name="email" id="email">
+            </div>
+
+
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-6">
+                <div class="form-group">
+                  <label for="telefonnummer">Telefon (optional)</label>
+                  <input [(ngModel)]="bestellung.telefonnummer" type="text" class="form-control" placeholder="Durchwahl" name="telefonnummer"
+                    id="telefonnummer">
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-6">
+                <div class="form-group">
+                  <label for="fleisch">Fleischauswahl: (Pflicht)</label>
+                  <select id="fleisch" name="fleisch" class="btn btn-primary dropdown-toggle form-control" [(ngModel)]="bestellung.fleisch"
+                    required="required">
+                    <option value="" disabled="disabled" selected="selected" class="btn btn-primary dropdown-toggle " id="fleischId" label="Fleisch"></option>
+
+                    <option class="dropdown-item">Kalb</option>
+                    <option class="dropdown-item">Hähnchen</option>
+                    <option class="dropdown-item">Vegetarisch</option>
+                    <option class="dropdown-item">kein Fleisch</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-6">
+                <div class="form-group">
+                  <label>Extras</label>
+                  <input [(ngModel)]="bestellung.extras" type="text" class="form-control" placeholder="extra Wünsche" name="extras" id="extras">
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-6">
+                <div class="form-group">
+                  <label for="mySelect">Soßenauswahl: (Pflicht)</label>
+                  <select id="mySelect" name="sauce" class="btn btn-primary dropdown-toggle form-control" [(ngModel)]="bestellung.sauce">
+                    <option value="" disabled="disabled" selected="selected" class="btn btn-primary dropdown-toggle" id="optId" label="Soßeauswahl"></option>
+
+                    <option class="dropdown-item">Alles</option>
+                    <option class="dropdown-item">ohne Sauce</option>
+                    <option class="dropdown-item">Scharf</option>
+                    <option class="dropdown-item">Knoblauch</option>
+                    <option class="dropdown-item">Kräuter</option>
+                    <option class="dropdown-item">Alles ohne Knoblauch</option>
+                    <option class="dropdown-item">Alles ohne scharf</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <button [disabled]="!contactForm.form.valid" (click)="saveBestellung(bestellung)" type="submit" class="btn btn-primary" formenctype='application/json'>verbindlich Abschicken
+      </button>
+    </form>
+  </div>
+</div>
+<div class="py-5 section text-center">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+
+
+        <p class="lead"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-faded py-0 text-center">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 p-5">
+        <h1 class="m-y-2 m-y-lg  pi-item text-center">Adar Imbiss</h1>
+        <h3 class="m-y-2 m-y-lg  pi-item text-center">Südländische Spezialitäten
+        </h3>
+        <p class="text-center">
+          Welfenplatz. 2 | 38126 Braunschweig&nbsp;
+          <br>http://adar-imbiss.webnode.com
+        </p>
+        <div class="my-2 m-y-lg row text-center">
+          <div class="col-4">
+            <a></a>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-4">
+            <a></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

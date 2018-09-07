@@ -1,0 +1,36 @@
+<h1>Heutige Bestellungen</h1>
+<ul class="bestellungen">
+  <li *ngFor="let bestellung of bestellungen ; let idx=index" [class.selected]="bestellung === selectedBestellung" (click)="onSelect(bestellung)">
+    <span class="nr">{{idx+1}}</span>
+    <span class="order">{{bestellung.bestellung}}</span>
+    <span>{{bestellung.extras}}</span>
+    <span class="badge">Alias: {{bestellung.alias}}</span>
+    <span class="badge">{{bestellung.name}}</span>
+    <span class="price">{{bestellung.price}} €</span>
+    <span>{{bestellung.fleisch}}</span>
+    <span>mit {{bestellung.sauce}}</span>
+    <span>Telefon: {{bestellung.telefonnummer}}</span>
+    <span> bezahlt: </span>
+    <span>
+      <input id="bestellung.bezahlt.haken" type="checkbox" ifcon (click)="update(bestellung);" [(ngModel)]="bestellung.bezahlt"
+      /> </span>
+
+    <button class="delete" (click)="delete(bestellung); $event.stopPropagation()">Löschen</button>
+  </li>
+</ul>
+<span>{{ getTotal() }} €</span>
+<div>
+  <span>Telefon: 0531 / 2157558 </span>
+</div>
+<div>
+  <!-- TODO: ENUM einführen -->
+
+  Dönerbox: {{bestellungen | groupSizePipe: 'Dönerbox'}}
+  <br> Döner: {{bestellungen | groupSizePipe: 'Döner'}}
+  <br> Lahmacun: {{bestellungen | groupSizePipe: 'Lahmacun'}}
+  <br> Pizza - Calzone: {{bestellungen | groupSizePipe: 'Pizza - Calzone'}}
+  <br> Döner - Calzone: {{bestellungen | groupSizePipe: 'Döner - Calzone'}}
+  <br> Dürüm: {{bestellungen | groupSizePipe: 'Dürüm'}}
+  <br> Sonstiges: {{bestellungen | groupSizePipe: 'Sonstiges, bitte Extrafeld nutzen'}}
+  <br>
+</div>
