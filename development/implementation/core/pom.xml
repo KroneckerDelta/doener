@@ -51,8 +51,8 @@
         </dependency>
     </dependencies>
 
-    // Temporal solution - maybe move into a seperate assembly module
-    // Builds the jar-artifact
+    <!-- Temporal solution - maybe move into a seperate assembly module -->
+    <!-- Builds the jar-artifact -->
     <build>
         <plugins>
             <plugin>
