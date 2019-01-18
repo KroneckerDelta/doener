@@ -16,8 +16,35 @@
     <packaging>pom</packaging>
 
     <properties>
+        <!-- Defaults -->
         <java.version>1.8</java.version>
-        <spring.use.version>2.1.0.RELEASE</spring.use.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <file.encoding>UTF-8</file.encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- Spring Boot -->
+        <spring.boot.useversion>2.0.6.RELEASE</spring.boot.useversion>
+
+        <!-- DB -->
+        <h2.version>1.4.197</h2.version>
+        <mysql.connector.version>8.0.13</mysql.connector.version>
+
+        <!-- Metrics -->
+        <checkstyle.version>3.0.0</checkstyle.version>
+        <spotbugs.version>3.1.1</spotbugs.version>
+        <pmd.version>3.9.0</pmd.version>
+
+        <!-- UI -->
+        <node.version>v8.11.1</node.version>
+
+        <!-- Distribution Management -->
+        <!-- For Deploy step of Jenkins Pipeline -->
+        <distMgmtSnapshotsName>GOD Snapshot Maven Repository</distMgmtSnapshotsName>
+        <distMgmtSnapshotsUrl>https://mvnrepository.god.de/nexus/content/repositories/god-internal-snapshots</distMgmtSnapshotsUrl>
+        <distMgmtSnapshotsName>GOD Releases Maven Repository</distMgmtSnapshotsName>
+        <distMgmtReleasesUrl>https://mvnrepository.god.de/nexus/content/repositories/god-internal</distMgmtReleasesUrl>
     </properties>
 
     <modules>
@@ -27,41 +54,62 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- ################### -->
+            <!-- Module Management -->
+            <!-- ################### -->
+            <dependency>
+                <groupId>de.god.codecamp.doener</groupId>
+                <artifactId>core</artifactId>
+                <version>0.3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>de.god.codecamp.doener</groupId>
+                <artifactId>ui</artifactId>
+                <version>0.3.0</version>
+            </dependency>
+
+            <!-- ################### -->
+            <!-- SPRING -->
+            <!-- ################### -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-jpa</artifactId>
-                <version>${spring.use.version}</version>
+                <version>${spring.boot.useversion}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
-                <version>${spring.use.version}</version>
+                <version>${spring.boot.useversion}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring.use.version}</version>
+                <version>${spring.boot.useversion}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-rest</artifactId>
-                <version>${spring.use.version}</version>
+                <version>${spring.boot.useversion}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>${spring.boot.useversion}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- ################### -->
+            <!-- DB -->
+            <!-- ################### -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.13</version>
+                <version>${mysql.connector.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
-                <version>1.4.197</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.jayway.jsonpath</groupId>
-                <artifactId>json-path</artifactId>
-                <version>2.4.0</version>
+                <version>${h2.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -69,6 +117,244 @@
                 <artifactId>god-utils-flyway</artifactId>
                 <version>2.6.0</version>
             </dependency>
+
+            <!-- ################### -->
+            <!-- STUFF -->
+            <!-- ################### -->
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>2.4.0</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- ################### -->
+                <!-- Code Metrics -->
+                <!-- ################### -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${checkstyle.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>${spotbugs.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>${pmd.version}</version>
+                </plugin>
+
+                <!-- ########################### -->
+                <!-- Compiler- and Build-Plugins -->
+                <!-- ########################### -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.6.1</version>
+                    <configuration>
+                        <compilerArgument>-Xlint:all</compilerArgument>
+                        <showWarnings>true</showWarnings>
+                        <showDeprecation>true</showDeprecation>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>1.6</version>
+                    <configuration>
+                        <!--<nodeDownloadRoot>https://reposrv02nexus3.entwicklung.god.de/nexus/repository/node-dist/</nodeDownloadRoot>-->
+                        <installDirectory>target/node_installation</installDirectory>
+                        <nodeVersion>${node.version}</nodeVersion>
+                        <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!-- ################### -->
+            <!-- Code Metrics -->
+            <!-- ################### -->
+            <!-- Checkstyle -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>checkstyle/god/god-checkstyle.xml</configLocation>
+                    <suppressionsLocation>checkstyle/god/god-checkstyle-suppressions.xml</suppressionsLocation>
+                    <headerLocation>checkstyle/god/god-checkstyle-header.txt</headerLocation>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.8</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>de.god</groupId>
+                        <artifactId>god-code-metrics</artifactId>
+                        <version>1.0.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- Spotbugs -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.version}</version>
+                <configuration>
+                    <xmlOutput>true</xmlOutput>
+                    <excludeFilterFile>spotbugs/FindbugsFilter.xml</excludeFilterFile>
+                    <failOnError>false</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.god</groupId>
+                        <artifactId>god-code-metrics</artifactId>
+                        <version>1.0.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- Deactivate global default Findbugs, because it's replaced by spotbugs -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+            <!-- PMD -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <analysisCache>true</analysisCache>
+                    <linkXRef>false</linkXRef>
+                    <rulesets>
+                        <!-- Ruleset from the Maven-Plugin itself -->
+                        <ruleset>pmd/maven-pmd-plugin-default.xml</ruleset>
+                        <!-- PMD Ruleset from Volkswagen; Based on HaMOn -->
+                        <ruleset>pmd/volkswagen-pmd-ruleset.xml</ruleset>
+                        <!-- BestPractices for Java, based on  PMD for Java; see: -->
+                        <!-- https://github.com/pmd/pmd/blob/pmd_releases/6.0.1/pmd-java/src/main/resources/category/java/bestpractices.xml -->
+                        <ruleset>pmd/pmd-java-6.0.1-bestpractices.xml</ruleset>
+                    </rulesets>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.god</groupId>
+                        <artifactId>god-code-metrics</artifactId>
+                        <version>1.0.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- ################### -->
+            <!-- Tests -->
+            <!-- ################### -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <!--$NO-MVN-MAN-VER$ -->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.0</version>
+                <!--$NO-MVN-MAN-VER$ -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ################### -->
+            <!-- Code Coverage -->
+            <!-- ################### -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>coverage check</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.00</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <excludes>
+                        <exclude/>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- ################### -->
+            <!-- Vulnerability Check -->
+            <!-- ################### -->
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <format>XML</format>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
