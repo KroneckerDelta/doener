@@ -5,11 +5,8 @@ godJavaPipeline {
     artifactTypes = ['jar']
     publishDockerImages = true
     globalTimeout = 60
-    jdkVendor = 'oracle'
     jdkVersion = '1.8'
-    //mvnVersion = '3'
-    mvnVersion = 'jk-slave-lin-04'
-    mailRecipients = ['thomas.michael@god.de']
+    mailRecipients = ['thomas.michael@god.de', 'maik.goedecke@god.de', 'nils.hoffmann@god.de']
     projectName = 'doenerapp' // naming convention for tags / branches
     //gav should be de.god.codecamp.doener
     metricFoundingFailedCount = '1217' // threshold for metrics to fail a build
