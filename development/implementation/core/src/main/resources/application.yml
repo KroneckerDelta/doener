@@ -2,7 +2,7 @@
 spring:
   profiles: production
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://doenerdb/god_doener
     username: schoener
     password: schoener
@@ -14,11 +14,10 @@ spring:
 spring:
   profiles: development
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost/god_doener
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/god_doener
     username: schoener
     password: schoener
   jpa:
     hibernate.ddl-auto: update
 
-  

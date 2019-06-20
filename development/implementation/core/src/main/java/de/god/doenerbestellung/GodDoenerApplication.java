@@ -1,5 +1,6 @@
 package de.god.doenerbestellung;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -24,5 +25,6 @@ public class GodDoenerApplication
 {
     public static void main(String[] args)
     {
+        SpringApplication.run(GodDoenerApplication.class, args);
     }
 }

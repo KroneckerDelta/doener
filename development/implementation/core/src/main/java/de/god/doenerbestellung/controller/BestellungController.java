@@ -65,7 +65,7 @@ public class BestellungController {
 	@RequestMapping(value = "/api/bestellung/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") Long id) {
 		System.out.println("Lösche Bestellung: " + id);
-		repositoy.delete(id);
+        repositoy.deleteById(id);
 	}
 
 	@Transactional
