@@ -1,0 +1,39 @@
+tart<h1>Heutige Bestellungen</h1>
+<ul class="bestellungen">
+    <li *ngFor="let bestellung of bestellungen ; let idx=index"
+        [class.selected]="bestellung === selectedBestellung"
+        (click)="onSelect(bestellung)">
+        <span class="nr">{{idx + 1}}</span>
+        <span class="order">{{bestellung.price}}</span>
+        <span class="order">{{bestellung.bestellung}}</span>
+        <span>{{bestellung.extras}}</span>
+        <span class="badge">{{bestellung.name}}</span>
+        <span class="badge">as {{bestellung.alias}}</span>
+        <span class="price">{{bestellung.price}} €</span>
+        <span class="nr">{{bestellung.fleisch}}</span>
+        <span class="nr">mit {{bestellung.sauce}}</span>
+        <span class="nr"> {{bestellung.telefonnummer}}</span>
+    </li>
+</ul>
+<span>{{ getTotal() }} €</span>
+<div>
+    <span>Telefon: 0531 / 2147558 </span>
+</div>
+<div>
+    <!-- TODO: ENUM einführen -->
+    <style>
+
+
+    </style>
+    <ul class="meineListe">
+        <li> Dönerbox: {{bestellungen | groupSizePipe: 'Dönerbox'}} </li>
+        <li> Döner: {{bestellungen | groupSizePipe: 'Döner'}}</li>
+        <li> Döner - Calzone: {{bestellungen | groupSizePipe: 'Döner - Calzone'}}</li>
+        <li> Lahmacun: {{bestellungen | groupSizePipe: 'Lahmacun 20'}}</li>
+        <li> Pizza : {{bestellungen | groupSizePipe: 'Pizza'}}</li>
+        <li> Pizza - Calzone: {{bestellungen | groupSizePipe: 'Pizza - Calzone 62'}}</li>
+        <li> Dürüm: {{bestellungen | groupSizePipe: 'Dürüm 21'}}</li>
+        <li> Sonstiges: {{bestellungen | groupSizePipe: 'Sonstiges, bitte Extrafeld nutzen'}}</li>
+    </ul>
+</div>
+S
