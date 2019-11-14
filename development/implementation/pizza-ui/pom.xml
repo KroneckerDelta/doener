@@ -9,10 +9,10 @@
         <version>0.3.0</version>
     </parent>
 
-    <groupId>de.god.codecamp.doener</groupId>
+    <groupId>de.god.codecamp.pizza</groupId>
     <artifactId>ui</artifactId>
     <packaging>jar</packaging>
-    <name>GOD Doener - UI</name>
+    <name>GOD Pizza - UI</name>
 
     <properties>
         <frontend.maven.plugin.version>1.6</frontend.maven.plugin.version>
