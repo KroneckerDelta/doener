@@ -4,14 +4,13 @@ tart<h1>Heutige Bestellungen</h1>
         [class.selected]="bestellung === selectedBestellung"
         (click)="onSelect(bestellung)">
         <span class="nr">{{idx + 1}}</span>
+        <span class="typ">{{bestellung.typ}}</span>
         <span class="order">{{bestellung.price}}</span>
         <span class="order">{{bestellung.bestellung}}</span>
         <span>{{bestellung.extras}}</span>
         <span class="badge">{{bestellung.name}}</span>
         <span class="badge">as {{bestellung.alias}}</span>
         <span class="price">{{bestellung.price}} €</span>
-        <span class="nr">{{bestellung.fleisch}}</span>
-        <span class="nr">mit {{bestellung.sauce}}</span>
         <span class="nr"> {{bestellung.telefonnummer}}</span>
     </li>
 </ul>

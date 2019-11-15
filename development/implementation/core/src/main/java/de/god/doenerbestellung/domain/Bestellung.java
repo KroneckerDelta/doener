@@ -28,6 +28,10 @@ public class Bestellung {
 	@Column(nullable = true)
 	private Boolean bezahlt;
 
+
+	@Column(nullable = false, name = "TYP")
+	private String typ;
+
 	private String fleisch;
 	private String sauce;
 
@@ -128,6 +132,15 @@ public class Bestellung {
 
 	public void setAlias(String alias) {
 		this.alias = alias;
+	}
+
+
+	public String getTyp() {
+		return typ;
+	}
+
+	public void setTyp(String typ) {
+		this.typ = typ;
 	}
 
 }
