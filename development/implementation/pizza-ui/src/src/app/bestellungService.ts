@@ -7,12 +7,11 @@ import { Bestellung } from './bestellung';
 @Injectable()
 export class BestellungService {
 
-  private bestellungenUrl = '/api/findHeute';
+  private bestellungenUrl = '/api/findHeute/pizza';
   private saveUrl = '/api/save';
   private updateUrl = '/api/bestellung';
   private deleteUrl = '/api/bestellung/';
   private anruferUrl = '/api/anrufer/';
-  private dynamodb: AWS.DynamoDB;
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {

@@ -8,7 +8,7 @@ import { Bestellung } from './bestellung';
 @Injectable()
 export class BestellungService {
 
-  private bestellungenUrl = '/api/findHeute';
+  private bestellungenUrl = '/api/findHeute/doener';
   private saveUrl = '/api/save';
   private updateUrl = '/api/bestellung';
   private deleteUrl = '/api/bestellung/';

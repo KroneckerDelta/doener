@@ -11,4 +11,5 @@ export class Bestellung {
   sauce: string;
   bezahlt: boolean;
   price: string;
+  typ: string='pizza';
 }

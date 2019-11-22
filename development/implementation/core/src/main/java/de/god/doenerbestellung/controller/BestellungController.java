@@ -47,8 +47,8 @@ public class BestellungController {
 		return "" + result;
 	}
 
-	@RequestMapping(value = "/api/findHeute", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
-	public List<Bestellung> heutigeBestellungen(HttpServletResponse response) {
+	@RequestMapping(value = "/api/findHeute/{typ}", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
+	public List<Bestellung> heutigeBestellungen(@PathVariable("typ")  String typ, HttpServletResponse response) {
 
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
@@ -56,7 +56,8 @@ public class BestellungController {
 
 		String dateAsString = Heute.get();
 
-		return repositoy.findByBestelldatumOrderByBestellung(dateAsString);
+		List<Bestellung> byBestelldatumAndTypOrderByBestellung = repositoy.findByBestelldatumAndTypOrderByBestellung(dateAsString, typ);
+		return byBestelldatumAndTypOrderByBestellung;
 
 	}
 
@@ -77,39 +78,7 @@ public class BestellungController {
 		repositoy.save(bestellung);
 	}
 
-	@RequestMapping(value = "/api/findHeutePdf", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_PDF_VALUE)
-	public List<Bestellung> heutigeBestellungenAlsPdf() {
 
-		String dateAsString = Heute.get();
-
-		return repositoy.findByBestelldatumOrderByBestellung(dateAsString);
-
-	}
-
-	@RequestMapping(value = "/api/emailSenden", method = RequestMethod.GET, consumes = MediaType.ALL_VALUE)
-	public String emailVersenden() {
-		List<String> alleMails = new ArrayList<>();
-		List<Bestellung> heutigeBestellungen = repositoy.findByBestelldatumOrderByBestellung(Heute.get());
-		for (Bestellung bestellung : heutigeBestellungen) {
-			String email = bestellung.getEmail();
-			alleMails.add(email);
-		}
-
-		return sendeEMails(alleMails);
-	}
-
-	private String sendeEMails(List<String> alleMails) {
-
-		return "noch nicht implementiert! Wenn Du Entwickler bist, kannst Du das gerne machen. :-) ";
-	}
-
-	@RequestMapping(value = "/api/findPerDate", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
-	public List<Bestellung> heutigeBestellungen(@RequestBody String containsDate) {
-		String dateAsString = containsDate.substring(containsDate.indexOf("=") + 1, containsDate.length());
-
-		return repositoy.findByBestelldatumOrderByBestellung(dateAsString);
-
-	}
 
 	@Transactional
 	@RequestMapping(value = "/api/save", method = RequestMethod.POST)
@@ -144,7 +113,7 @@ public class BestellungController {
 
 	@Transactional
 	@RequestMapping(value = "/api/saveMe", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Bestellung saveBestellung(String bestellung, String name, String extras, String telefonnummer, String fleisch, String sauce, String email, String price) {
+	public Bestellung saveBestellung(String typ, String bestellung, String name, String extras, String telefonnummer, String fleisch, String sauce, String email, String price) {
 		System.out.println("Bestellung: " + bestellung + " Name: " + name);
 		Bestellung b = new Bestellung();
 		b.setName(name);
@@ -157,6 +126,7 @@ public class BestellungController {
 		b.setSauce(sauce == null ? "ohne" : sauce);
 		b.setBezahlt(false);
 		b.setPrice(price);
+		b.setTyp(typ);
 		System.out.println("Bestellung: " + b + " Name: " + name);
 		return repositoy.save(b);
 
