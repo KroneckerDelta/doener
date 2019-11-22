@@ -2,7 +2,15 @@
 
 
 /* This file is for setting global styles  */
+@font-face {
+  font-family: alex brush;
+  src: url(../assets/fonts+/alex-brush/AlexBrush-Regular.ttf) format("truetype");
+}
 
+@font-face {
+  font-family: roboto;
+  src: url(../assets/fonts+/roboto/Roboto-Regular.ttf) format("truetype");
+}
 @import 'variables';
 nav {
   margin-top: 16px;
