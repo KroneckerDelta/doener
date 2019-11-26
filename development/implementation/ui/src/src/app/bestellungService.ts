@@ -12,7 +12,7 @@ export class BestellungService {
   private saveUrl = '/api/save';
   private updateUrl = '/api/bestellung';
   private deleteUrl = '/api/bestellung/';
-  private anruferUrl = '/api/anrufer/';
+  private anruferUrl = '/api/besteller/';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
@@ -78,7 +78,7 @@ export class BestellungService {
   anruferSetzen(anrufer: string): any {
     console.log('Setze Anrufer');
     return this.http
-               .post(this.anruferUrl + anrufer, {headers: this.headers})
+               .post(this.anruferUrl , anrufer, {headers: this.headers})
                .toPromise()
                .then(res => res.json().data as Bestellung)
                .catch(this.handleError);

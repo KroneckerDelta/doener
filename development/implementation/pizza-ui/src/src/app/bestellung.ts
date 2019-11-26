@@ -10,6 +10,6 @@ export class Bestellung {
   fleisch: string;
   sauce: string;
   bezahlt: boolean;
-  price: string;
+  price: string = '7';
   typ: string='pizza';
 }

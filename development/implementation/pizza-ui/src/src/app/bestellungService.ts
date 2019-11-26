@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import { Bestellung } from './bestellung';
+import {Besteller} from './besteller';
 
 @Injectable()
 export class BestellungService {
@@ -11,7 +12,7 @@ export class BestellungService {
   private saveUrl = '/api/save';
   private updateUrl = '/api/bestellung';
   private deleteUrl = '/api/bestellung/';
-  private anruferUrl = '/api/anrufer/';
+  private anruferUrl = '/api/besteller/';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {
@@ -74,13 +75,25 @@ export class BestellungService {
 
   }
 
-  anruferSetzen(anrufer: string): any {
-    console.log('Setze Anrufer');
+  anruferSetzen(anrufer: Besteller): any {
+    console.log('Setze Anrufer', anrufer);
     return this.http
-               .post(this.anruferUrl + anrufer, {headers: this.headers})
+               .post(this.anruferUrl , anrufer, {headers: this.headers})
                .toPromise()
                .then(res => res.json().data as Bestellung)
                .catch(this.handleError);
+  }
+
+  getBesteller(): Promise<Besteller> {
+    console.log('hole Besteller');
+    const url = `${this.anruferUrl}`;
+    console.log('hole Besteller: ', url);
+
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json().data as Besteller)
+      .catch(this.handleError);
+
   }
 
   private handleError(error: any): Promise<any> {

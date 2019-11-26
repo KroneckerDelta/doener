@@ -69,7 +69,11 @@ export class BestellvorgangComponent implements OnInit {
   }
 
   public anruferSetzen() {
-    this.bestellungService.anruferSetzen(this.anrufer);
+    const besteller : Besteller = new Besteller (
+      this.anrufer,
+       '1.12'
+  );
+    this.bestellungService.anruferSetzen(besteller);
   }
 
   private asyncDataWithWebpack() {
