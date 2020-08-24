@@ -4,6 +4,7 @@ tart<h1>Heutige Bestellungen</h1>
         [class.selected]="bestellung === selectedBestellung"
         (click)="onSelect(bestellung)">
         <span class="nr">{{idx + 1}}</span>
+        <span class="typ">{{bestellung.typ}}</span>
         <span class="order">{{bestellung.price}}</span>
         <span class="order">{{bestellung.bestellung}}</span>
         <span>{{bestellung.extras}}</span>

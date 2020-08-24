@@ -1,0 +1,57 @@
+<div class="body">
+
+  <div class="navigation">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <ul class="navbar-nav edititems">
+        <li class="nav-item">
+          <a class="nav-link editlink" [routerLink]=" ['./'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Index</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link editlink" [routerLink]=" ['./bestellvorgang'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Pizza Bestellen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link editlink" [routerLink]=" ['./bestellungen'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Bestellungen</a>
+        </li>
+        <li class="nav-item edititem">
+          <a class="nav-link editlink" [routerLink]=" ['./login'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Admin</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+  <div class="welcometext">
+    <h1 x-large class="sample-content text-right welcometextedit">Herzlich Willkommen!
+    </h1>
+    <h1 x-large class="sample-content text-right togodpizza">zur GOD Pizza App
+    </h1>
+    <button class="btn btn-primary editbutton" [routerLink]=" ['./bestellvorgang'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <h4>Hier bestellen!</h4>
+    </button>
+  </div>
+
+<div class="informationtext">
+
+
+  <!-- <h2 class="text-right">
+      Pizza, Salat oder sonstiges bestellen unter:
+      <a [routerLink]=" ['./bestellvorgang'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        class="text-right">
+        Pizza Bestellen
+      </a>
+    </h2>
+    <h2 class="text-right">
+      Übersicht über alle Bestellungen unter:
+      <a [routerLink]=" ['./bestellungen'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        class="text-right">
+        Bestellungen
+      </a>
+    </h2> -->
+
+    <h2 class="text-right helpus">
+      Freiwillige Mitarbeit an diesem Projekt oder der Döner App, diese Repo: <br>
+    </h2>
+    <h2 class="text-right repo">
+      https://phabricator.entwicklung.god.de/source/doener/repository/master/
+    </h2>
+  </div>
+</div>
